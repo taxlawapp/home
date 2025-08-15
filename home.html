@@ -1,0 +1,2769 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <!-- رابط مكتبة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- رابط خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet">   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- مكتبة Canvas Confetti للألعاب النارية -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script> 
+    <title>الصفحة الرئيسية</title>
+          <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <style>
+        /* أنماط عامة للصفحة */
+        body {
+            font-family: 'Beiruti', sans-serif;
+            direction: rtl; /* اتجاه النص من اليمين لليسار */
+            text-align: center; /* محاذاة النص إلى الوسط */
+            background-color: #e1f5fe; /* لون خلفية الصفحة */      
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s; /* تأثيرات الانتقال */
+            -webkit-user-select: none; /* منع تحديد النص في المتصفحات التي تعتمد على WebKit */
+            -moz-user-select: none; /* منع تحديد النص في فايرفوكس */
+            -ms-user-select: none; /* منع تحديد النص في إنترنت إكسبلورر */
+            user-select: none; /* منع تحديد النص في المتصفحات الأخرى */          
+        }      
+
+        /* أنماط الشريط المتحرك في الأعلى */
+        .marquee {
+            width: 100%; /* عرض كامل */
+            overflow: hidden; /* إخفاء المحتوى الزائد */
+            color: #1a237e; /* لون النص */
+            padding: 2.5px 0; /* حشو داخلي */
+            font-size: 18px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            position: fixed; /* تثبيت العنصر في الأعلى */
+            background: linear-gradient(to right, white, #e1f5fe); /* خلفية متدرجة */      
+            top: 0; /* تثبيت العنصر في الأعلى */
+            z-index: 998; /* ترتيب العنصر */
+            padding-bottom: 30px; /* حشو سفلي */
+            margin-top: 52.5px; /* مسافة علوية */
+        }
+
+        .marquee span {
+            display: inline-block; /* عرض كتلة داخل السطر */
+            animation: marquee 10s linear infinite; /* حركة النص */
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(-100%); /* بداية الحركة من اليسار */
+            }
+            to {
+                transform: translateX(100%); /* نهاية الحركة إلى اليمين */
+            }
+            animation-direction: normal; /* اتجاه الحركة */
+        }
+
+        /* أنماط أزرار التبديل بين العرض الشبكي والقائمة */
+        .view-toggle {
+            margin-top: 0px; /* إزالة المسافة العلوية */
+            display: flex; /* استخدام Flexbox */
+            justify-content: center; /* توسيط الأزرار أفقياً */
+            gap: 2px; /* المسافة بين الأزرار */
+            margin: 5px 0; /* تقليل المسافة العلوية والسفلية */
+            position: fixed; /* تثبيت العنصر في الأعلى */
+            top: 40px; /* تثبيت العنصر أسفل الشريط المتحرك */
+            width: 100%; /* عرض كامل */
+            z-index: 998; /* ترتيب العنصر */
+            background: linear-gradient(to right, white, #e1f5fe); /* خلفية متدرجة */      
+            padding: 5px 0; /* حشو داخلي */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            margin-top: 50px; /* مسافة علوية */
+        }
+
+        .view-toggle button {
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white; /* لون النص */
+            padding: 10px 20px; /* حشو داخلي */
+            cursor: pointer; /* تغيير شكل المؤشر عند التحويم */
+            font-size: 16px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            display: flex; /* استخدام Flexbox داخل الأزرار */
+            align-items: center; /* توسيط العناصر عمودياً */
+            gap: 4px; /* المسافة بين الأيقونة والنص */
+            border-radius: 2.5px; /* زوايا مستديرة */
+            transition: background-color 0.3s ease; /* تأثيرات الانتقال */
+            border: 1px solid #fafafa; /* حدود */
+        }
+
+        .view-toggle button:hover {
+            background-color: #0056b3; /* تغيير لون الخلفية عند التحويم */
+            border: 2.5px solid #212121; /* تغيير الحدود عند التحويم */
+        }
+
+        .view-toggle button i {
+            font-size: 18px; /* حجم الأيقونة */
+        }
+      
+        /* أنماط علامة الصح */
+        .view-toggle button .checkmark {
+            display: none; /* إخفاء العلامة بشكل افتراضي */
+            color: #fafafa; /* لون العلامة */
+            font-size: 18px; /* حجم العلامة */
+            margin-left: 5px; /* مسافة يسار العلامة */
+        }
+
+        /* إظهار العلامة عند تفعيل الزر */
+        .view-toggle button.active .checkmark {
+            display: inline; /* عرض العلامة */
+        }     
+            
+        /* أنماط الأيقونة الذهبية */
+        .gold-icon {
+            color: #FFD700; /* لون ذهبي */
+            font-size: 30px; /* حجم الأيقونة */
+        }      
+
+        /* أنماط الشبكة */
+        .icon-grid {
+            display: grid; /* استخدام عرض الشبكة */
+            grid-template-columns: repeat(2, 1fr); /* تكرار عمودين */
+            grid-gap: 10px; /* المسافة بين العناصر */
+            padding: 25px; /* حشو داخلي */
+            max-width: 500px; /* الحد الأقصى للعرض */
+            margin: 130px auto 10px; /* توسيط الشبكة */
+            margin-bottom: 50px; /* مسافة سفلية */       
+        }
+
+        /* أنماط العناصر داخل الشبكة */
+        .icon-item {
+            position: relative; /* تحديد الموضع النسبي */
+            margin-top: 0px; /* إزالة المسافة العلوية */
+            background: linear-gradient(to right, #eaecee, #e1f5fe);/* خلفية متدرجة */      
+            border-radius: 10px; /* زوايا مستديرة */
+            padding: 10px; /* حشو داخلي */
+            text-align: center; /* محاذاة النص إلى الوسط */
+            font-size: 16px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            text-decoration: none; /* إزالة التسطير */
+            color: #1a237e; /* لون النص */
+            transition: transform 0.2s, box-shadow 0.2s; /* تأثيرات الانتقال */
+            border: 2.5px solid #1a237e; /* حدود */
+            border-bottom: 3px solid red; /* حدود */
+        }
+
+        .icon-item:hover {
+            transform: translateY(-5px); /* رفع العنصر عند التحويم */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* زيادة الظل عند التحويم */
+        }
+
+        .icon-item img {
+            width: 80px; /* عرض الصورة */
+            height: 80px; /* ارتفاع الصورة */
+            margin-bottom: 10px; /* مسافة سفلية للصورة */
+        }
+
+        .icon-item p {
+            margin-top: 5px; /* مسافة علوية للنص */
+            font-size: 16px; /* حجم النص */
+            color: #02076e; /* لون النص */
+        }
+      
+        .icon-item.active p {
+            color: #FFFF00; /* لون النص النشط */
+        }      
+
+        /* تنسيق الأيقونة النشطة */
+        .icon-item.active {
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white; /* لون النص للعنصر النشط */
+        }
+
+        .icon-item.active img {
+            filter: none; /* إزالة الفلاتر */
+        }
+      
+        /* أنماط أيقونة المسابقة الرمضانية */
+        .ramadan-competition-icon .icon-item {
+            display: inline-block; /* عرض كتلة داخل السطر */
+            text-decoration: none; /* إزالة التسطير */
+            color: #000; /* لون النص */
+            position: relative; /* تحديد الموضع النسبي */
+        }
+
+        .ramadan-competition-icon img {
+            width: 50px; /* حجم الأيقونة */
+            height: 50px;
+        }
+
+        .ramadan-competition-icon p {
+            margin-top: 5px; /* مسافة علوية للنص */
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+        }
+
+        /* تنسيق التاج */
+        .crown {
+            position: absolute; /* تحديد الموضع المطلق */
+            top: 2.5px; /* المسافة من الأعلى */
+            right: 2.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 12px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            padding: 5px 10px; /* حشو داخلي */
+            border-radius: 25%; /* زوايا مستديرة */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* ظل خفيف */
+            transform: rotate(0deg); /* تدوير التاج */
+            border: 1.75px solid #1a237e; /* حدود */
+        }      
+      
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 87.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+      
+        /* أنماط الوضع الليلي للقائمة */
+        body.dark-mode .navbar {
+            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+            border-top: 2px solid #fafafa; /* حدود علوية */
+        }
+
+        body.dark-mode .navbar .nav-item {
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: transparent; /* حدود شفافة */
+        }
+
+        body.dark-mode .navbar .nav-item.home {
+            border-color: #ddd; /* حدود العنصر الرئيسي */
+            border: none; /* إزالة الحدود */  
+        }
+      
+        body.dark-mode .icon {
+            color: #ddd; /* لون الأيقونات في الوضع الليلي */
+        }
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+      
+
+        /* أنماط الوضع الليلي */
+        body.dark-mode {
+            background-color: #121212; /* لون خلفية الصفحة في الوضع الليلي */
+            color: #fafafa; /* لون النص في الوضع الليلي */
+        }
+
+        body.dark-mode .marquee {
+            background: #121212; /* لون خلفية العنصر في الوضع الليلي */
+            color: #fafafa; /* لون النص في الوضع الليلي */
+        }
+      
+        .dark-mode .icon-item p {
+            color: #fafafa; /* لون النص في الوضع الليلي */
+        }    
+
+        body.dark-mode .icon-item {
+            background: #212121; /* لون خلفية العنصر في الوضع الليلي */
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: #ddd; /* لون الحدود في الوضع الليلي */
+            border: 2.5px solid #fafafa; /* حدود */          
+        }
+          
+
+        body.dark-mode .icon-item.active p {
+            color: #fafafa; /* لون النص النشط في الوضع الليلي */
+        }
+      
+        body.dark-mode .icon-item.active {
+            background: #0277bd; /* لون خلفية العنصر النشط في الوضع الليلي */
+            color: white; /* لون النص للعنصر النشط في الوضع الليلي */
+        }      
+
+        body.dark-mode .icon-item.active img {
+            filter: none; /* إزالة الفلاتر */
+        }
+      
+        body.dark-mode .view-toggle {
+            background: #121212; /* لون خلفية العنصر في الوضع الليلي */
+            color: #fafafa; /* لون النص في الوضع الليلي */
+        }
+
+        body.dark-mode .view-toggle button {
+            background-color: #212121; /* لون خلفية الأزرار في الوضع الليلي */
+            color: #fafafa; /* لون النص في الأزرار في الوضع الليلي */
+            border: 1px solid #fafafa; /* حدود */
+        }  
+
+
+        /* إظهار العلامة عند تفعيل الزر في الوضع الليلي */
+        .dark-mode .view-toggle button.active .checkmark {
+            color: #fafafa; /* لون العلامة في الوضع الليلي */
+        }
+      
+        
+      
+        /* أنماط زر تبديل الوضع الليلي */
+        .night-mode-toggle {
+            position: fixed; /* تثبيت الزر */
+            bottom: 23px; /* المسافة من الأسفل */
+            right: 7.5px; /* المسافة من اليمين */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white; /* لون النص */
+            border: none; /* إزالة الحدود */
+            border-radius: 50%; /* زوايا مستديرة */
+            width: 50px; /* عرض الزر */
+            height: 50px; /* ارتفاع الزر */
+            font-size: 24px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* ظل خفيف */
+            transition: background 0.3s; /* تأثيرات الانتقال */
+            margin-bottom: 45px; /* مسافة سفلية */
+        }
+
+        .night-mode-toggle:hover {
+            background: #0056b3; /* تغيير لون الخلفية عند التحويم */
+        }
+
+        .list-view {
+            grid-template-columns: 1fr; /* عرض عمود واحد */
+        }     
+ 
+      
+      
+        /* أنماط النافذة المنبثقة */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 12.5px;
+            padding: 15px;
+            text-align: center; /* توسيط النص */
+            z-index: 9999;
+            width: 235px; /* عرض النافذة */
+            border: 3px solid #DDD; 
+        }
+
+        .popup-header {
+            margin-bottom: 7.5px;
+            font-weight: bold;  
+            margin-top: 5px; /* مسافة علوية */
+            font-size: 28px; /* حجم الخط */
+            text-align: center; /* توسيط النص */
+            color: #1a237e; /* لون العنوان */  
+        }
+
+        .popup-content {
+            margin-top: 7.5px; /* مسافة علوية */
+            margin-bottom: 5px; /* مسافة سفلية */
+            font-size: 24px; /* حجم الخط */
+            font-weight: bold;  
+            text-align: center; /* توسيط النص */
+            font-weight: bold;
+            color: #880e4f; /* لون العنوان */ 
+        }
+
+        hr {
+            border: none; /* إزالة الحدود */
+            border-top: 3px solid #1a237e; /* خط علوي */
+            margin: 10px 0; /* مسافة علوية وسفلية */
+            margin-bottom: 5px;  
+        } 
+      
+
+      
+        /* أنماط الأزرار */
+        .button {
+            font-size: 17px;
+            font-weight: bold;
+            padding: 10px 75px; /* حشو داخلي */
+            margin: 10px auto; /* مسافة خارجية */
+            border: none; /* إزالة الحدود */
+            border-radius: 5px; /* زوايا مستديرة */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white; /* لون النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            transition: background-color 0.3s, transform 0.3s; /* تأثيرات الانتقال */
+            text-decoration: none; /* إزالة التسطير */
+            display: block; /* عرض كتلة */
+            text-align: center; /* توسيط النص */
+        }
+
+        .button:hover {
+            background-color: #1a237e; /* لون الخلفية عند التحويم */
+            color: #FFFF00; /* لون النص */
+            transform: scale(1.05); /* تكبير الزر */
+            border: 2px solid white; /* حدود */
+        }
+
+        .button:active {
+            transform: scale(0.95); /* تصغير الزر عند الضغط */
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #d9534f;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* أنماط الـ overlay */
+        #overlay {
+            display: none; /* إخفاء الـ overlay بشكل افتراضي */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة */
+            z-index: 1001; /* ترتيب العنصر */
+        }
+      
+        #overlay0 {
+            display: none; /* إخفاء الـ overlay بشكل افتراضي */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* خلفية شبه شفافة */
+            z-index: 1001; /* ترتيب العنصر */
+        }      
+      
+        /* أنماط الألعاب النارية */
+        #fireworksContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1002; /* ترتيب العنصر */
+        }      
+
+        #usernameDisplay {
+            color: #1a237e; /* لون النص */
+            font-weight: bold; /* وزن الخط */  
+            background-color: ; /* خلفية النص */
+            border: 0px solid #ebccd1; /* حدود النص */
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            border: 2.5px solid #1a237e; /* حدود */
+        } 
+      
+        .icon-item .crown-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 30px;
+            color: gold; /* لون التاج */
+        } 
+      
+        .hidden {
+            display: none;
+        } 
+
+
+        .navbar .nav-item.notification {
+            position: relative;
+        }
+
+        .navbar .nav-item.notification .badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+        }
+
+
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 92.5%; /* عرض العنصر */
+            height: 35px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 999; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }
+
+
+        .top-bar .menu-icon {
+            font-size: 27.5px; /* حجم الأيقونة */
+            cursor: pointer; /* تغيير شكل المؤشر */
+        }
+
+        .top-bar .title {
+            font-size: 20px; /* حجم النص */
+            margin-left: 20px; /* مسافة بين السهم والعنوان */
+            flex-grow: 1; /* توسيط العنوان */
+            text-align: center; /* توسيط النص */
+            font-weight: bold;  
+        }
+
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+    margin-left: auto; /* يجعل الأيقونة تتحرك إلى أقصى اليمين */
+} 
+  
+      
+      
+      
+      
+      
+      
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #f59e0b;
+            --accent-color: #eff6ff;
+            --text-color: #1e293b;
+            --success-color: #10b981;
+            --close-color: #ef4444;
+            --input-icon-color: #94a3b8;
+          
+        }
+
+        /* نافذة التقدم */
+        .progress-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(to right, #e1f5fe, white);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 1002;
+            width: 90%;
+            max-width: 380px;
+            max-height: 80vh;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 3.5px solid #ddd; /* حدود */
+        }
+      
+        
+        .progress-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--close-color);
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+        }
+        
+        .modal-close:hover {
+            background: #dc2626;
+            transform: rotate(90deg) scale(1.1);
+        }
+        
+        .modal-body {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 15px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            max-height: calc(80vh - 120px);
+            overflow-y: auto;          
+        }
+
+        /* شريط التقدم */
+        .progress-container {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 12px;
+            background: rgba(245, 245, 245, 0.7);
+            border-radius: 12px;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            align-items: center;
+        }
+        
+        .progress-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--text-color);
+        }
+        
+        .progress-percent {
+            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .progress-bar-container {
+            height: 20px;
+            background-color: rgba(226, 232, 240, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            margin: 8px 0;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0%;
+            transition: width 0.6s ease;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+        }
+        
+        .days-counter {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border: 1px solid rgba(37, 99, 235, 0.1);
+            animation: fadeIn 0.6s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .current-days {
+            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+        
+        .remaining-days {
+            color: var(--secondary-color);
+            font-weight: 800;
+        }
+        
+        /* قسم المكافأة */
+        .reward-section {
+            background: var(--accent-color);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 15px 0;
+            border: 1px dashed var(--primary-color);
+            animation: bounceIn 0.6s ease;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .reward-badge {
+            background: linear-gradient(135deg, var(--secondary-color), #f97316);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .reward-desc {
+            font-size: 0.95rem;
+            margin: 6px 0;
+            line-height: 1.4;
+        }
+        
+        /* الرسائل التشجيعية */
+        .encouragement-messages {
+            margin: 12px 0;
+        }
+        
+        .message {
+            padding: 8px 10px;
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 8px;
+            margin-bottom: 6px;
+            border-right: 3px solid var(--primary-color);
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .message:hover {
+            transform: translateX(-5px);
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        .encouragement-text {
+            font-size: 0.9rem;
+            text-align: center;
+            margin: 12px 0 5px;
+            padding: 0 5px;
+        }
+        
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-color);
+            animation: underline 1.5s infinite;
+        }
+        
+        @keyframes underline {
+            0% { width: 0%; left: 50%; }
+            50% { width: 100%; left: 0; }
+            100% { width: 0%; left: 0; }
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .refresh-btn {
+            display: block;
+            margin: 25px auto 0;
+            padding: 10px 25px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .refresh-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* تأثيرات الكونفيتي */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            z-index: 9999;
+        }
+
+        /* أنماط جديدة */
+        .claim-btn {
+            display: none; /* مخفي افتراضياً */
+            margin: 12px auto 0;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .claim-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        /* نمط النافذة المنبثقة الجديدة */
+        .reward-form-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(to right, white, #e1f5fe); /* خلفية متدرجة */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 1003;
+            width: 90%;
+            max-width: 380px;
+            max-height: 80vh;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .reward-form-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .reward-form-header {
+            background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .reward-form-header h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .reward-form-close {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--close-color);
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+        }
+        
+        .reward-form-close:hover {
+            background: #dc2626;
+            transform: rotate(90deg) scale(1.1);
+        }
+        
+        .reward-form-body {
+            padding: 15px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            max-height: calc(80vh - 120px);
+            overflow-y: auto;
+        }
+
+        /* أنماط حقول الإدخال مع الأيقونات */
+        .input-with-icon {
+            position: relative;
+        }
+        
+        .input-with-icon i {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: var(--input-icon-color);
+            font-size: 16px;
+        }
+        
+        .input-with-icon input {
+            padding-right: 35px !important;
+            width: 85%;
+            max-width: 275px;
+            margin: 0 auto;
+            display: block;
+            padding: 8px 10px;
+            border: 2px solid #212121;
+            border-radius: 6px;
+            font-family: 'Beiruti', sans-serif;
+            font-size: 20px;
+            color: red; /* لون النص */
+            font-weight: bold; /* وزن النص */
+ 
+          
+        }
+        
+        .form-group {
+            margin-bottom: 12px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 700;
+            color: var(--text-color);
+            font-size: 20px;
+        }
+
+ .form-group input:focus{
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}  
+
+        /* رسائل الخطأ */
+        .error-message {
+            color: var(--close-color);
+            font-size: 18px;
+            margin-top: 4px;
+            display: none;
+            text-align: right;
+            max-width: 280px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .form-submit-btn {
+            display: block;
+            width: 100%;
+            max-width: 280px;
+            padding: 10px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 15px auto 0;
+            transition: all 0.2s;
+            font-size: 20px;
+        }
+
+        
+        /* معلومات المستخدم */
+        #user-info {
+            background: var(--accent-color);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+        
+        #user-info p {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        #user-info i {
+            width: 20px;
+            text-align: center;
+        } 
+      
+        /* أنماط الأيقونة العائمة */
+        .floating-icon {
+            position: fixed;
+            bottom: 27.5px;
+            right: 7.5px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            padding: 15px;
+            border-radius: 10px; /* زوايا مستديرة */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            animation: bounce 2s infinite; /* تأثير الحركة */
+            margin-bottom: 45px; /* مسافة سفلية */
+        }   
+ 
+ 
+        /* أنماط النص العائم */
+        .floating-text {
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            bottom: 27.5px;
+            right: 58.5px; /* المسافة بين النص والأيقونة */
+            background-color: #ffffff;
+            color: red;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* إخفاء النص بشكل افتراضي */
+            margin-bottom: 47.5px; /* مسافة سفلية */          
+        }      
+    </style>
+    <style>
+        :root {
+            --transition: all 0.3s ease;
+        }
+        
+        /* زر العائمة الرئيسي */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            bottom: 42.5px;
+            right: -20px;
+            width: 47.5px;
+            height: 47.5px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            border: none;
+            outline: none;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .floating-btn i {
+            font-size: 28px;
+            transition: var(--transition);
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .floating-btn.active {
+            transform: rotate(135deg);
+            background: linear-gradient(135deg, #f72585, #b5179e);
+        }
+        
+        /* تأثير النبض */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(67, 97, 238, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(67, 97, 238, 0); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* القائمة المنبثقة */
+        .floating-menu {
+            position: absolute;
+            bottom: 95px;
+            right: -12.5px;
+            width: 200px;
+            background: linear-gradient(to right, white, #e1f5fe);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+            padding: 15px;
+            z-index: 1000;
+            border: 3px solid #ddd; /* حدود */
+        }
+        
+        .floating-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;          
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2.5px solid #eee;
+        }
+      
+        /* إضافة هذا لمنع التمرير عند ظهور القائمة */
+       .body-no-scroll {
+         overflow: hidden;
+         position: fixed;
+         width: 100%;
+         height: 100%;
+        }   
+      
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }      
+        
+        .menu-header h3 {
+            color: #2b2d42;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: #999;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0;
+            line-height: 1;
+        }
+        
+        .close-btn:hover {
+            color: #f72585;
+            transform: rotate(90deg);
+        }
+        
+        .menu-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .menu-item {
+            padding: 10px 8px;
+            margin: 2.5px 0;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            transform: translateX(-5px);
+        }
+        
+        .menu-item i {
+            width: 25px;
+            height: 25px;
+            background: linear-gradient(135deg, #4895ef, #4361ee);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+        
+        .menu-item.gold i {
+            background: linear-gradient(135deg, #ffb700, #ffd700);
+        }
+        
+        .menu-item a {
+            color: #2b2d42;
+            text-decoration: none;
+            font-weight: 500;
+            flex-grow: 1;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .menu-item .badge {
+            background-color: #f72585;
+            color: white;
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 2.5px;
+        }
+        
+        .gold-badge {
+            background: gold;
+            color: white;
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 12px;
+            margin-right: 1.5px;
+            font-weight: bold;
+        }
+        
+        /* تأثيرات دخول العناصر */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .menu-item {
+            animation: slideIn 0.3s forwards;
+            opacity: 0;
+        }
+        
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+        .menu-item:nth-child(7) { animation-delay: 0.7s; }
+        .menu-item:nth-child(8) { animation-delay: 0.8s; }
+    </style>  
+</head>
+<body>
+
+
+<!-- الشريط العلوي -->
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <img src="https://www3.0zz0.com/2024/05/30/07/482205963.png" alt="Icon" style="vertical-align: middle; width: 40px; height: 40px; margin-right: 0px;">
+    </div>
+    <div class="title">
+        الصفحة الرئيسية | 🇪🇬 🇵🇸 Tax Law App 
+    </div>
+</div>
+
+<!-- الشريط المتحرك -->
+<div class="marquee">
+    <span style="white-space: nowrap;">
+        <img src="https://www3.0zz0.com/2024/05/30/07/482205963.png" alt="Icon" style="vertical-align: middle; width: 38px; height: 38px; margin-right: 10px;">
+        Tax Law App | دليلك الشامل والموثوق فيه لإحتساب الضريبة | التطبيق رقم 1 لإحتساب الضريبة فـ مصر 🇪🇬📱 
+    </span>
+</div> 
+
+<!-- أزرار التبديل بين العرض الشبكي والقائمة -->
+<div class="view-toggle">
+    <button onclick="toggleGridView()" id="grid-view-btn">
+        <i class="fas fa-th"></i><span class="checkmark">✔</span>
+    </button>
+    <button onclick="toggleListView()" id="list-view-btn">
+        <i class="fas fa-list"></i><span class="checkmark">✔</span>
+    </button>
+    <!-- زر التكبير -->
+    <button onclick="increaseFontSize()" id="increase-font-btn">
+        <i class="fas fa-search-plus"></i>A+
+    </button>
+    <!-- زر التصغير -->
+    <button onclick="decreaseFontSize()" id="decrease-font-btn">
+        <i class="fas fa-search-minus"></i>A-
+    </button>
+
+    <span style="display:none;" id="usernameDisplay"></span> <!-- عرض اسم المستخدم هنا -->      
+</div>
+      
+  
+<!-- الشبكة الرئيسية -->
+<div class="icon-grid">
+                      
+    <a href="https://taxlawapp.github.io/Tax-calculation/Tax-calculation.html" class="icon-item" onclick="setActive(this)">
+        <img src="https://www2.0zz0.com/2025/03/08/11/632291232.png" alt="icon 1">
+        <p>إحتساب الضريبة</p>
+        <!-- التاج مع كلمة "جديد" -->
+        <div class="crown">جديد</div>
+    </a>
+    <a href="go:TAXSEG" class="icon-item" onclick="setActive(this)">
+        <img src="https://www2.0zz0.com/2025/03/08/11/748841489.png" alt="icon 2">
+        <p>محتوي الضرائب</p>
+    </a>
+    <a href="go:aijtiazEG" class="icon-item" onclick="setActive(this)">
+        <img src="https://www2.0zz0.com/2025/03/08/11/486194439.png" alt="icon 3">
+        <p>محتوي المحاسبة</p>
+    </a>
+    <a href="go:library" class="icon-item" onclick="setActive(this)">
+        <img src="https://www2.0zz0.com/2025/05/11/22/353383993.png" alt="icon 4">
+        <p>المكتبة الشاملة</p>
+        <!-- التاج مع كلمة "جديد" -->
+        <div class="crown">جديد</div>
+    </a>
+    <a href="go:Videos" class="icon-item" onclick="setActive(this)">
+        <img src="https://www2.0zz0.com/2025/03/08/13/332712528.png" alt="icon 5">
+        <p>محتوي الفيديوهات</p>
+    </a>
+    <a href="go:Feed2" class="icon-item" onclick="setActive(this)">
+        <img src="https://www2.0zz0.com/2025/03/08/16/782928956.png" alt="icon 6">
+        <p>الإقتراحات للتطوير</p>
+        <!-- التاج مع كلمة "جديد" -->
+        <div class="crown">جديد</div>
+    </a>   
+    <a href="go:Feed1" class="icon-item" onclick="setActive(this)">
+        <img src="https://www2.0zz0.com/2025/03/08/13/383384276.png" alt="icon 7">
+        <p>الأخطاء المكتشفة</p>
+        <!-- التاج مع كلمة "جديد" -->
+        <div class="crown">جديد</div>
+    </a>
+    <a href="go:FAQ" class="icon-item" onclick="setActive(this)">
+        <img src="https://www2.0zz0.com/2025/03/08/13/636077659.png" alt="icon 8">
+        <p>الأسئلة الشائعة</p>
+    </a>            
+</div>
+     
+    <!-- الخلفية المعتمة -->
+    <div class="overlay" id="overlay"></div>    
+    
+    <!-- زر الفعل العائم والقائمة -->
+    <div class="floating-container">
+        <div class="floating-menu" id="floatingMenu">
+            <div class="menu-header">
+                <h3>روابط هامة للمستخدم :</h3>
+                <button class="close-btn" id="closeMenu">❌</button>    
+            </div>
+            <ul class="menu-items">
+                <li class="menu-item">
+                    <i class="fa fa-rocket"></i>
+                    <a href="go:New">الجديد فـ الإصدار : 5.2.2</a>
+                </li>
+                <li class="menu-item gold">
+                    <i class="fas fa-crown"></i>
+                    <a href="go:Ramadan">الإشتراك فـ النسخة الذهبية</a>
+                </li>
+                <li class="menu-item">
+                   <i class="fas fa-hand-holding-usd"></i>
+                   <a href="go:question">التسهيلات الضريبية 2025</a>
+                </li>
+                <li class="menu-item">
+                   <i class="fas fa-robot"></i>
+                   <a href="go:AI">المساعد الضريبي الذكي</a>
+                </li>              
+                <li class="menu-item">
+                    <i class="fas fa-building"></i>
+                    <a href="go:Info-tax">دليل المراكز والمأموريات</a>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-question-circle"></i>
+                    <a href="go:Info-acc">إختبر معلوماتك المحاسبية</a>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-share-alt"></i>
+                    <a href="go:Share-app">شارك التطبيق بين الأصدقاء</a>
+                </li>
+                <li class="menu-item">
+                    <i class="fas fa-star-half-alt"></i>
+                    <a href="go:Rate-app">تقييم التطبيق عـ متجر بلاي</a>
+                </li>
+                <li class="menu-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://chat.whatsapp.com/CdbylNPvwdR4zqK2GcjK0t" target="_blank">جروب المستخدمين واتساب</a>
+                </li>
+                <li class="menu-item">
+                    <i class="fab fa-facebook"></i>
+                    <a href="https://www.facebook.com/TaxLawApp" target="_blank"> صفحة الرسمية عـ فيسبوك</a>
+                </li>
+                <li class="menu-item">
+                    <i class="fab fa-youtube"></i>
+                    <a href="https://www.youtube.com/@TaxLawApp" target="_blank">قناة التطبيق عـ اليوتيوب</a>
+                </li>
+            </ul>
+        </div>
+        
+        <button class="floating-btn pulse" id="mainButton">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+  
+<!-- النص العائم -->
+<div class="floating-text" id="floatingText">
+    إضغط هنا للمزيد من الروابط الهامة 
+</div> 
+  
+      
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="go:Login" class="nav-item"><i class="fas fa-user icon"></i><span>حسابي</span></a>
+    <a href="http://action_notifications" class="nav-item">
+        <i class="fa fa-bell icon"></i>
+        <span>إشعارات</span>
+        <span class="notification-badge">1</span> <!-- شعار الإشعارات -->
+    </a>     
+    <a href="go:home" class="nav-item home"><i class="fas fa-home icon"></i><span>الرئيسية</span></a>
+    <a href="https://youtube.com/@MahmoudR_Saad" class="nav-item"><i class="fab fa-youtube icon"></i><span>قناتي</span></a>
+    <a href="go:Settings" class="nav-item"><i class="fas fa-ellipsis-h icon"></i><span>المزيد</span></a>      
+</div>
+   
+   
+<!-- زر تبديل الوضع الليلي -->
+<button style="display:none;" class="night-mode-toggle" onclick="toggleNightMode()">🌙</button>  
+
+
+<!-- نافذة الاشتراك في النسخة الذهبية --> 
+<!-- عنصر الألعاب النارية -->
+<div id="fireworksContainer"></div>
+
+<!-- عنصر overlay -->
+<div id="overlay"></div>  
+  
+<!-- نافذة منبثقة -->
+<div class="popup" id="exclusivePopup">
+    <div class="popup-header" style="display:none;"><i class=""></i> الإشتراكات </div>
+    <div class="popup-header"><i class="fas fa-crown"></i> عرض حصري </div>
+    <hr>
+    <div class="popup-content" style="display:none;">إنشئ حسابك بالتطبيق وإدفع لمرة واحدة مدي الحياة، بدون أي تكلفة إضافية</div>
+    <div class="popup-content">خصم 400 جنية عـ باقة مدي الحياة حتي الأحد الموافق 17/08/2025🔥</div>
+    <div class="popup-buttons">
+        <a href="go:Ramadan" class="button"><i class="fa fa-check-circle gold-icon" style="font-size: 20px;"></i> إضغط هنا</a>
+        <span class="popup-close" onclick="closePopup()">❌</span>
+    </div>
+</div>
+
+
+<!-- نافذة تجديد الاشتراك في النسخة الذهبية --> 
+<!-- عنصر الألعاب النارية -->
+<div id="fireworksContainer0" style="display:none;"></div>
+
+<!-- عنصر overlay -->
+<div id="overlay0" style="display:none;"></div>  
+
+<!-- النافذة المنبثقة الجديدة -->
+<div class="popup" id="exclusivePopup0" style="display:none;">
+    <div class="popup-header"><i class=""></i>جدد إشتراكك </div>
+    <hr>
+    <div class="popup-content" id="popupContent">
+        جدد إشتراكك بالتطبيق وإدفع لمرة واحدة مدي الحياة، مع العلم الفترة المتبقية علي إنتهاء إشتراكك : <span id="daysRemaining"></span> يوم فقط
+    </div>
+    <div class="popup-buttons">
+        <a href="go:Ramadan" class="button"><i class="fa fa-check-circle gold-icon" style="font-size: 20px;"></i> إضغط هنا</a>
+        <span class="popup-close" onclick="closePopup()">❌</span>
+    </div>
+</div>
+
+
+  
+  
+  
+<!-- نافذة التسجيل المجاني -->  
+<!-- نافذة التقدم -->
+<div class="modal-overlay" id="modal-overlay"></div>
+    
+<div class="progress-modal" id="progress-modal">
+    <div class="modal-header">
+        <button class="modal-close" id="progress-modal-close">×</button>
+        <h2 style="font-size: 25px; font-weight: bold;">🎯 تقدمك نحو المكافأة</h2>
+    </div>
+    
+    <div class="modal-body">
+        <div class="progress-container">
+            <div class="progress-info">
+                <span class="progress-title" style="font-size: 19px; font-weight: bold;">مستوي تقدم الدخول :</span>
+                <span class="progress-percent" id="progress-percent" style="font-size: 19px; font-weight: bold;">0%</span>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <div class="days-counter">
+                <span>أيام الدخول : <span class="current-days" id="current-days" style="font-size: 18px; font-weight: bold;">0</span> يوم </span>
+                <span class="remaining-days">الأيام المتبقية : <span id="remaining-days" style="font-size: 18px; font-weight: bold;">10</span> يوم</span>
+            </div>
+        </div>
+        
+        <div class="reward-section">
+            <div class="reward-badge" id="reward-badge">
+                <span style="font-size: 25px; font-weight: bold;">🏆 جائزة الولاء</span>
+            </div>
+            <p class="reward-desc" id="reward-desc" style="font-size: 20px; font-weight: bold;">
+                استمر فـ الدخول لمدة <span class="highlight">10 أيام متواصلة</span> لتحصل على <span class="highlight">3 أيام اشتراك مجاني</span> مع جميع المزايا المدفوعة مجاناً! 😍💥🤩
+            </p>
+            <button id="claim-reward-btn" class="claim-btn" style="font-size: 18px; font-weight: bold;"><i class="fas fa-gift"></i> الحصول علي المكافأة المجانية</button>
+        </div>
+        
+        <div class="encouragement-messages">
+            <div class="message">
+                <span id="message1" style="display: block; text-align: right; font-size: 18px; font-weight: bold;">🔥 أنت على الطريق الصحيح! استمر في التقدم.</span>
+            </div>
+            <div class="message">
+                <span id="message2" style="display: block; text-align: right; font-size: 18px; font-weight: bold;">🚀 تصفح التطبيق يومياً لتحصل على مكافآت حصرية!</span>
+            </div>
+            <div class="message">
+                <span id="message3" style="display: block; text-align: right; font-size: 18px; font-weight: bold;">💎 كل يوم تقضيه معنا يقربك من مكافآت أكبر!</span>
+            </div>
+        </div>
+        
+        <p class="encouragement-text" style="font-size: 18px; font-weight: bold;">
+            نقدّر تفاعلك مع <span class="highlight">Tax Law App!</span> كل زيارة يومية تقربك من <span class="highlight">مكافأة الولاء تقديراً لإستخدامك تطبيقنا!💜❤️</span>
+        </p>
+    </div>
+</div>
+
+<!-- نافذة استلام المكافأة -->
+<div class="reward-form-modal" id="reward-form-modal">
+    <div class="reward-form-header">
+        <button class="reward-form-close" id="reward-form-close">×</button>
+        <h2>🎉 استلام المكافأة المجانية</h2>
+    </div>
+    
+    <div class="reward-form-body">
+        <form id="reward-form">
+            <div class="form-group">
+                <label for="username">إسم المستخدم :</label>
+                <div class="input-with-icon">
+                    <input type="text" id="username" required>
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="error-message" id="username-error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">كلمة المرور :</label>
+                <div class="input-with-icon">
+                    <input type="password" id="password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="error-message" id="password-error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm-password">تأكيد كلمة المرور:</label>
+                <div class="input-with-icon">
+                    <input type="password" id="confirm-password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="error-message" id="confirm-password-error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="fullname">الاسم الكامل :</label>
+                <div class="input-with-icon">
+                    <input type="text" id="fullname" required>
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <div class="error-message" id="fullname-error">يجب أن يحتوي الاسم على 4 مقاطع على الأقل (مثال: محمود رزق سعد رزق)</div>
+            </div>
+          
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني :</label>
+                <div class="input-with-icon">
+                    <input type="email" id="email" required>
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="error-message" id="email-error">يجب إدخال بريد إلكتروني صالح (مثال: TaxLawApp@gmail.com)</div>
+            </div>              
+          
+            <div class="form-group">
+                <label for="phone">رقم الهاتف :</label>
+                <div class="input-with-icon">
+                    <input type="tel" id="phone" required>
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="error-message" id="phone-error">يجب إدخال رقم هاتف صحيح مكون من 11 رقم ويبدأ بـ 01</div>
+            </div>
+                            
+            <div class="form-group">
+                <label for="subscription-date">تاريخ الاشتراك :</label>
+                <div class="input-with-icon">
+                    <input type="text" id="subscription-date" readonly>
+                    <i class="fas fa-calendar"></i>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="reward">المكافأة المجانية :</label>
+                <div class="input-with-icon">
+                    <input type="text" id="reward" value="3 أيام اشتراك مجاني" readonly>
+                    <i class="fas fa-gift"></i>
+                </div>
+            </div>
+            
+            <button type="submit" class="form-submit-btn"><i class="fas fa-paper-plane"></i> إرسال البيانات</button>
+        </form>
+    </div>
+</div>    
+    <script>
+// تعيين العنصر النشط
+function setActive(element) {
+    const items = document.querySelectorAll('.icon-item');
+    items.forEach(item => item.classList.remove('active'));
+    element.classList.add('active');
+}      
+      
+      
+function closePopup() {
+    document.getElementById("exclusivePopup").classList.remove("active");
+}
+
+// Show the popup initially (for demonstration purposes)
+document.getElementById("exclusivePopup").classList.add("active");
+
+document.addEventListener('click', function(event) {
+    const popup = document.getElementById('exclusivePopup');
+    if (!popup.contains(event.target)) {
+        closePopup();
+    }
+}); 
+ 
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+}
+
+// تحويل العرض إلى الشبكة
+function toggleGridView() {
+    const iconGrid = document.querySelector('.icon-grid');
+    iconGrid.classList.remove('list-view');
+    const items = iconGrid.querySelectorAll('.icon-item');
+    items.forEach(item => {
+        item.style.display = 'flex';
+        item.style.flexDirection = 'column';
+        item.style.alignItems = 'center';
+    });
+    const images = iconGrid.querySelectorAll('img');
+    images.forEach(img => {
+        img.style.marginBottom = '10px';
+    });
+    localStorage.setItem('viewPreference', 'grid');
+
+    // تحديث حالة الأزرار
+    document.getElementById('grid-view-btn').classList.add('active');
+    document.getElementById('list-view-btn').classList.remove('active');
+}
+
+// تحويل العرض إلى القائمة
+function toggleListView() {
+    const iconGrid = document.querySelector('.icon-grid');
+    iconGrid.classList.add('list-view');
+    const items = iconGrid.querySelectorAll('.icon-item');
+    items.forEach(item => {
+        item.style.display = 'flex';
+        item.style.alignItems = 'center';
+    });
+    const images = iconGrid.querySelectorAll('img');
+    images.forEach(img => {
+        img.style.marginRight = '10px';
+    });
+    localStorage.setItem('viewPreference', 'list');
+
+    // تحديث حالة الأزرار
+    document.getElementById('grid-view-btn').classList.remove('active');
+    document.getElementById('list-view-btn').classList.add('active');
+}
+
+function showPopupMessage(message) {
+    // إنشاء العنصر الخاص بالنافذة المنبثقة
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '50%'; // يتم التمركز عموديًا
+    popup.style.left = '50%'; // يتم التمركز أفقيًا
+    popup.style.transform = 'translate(-50%, -50%)'; // لضبط المركز بدقة
+    popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    popup.style.color = '#fff';
+    popup.style.padding = '5px 10px';
+    popup.style.borderRadius = '8px';
+    popup.style.border = '3px solid #DDD'; // إضافة الحد
+    popup.style.boxShadow = '0px 4px 6px rgba(0, 0, 0, 0.2)';
+    popup.style.fontSize = '20px';
+    popup.style.zIndex = '9999';
+    popup.style.opacity = '1';
+    popup.style.transition = 'opacity 0.5s ease';
+
+    // إضافة النافذة إلى الصفحة
+    document.body.appendChild(popup);
+
+    // إزالة النافذة بعد 2 ثانية
+    setTimeout(() => {
+        popup.style.opacity = '0'; // إخفاء تدريجي
+        setTimeout(() => popup.remove(), 500); // إزالة العنصر نهائيًا بعد انتهاء الإخفاء
+    }, 2000);
+}
+      
+// دالة لتكبير حجم الخط
+function increaseFontSize() {
+    const elements = document.querySelectorAll('.icon-item p');
+    let reachedMax = false;
+
+    elements.forEach(element => {
+        const currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+        // تحقق إذا كان حجم الخط 20
+        if (currentFontSize >= 20) {
+            reachedMax = true;
+        } else {
+            const newFontSize = currentFontSize + 2; // التكبير بمقدار 2
+            element.style.fontSize = Math.min(newFontSize, 20) + 'px'; // التأكد من عدم تجاوز 20
+            localStorage.setItem('fontSize', Math.min(newFontSize, 20) + 'px');
+        }
+    });
+
+    // عرض الرسالة إذا وصلنا للحد الأقصى (20)
+    if (reachedMax) {
+        showPopupMessage("لقد وصلت إلى الحد الأقصى المسموح به للتكبير.");
+    }
+}
+
+// دالة لتصغير حجم الخط
+function decreaseFontSize() {
+    const elements = document.querySelectorAll('.icon-item p');
+    let reachedMin = false;
+
+    elements.forEach(element => {
+        const currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+        // تحقق إذا كان حجم الخط 14
+        if (currentFontSize <= 14) {
+            reachedMin = true;
+        } else {
+            const newFontSize = currentFontSize - 2; // التصغير بمقدار 2
+            element.style.fontSize = Math.max(newFontSize, 14) + 'px'; // التأكد من عدم انخفاض الحجم تحت 14
+            localStorage.setItem('fontSize', Math.max(newFontSize, 14) + 'px');
+        }
+    });
+
+    // عرض الرسالة إذا وصلنا للحد الأدنى (14)
+    if (reachedMin) {
+        showPopupMessage("لقد وصلت إلى الحد الأدنى المسموح به للتصغير.");
+    }
+}
+
+
+// تحميل تفضيل العرض المحفوظ
+document.addEventListener('DOMContentLoaded', function() {
+    const viewPreference = localStorage.getItem('viewPreference');
+    if (viewPreference === 'list') {
+        toggleListView();
+    } else {
+        toggleGridView();
+    }
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+        const elements = document.querySelectorAll('.icon-item p');
+        elements.forEach(element => {
+            element.style.fontSize = savedFontSize;
+        });
+    }
+});
+// تحميل تفضيل العرض المحفوظ والوضع الليلي
+document.addEventListener('DOMContentLoaded', function() {
+    const viewPreference = localStorage.getItem('viewPreference');
+    const darkModePreference = localStorage.getItem('darkModePreference'); // إضافة تفضيل الوضع الليلي
+    if (viewPreference === 'list') {
+        toggleListView();
+    } else {
+        toggleGridView();
+    }
+    // تطبيق الوضع الليلي إذا كان مفعلاً
+    if (darkModePreference === 'true') {
+        toggleNightMode();
+    }
+});
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+    // حفظ تفضيل الوضع الليلي
+    localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+}      
+    </script>
+<script>
+let fireworksInterval;
+let popupTimeout;
+let showFireworksCount = 0;
+
+function launchConfetti() {
+    confetti({
+        particleCount: 400,
+        spread: 100,
+        origin: { y: 0.6 }
+    });
+}
+
+function startFireworks() {
+    fireworksInterval = setInterval(launchConfetti, 2000);
+}
+
+function stopFireworks() {
+    clearInterval(fireworksInterval);
+}
+
+function showPopup() {
+    const popup = document.getElementById('exclusivePopup');
+    const overlay = document.getElementById('overlay');
+    const fireworksContainer = document.getElementById('fireworksContainer');
+
+    if (popup && overlay && fireworksContainer) {
+        popup.style.display = 'block';
+        overlay.style.display = 'block'; // عرض الـ overlay
+        document.body.classList.add('body-no-scroll');
+        fireworksContainer.style.display = 'block'; // عرض الـ fireworksContainer
+
+        // بدء الألعاب النارية فقط إذا لم تظهر بالفعل أكثر من 3 مرات
+        if (showFireworksCount < 3) {
+            startFireworks();
+            showFireworksCount++;
+        }
+
+        const subscribeButton = popup.querySelector('.button');
+        if (subscribeButton) {
+            subscribeButton.addEventListener('click', function() {
+                closePopup();
+               document.body.classList.remove('body-no-scroll');
+            });
+        }
+
+        const closeButton = popup.querySelector('.popup-close');
+        if (closeButton) {
+            closeButton.addEventListener('click', function() {
+                closePopup();
+                document.body.classList.remove('body-no-scroll');
+            });
+        }
+    }
+}
+
+function closePopup() {
+    const popup = document.getElementById('exclusivePopup');
+    const overlay = document.getElementById('overlay');
+    const fireworksContainer = document.getElementById('fireworksContainer');
+
+    if (popup && overlay && fireworksContainer) {
+        popup.style.display = 'none';
+        overlay.style.display = 'none'; // إخفاء الـ overlay
+        document.body.classList.remove('body-no-scroll');
+        fireworksContainer.style.display = 'none'; // إخفاء الـ fireworksContainer
+        stopFireworks();
+
+        // إيقاف أي تأخير سابق وإعادة تعيينه
+        if (popupTimeout) {
+            clearTimeout(popupTimeout);
+        }
+
+        // عرض النافذة مرة أخرى بعد ساعة ونصف (5400000 مللي ثانية) 
+        // إذا كانت الألعاب النارية قد عرضت أقل من 3 مرات
+        popupTimeout = setTimeout(function() {
+            showPopup();
+        }, 5400000); // 1.5 ساعة
+    }
+}
+
+window.onload = function() {
+// قراءة بيانات المستخدم من localStorage
+const user = JSON.parse(localStorage.getItem('loggedInUser'));
+
+// الحصول على العنصر الحاوي على النافذة المنبثقة
+const exclusivePopup = document.getElementById('exclusivePopup');
+
+// الحصول على عناصر التنقل
+const proNavItem = document.querySelector('a[href="go:pro"]');
+const rateNavItem = document.createElement('a');
+rateNavItem.href = "go:pro0";
+rateNavItem.className = "nav-item";
+rateNavItem.innerHTML = '<i class="fas fa-user-plus" style="font-size: 20px;"></i><span>الإحالة</span>';
+
+// الحصول على الأيقونة التأهيلية ونص التأهيلي
+const qualifyingIcon = document.getElementById('qualifyingIcon');
+const qualifyingContent = document.getElementById('qualifyingContent');
+
+// تحقق من وجود بيانات المستخدم
+if (user) {
+    // الحصول على التاريخ والوقت الحاليين
+    const now = new Date();
+    const dateString = now.toLocaleDateString();
+    const timeString = now.toLocaleTimeString();
+
+    // حساب الفترة المتبقية
+    const currentDate = new Date();
+    const expiryDateParts = user.expiryDate.split('/');
+    const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+    const timeDiff = expiryDate - currentDate;
+    let daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+    // التأكد من أن الفترة المتبقية لا تكون سالبة أو غير صالحة
+    if (isNaN(daysDiff) || daysDiff <= 0) {
+        daysDiff = 0;
+    }
+
+    // تحديث محتوى العنصر usernameDisplay
+    document.getElementById('usernameDisplay').innerHTML = `
+        <p><i class="fas fa-user"></i> المستخدم الحالي : ${user.fullName}</p>
+        <p><i class="fas fa-hourglass-half"></i> الفترة المتبقية : ${daysDiff} يوم</p>
+        <p><i class="fas fa-calendar-day"></i> تاريخ الدخول : ${dateString}</p>
+        <p><i class="fas fa-clock"></i> الوقت : ${timeString}</p>
+    `;
+
+    // التحكم في إظهار أو إخفاء النافذة المنبثقة بناءً على الفترة المتبقية
+    if (daysDiff === 0) {
+        // عرض النافذة المنبثقة إذا كانت الفترة المتبقية تساوي 0
+        exclusivePopup.classList.add('active');
+        exclusivePopup.classList.remove('hidden');
+        showPopup(); // تأكد من أن النافذة تظهر عند الحاجة
+    } else {
+        // إخفاء النافذة المنبثقة إذا كانت الفترة المتبقية أكبر من 0
+        exclusivePopup.classList.add('hidden');
+        exclusivePopup.classList.remove('active');
+    }
+
+    // التحكم في إظهار أو إخفاء زر "PRO" والأيقونة التأهيلية
+    if (daysDiff > 0) {
+        // استبدال "PRO" بـ "تقييم"
+        proNavItem.replaceWith(rateNavItem);
+        // إخفاء الأيقونة التأهيلية
+        if (qualifyingIcon) qualifyingIcon.classList.add('hidden');
+    } else {
+        // إعادة "PRO" إذا كانت الفترة المتبقية تساوي أو أقل من الصفر
+        rateNavItem.replaceWith(proNavItem);
+        // إظهار الأيقونة التأهيلية
+        if (qualifyingIcon) qualifyingIcon.classList.remove('hidden');
+    }
+} else {
+    // عرض النافذة المنبثقة إذا لم تكن بيانات المستخدم موجودة
+    exclusivePopup.classList.add('active');
+    exclusivePopup.classList.remove('hidden');
+    showPopup(); // تأكد من أن النافذة تظهر عند الحاجة
+
+    // إظهار زر "PRO" وإظهار الأيقونة التأهيلية إذا لم تكن بيانات المستخدم موجودة
+    if (document.querySelector('.nav-item[href="go:pro0"]')) {
+        document.querySelector('.nav-item[href="go:pro0"]').replaceWith(proNavItem);
+    }
+    // التأكد من ظهور الأيقونة التأهيلية دائمًا
+    if (qualifyingIcon) qualifyingIcon.classList.remove('hidden');
+}
+
+    // تعيين اتجاه النص إلى RTL
+    document.dir = 'rtl';
+};
+
+
+//عند تحميل الصفحة
+let fireworksInterval0;
+
+function launchConfetti0() {
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+    });
+}
+
+function startFireworks0() {
+    const fireworksContainer = document.getElementById("fireworksContainer0");
+    if (fireworksContainer) {
+        fireworksContainer.style.display = "block";
+        fireworksInterval0 = setInterval(launchConfetti0, 1000);
+    }
+}
+
+function stopFireworks0() {
+    clearInterval(fireworksInterval0);
+    const fireworksContainer = document.getElementById("fireworksContainer0");
+    if (fireworksContainer) {
+        fireworksContainer.style.display = "none";
+    }
+}
+
+function showPopup0(daysDiff) {
+    const popup = document.getElementById("exclusivePopup0");
+    const overlay = document.getElementById("overlay0");
+    const daysRemainingElement = document.getElementById("daysRemaining");
+
+    if (popup && overlay && daysRemainingElement) {
+        overlay.style.display = "block";
+        popup.style.display = "block";
+        document.body.classList.add('body-no-scroll');
+        daysRemainingElement.textContent = daysDiff; // تحديث النص بعدد الأيام المتبقية
+
+        startFireworks0();
+
+        // إغلاق النافذة عند الضغط على زر الإغلاق
+        const closeButton = popup.querySelector(".popup-close");
+        if (closeButton) {
+            closeButton.addEventListener("click", function () {
+                closePopup0();
+                overlay.style.display = 'none'; // إخفاء الـ overlay
+            });
+        }
+
+        // إغلاق النافذة عند الضغط على أي مكان في الصفحة
+        document.addEventListener("click", function (event) {
+            if (!popup.contains(event.target)) {
+                closePopup0();
+              document.body.classList.remove('body-no-scroll');
+              overlay.style.display = 'none'; // إخفاء الـ overlay
+            }
+        });
+    }
+}
+
+function closePopup0() {
+    const popup = document.getElementById("exclusivePopup0");
+    const overlay = document.getElementById("overlay");
+
+    if (popup && overlay) {
+        popup.style.display = "none";
+        overlay.style.display = "none";
+      document.body.classList.remove('body-no-scroll');
+    }
+
+    stopFireworks0(); // إيقاف الألعاب النارية
+}
+
+//عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", function () { 
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    if (user) {
+        const currentDate = new Date();
+        const expiryDateParts = user.expiryDate.split("/");
+        const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+
+        const timeDiff = expiryDate - currentDate;
+        let daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+        // إذا كانت الفترة المتبقية فارغة أو أقل من أو تساوي صفر، احذف بيانات المستخدم ومسح التخزين المحلي مع استثناء مفتاح معين
+        if (isNaN(daysDiff) || daysDiff <= 0) {
+            daysDiff = 0;
+            localStorage.removeItem('loggedInUser');
+            
+            // حفظ قيمة المفتاح قبل مسح التخزين
+            let freeAccessKey = getFreeAccessKey();
+            let freeAccessValue = localStorage.getItem(freeAccessKey);
+
+            // مسح جميع بيانات التخزين المحلي
+            localStorage.clear();
+
+            // إعادة تخزين المفتاح المستثنى
+            if (freeAccessValue !== null) {
+                localStorage.setItem(freeAccessKey, freeAccessValue);
+            }
+        }
+
+        // عرض النافذة المنبثقة إذا كانت الأيام المتبقية أقل من 5
+        if (daysDiff > 0 && daysDiff < 5) {
+            showPopup0(daysDiff);
+          document.body.classList.add('body-no-scroll');
+        }
+    }
+});  
+
+  
+document.addEventListener('DOMContentLoaded', function() {
+    // عناصر الواجهة
+    const elements = {
+        modal: document.getElementById('progress-modal'),
+        overlay: document.getElementById('modal-overlay'),
+        closeBtn: document.getElementById('progress-modal-close'),
+        progressBar: document.getElementById('progress-bar'),
+        progressPercent: document.getElementById('progress-percent'),
+        currentDays: document.getElementById('current-days'),
+        remainingDays: document.getElementById('remaining-days'),
+        rewardBadge: document.getElementById('reward-badge'),
+        rewardDesc: document.getElementById('reward-desc'),
+        claimRewardBtn: document.getElementById('claim-reward-btn'),
+        rewardFormModal: document.getElementById('reward-form-modal'),
+        rewardFormClose: document.getElementById('reward-form-close'),
+        rewardForm: document.getElementById('reward-form'),
+        subscriptionDate: document.getElementById('subscription-date'),
+        message1: document.getElementById('message1'),
+        message2: document.getElementById('message2'),
+        message3: document.getElementById('message3')
+    };
+    
+    // إعدادات النظام
+    const settings = {
+        requiredDays: 10,
+        freeTrialDays: 3,
+        trackingDataKey: 'taxAppTrackingData'
+    };
+    
+    // رسائل تشجيعية
+    const encouragementMessages = [
+        "🔥 أنت على الطريق الصحيح! استمر في التقدم.",
+        "🚀 تصفح التطبيق يومياً لتحصل على مكافآت حصرية!",
+        "💎 كل يوم تقضيه معنا يقربك من مكافآت أكبر!",
+        "🏆 أنت من المستخدمين المميزين الذين نفتخر بهم!",
+        "✨ استمراريتك رائعة! نقدّر تفاعلك معنا.",
+        "💪 أنت تقترب من هدفك! فقط بضع أيام إضافية.",
+        "🌟 مكافآتنا خصيصاً للمستخدمين المخلصين مثلك!",
+        "🎁 كل يوم زيارة هو فرصة جديدة للفوز بمكافآت!",
+        "👑 أنت تستحق الأفضل! وستحصل عليه قريباً.",
+        "💖 شكراً لكونك من أعز عملائنا!",
+        "🏅 أنت مثال للمستخدم المثابر!",
+        "⚡ استمراريتك مذهلة! استمر هكذا.",
+        "🌠 أنت تبني مستقبلاً أفضل مع كل زيارة!",
+        "🤑 الأيام القليلة القادمة ستجلب مفاجآت سارة!",
+        "🤩 أنت على بعد أيام قليلة من مكافأة رائعة!"
+    ];
+    
+    // قراءة بيانات المستخدم من المتغير الخارجي
+    const user = JSON.parse(localStorage.getItem('loggedInUser')) || null;
+    
+    // قراءة بيانات تتبع الدخول (معدلة)
+    let trackingData = JSON.parse(localStorage.getItem(settings.trackingDataKey)) || {
+        lastVisit: null,
+        firstVisitOfDay: null,
+        consecutiveDays: 0,
+        rewardClaimed: false,
+        currentDayTracked: false,
+        modalShownToday: false // إضافة متغير لتتبع عرض النافذة اليوم
+    };
+    
+    // تعيين تاريخ اليوم
+    const today = new Date();
+    const formattedDate = `${today.getFullYear()}/${(today.getMonth()+1).toString().padStart(2, '0')}/${today.getDate().toString().padStart(2, '0')}`;
+    if (elements.subscriptionDate) {
+        elements.subscriptionDate.value = formattedDate;
+    }
+    
+    // تهيئة النظام
+    initProgress();
+    
+    // إضافة مستمعي الأحداث
+    elements.closeBtn.addEventListener('click', closeModal);
+    elements.overlay.addEventListener('click', closeModal);
+    elements.claimRewardBtn.addEventListener('click', showRewardForm);
+    elements.rewardFormClose.addEventListener('click', closeRewardForm);
+    elements.rewardForm.addEventListener('submit', handleFormSubmit);
+    
+    // تهيئة تتبع التقدم (معدلة)
+    function initProgress() {
+        // قراءة بيانات المستخدم من التخزين المحلي
+        const user = JSON.parse(localStorage.getItem('loggedInUser'));
+        
+        // التحقق من وجود اشتراك ساري المفعول
+        if (user && user.expiryDate) {
+            const today = new Date();
+            const expiryDateParts = user.expiryDate.split('/');
+            const expiry = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+            const timeDiff = expiry - today;
+            const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+            
+            if (daysDiff > 0) {
+                removeConfetti();
+                return;
+            }
+        }
+
+        // لا تعرض النافذة إذا:
+        // 1. كان هناك مستخدم مسجل وفترة اشتراكه سارية
+        // 2. أو إذا كانت أيام الدخول كاملة (10 أيام) وتم المطالبة بالمكافأة بالفعل
+        if ((user && user.expiryDate && getRemainingDays(user.expiryDate) > 0) ||
+            (trackingData.consecutiveDays >= settings.requiredDays && trackingData.rewardClaimed)) {
+            return;
+        }
+
+        const today = new Date();
+        const todayDateStr = today.toDateString();
+        
+        // تحقق مما إذا كان اليوم الحالي مختلف عن اليوم المسجل في firstVisitOfDay
+        if (!trackingData.firstVisitOfDay || 
+            new Date(trackingData.firstVisitOfDay).toDateString() !== todayDateStr) {
+            
+            // هذا يوم جديد، لذا قم بإعادة تعيين modalShownToday
+            trackingData.modalShownToday = false;
+            
+            const lastVisitDate = trackingData.lastVisit ? new Date(trackingData.lastVisit) : null;
+            const lastVisitDateStr = lastVisitDate ? lastVisitDate.toDateString() : null;
+            
+            if (!lastVisitDate) {
+                trackingData.consecutiveDays = 1;
+            } else {
+                if (lastVisitDateStr === todayDateStr) {
+                    // نفس اليوم - لا تفعل شيئا
+                } else {
+                    const timeDiff = today - lastVisitDate;
+                    const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                    
+                    if (daysDiff > 2) {
+                        trackingData.consecutiveDays = 1;
+                    } else if (daysDiff === 1) {
+                        trackingData.consecutiveDays++;
+                    } else {
+                        trackingData.consecutiveDays++;
+                    }
+                }
+            }
+            
+            // تسجيل أول دخول لهذا اليوم
+            trackingData.firstVisitOfDay = today;
+            trackingData.lastVisit = today;
+            localStorage.setItem(settings.trackingDataKey, JSON.stringify(trackingData));
+        } else {
+            // تحديث آخر وقت زيارة فقط
+            trackingData.lastVisit = today;
+            localStorage.setItem(settings.trackingDataKey, JSON.stringify(trackingData));
+        }
+        
+        // تحديث الواجهة
+        updateUI(trackingData.consecutiveDays);
+        
+        // عرض النافذة في الحالات التالية:
+        // 1. إذا كان اليوم مختلف ولم يتم عرض النافذة بعد
+        // 2. إذا كانت أيام الدخول غير مكتملة
+        // 3. إذا كان المستخدم مؤهلاً للمكافأة ولم يطالب بها بعد
+        const shouldShowModal = (!trackingData.modalShownToday && 
+                               ((!user && trackingData.consecutiveDays < settings.requiredDays) || 
+                               (trackingData.consecutiveDays >= settings.requiredDays && !trackingData.rewardClaimed)));
+        
+        if (shouldShowModal) {
+            showModal();
+            updateEncouragementMessages(trackingData.consecutiveDays);
+            
+            // تحديث حالة عرض النافذة لهذا اليوم
+            trackingData.modalShownToday = true;
+            localStorage.setItem(settings.trackingDataKey, JSON.stringify(trackingData));
+        } else {
+            removeConfetti();
+        }
+    }
+    
+    // دالة مساعدة لحساب الأيام المتبقية
+    function getRemainingDays(expiryDate) {
+        if (!expiryDate) return 0;
+        
+        const today = new Date();
+        const expiry = new Date(expiryDate);
+        const timeDiff = expiry - today;
+        const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+        
+        return daysDiff > 0 ? daysDiff : 0;
+    }
+    
+    // عرض النافذة
+    function showModal() {
+        elements.modal.classList.add('active');
+        elements.overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        if (trackingData.consecutiveDays >= settings.requiredDays && !trackingData.rewardClaimed) {
+            createConfetti();
+        }
+    }
+    
+    // إغلاق النافذة
+    function closeModal() {
+        elements.modal.classList.remove('active');
+        elements.overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        removeConfetti();
+        
+        // تحديث حالة عرض النافذة لهذا اليوم حتى إذا أغلقت يدوياً
+        trackingData.modalShownToday = true;
+        localStorage.setItem(settings.trackingDataKey, JSON.stringify(trackingData));
+    }
+    
+    // عرض نموذج المكافأة
+    function showRewardForm() {
+        elements.rewardFormModal.classList.add('active');
+        elements.overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // إغلاق نموذج المكافأة
+    function closeRewardForm() {
+        elements.rewardFormModal.classList.remove('active');
+        elements.overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // تحديث واجهة المستخدم
+    function updateUI(days) {
+        const percent = Math.min((days / settings.requiredDays) * 100, 100);
+        const remaining = Math.max(settings.requiredDays - days, 0);
+        
+        elements.progressBar.style.width = `${percent}%`;
+        elements.progressPercent.textContent = `${Math.round(percent)}%`;
+        elements.currentDays.textContent = days;
+        elements.remainingDays.textContent = remaining;
+        
+        if (days >= settings.requiredDays) {
+            elements.rewardBadge.innerHTML = '<span>🎉 أنت مؤهل للمكافأة!</span>';
+            elements.rewardBadge.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            elements.rewardDesc.innerHTML = `مبروك! يمكنك الآن الحصول على <span class="highlight">${settings.freeTrialDays} أيام اشتراك مجاني</span>!`;
+            elements.claimRewardBtn.style.display = 'block';
+        } else {
+            elements.claimRewardBtn.style.display = 'none';
+        }
+    }
+    
+    // إنشاء تأثير الكونفيتي
+    function createConfetti() {
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+        
+        for (let i = 0; i < 150; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = -10 + 'px';
+            confetti.style.width = Math.random() * 12 + 8 + 'px';
+            confetti.style.height = Math.random() * 12 + 8 + 'px';
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            
+            document.body.appendChild(confetti);
+            
+            const animationDuration = Math.random() * 3 + 2;
+            const animationDelay = Math.random() * 2;
+            
+            confetti.style.animation = `confetti-fall ${animationDuration}s ${animationDelay}s linear forwards`;
+            
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes confetti-fall {
+                    0% {
+                        transform: translateY(-10px) rotate(0deg);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            setTimeout(() => {
+                confetti.remove();
+                style.remove();
+            }, (animationDuration + animationDelay) * 1000);
+        }
+    }
+    
+    // إزالة تأثير الكونفيتي
+    function removeConfetti() {
+        document.querySelectorAll('.confetti').forEach(el => el.remove());
+    }
+    
+    // تحديث الرسائل التشجيعية
+    function updateEncouragementMessages(days) {
+        const shuffled = [...encouragementMessages].sort(() => 0.5 - Math.random()).slice(0, 3);
+        elements.message1.textContent = shuffled[0];
+        elements.message2.textContent = shuffled[1];
+        elements.message3.textContent = shuffled[2];
+    }
+    
+    // معالجة إرسال النموذج
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        
+        // إخفاء رسائل الخطأ
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.style.display = 'none';
+        });
+        
+        // التحقق من صحة البيانات
+        let isValid = true;
+        
+        // التحقق من الاسم الكامل
+        const fullname = document.getElementById('fullname').value.trim();
+        if (fullname.split(' ').length < 4) {
+            document.getElementById('fullname-error').style.display = 'block';
+            isValid = false;
+        }
+        
+        // التحقق من رقم الهاتف
+        const phone = document.getElementById('phone').value.trim();
+        const phoneRegex = /^01[0-9]{9}$/;
+        if (!phoneRegex.test(phone)) {
+            document.getElementById('phone-error').style.display = 'block';
+            isValid = false;
+        }
+        
+        // التحقق من البريد الإلكتروني
+        const email = document.getElementById('email').value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('email-error').style.display = 'block';
+            isValid = false;
+        }
+        
+        // التحقق من تطابق كلمات المرور
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        if (password !== confirmPassword) {
+            document.getElementById('confirm-password-error').textContent = 'كلمة المرور وتأكيدها غير متطابقين';
+            document.getElementById('confirm-password-error').style.display = 'block';
+            isValid = false;
+        }
+        
+        if (!isValid) return;
+        
+        // تحديث حالة المكافأة في بيانات التتبع فقط
+        trackingData.rewardClaimed = true;
+        localStorage.setItem(settings.trackingDataKey, JSON.stringify(trackingData));
+        
+        // إعداد رسالة البيانات
+        const messageContent = `بيانات إستلام المشترك للمكافأة الخاصة به:\n\n`
+            + `اسم المستخدم: ${document.getElementById('username').value}\n`
+            + `كلمة المرور: ${password}\n`
+            + `الاسم الكامل: ${fullname}\n`
+            + `البريد الإلكتروني: ${email}\n`        
+            + `رقم الهاتف: ${phone}\n`            
+            + `تاريخ الاشتراك: ${document.getElementById('subscription-date').value}\n`
+            + `المكافأة: ${document.getElementById('reward').value}\n\n`
+            + `يرجي إرسال طلب إنضمام إلي جروب المشتركين:\n`
+            + `https://chat.whatsapp.com/FeGm9uVP4htHLivKimr5Ey`;
+        
+        // إرسال البيانات عبر واتساب
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=201030069322&text=${encodeURIComponent(messageContent)}`;
+        window.open(whatsappUrl, '_blank');
+        
+        // إغلاق النموذج وإعادة تعيينه
+        closeRewardForm();
+        e.target.reset();
+        
+        // إغلاق نافذة التقدم
+        closeModal();
+        
+        // إزالة تأثير الكونفيتي
+        removeConfetti();
+    }
+    
+    // حساب تاريخ الانتهاء
+    function calculateExpiryDate(daysToAdd) {
+        const today = new Date();
+        today.setDate(today.getDate() + daysToAdd);
+        return `${today.getFullYear()}/${(today.getMonth()+1).toString().padStart(2, '0')}/${today.getDate().toString().padStart(2, '0')}`;
+    }
+});
+  
+  
+  
+  // اغلاق النوافذ المنبثقة (الاشتراك)  
+window.addEventListener('load', function () {
+  const overlay = document.getElementById('overlay');
+  const popup = document.getElementById('exclusivePopup');
+  const progressModal = document.getElementById('progress-modal');
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
+
+  // التأكد من وجود العناصر
+  if (!overlay || !popup) return;
+
+  // التحقق من وجود مستخدم واشتراك ساري المفعول
+  if (user && user.expiryDate) {
+    const today = new Date();
+    const expiryDateParts = user.expiryDate.split('/');
+    const expiry = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+    const timeDiff = expiry - today;
+    const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    
+    // إذا كانت الأيام المتبقية أكبر من 0، إخفاء النوافذ المنبثقة
+    if (daysDiff > 0) {
+      if (overlay) overlay.style.display = 'none';
+      if (popup) popup.style.display = 'none';
+      
+      // إخفاء نافذة التقدم إذا كانت ظاهرة
+      if (progressModal) {
+        progressModal.classList.remove('active');
+        const modalOverlay = document.querySelector('.modal-overlay');
+        if (modalOverlay) modalOverlay.classList.remove('active');
+      }
+      return;
+    }
+  }
+
+  // التحقق من ظهور نافذة التقدم بطريقة أكثر دقة
+  if (progressModal) {
+    // الطريقة الأفضل للتحقق من ظهور العنصر
+    const isProgressModalVisible = progressModal.offsetParent !== null || 
+                                  progressModal.style.display === 'block' ||
+                                  progressModal.classList.contains('active');
+    
+    if (isProgressModalVisible) {
+      setTimeout(() => {
+        if (overlay) overlay.style.display = 'none';
+        if (popup) popup.style.display = 'none';
+      }, 50);
+    }
+  }
+});
+
+
+</script>
+  
+    <script>
+// عناصر DOM
+const mainButton = document.getElementById('mainButton');
+const floatingMenu = document.getElementById('floatingMenu');
+const closeMenu = document.getElementById('closeMenu');
+const overlay = document.getElementById('overlay');
+
+// تبديل القائمة المنبثقة
+mainButton.addEventListener('click', function(e) {
+    e.stopPropagation();
+    this.classList.toggle('active');
+    floatingMenu.classList.toggle('active');
+    
+    if (floatingMenu.classList.contains('active')) {
+        // إظهار الخلفية المعتمة ومنع التمرير
+        overlay.style.display = 'block';
+        document.body.classList.add('body-no-scroll');
+        document.addEventListener('click', closeMenuOutside);
+        
+        // ضمان ظهور القائمة فوق كل المحتوى
+        floatingMenu.style.zIndex = '1000';
+        overlay.style.zIndex = '999';
+    } else {
+        // إخفاء الخلفية المعتمة وتمكين التمرير
+        overlay.style.display = 'none';
+        document.body.classList.remove('body-no-scroll');
+        document.removeEventListener('click', closeMenuOutside);
+    }
+});
+
+// إغلاق القائمة عند النقر على الزر المغلق
+closeMenu.addEventListener('click', function() {
+    closeFloatingMenu();
+});
+
+// إغلاق القائمة عند النقر خارجها
+function closeMenuOutside(e) {
+    if (!floatingMenu.contains(e.target) && e.target !== mainButton) {
+        closeFloatingMenu();
+    }
+}
+
+function closeFloatingMenu() {
+    mainButton.classList.remove('active');
+    floatingMenu.classList.remove('active');
+    overlay.style.display = 'none';
+    document.body.classList.remove('body-no-scroll');
+    document.removeEventListener('click', closeMenuOutside);
+}
+        
+        // إزالة تأثير النبض بعد 5 ثواني
+        setTimeout(() => {
+            mainButton.classList.remove('pulse');
+        }, 5000);
+      
+      
+        document.addEventListener("DOMContentLoaded", function () {
+            showFloatingText(); // استدعاء الدالة عند تحميل الصفحة
+
+            // تكرار إظهار النص العائم كل 30 ثانية
+            setInterval(function() {
+                showFloatingText();
+            }, 30000);
+        });
+
+        // دالة لإظهار النص العائم
+        function showFloatingText() {
+            var floatingText = document.getElementById("floatingText");
+            floatingText.style.display = "block";
+
+            // إخفاء النص العائم بعد 5 ثواني
+            setTimeout(function() {
+                floatingText.style.display = "none";
+            }, 5000);
+        }      
+    </script>
+
+  
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const isOnHome = location.pathname === "/" || location.href.includes("go:home");
+    
+    if (isOnHome) {
+        // إضافة حالة جديدة لتاريخ المتصفح
+        history.pushState(null, null, location.href);
+        
+        window.addEventListener("popstate", function(event) {
+            // إعادة تعيين الحالة عند محاولة الرجوع
+            history.pushState(null, null, location.href);
+            // يمكنك هنا إضافة أي رد فعل آخر بدلاً من التنبيه
+        });
+    }
+});
+</script> 
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script> 
+
+</body>
+</html>
