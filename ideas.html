@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقديم الاقتراحات وتطوير التطبيق</title>
+          <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <!-- رابط مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- رابط خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet">  
+    <style>
+        body {
+            font-family: 'Beiruti', sans-serif;
+            direction: rtl; /* تحديد اتجاه النص إلى اليمين */
+            text-align: center; /* محاذاة النص إلى الوسط */
+            background: linear-gradient(to right, white, #e1f5fe);      
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s; /* تأثير الانتقال للتغييرات */
+            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
+            -moz-user-select: none; /* لمتصفح فايرفوكس */
+            -ms-user-select: none; /* لإنترنت إكسبلورر */
+            user-select: none; /* المتصفحات الأخرى */
+        }
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Beiruti' , sans-serif;
+    }
+      
+
+  /* تخصيص نمط الحاوية الرئيسية */
+    .BoxTool {
+    position: relative;
+    padding: 20px 20px 20px;
+    background: linear-gradient(to right, white, #e1f5fe);      
+    border-radius: 0px;
+    box-shadow: 50%;
+    animation: rotate 1.5s linear infinite;
+    border: 0px solid #420c0c;
+    margin-bottom: 50px; /* إضافة مسافة بين العنصر .container والعنصر .navbar */
+  }
+
+  /* تخصيص نمط العناصر الفرعية */
+  .inputB,
+  .DataB {
+    margin-bottom: 5px;
+    
+  }
+  
+  
+    h2 {
+    background: linear-gradient(to right, #eaecee, #e1f5fe);/* خلفية متدرجة */
+    color: #2b0876;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-size: 23px;
+    border: 2px solid #420c0c;
+    border-radius: 0px;   
+    margin-top: 50px; /* إضافة المسافة السفلية */          
+    }
+      
+hr {
+    margin-top: 0px;
+  
+}  
+
+  label {
+    font-weight: 900;
+    text-align: center;
+    background: ; 
+    margin-top: 0px;      
+    display: block;
+    color: #02076e;
+    margin-bottom: 2.5px;
+    font-size: 18px;
+    border: 0px solid #420c0c;
+
+    }
+
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    text-align: center;
+    font-weight: 900;
+    width: 100%;
+    background: #ffffff;
+    outline: none;
+    border-radius: 60px;
+    padding: 6px 20px;
+    font-size: 18px;
+    color: #0e1ba0;
+    height: 45px;
+    border: 2px solid #420c0c;
+    border-radius: 5px;            
+    margin:0px 0; 
+    margin-top: 0px;      
+
+    }
+  
+  input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}
+
+
+  textarea {
+    resize: vertical;
+    height: 200px;
+    
+  }
+  
+  
+  textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}      
+
+  #Msg {
+  color: red;
+  font-weight: bold;
+    text-align: center;
+    background: linear-gradient(to right, white, #1565c0);      
+    margin-top: 5px;      
+    display: block;
+    font-size: 18px;
+    border: 0px solid #420c0c;
+
+    }
+  
+  
+  #gender {
+    background-color: #1565c0;
+    color: #fff;
+    font-weight: 900;
+    
+    text-align: center;
+    width: 100%;
+    outline: none;
+    border-radius: 60px;
+    padding: 6px 20px;
+    font-size: 18px;
+    height: 45px;
+    border: 0px solid #420c0c;
+    border-radius: 5px;            
+    margin:1.5px 0; 
+    margin-top: 0px;      
+  
+} 
+      
+  #gender:focus{
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}     
+
+.form-control option {
+  font-size: 18px;
+  font-family:  'Beiruti' , sans-serif;
+  color: #fff;
+}
+
+.form-control:hover {
+  border: 1px solid #000;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  border-radius: 12.5px;
+  padding: 15px;
+  text-align: center; /* توسيط النص في الوسط */
+  z-index: 9999;
+  width: 300px; /* زيادة مساحة عرض النافذة */
+  border: 1.5px solid #ddd;  
+}
+
+.popup h3 {
+  margin-top: 40px; /* تعديل هام: زيادة المسافة بين الأيقونة والعنوان */
+  font-size: 20px; /* حجم الخط */
+  text-align: center; /* محاذاة النص في الوسط */
+  color: #1a237e; /* لون العنوان */
+}
+
+.popup hr {
+  width: 50%; /* تعديل عرض خط الفاصل */
+  margin: 20px auto; /* تحديد هوامش الفاصل بالتوسيط */
+  border: 3px solid #ccc; /* لون الفاصل وسمكه */
+}
+
+.popup p {
+  margin-bottom: 20px; /* تعديل هام: لإضافة تباعد بين العناصر */
+  font-size: 18px; /* حجم الخط */
+  text-align: center; /* محاذاة النص في الوسط */
+  font-weight: bold;
+  
+}
+
+.popup button {
+  padding: 10px 50px; /* زيادة مساحة الزر */
+  width: 250px; /* زيادة مساحة عرض الزر */
+  font-size: 20px; /* حجم الخط */
+  text-align: center; /* محاذاة النص في الوسط */
+  color: red; /* لون العنوان */
+  background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1.5px solid #1a237e;    
+}
+
+.popup button:hover {
+  background-color: #0056b3; /* تغيير لون الخلفية عند التحويم */
+}
+
+.popup .info-icon {
+  color: #007bff; /* لون الأيقونة */
+  font-size: 30px; /* تكبير حجم الأيقونة */
+  position: absolute; /* تحديد الموقع المطلوب */
+  top: 20px; /* المسافة من الأعلى */
+  left: 50%; /* المسافة من اليسار */
+  transform: translateX(-50%); /* تحديد الموقع المطلوب */
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9998;
+}
+      
+.name {  
+  color: red; /* لون العنوان */
+  
+}
+.button {
+    font-size: 17px; /* حجم الخط */
+    font-weight: bold; /* وزن الخط */
+    padding: 7.5px 75px; /* حجم الحشو */
+    margin: 10px auto; /* تقليل هامش الزر */
+    border: none; /* حذف الحدود */
+    border-radius: 5px; /* تقويس الزوايا */
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white; /* لون النص */
+    cursor: pointer; /* تحويل المؤشر إلى يد عند التحويم */
+    transition: background-color 0.3s, transform 0.3s; /* تأثير الانتقال */
+    text-decoration: none; /* إزالة الخط تحت النص داخل الزر */
+    display: block; /* عرض الزر ككتلة */
+    text-align: center; /* توسيط النص داخل الزر */
+}
+
+.button:hover {
+    background-color: #1a237e; /* لون خلفية الزر عند التحويم */
+    color: #FFFF00; /* لون النص */  
+    transform: scale(1.05); /* تحجيم الزر عند التحويم */
+    border: 2px solid white; /* إضافة حد عند التحويم */
+  
+}
+
+.button:active {
+    transform: scale(0.95); /* تحجيم الزر عند الضغط */
+}
+
+.button a {
+    text-decoration: none; /* إزالة الخط تحت النص داخل الرابط */
+    color: inherit; /* الاحتفاظ بلون النص داخل الرابط */
+}      
+
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 92.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+      
+        /* أنماط الوضع الليلي للقائمة */
+        body.dark-mode .navbar {
+            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+            border-top: 2px solid #fafafa; /* حدود علوية */
+        }
+
+        body.dark-mode .navbar .nav-item {
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: transparent; /* حدود شفافة */
+        }
+
+        body.dark-mode .navbar .nav-item.home {
+            border-color: #ddd; /* حدود العنصر الرئيسي */
+            border: none; /* إزالة الحدود */  
+        }
+      
+        body.dark-mode .icon {
+            color: #ddd; /* لون الأيقونات في الوضع الليلي */
+        }
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+
+        /* زر تبديل الوضع الليلي */
+        .night-mode-toggle {
+            position: fixed; /* تثبيت الزر في مكان محدد */
+            bottom: 23px; /* المسافة من الأسفل */
+            right: 10px; /* المسافة من اليمين */
+            background: #1a237e; /* لون خلفية الزر */
+            color: white; /* لون النص في الزر */
+            border: none; /* إزالة الحدود */
+            border-radius: 50%; /* جعل الزر دائري */
+            width: 50px; /* عرض الزر */
+            height: 50px; /* ارتفاع الزر */
+            font-size: 24px; /* حجم النص في الزر */
+            cursor: pointer; /* تغيير شكل المؤشر عند التحويم */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف */
+            transition: background 0.3s; /* تأثير الانتقال للتغييرات */
+            margin-bottom: 50px; /* مسافة سفلية */
+        }
+
+        .night-mode-toggle:hover {
+            background: #0056b3; /* تغيير لون الخلفية عند التحويم */
+        }
+
+/* أنماط الوضع الليلي لباقي العناصر */
+body.dark-mode {
+    background: #121212; /* لون خلفية الشريط الجاري في الوضع الليلي */
+    color: #fafafa; /* لون النص في الشريط الجاري في الوضع الليلي */
+}
+
+      
+/* استايل الزر الليلي */
+body.dark-mode .night-mode-toggle {
+    background: #0056b3; /* تغيير لون خلفية الزر الليلي عند التحويم */
+}
+
+/* استايل الزر  */
+body.dark-mode .button {
+    background-color: #424242; /* لون خلفية العنصر في الوضع الليلي */
+    color: #fafafa; /* لون النص في الوضع الليلي */
+    padding: 5px; /* الحشو الداخلي */
+    border-radius: 7.5px; /* تقويس الزوايا */
+    margin: 0px 3; /* الهوامش العلوية والسفلية */
+}
+
+ 
+      
+      
+      
+/* الوضع الليلي للعناصر */
+body.dark-mode {
+    background: #121212;
+    color: #fafafa;
+}
+
+body.dark-mode .BoxTool {
+    background: #121212;
+}
+
+body.dark-mode .inputB,
+body.dark-mode .DataB {
+    margin-bottom: 5px;
+    background: #121212;
+    color: #fafafa;
+}
+
+body.dark-mode h2 {
+    color: #fafafa;
+    border: 2px solid #fafafa;
+}
+
+body.dark-mode label {
+  background: #121212;
+  color: #fafafa;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="number"],
+body.dark-mode select,
+body.dark-mode textarea {
+    background: #333;
+    color: #fafafa;
+    border: 2px solid #424242;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+body.dark-mode .button {
+    background-color: #424242;
+    color: #fafafa;
+}
+
+body.dark-mode .button:hover {
+    background-color: #555;
+    color: #ffcc00;
+}
+
+body.dark-mode #Msg {
+    background: linear-gradient(to right, #2e2e2e, #424242);
+}
+
+body.dark-mode #gender {
+    background-color: #333;
+    color: #fafafa;
+}
+
+body.dark-mode .popup {
+    background-color: #2e2e2e;
+    border: 1px solid #fafafa;
+}
+
+body.dark-mode .popup button {
+    background-color: #333;
+    color: #fafafa;
+    border: 1.5px solid #555;
+}
+
+body.dark-mode .popup button:hover {
+    background-color: #444;
+}
+
+body.dark-mode .popup .info-icon {
+    color: #fafafa;
+}
+
+body.dark-mode .overlay {
+    background-color: rgba(0,0,0,0.7);
+}
+      
+/* الأنماط الخاصة بالوضع الليلي */
+body.dark-mode h3 {
+  color: #fafafa; /* لون النص في الوضع الليلي */
+}
+
+body.dark-mode hr {
+  border: 0.5px solid #fafafa; /* لون الفاصل في الوضع الليلي */
+}
+
+      
+      
+
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 100%; /* عرض العنصر */
+            height: 57.5px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }
+
+
+.top-bar .menu-icon {
+    font-size: 27.5px;
+    cursor: pointer;
+}
+
+.top-bar .title {
+    font-size: 20px; /* حجم الخط لعناصر العنوان */
+    margin-left: 20px; /* مسافة بين السهم والعنوان */
+    flex-grow: 1; /* يسمح للعناصر الأخرى بالتقلص عندما تكون الشاشة صغيرة */
+    text-align: center; /* توسيط العنوان */
+    font-weight: bold;  
+
+}
+
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+}      
+    </style>
+</head>
+    <body>
+      
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='https://taxlawapp.github.io/home/home.html'"></i> <!-- سهم العودة -->
+    </div>
+    <div class="title">
+        نموذج الإقتراحات | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div>
+
+<div id="overlay" class="overlay"></div>
+
+<div id="popup" class="popup">
+  <i class="fas fa-info-circle info-icon"></i> <!-- أيقونة المعلومات -->
+  <h3>Tax Law App</h3> <!-- عنوان الرسالة -->
+  <hr> <!-- فاصل -->
+  <p id="message">نص الرسالة</p> <!-- النص -->
+    <a id="okButton" class="button"><i class="fas fa-check-circle"></i> مـوافـق</a> <!-- زر تنفيذي مع أيقونة تحقق -->
+  
+</div>
+<div class="BoxTool">
+  <form id="orderForm">
+        <h2 style="text-align: center;">نموذج تقديم الإقتراحات لتطوير تطبيق حساب الضريبة</h2> 
+        <hr>
+    <div class="inputB">
+      <label>الإسم الكامل :</label>
+      <input id="name" name="name" placeholder="يرجى إدخال الإسم رباعي" required="" type="text" />
+    </div>
+    <div class="inputB">
+      <label>رقم الهاتف :</label>
+      <input id="phone" name="phone" placeholder="يرجى إدخال رقم الهاتف الخاص بك" required="" type="number" />
+    </div>
+    <div class="DataB">
+      <div class="labelB">
+        <label>إختر شاشة حساب الضريبة :</label>
+        <select id="gender" name="gender">
+          <option value="حساب الضريبة القانون 187 لسنة 1993 وتعديلاته">حساب الضريبة القانون 187 لسنة 1993 وتعديلاته</option>
+          <option value="حساب الضريبة القانون 91 لسنة 2005 وتعديلاته">حساب الضريبة القانون 91 لسنة 2005 وتعديلاته</option>
+          <option value="حساب الضريبة وفقا للمادة الثالثة القانون 30 لسنة 2023">حساب الضريبة وفقا للمادة الثالثة القانون 30 لسنة 2023</option>
+          <option value="حساب ضريبة تسوية النزاع وفق القانون رقم (5) لسنة 2025">حساب ضريبة تسوية النزاع وفق القانون رقم (5) لسنة 2025</option>
+          <option value="حساب الضريبة وفق القانون رقم (6) لسنة 2025 - قريبا">حساب الضريبة وفق القانون رقم (6) لسنة 2025 - قريبا</option>
+          <option value="حساب ضريبة المرتبات والأجور">حساب ضريبة المرتبات والأجور</option>          
+          <option value="حساب ضريبة السيارات">حساب ضريبة السيارات</option>
+          <option value="حساب ضريبة القيمة المضافة">حساب ضريبة القيمة المضافة</option>
+          <option value="حساب ضريبة توزيعات الأرباح">حساب ضريبة توزيعات الأرباح</option>          
+          <option value="حساب الضريبة الإضافية - قيمة المضافة">حساب الضريبة الإضافية - قيمة المضافة</option>
+          <option value="حساب مقابل التأخير - ضريبة الدخل">حساب مقابل التأخير - ضريبة الدخل</option>
+          <option value="حساب مقابل التأخير - كسب العمل">حساب مقابل التأخير - كسب العمل</option> 
+          <option value="حساب ضريبة التصرفات العقارية">حساب ضريبة التصرفات العقارية</option>
+          <option value="حساب مقابل التأخير - التصرفات العقارية">حساب مقابل التأخير - التصرفات العقارية</option> 
+        </select>
+      </div>
+    </div>
+    <div class="DataB">
+      <div class="labelB">
+        <label>إدخال إقتراحك بالتفصيل :</label>
+        <textarea id="address" name="address" placeholder="يرجى إدخال التفاصيل الكاملة بشأن الإقتراح التي تقدمه وترغب بتطبيقه في شاشة حساب الضريبة المختارة" required=""></textarea>
+      </div>    
+    </div>
+    <div class="btnF">
+
+    <a onclick="submitForm()" id="" class="button"><i class="fas fa-paper-plane"></i> إرسال البيانات</a> <!-- زر تنفيذي مع أيقونة إرسال -->
+      
+      <span id="Msg"></span>
+    </div>
+    <div class="Copyrights">
+      <a id="credit"></a>
+    </div>
+  </form>
+</div>  
+  
+<div class="navbar">
+    <a href="go:Login" class="nav-item"><i class="fas fa-user icon"></i><span>حسابي</span></a>
+    <a href="http://action_notifications" class="nav-item">
+        <i class="fa fa-bell icon"></i>
+        <span>إشعارات</span>
+        <span class="notification-badge">1</span> <!-- الشعار الجديد -->
+    </a>     
+    <a href="go:home" class="nav-item home"><i class="fas fa-home icon"></i><span>الرئيسية</span></a>
+            <a href="https://youtube.com/@MahmoudR_Saad" class="nav-item"><i class="fab fa-youtube icon"></i><span>قناتي</span></a>
+    <a href="go:Settings" class="nav-item"><i class="fas fa-ellipsis-h icon"></i><span>المزيد</span></a>      
+</div>  
+  
+
+
+    <script>
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+}
+// تحميل تفضيل العرض المحفوظ والوضع الليلي
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModePreference = localStorage.getItem('darkModePreference'); // إضافة تفضيل الوضع الليلي
+    // تطبيق الوضع الليلي إذا كان مفعلاً
+    if (darkModePreference === 'true') {
+        toggleNightMode();
+    }
+});
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+    // حفظ تفضيل الوضع الليلي
+    localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+}     
+
+    </script>
+    <script>
+        // لتغيير اتجاه الصفحة من اليسار إلى اليمين  (RTL)
+        document.dir = 'rtl';
+    </script> 
+<script>
+  // اختصار لاختيار العنصر الذي يحمل الرسالة
+  const msgElement = document.getElementById("Msg");
+
+  // دالة لإظهار الرسالة وتحديث وقت إخفائها
+  function showMessage(message) {
+      // تعيين نص الرسالة
+      msgElement.innerText = message;
+      // تأخير تنفيذ كود الإخفاء بعد 2.5 ثانية
+      setTimeout(function() {
+          // تغيير محتوى العنصر ليكون فارغاً بعد 2.5 ثانية
+          msgElement.innerText = "";
+      }, 2500);
+  }
+
+  // دالة مرتبطة بالزر لإظهار الرسالة والتحقق من المدخلات وإرسالها
+  function submitForm() {
+      // التحقق من ملء جميع الحقول
+      var name = document.getElementById("name").value;
+      var phone = document.getElementById("phone").value;
+      var gender = document.getElementById("gender").value;
+      var address = document.getElementById("address").value;
+
+      if (!name) {
+          showMessage("من فضلك : يرجي إدخال إسمك رباعي");
+          document.getElementById("name").focus();
+          return;
+      }
+      if (!phone) {
+          showMessage("من فضلك : يرجي إدخال رقم الهاتف الخاص بك");
+          document.getElementById("phone").focus();
+          return;
+      }
+      // التحقق من أن رقم الهاتف يحتوي على 11 رقما ويبدأ بالرقم 0
+      if (!/^0\d{10}$/.test(phone)) {
+          showMessage("من فضلك : يرجى إدخال رقم هاتف صحيح يبدأ بالرقم 0 ويحتوي على 11 رقما");
+          document.getElementById("phone").focus();
+          return;
+      }  
+      if (!gender) {
+          showMessage("من فضلك : يرجى إختيار شاشة حساب الضريبة التي بها الخطأ");
+          document.getElementById("gender").focus();
+          return;
+      }
+      if (!address) {
+          showMessage("من فضلك : يرجى إدخال تفاصيل الخطأ المكتشف");
+          document.getElementById("address").focus();
+          return;
+      }
+
+      // إرسال البيانات عبر واتساب بعد 1 ثانية من فتح النافذة
+      var whatsappMessage = "الإسم الكامل : " + encodeURIComponent(name) + "%0Aرقم الهاتف : " + encodeURIComponent(phone) + "%0Aشاشة حساب الضريبة : " + encodeURIComponent(gender) + "%0Aتفاصيل الإقتراح الذي ترغب بتطبيقه : " + encodeURIComponent(address);
+      var whatsappWindow = window.open("https://api.whatsapp.com/send?phone=201030069322&text=" + whatsappMessage);
+
+      setTimeout(function() {
+          // إغلاق نافذة الواتساب للحفاظ على تجربة المستخدم
+          whatsappWindow.close();
+
+          // انتظار 5 ثوانٍ بعد إغلاق نافذة الواتساب قبل عرض رسالة الشكر
+          setTimeout(function() {
+              // إرسال رسالة الشكر بعد 5 ثوانٍ من فتح النافذة
+// تحقق مما إذا كان الوضع الليلي مفعل
+var isDarkMode = document.body.classList.contains("dark-mode");
+
+// تعيين الألوان بناءً على وضع الشاشة
+var textColor = isDarkMode ? "white" : "black";
+var nameColor = isDarkMode ? "#90caf9" : "#1a237e";
+var genderColor = isDarkMode ? "#ce93d8" : "#4a148c";
+
+var message = "<span style='color: " + textColor + "'>شكرا لك أ / </span>" +
+              "<span style='color: " + nameColor + "'>" + name + "</span>" +
+              "<span style='color: " + textColor + "'> لتقديم إقتراحك الذي ترغب بتطبيقه في شاشة : </span>" +
+              "<span style='color: " + genderColor + "'>" + gender + "</span>" +
+              "<span style='color: " + textColor + "'>. سنعمل على دراسته وتنفيذ الإقتراح في أقرب وقت ممكن | إقتراحاتك تساعدنا على التطوير والتحديث المستمر - لنجعل تطبيقنا رقم ( 1 ) في إحتساب الضريبة.</span>";
+
+            
+              // عرض النافذة المنبثقة
+              var popup = document.getElementById('popup');
+              var overlay = document.getElementById('overlay');
+              var okButton = document.getElementById('okButton');
+
+              document.getElementById('message').innerHTML = message;
+
+              popup.style.display = 'block';
+              overlay.style.display = 'block';
+
+              okButton.addEventListener('click', function() {
+                  popup.style.display = 'none';
+                  overlay.style.display = 'none';
+
+                  // افراغ حقول الإدخال بعد الضغط على زر "موافق"
+                  document.getElementById("name").value = "";
+                  document.getElementById("phone").value = "";
+                  document.getElementById("gender").value = "حساب الضريبة القانون 187 لسنة 1993 وتعديلاته";
+                  document.getElementById("address").value = "";
+              });
+          }, 5000); // انتظر 5 ثوانٍ بعد إغلاق النافذة قبل عرض رسالة الشكر
+      }, 1000); // انتظر 1 ثانية بعد فتح النافذة قبل إرسال رسالة الشكر
+  }
+
+</script> 
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script>
+</body>
+</html>
