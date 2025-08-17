@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شارك التطبيق بين الأصدقاء</title>
+    <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <!-- رابط مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- رابط خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet">  
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #0277bd;
+            --accent-color: #E63946;
+            --text-color: #1a237e;
+            --light-bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Beiruti', sans-serif;
+            direction: rtl;
+            text-align: center;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            transition: var(--transition);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            color: var(--text-color);
+        }
+
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92.5%;
+            height: 35px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0px 0px 22.5px 22.5px;
+            border-bottom: 3px solid white;
+            align-items: center;
+            z-index: 1001;
+            color: white;
+        }
+
+        .top-bar .menu-icon {
+            font-size: 27.5px;
+            cursor: pointer;
+        }
+
+        .top-bar .title {
+            font-size: 20px;
+            margin-left: 20px;
+            flex-grow: 1;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* استايل الحاوية الرئيسية */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-bottom: 55px;
+            margin-top: 55px;
+        }
+
+        /* استايل البطاقات */
+        .privacy-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 7.5px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .privacy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-header i {
+            margin-left: 10px;
+            font-size: 20px;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        /* استايل قوائم التواصل */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .contact-item {
+            background-color: var(--card-bg);
+            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-item i {
+            margin-left: 10px;
+            font-size: 20px;
+            width: 25px;
+            text-align: center;
+        }
+      
+    .button {
+    font-size: 17px; /* حجم الخط */
+    font-weight: bold; /* وزن الخط */
+    padding: 7.5px 75px; /* حجم الحشو */
+    margin: 10px auto; /* تقليل هامش الزر */
+    border: none; /* حذف الحدود */
+    border-radius: 5px; /* تقويس الزوايا */
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white; /* لون النص */
+    cursor: pointer; /* تحويل المؤشر إلى يد عند التحويم */
+    transition: background-color 0.3s, transform 0.3s; /* تأثير الانتقال */
+    text-decoration: none; /* إزالة الخط تحت النص داخل الزر */
+    display: block; /* عرض الزر ككتلة */
+    text-align: center; /* توسيط النص داخل الزر */
+}
+
+.button:hover {
+    background-color: #1a237e; /* لون خلفية الزر عند التحويم */
+    color: #FFFF00; /* لون النص */  
+    transform: scale(1.05); /* تحجيم الزر عند التحويم */
+    border: 2px solid white; /* إضافة حد عند التحويم */
+  
+}
+
+.button:active {
+    transform: scale(0.95); /* تحجيم الزر عند الضغط */
+}
+
+.button a {
+    text-decoration: none; /* إزالة الخط تحت النص داخل الرابط */
+    color: inherit; /* الاحتفاظ بلون النص داخل الرابط */
+}      
+      
+
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 87.5%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: space-around;
+            padding: 5px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 22.5px;
+            border-bottom: 3px solid white;
+            z-index: 1000;
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 0;
+            transition: var(--transition);
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px;
+            font-size: 20px;
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .nav-item:active .icon {
+            font-size: 22px;
+        }
+/* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+
+        /* شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: 87.5px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 15px;
+            padding: 2.5px 5px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* زر التمرير للأعلى */
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 27.5px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* إخفاء الزر في البداية */
+    z-index: 1000;
+    transition: opacity 0.3s;
+    padding: 15px;
+    border-radius: 10px; /* جعل الأيقونة مربعة */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: bounce 2s infinite; /* تطبيق تأثير الحركة */
+    margin-bottom: 45px; /* مسافة سفلية */
+    align-items: center;
+}    
+
+        /* أنماط الوضع الليلي */
+        body.dark-mode {
+            --text-color: #f5f5f5;
+            --light-bg: #121212;
+            --card-bg: #1e1e1e;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .privacy-card,
+        body.dark-mode .contact-item {
+            border: 1px solid #333;
+        }
+
+        body.dark-mode .contact-item a {
+            color: #f5f5f5;
+        }
+
+
+        /* تعديلات للعرض على شاشات صغيرة */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card-header {
+                font-size: 20px;
+                padding: 12px;
+                font-weight: bold;
+            }
+            
+            .card-content {
+                font-size: 18px;
+                padding: 12px;
+                font-weight: bold;
+            }
+            
+            .contact-item {
+                font-size: 18px;
+                padding: 10px;
+                font-weight: bold;
+            }
+        }     
+    </style>
+</head>
+    <body>
+      
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='go:Home'"></i> <!-- سهم العودة -->
+    </div>
+    <div class="title">
+        شارك التطبيق | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div>
+
+                    
+  <span style="display:none;" id="usernameDisplay"></span> <!-- عرض اسم المستخدم هنا --> 
+
+<div class="container">
+        <div class="privacy-card">
+            <div class="card-header">
+                شارك التطبيق بين الأصدقاء
+            </div>
+            <div class="card-content">
+            <p>
+احسب ضريبتك بسهولة وبدقة مع تطبيق Tax Law App – دليلك الشامل لفهم واحتساب الضرائب في مصر،  
+إحسب ضريبتك صح! مع Tax Law App، الضريبة بقت أوضح وأسهل من أي وقت فات،  
+محاسبين، محامين، ورواد أعمال: دلوقتي تقدروا تحسبوا الضرائب بضغطة زر! Tax Law App هو شريكك الذكي في القوانين الضريبية المصرية،  
+لو بتدور على طريقة سهلة ودقيقة لحساب الضريبة في مصر، Tax Law App هو الحل. بواجهة بسيطة ومعلومات قانونية محدثة، وفر وقتك وركز على شغلك،  
+إحسب ضريبتك من غير وجع دماغ! Tax Law App بيخليك تطلع الرقم الصح في ثواني. حمّله وجرب بنفسك،  
+قوانين الضرائب بتتغير؟ خليك دايمًا جاهز مع Tax Law App – أحدث التحديثات، أدوات حساب دقيقة، وكل حاجة في مكان واحد،  
+بتسأل كتير: “هحاسبها إزاي؟” إحنا جينا بالإجابة! Tax Law App بيحسبها لك بسرعة ودقة، وبيقولك القانون بيقول إيه،  
+شغلك بيكبر؟ يبقى لازم تحسب صح. Tax Law App هو مساعدك القانوني لحساب الضرائب في مصر من غير تعقيد.
+</p>
+    <a href="http://action_share" class="button"><i class="fas fa-external-link-alt"></i> إضغط هنا لمشاركة التطبيق</a> <!-- زر تنفيذي مع أيقونة تحقق -->          
+        </div></div>      
+  
+        <div class="privacy-card">
+            <div class="card-header">
+                تقييم التطبيق عـ المتجر
+            </div>
+            <div class="card-content">
+            <p>
+استخدمت التطبيق؟ لقيته مفيد وسهل؟  
+ساعدنا نوصل لأكتر ناس محتاجة له،  
+تقييمك بيفرق معانا جدًا وبيشجعنا نطوّر أكتر،  
+كل تقييم منك هو دعم مباشر لفريق العمل،  
+وكمان بيساعد غيرك يثق في التطبيق ويجربه،  
+لو عجبك التطبيق وساعدك، متنساش تقيّمه على Google Play – رأيك يفرق معانا ويساعد غيرك!
+</p>
+    <a href="https://play.google.com/store/apps/details?id=com.mrizk.taxlawapp" class="button"><i class="fas fa-external-link-alt"></i> إضغط هنا لتقييم التطبيق </a> <!-- زر تنفيذي مع أيقونة تحقق -->                    
+      </div></div>
+          
+        
+    </div>
+
+     
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div> 
+      
+
+
+    <script>
+   
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+}
+// تحميل تفضيل العرض المحفوظ والوضع الليلي
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModePreference = localStorage.getItem('darkModePreference'); // إضافة تفضيل الوضع الليلي
+    // تطبيق الوضع الليلي إذا كان مفعلاً
+    if (darkModePreference === 'true') {
+        toggleNightMode();
+    }
+});
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+    // حفظ تفضيل الوضع الليلي
+    localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+}     
+
+    </script>
+    <script>
+        // لتغيير اتجاه الصفحة من اليسار إلى اليمين  (RTL)
+        document.dir = 'rtl';
+    </script> 
+</body>
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script>
+</html>
