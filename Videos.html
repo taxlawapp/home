@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محتوي الفيديوهات</title>
+    <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <!-- رابط مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- رابط خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet">  
+    <style>
+        body {
+            font-family: 'Beiruti', sans-serif;
+            direction: rtl; /* تحديد اتجاه النص إلى اليمين */
+            text-align: center; /* محاذاة النص إلى الوسط */
+            background: linear-gradient(to right, white, #e1f5fe);      
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s; /* تأثير الانتقال للتغييرات */
+            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
+            -moz-user-select: none; /* لمتصفح فايرفوكس */
+            -ms-user-select: none; /* لإنترنت إكسبلورر */
+            user-select: none; /* المتصفحات الأخرى */
+        }
+        /* استايل الحاوية */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(to right, white, #e1f5fe);      
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px; /* إضافة مسافة بين العنصر .container والعنصر .navbar */
+            margin-top: 40px; /* إضافة المسافة السفلية */
+          
+        }
+
+        /* استايل الإطار الخارجي لمعلومات المبرمج */
+        .frame {
+            margin-top: 0px; /* إزالة المسافة العلوية */          
+            border: 2.5px solid #1a237e; /* حدود */
+            border-bottom: 3px solid red; /* حدود */
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 2.5px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            background: linear-gradient(to right, #e1f5fe, white);/* خلفية متدرجة */ 
+        }
+        /* استايل الإطار عند التحويم بالفأرة */
+        .frame:hover {
+            transform: translateY(5px); /* رفع العنصر عند التحويم */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* زيادة الظل عند التحويم */
+        }
+        /* استايل الفقرة */
+        p {
+            color: #212121;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        p1 {
+            color: #FFFF00;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 20px;
+        }      
+        /* استايل حاوية وسائل التواصل */
+        .social {
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            border-radius: 10px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            color: #FFFF00; /* لون النص */          
+            border: 1px solid #fafafa; /* إضافة حد */          
+        }
+      
+/* الأنماط الأساسية */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #e74c3c;
+    --accent-color: #3498db;
+    --light-bg: #f8f9fa;
+    --dark-text: #2c3e50;
+    --light-text: #ecf0f1;
+}
+
+.copyright-wrapper {
+    padding: 5px 20px;
+}
+
+.copyright-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+/* تصميم البطاقة */
+.copyright-item {
+    background: linear-gradient(145deg, #ffffff, #f1f3f5);
+    border-radius: 12.5px;
+    padding: 12.5px 75px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+}
+
+.copyright-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
+    transition: width 0.3s ease;
+}
+
+.copyright-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.copyright-item:hover::before {
+    width: 8px;
+}
+
+/* تصميم النص */
+.copyright-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--dark-text);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.app-name {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+
+/* تأثيرات الحركة */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.copyright-item:hover {
+    animation: pulse 2s infinite;
+}
+
+/* التكيف مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .copyright-item {
+        flex-direction: column;
+        padding: 12.5px;
+        text-align: center;
+    /* اختر أحد الخيارات التالية أو اجمع بينها */
+    width: 90%; /* نسبة مئوية من العرض المتاح */
+    min-width: 300px; /* حد أدنى للعرض */
+    max-width: 600px; /* حد أقصى للعرض (اختياري) */
+    margin: 0 auto; /* لتوسيط العنصر */
+
+    }
+}
+      /* استايل خط سفلي لاسم المبرمج */
+        .name {
+            border-bottom: 3px solid #1a237e;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+.button {
+    font-size: 17px; /* حجم الخط */
+    font-weight: bold; /* وزن الخط */
+    padding: 7.5px 75px; /* حجم الحشو */
+    margin: 10px auto; /* تقليل هامش الزر */
+    border: none; /* حذف الحدود */
+    border-radius: 5px; /* تقويس الزوايا */
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white; /* لون النص */
+    cursor: pointer; /* تحويل المؤشر إلى يد عند التحويم */
+    transition: background-color 0.3s, transform 0.3s; /* تأثير الانتقال */
+    text-decoration: none; /* إزالة الخط تحت النص داخل الزر */
+    display: block; /* عرض الزر ككتلة */
+    text-align: center; /* توسيط النص داخل الزر */
+}
+
+.button:hover {
+    background-color: #1a237e; /* لون خلفية الزر عند التحويم */
+    color: #FFFF00; /* لون النص */  
+    transform: scale(1.05); /* تحجيم الزر عند التحويم */
+    border: 2px solid white; /* إضافة حد عند التحويم */
+  
+}
+
+.button:active {
+    transform: scale(0.95); /* تحجيم الزر عند الضغط */
+}
+
+.button a {
+    text-decoration: none; /* إزالة الخط تحت النص داخل الرابط */
+    color: inherit; /* الاحتفاظ بلون النص داخل الرابط */
+}   
+      /* استايل الفيديو */
+        .video-container {
+            margin: 20px auto; /* هامش العلوي والسفلي */
+            padding: 5px;
+            background-color: #000; /* لون خلفية الحاوية */
+            border: 2px solid #fafafa; /* لون الحدود */
+            border-radius: 10px; /* تقويس الزوايا */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* إضافة ظل للحاوية */
+            max-width: 560px; /* تحديد العرض الأقصى */
+        }
+
+        .video-container iframe {
+            width: 100%; /* عرض الفيديو بنسبة 100% من الحاوية */
+            height: 315px; /* ارتفاع الفيديو */
+            border-radius: 10px; /* تقويس زوايا الفيديو */
+        }
+        /* استايل الصورة */
+        .image-container {
+            text-align: center; /* محاذاة الصورة إلى الوسط */
+            margin: 20px 0; /* هامش علوي وسفلي */
+        }
+
+        .image-container img {
+            max-width: 100%; /* عرض الصورة بنسبة 100% من الحاوية */
+            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+            border-radius: 5px; /* تقويس زوايا الصورة */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
+        }
+      
+        /* استايل الأيقونة العائمة */
+        .floating-icon {
+            position: fixed;
+            bottom: 27.5px;
+            right: 7.5px;
+            background: red; 
+            color: white;
+            padding: 15px;
+            border-radius: 10px; /* جعل الأيقونة مربعة */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            animation: bounce 2s infinite; /* تطبيق تأثير الحركة */
+            margin-bottom: 45px; /* مسافة سفلية */
+        }
+
+        /* تأثير الحركة */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* استايل النص العائم */
+        .floating-text {
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            bottom: 27.5px;
+            right: 60px; /* تعديل المسافة بين النص والأيقونة */
+            background-color: #ffffff;
+            color: red;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* الإخفاء الافتراضي للنص */
+            margin-bottom: 50px; /* مسافة سفلية */          
+        }
+
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 87.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+      
+        /* أنماط الوضع الليلي للقائمة */
+        body.dark-mode .navbar {
+            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+            border-top: 2px solid #fafafa; /* حدود علوية */
+        }
+
+        body.dark-mode .navbar .nav-item {
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: transparent; /* حدود شفافة */
+        }
+
+        body.dark-mode .navbar .nav-item.home {
+            border-color: #ddd; /* حدود العنصر الرئيسي */
+            border: none; /* إزالة الحدود */  
+        }
+      
+        body.dark-mode .icon {
+            color: #ddd; /* لون الأيقونات في الوضع الليلي */
+        }
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+
+        /* زر تبديل الوضع الليلي */
+        .night-mode-toggle {
+            position: fixed; /* تثبيت الزر في مكان محدد */
+            bottom: 23px; /* المسافة من الأسفل */
+            right: 10px; /* المسافة من اليمين */
+            background: #1a237e; /* لون خلفية الزر */
+            color: white; /* لون النص في الزر */
+            border: none; /* إزالة الحدود */
+            border-radius: 50%; /* جعل الزر دائري */
+            width: 50px; /* عرض الزر */
+            height: 50px; /* ارتفاع الزر */
+            font-size: 24px; /* حجم النص في الزر */
+            cursor: pointer; /* تغيير شكل المؤشر عند التحويم */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف */
+            transition: background 0.3s; /* تأثير الانتقال للتغييرات */
+            margin-bottom: 50px; /* مسافة سفلية */
+        }
+
+        .night-mode-toggle:hover {
+            background: #0056b3; /* تغيير لون الخلفية عند التحويم */
+        }
+
+/* أنماط الوضع الليلي لباقي العناصر */
+body.dark-mode {
+    background: #121212; /* لون خلفية الشريط الجاري في الوضع الليلي */
+    color: #fafafa; /* لون النص في الشريط الجاري في الوضع الليلي */
+}
+
+/* استايل الحاوية */
+body.dark-mode .container {
+    background: #121212; /* لون خلفية الحاوية في الوضع الليلي */
+    color: #fafafa; /* لون النص في الحاوية في الوضع الليلي */
+}
+      
+/* أنماط الوضع الليلي للعناصر داخل .social */
+body.dark-mode .social {
+    background-color: #424242; /* لون خلفية العنصر في الوضع الليلي */
+    color: #fafafa; /* لون النص في الوضع الليلي */
+    padding: 5px; /* الحشو الداخلي */
+    border-radius: 7.5px; /* تقويس الزوايا */
+    margin: 0px 0; /* الهوامش العلوية والسفلية */
+}
+
+body.dark-mode .social p1 {
+    color: #fafafa; /* لون النص للعناصر باسم p1 في الوضع الليلي */
+    font-weight: bold; /* تعزيز وزن النص */
+    font-size: 20px; /* حجم الخط */
+}
+      
+/* استايل الوضع الليلي للعناصر داخل .frame */
+body.dark-mode .frame {
+    background-color: #333; /* لون خلفية الإطار في الوضع الليلي */
+    color: #fafafa; /* لون النص في الوضع الليلي */
+    border: 2px solid #fafafa; /* حدود الإطار في الوضع الليلي */
+    padding: 10px; /* الحشو الداخلي */
+    border-radius: 10px; /* تقويس الزوايا */
+    margin-top: 0px; /* إزالة المسافة العلوية */          
+    margin-bottom: 2.5px;}
+
+body.dark-mode .frame .name {
+    border-bottom: 2px solid #fafafa;  
+
+}
+/* استايل الفقرات داخل .frame */
+body.dark-mode .frame p {
+    color: #fafafa; /* لون النص في الفقرات داخل الإطار في الوضع الليلي */
+}  
+      
+/* استايل الزر الليلي */
+body.dark-mode .night-mode-toggle {
+    background: #0056b3; /* تغيير لون خلفية الزر الليلي عند التحويم */
+}
+
+/* استايل الصورة */
+body.dark-mode .image-container {
+    background-color: #212121; /* لون خلفية الصورة في الوضع الليلي */
+    border-color: #fafafa; /* لون حدود الصورة في الوضع الليلي */
+}
+/* استايل الزر  */
+body.dark-mode .button {
+    background-color: #424242; /* لون خلفية العنصر في الوضع الليلي */
+    color: #fafafa; /* لون النص في الوضع الليلي */
+    padding: 5px; /* الحشو الداخلي */
+    border-radius: 7.5px; /* تقويس الزوايا */
+    margin: 0px 3; /* الهوامش العلوية والسفلية */
+}
+/* أنماط الوضع الليلي للعناصر داخل القائمة */
+body.dark-mode li {
+    color: #fafafa; /* لون النص في الوضع الليلي */
+    background-color: #424242; /* لون خلفية العنصر في الوضع الليلي */
+    padding: 5px; /* الحشو الداخلي */
+    border-radius: 5px; /* تقويس الزوايا */
+    margin: 0px 0; /* الهوامش العلوية والسفلية */
+    border: 2px solid #fafafa;  
+}
+
+body.dark-mode li i {
+    color: #fafafa; /* لون الأيقونة في الوضع الليلي */
+}
+
+body.dark-mode li a {
+    color: #fafafa; /* لون الرابط في الوضع الليلي */
+    text-decoration: none; /* إزالة الخط تحت النص */
+}
+
+body.dark-mode li a:hover {
+    color: #fafafa; /* لون الرابط عند التحويم في الوضع الليلي */
+}
+
+          
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 92.5%; /* عرض العنصر */
+            height: 35px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }
+
+
+
+.top-bar .menu-icon {
+    font-size: 27.5px;
+    cursor: pointer;
+}
+
+.top-bar .title {
+    font-size: 20px; /* حجم الخط لعناصر العنوان */
+    margin-left: 20px; /* مسافة بين السهم والعنوان */
+    flex-grow: 1; /* يسمح للعناصر الأخرى بالتقلص عندما تكون الشاشة صغيرة */
+    text-align: center; /* توسيط العنوان */
+    font-weight: bold;  
+
+}
+
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+}      
+    </style>
+<style>
+        #cnmu-video-container { --video-bordcolr: #222; }
+        #cnmu-video-in {
+            display: grid;
+            grid-template-columns: minmax(100px, 200px) minmax(200px, 1fr);
+            gap: 10px;
+            background-color: #000;
+            padding: 10px;
+            border-radius: 20px 0px 20px 0px;
+            border-style: solid;
+            border-width: 10px 10px 2px 10px;
+            border-color: var(--video-bordcolr);
+            height: 360px;
+            border: 3.5px solid white; /* حدود */
+          
+        }
+        #cnmu-video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            height: 100%;
+            overflow-x: auto;
+            background-color: rgba(255, 255, 255, .1);
+            padding: 5px;
+          
+        }  
+        #cnmu-video-list a {
+            color: #fff !important;
+            text-decoration: none !important;
+            height: 30px;
+            overflow-x: hidden; /* إخفاء التمرير الأفقي */
+            overflow-y: hidden; /* إخفاء التمرير الرأسي */
+            position: relative;
+            display: block;
+            flex-shrink: 0;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 2px solid #DDD; /* حدود */
+        }
+  
+        #cnmu-video-list .active-video {
+            background: red;
+            border-bottom: 3px solid #DDD;
+        }
+        #cnmu-video #video-frame {
+            width: 100%;
+            height: 100%;
+        }
+        #cnmu-video-container > strong {
+            display: block;
+            background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */
+            border-radius: 20px 0px 20px 0px;
+            margin: -1px 0 0;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 110%;
+            font-weight: normal;
+            border: 2.5px solid #DDD; /* حدود */
+            border-bottom: 3px solid red; /* حدود */
+            font-size: 20px;
+            font-weight: bold;
+            margin-TOP:2.5px;
+            margin-bottom:10px;
+        }
+  </style>  
+</head>  
+    <body>
+      
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='https://taxlawapp.github.io/home/home.html'"></i> <!-- سهم العودة -->
+    </div>
+    <div class="title">
+        محتوي الفيديوهات | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div>
+
+    <div class="container">
+ 
+        <div class="social">
+            <p1>محتوي فيديوهات دليل الإستخدام</p1>
+        </div>
+      
+<div class="copyright-wrapper">
+    <ul class="copyright-list">
+        <li class="copyright-item">
+    <span class="copyright-text">جميع الحقوق محفوظة © <span class="app-name">Tax Law App</span></span>
+        </li>
+    </ul>
+</div>
+
+<div id="cnmu-video-container">
+  <div id="cnmu-video-in">
+    <div id="cnmu-video-list">
+      <a href="https://www.youtube.com/watch?v=cNoDjc-a1JU">ق 187 لسنة 1993 وتعديلاته</a>
+      <a href="https://www.youtube.com/watch?v=y28bVPizoTY">ق 91 لسنة 2005 وتعديلاته</a>
+      <a href="https://www.youtube.com/watch?v=H8SxEScIhYA">ق 30 لسنة 2023</a>
+      <a href="https://www.youtube.com/watch?v=z5yRy2U7J00">تسوية النزاع ق 5 لسنة 2025</a>
+      <a href="https://www.youtube.com/watch?v=0D_0iDGsIMc">ق 6 لسنة 2025</a>
+      <a href="https://www.youtube.com/watch?v=545ze3kQrL4">ضريبة المرتبات ق 91 لسنة 2005 وتعديلاته</a>
+      <a href="https://www.youtube.com/watch?v=akIzOdVs5FU">ضريبة السيارات ق 91 لسنة 2005 وتعديلاته</a>
+      <a href="https://www.youtube.com/watch?v=i8VINSBA_S8">ضريبة القيمة المضافة ق 67 لسنة 2016 وتعديلاته</a>
+      <a href="https://www.youtube.com/watch?v=IkwZ-7mu_Cg">ضريبة توزيعات الأرباح ق 91 لسنة 2005 وتعديلاته</a>
+      <a href="https://www.youtube.com/watch?v=mp4EbhifHDQ">الضريبة الإضافية ق 67 لسنة 2016 وتعديلاته</a>
+      <a href="https://www.youtube.com/watch?v=t3ZBj9mNGWo">مقابل التأخير تجاري ق 91 لسنة 2005 وتعديلاته</a>
+      <a href="https://www.youtube.com/watch?v=GfkyM4usITU">مقابل التأخير مرتبات ق 91 لسنة 2005 وتعديلاته</a>
+
+    </div>
+    <div id='cnmu-video'>
+      <iframe id="video-frame-1" width="200" height="360" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <strong>سلسلة دليل إستخدام شاشات حساب الضريبة</strong>
+</div>       
+      
+      
+      
+      
+        <div class="social">
+            <p1>محتوي فيديوهات وزارة المالية</p1>
+        </div>
+      
+<div class="copyright-wrapper">
+    <ul class="copyright-list">
+        <li class="copyright-item">
+    <span class="copyright-text">جميع الحقوق محفوظة © <span class="app-name">وزارة المالية</span></span>
+        </li>
+    </ul>
+</div>      
+
+<div id="cnmu-video-container">
+  <div id="cnmu-video-in">
+    <div id="cnmu-video-list">
+      <a href="https://www.youtube.com/watch?v=vOGvXeQfa5I">فيديو(1) مبسط يؤكد توجه الدولة نحو عدم مساس التعديلات التي تم اقرارها مؤخراً بقانون القيمة المضافة</a>
+      <a href="https://www.youtube.com/watch?v=NGa19efDklo">فيديو(2) مبسط يوضح التعديلات الضريبية بقانون القيمة المضافة</a>  
+    </div>
+    <div id='cnmu-video'>
+      <iframe id="video-frame-2" width="200" height="360" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <strong>فيديوهات بعض الإصلاحات الضريبية "المحدودة" على قانون القيمة المضافة</strong>
+</div>       
+      
+      
+<div id="cnmu-video-container">
+  <div id="cnmu-video-in">
+    <div id="cnmu-video-list">
+      <a href="https://www.youtube.com/watch?v=d8iztLvYhB8">الحلقة الأولي : مميزات حزمة التسهيلات الضريبية</a>
+      <a href="https://www.youtube.com/watch?v=k3zNUJdAhQg">الحلقة الثانية : التوسع في الفحص بالعينة</a> 
+      <a href="https://www.youtube.com/watch?v=R2JlsiQazRY">الحلقة الثالثة : إنهاء المنازعات</a>  
+    </div>
+    <div id='cnmu-video'>
+      <iframe id="video-frame-3" width="200" height="360" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <strong>فيديوهات سلسلة مالي ومالك</strong>
+</div>       
+      
+      
+      
+      
+        <div class="social">
+            <p1>محتوي فيديوهات مصلحة الضرائب المصرية</p1>
+        </div>
+      
+<div class="copyright-wrapper">
+    <ul class="copyright-list">
+        <li class="copyright-item">
+    <span class="copyright-text">جميع الحقوق محفوظة © <span class="app-name">مصلحة الضرائب</span></span>
+        </li>
+    </ul>
+</div>        
+
+<div id="cnmu-video-container">
+  <div id="cnmu-video-in">
+    <div id="cnmu-video-list">
+      <a href="https://www.youtube.com/watch?v=zPu777YZrkg">تقديم نموذج وحدة دعم المستثمرين</a>
+      <a href="https://www.youtube.com/watch?v=gj4sJ5Bnsvw">تقديم نموذج شكاوى لغير المسجلين</a>
+      <a href="https://www.youtube.com/watch?v=5iM0ZXWtmdI">كيفية التسجيل على الموقع الإلكتروني للاستفادة من حزمة التسهيلات الضريبية للمسجلين والغير مسجلين</a> 
+      <a href="https://www.youtube.com/watch?v=A_BJ9cyk8KU">تقديم نموذج رأي مسبق لغير مسجلين</a>
+      <a href="https://www.youtube.com/watch?v=UGlh7pK7muE">تقديم نموذج رأي مسبق للمسجلين</a>
+      <a href="https://www.youtube.com/watch?v=wlyX0wr1JtU">تقديم نموذج شكاوى للمسجلين</a>  
+    </div>
+    <div id='cnmu-video'>
+      <iframe id="video-frame-4" width="200" height="360" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <strong>فيديوهات تعريفية حول التسجيل وكيفية تقديم نماذج حزمة التسهيلات الضريبية</strong>
+</div>      
+
+<div id="cnmu-video-container">
+  <div id="cnmu-video-in">
+    <div id="cnmu-video-list">
+      <a href="https://www.youtube.com/watch?v=RH-buaasLyE">دليل التسجيل على موقع مصلحة الضرائب المصرية على الانترنت اصدار 2021</a>
+      <a href="https://www.youtube.com/watch?v=uwWHNw0cKQE">كيفية تقديم اقرار ١٠١ - فردي - للنشاط المهني</a>
+      <a href="https://www.youtube.com/watch?v=TZBQCwdQ_GQ">كيفية تقديم اقرار ١٠١ - فردي - للنشاط الحرفي</a>  
+    </div>
+    <div id='cnmu-video'>
+      <iframe id="video-frame-5" width="200" height="360" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <strong>خدمات تقديم الإقرار الضريبي</strong>
+</div>      
+      
+
+<div id="cnmu-video-container">
+  <div id="cnmu-video-in">
+    <div id="cnmu-video-list">
+      <a href="https://www.youtube.com/watch?v=a9jRokcFDp4">شرح ملء الاقرار الضريبى لصافى دخل الشخص الطبيعى الغير مؤيد بمستندات 101</a>
+      <a href="https://www.youtube.com/watch?v=G1TZw0ro30s">شرح ملء الاقرار الضريبى لصافى دخل الشخص الاعتبارى الغير مؤيد بمستندات ١٠٢</a>
+      <a href="https://www.youtube.com/watch?v=ImkmVXbRsrM">شرح ملء الاقرار الضريبى لصافى دخل الشخص الطبيعى الغير مؤيد بمستندات - سيارات ١٠٣</a>            
+      <a href="https://www.youtube.com/watch?v=nEu6i6ZfEHY">شرح ملء الاقرار الضريبى لصافى دخل الشخص الاعتبارى الغير مؤيد بمستندات - سيارات ١٠٤</a>
+      <a href="https://www.youtube.com/watch?v=EJpRZExJmp8">شرح ملء الاقرار الضريبى لصافى دخل الشخص الطبيعى المؤيد بمستندات ١٠٥</a>
+      <a href="https://www.youtube.com/watch?v=W81l4uR2Bgc">شرح ملء الاقرار الضريبى لصافى دخل الشخص الاعتبارى المؤيد بمستندات ١٠٦</a>  
+      <a href="https://www.youtube.com/watch?v=nlfwil8-wDs">كيفية السداد الالكترونى للضريبة</a>
+      <a href="https://www.youtube.com/watch?v=8lpMlfzvbdI">دليلك لاستخدام بوابة خدمات مصلحة الضرائب الالكترونية - كيفية استخدام خدمات الدفع والتحصيل الإلكتروني</a>
+      <a href="https://www.youtube.com/watch?v=RH-buaasLyE">دليل التسجيل على موقع مصلحة الضرائب المصرية على الانترنت اصدار 2021</a>      
+      <a href="https://www.youtube.com/watch?v=hXkNWH8TZyA">تقديم الاقرار الضريبي كشخص طبيعى مؤيد بحسابات - إقرار كود 105</a>
+    </div>
+    <div id='cnmu-video'>
+      <iframe id="video-frame-6" width="200" height="360" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <strong>المنظومة المميكنه القديمه - البوابة الالكترونية للخدمات الضريبية</strong>
+</div>       
+      
+      
+        <div class="social">
+            <p1>الفيديوهات المحاسبية والضريبية ذات الصلة</p1>
+        </div>
+
+<div class="copyright-wrapper">
+    <ul class="copyright-list">
+        <li class="copyright-item">
+    <span class="copyright-text">جميع الحقوق محفوظة © <span class="app-name">Tax Law App</span></span>
+        </li>
+    </ul>
+</div>
+      
+<div id="cnmu-video-container">
+  <div id="cnmu-video-in">
+    <div id="cnmu-video-list">
+      <a href="https://www.youtube.com/watch?v=tpeBI5HzUeY">الإستعلام عن إذا كان الممول مسجل بضريبة القيمة المضافة أم لا</a>
+      <a href="https://www.youtube.com/watch?v=t3Q1SLX38cE">برنامج الأرشيف الإلكتروني (1)</a>
+      <a href="https://www.youtube.com/watch?v=KNZAAKTFQEg">برنامج الأرشيف الإلكتروني (2)</a>            
+      <a href="https://www.youtube.com/watch?v=Eif9DaNktTA">برنامج الإختبارات المحاسبية والضريبية | Exams V1 - 2024</a>
+    </div>
+    <div id='cnmu-video'>
+      <iframe id="video-frame-7" width="200" height="360" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+  <strong>الفيديوهات المحاسبية والضريبية ذات الصلة</strong>
+</div>            
+      
+      
+    </div>
+
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div> 
+ 
+    
+  
+   <!-- الأيقونة العائمة -->
+    <div class="floating-icon" id="youtubeIcon">
+        <i class="fab fa-youtube"></i>
+    </div>
+
+    <!-- النص العائم -->
+    <div class="floating-text" id="floatingText">
+        اشترك في قناة اليوتيوب وتابع الجديد
+    </div>
+
+    <script>
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+}
+// تحميل تفضيل العرض المحفوظ والوضع الليلي
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModePreference = localStorage.getItem('darkModePreference'); // إضافة تفضيل الوضع الليلي
+    // تطبيق الوضع الليلي إذا كان مفعلاً
+    if (darkModePreference === 'true') {
+        toggleNightMode();
+    }
+});
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+    // حفظ تفضيل الوضع الليلي
+    localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+}     
+      
+      
+      
+        document.addEventListener("DOMContentLoaded", function () {
+            showFloatingText(); // استدعاء الدالة عند تحميل الصفحة
+
+            // تكرار إظهار النص العائم كل 30 ثانية
+            setInterval(function() {
+                showFloatingText();
+            }, 30000);
+        });
+
+        // دالة لإظهار النص العائم
+        function showFloatingText() {
+            var floatingText = document.getElementById("floatingText");
+            floatingText.style.display = "block";
+
+            // إخفاء النص العائم بعد 5 ثواني
+            setTimeout(function() {
+                floatingText.style.display = "none";
+            }, 5000);
+        } 
+
+      
+      // إعادة توجيه المستخدم عند الضغط على الأيقونة العائمة
+        document.getElementById("youtubeIcon").onclick = function() {
+            window.location.href = "https://www.youtube.com/channel/UC8sp-_iFBTuugEOWuqIBtCA?sub_confirmation=1";
+        };
+
+    </script>
+    <script>
+        // لتغيير اتجاه الصفحة من اليسار إلى اليمين  (RTL)
+        document.dir = 'rtl';
+    </script> 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // معالجة كل مجموعة فيديوهات بشكل منفصل
+    const videoContainers = document.querySelectorAll("#cnmu-video-container");
+    
+    videoContainers.forEach((container, index) => {
+      const videoList = container.querySelectorAll("#cnmu-video-list a");
+      const videoFrame = container.querySelector("#video-frame-" + (index + 1));
+      
+      if (videoList.length > 0) {
+        const firstVideoId = videoList[0].href.split("v=")[1];
+        videoFrame.src = "https://www.youtube.com/embed/" + firstVideoId;
+        videoList[0].classList.add("active-video");
+      }
+
+      videoList.forEach(video => {
+        video.addEventListener("click", function (event) {
+          event.preventDefault();
+          videoList.forEach(v => v.classList.remove("active-video"));
+          this.classList.add("active-video");
+          const videoId = this.href.split("v=")[1];
+          videoFrame.src = "https://www.youtube.com/embed/" + videoId;
+        });
+      });
+    });
+  });
+</script> 
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script> 
+</body>
+</html>
