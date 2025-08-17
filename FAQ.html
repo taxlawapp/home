@@ -1516,22 +1516,42 @@ body.dark-mode .image-container img {
 // قراءة بيانات المستخدم من localStorage
 const user = JSON.parse(localStorage.getItem('loggedInUser'));
 
+// دالة مركزية للتعامل مع نقرات الأزرار
+function handleButtonClick(e, loggedInUrl) {
+    e.preventDefault(); // منع السلوك الافتراضي للرابط #
+    
+    const proUrl = 'https://taxlawapp.github.io/home/pro.html';
+    
+    if (user) {
+        const currentDate = new Date();
+        const expiryDateParts = user.expiryDate.split('/');
+        const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+        const timeDiff = expiryDate - currentDate;
+        const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+        const userLoggedIn = daysDiff > 0;
+        
+        window.location.href = userLoggedIn ? loggedInUrl : proUrl;
+    } else {
+        window.location.href = proUrl;
+    }
+}
+
 if (user) {
-    // الحصول على التاريخ والوقت الحاليين
+    // حساب معلومات المستخدم
     const now = new Date();
-    const dateString = now.toLocaleDateString(); // يمكنك تغيير التنسيق حسب الحاجة
-    const timeString = now.toLocaleTimeString(); // يمكنك تغيير التنسيق حسب الحاجة
+    const dateString = now.toLocaleDateString();
+    const timeString = now.toLocaleTimeString();
     const currentDate = new Date();
     const expiryDateParts = user.expiryDate.split('/');
     const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
     const timeDiff = expiryDate - currentDate;
     let daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
-    // إذا كانت الفترة المتبقية فارغة أو أقل من أو تساوي صفر، تعيينها إلى صفر
     if (isNaN(daysDiff) || daysDiff <= 0) {
         daysDiff = 0;
     }
 
+    // عرض معلومات المستخدم
     document.getElementById('usernameDisplay').innerHTML = `
         <p><i class="fas fa-user"></i> المستخدم الحالي : ${user.fullName}</p>
         <p><i class="fas fa-hourglass-half"></i> الفترة المتبقية : ${daysDiff} يوم</p>
@@ -1539,22 +1559,28 @@ if (user) {
         <p><i class="fas fa-clock"></i> الوقت : ${timeString}</p>
     `;
 
-    // تحديث الروابط بناءً على حالة تسجيل الدخول
     const userLoggedIn = daysDiff > 0;
 
-    document.getElementById('actionButton1').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/Profit91.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
-    document.getElementById('actionButton2').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/vat67+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
-    document.getElementById('actionButton3').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/Amount91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
-    document.getElementById('actionButton4').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/estate91.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
-    document.getElementById('actionButton5').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/estate91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
-    document.getElementById('actionButton6').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/law30.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
-    document.getElementById('actionButton7').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/vat67+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
-    document.getElementById('actionButton8').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/law6.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
-    document.getElementById('actionButton9').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/salary91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    // تعيين معالجات الأحداث لجميع الأزرار
+    const buttons = [
+        { id: 'actionButton1', url: 'https://taxlawapp.github.io/Tax-calculation/Profit91.html' },
+        { id: 'actionButton2', url: 'https://taxlawapp.github.io/Tax-calculation/vat67+.html' },
+        { id: 'actionButton3', url: 'https://taxlawapp.github.io/Tax-calculation/Amount91+.html' },
+        { id: 'actionButton4', url: 'https://taxlawapp.github.io/Tax-calculation/estate91.html' },
+        { id: 'actionButton5', url: 'https://taxlawapp.github.io/Tax-calculation/estate91+.html' },
+        { id: 'actionButton6', url: 'https://taxlawapp.github.io/Tax-calculation/law30.html' },
+        { id: 'actionButton7', url: 'https://taxlawapp.github.io/Tax-calculation/vat67+.html' },
+        { id: 'actionButton8', url: 'https://taxlawapp.github.io/Tax-calculation/law6.html' },
+        { id: 'actionButton9', url: 'https://taxlawapp.github.io/Tax-calculation/salary91+.html' }
+    ];
 
+    buttons.forEach(button => {
+        document.getElementById(button.id).addEventListener('click', (e) => {
+            handleButtonClick(e, button.url);
+        });
+    });
 
-
-    // إخفاء أو إظهار الأيقونات والعناصر المحتوية على "PRO"
+    // إدارة عناصر PRO
     const icons = document.querySelectorAll('.fa-crown');
     const proElements = document.querySelectorAll('.tag[data-tag="PRO"], span');
     
@@ -1574,7 +1600,7 @@ if (user) {
         });
     }
 } else {
-    // إظهار الأيقونات المخفية والعناصر المحتوية على "PRO" إذا لم تكن بيانات المستخدم موجودة
+    // معالجة حالة الزوار (غير المسجلين)
     const icons = document.querySelectorAll('.fa-crown');
     const proElements = document.querySelectorAll('.tag[data-tag="PRO"], span');
     
@@ -1585,16 +1611,19 @@ if (user) {
         }
     });
 
-    // تحديث الروابط لتوجيه إلى صفحة PRO
-    document.getElementById('actionButton1').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
-    document.getElementById('actionButton2').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
-    document.getElementById('actionButton3').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
-    document.getElementById('actionButton4').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
-    document.getElementById('actionButton5').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
-    document.getElementById('actionButton6').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
-    document.getElementById('actionButton7').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
-    document.getElementById('actionButton8').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
-    document.getElementById('actionButton9').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    // تعيين معالجات الأحداث لجميع الأزرار للزوار
+    const buttons = [
+        'actionButton1', 'actionButton2', 'actionButton3',
+        'actionButton4', 'actionButton5', 'actionButton6',
+        'actionButton7', 'actionButton8', 'actionButton9'
+    ];
+
+    buttons.forEach(buttonId => {
+        document.getElementById(buttonId).addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+        });
+    });
 }
 
 
@@ -1802,3 +1831,4 @@ document.onkeydown = function (e) {
     }
 };
 </script> 
+
