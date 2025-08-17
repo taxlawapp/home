@@ -459,35 +459,35 @@
             <!-- سيتم ملؤها بواسطة الجافاسكريبت -->
         </div>
         
-        <div class="setting-item" onclick="toggleActive(this)">
+        <div class="setting-item for-guests" onclick="toggleActive(this)">
             <a href="https://taxlawapp.github.io/home/pro.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-crown gold-icon"></i>الإشتراكــات | إنشــئ حســابك</span>
                 <span class="setting-arrow">❯</span>
             </a>
         </div>
 
-        <div class="setting-item" onclick="toggleActive(this)">
+        <div class="setting-item for-guests" onclick="toggleActive(this)">
             <a href="https://taxlawapp.github.io/home/Referral.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-user-plus"></i>برنامج الإحالة وكسب النقاط</span>
                 <span class="setting-arrow">❯</span>
             </a>
         </div>
           
-        <div class="setting-item" style="display: none;" onclick="toggleActive(this)">
+        <div class="setting-item for-subscribers" style="display: none;" onclick="toggleActive(this)">
             <a href="https://taxlawapp.github.io/home/Accinfo.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-user"></i>حسابـــي | المــلف الشخصــي</span>
                 <span class="setting-arrow">❯</span>
             </a>
         </div>
         
-        <div class="setting-item" style="display: none;" onclick="toggleActive(this)">
+        <div class="setting-item for-subscribers" style="display: none;" onclick="toggleActive(this)">
             <a href="https://taxlawapp.github.io/home/Referral-code.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-share-alt"></i>شارك كــود إحالتك لأصدقائك</span>
                 <span class="setting-arrow">❯</span>
             </a>
         </div>          
         
-        <div class="setting-item" style="display: none;" onclick="toggleActive(this)">
+        <div class="setting-item for-subscribers" onclick="toggleActive(this)">
             <a href="https://chat.whatsapp.com/FeGm9uVP4htHLivKimr5Ey" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">                          
                 <span class="setting-text"><i class="fa fa-comments"></i>جروب المشتركين | واتساب</span>
                 <span class="setting-arrow">❯</span>
@@ -693,7 +693,7 @@ function updateUserInfo(user, daysDiff) {
     const userInfoContainer = document.getElementById('usernameDisplay');
     
     // معالجة نص الباقة
-    let subscriptionDisplay = user.subscriptionInfo;
+    let subscriptionDisplay = user.subscriptionInfo || 'غير محدد';
     if (subscriptionDisplay.includes('مدي الحياة')) {
         subscriptionDisplay = 'مدي الحياة - بدون رسوم إضافية';
     }
@@ -719,81 +719,73 @@ function updateUserInfo(user, daysDiff) {
             </div>
             <div class="user-info-row">
                 <span class="user-info-label"><i class="fas fa-trophy"></i> عدد النقاط :</span>
-                <span class="user-info-value">${user.points}</span>
+                <span class="user-info-value">${user.points || 0}</span>
             </div>
             <div class="user-status">
                 <span class="premium-badge">PREMIUM</span>
                 <span>  حالة الحساب : نشط | الأيام المتبقية :  ${daysDiff} يوم</span>
             </div>
         `;
-            
-            // إظهار العناصر المخفية للمشتركين
-            document.querySelectorAll('.setting-item[style="display: none;"]').forEach(element => {
-                element.style.display = 'flex';
-            });
-            
-            // إخفاء عناصر الاشتراك
-            document.querySelector('.setting-item a[href="href="https://taxlawapp.github.io/home/pro.html"]').parentElement.style.display = 'none';
-            document.querySelector('.setting-item a[href="https://taxlawapp.github.io/home/Referral-code.html"]').parentElement.style.display = 'none';
-        } else {
-            // حالة انتهاء الاشتراك
-            userInfoContainer.innerHTML = `
-                <div class="user-info-row">
-                    <span class="user-info-label"><i class="fas fa-user"></i>  إسم المستخدم :</span>
-                    <span class="user-info-value">${user.fullName}</span>
-                </div>
-                <div class="user-info-row">
-                    <span class="user-info-label"><i class="fas fa-exclamation-triangle"></i>  حالة الاشتراك :</span>
-                    <span class="user-info-value" style="color: #ff6b6b;"> منتهي</span>
-                </div>
-                <div class="user-status">
-                    <span>الاشتراك منتهي الصلاحية، يرجى التجديد</span>
-                </div>
-            `;
-            
-            // إخفاء العناصر الخاصة بالمشتركين
-            document.querySelectorAll('.setting-item[style="display: none;"]').forEach(element => {
-                element.style.display = 'none';
-            });
-            
-            // إظهار عناصر الاشتراك
-            document.querySelector('.setting-item a[href="https://taxlawapp.github.io/home/pro.html"]').parentElement.style.display = 'flex';
-            document.querySelector('.setting-item a[href="https://taxlawapp.github.io/home/Referral-code.html"]').parentElement.style.display = 'flex';
-        }
-    }
-
-    if (user) {
-        const currentDate = new Date();
-        const expiryDateParts = user.expiryDate.split('/');
-        const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
-        const timeDiff = expiryDate - currentDate;
-        let daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-        if (isNaN(daysDiff) || daysDiff <= 0) {
-            daysDiff = 0;
-        }
-
-        updateUserInfo(user, daysDiff);
+        
+        // إظهار العناصر للمشتركين
+        document.querySelectorAll('.for-subscribers').forEach(el => el.style.display = 'flex');
+        
+        // إخفاء عناصر الاشتراك للزوار
+        document.querySelectorAll('.for-guests').forEach(el => el.style.display = 'none');
+        
     } else {
-        // حالة الزائر
-        document.getElementById('usernameDisplay').innerHTML = `
-            <div class="user-info-row" style="justify-content: center;">
-                <span class="user-info-value"><i class="fas fa-user"></i> مرحباً بك : زائر</span>
+        // حالة انتهاء الاشتراك
+        userInfoContainer.innerHTML = `
+            <div class="user-info-row">
+                <span class="user-info-label"><i class="fas fa-user"></i>  إسم المستخدم :</span>
+                <span class="user-info-value">${user.fullName}</span>
+            </div>
+            <div class="user-info-row">
+                <span class="user-info-label"><i class="fas fa-exclamation-triangle"></i>  حالة الاشتراك :</span>
+                <span class="user-info-value" style="color: #ff6b6b;"> منتهي</span>
             </div>
             <div class="user-status">
-                <span>أنصحك بالإشتراك في النسخة الذهبية للوصول لجميع المميزات</span>
+                <span>الاشتراك منتهي الصلاحية، يرجى التجديد</span>
             </div>
         `;
         
         // إخفاء العناصر الخاصة بالمشتركين
-        document.querySelectorAll('.setting-item[style="display: none;"]').forEach(element => {
-            element.style.display = 'none';
-        });
+        document.querySelectorAll('.for-subscribers').forEach(el => el.style.display = 'none');
         
         // إظهار عناصر الاشتراك
-        document.querySelector('.setting-item a[href="https://taxlawapp.github.io/home/pro.html"]').parentElement.style.display = 'flex';
-        document.querySelector('.setting-item a[href="https://taxlawapp.github.io/home/Referral-code.html"]').parentElement.style.display = 'flex';
+        document.querySelectorAll('.for-guests').forEach(el => el.style.display = 'flex');
     }
+}
+
+if (user) {
+    const currentDate = new Date();
+    const expiryDateParts = user.expiryDate.split('/');
+    const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+    const timeDiff = expiryDate - currentDate;
+    let daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+    if (isNaN(daysDiff) || daysDiff <= 0) {
+        daysDiff = 0;
+    }
+
+    updateUserInfo(user, daysDiff);
+} else {
+    // حالة الزائر
+    document.getElementById('usernameDisplay').innerHTML = `
+        <div class="user-info-row" style="justify-content: center;">
+            <span class="user-info-value"><i class="fas fa-user"></i> مرحباً بك : زائر</span>
+        </div>
+        <div class="user-status">
+            <span>أنصحك بالإشتراك في النسخة الذهبية للوصول لجميع المميزات</span>
+        </div>
+    `;
+    
+    // إخفاء العناصر الخاصة بالمشتركين
+    document.querySelectorAll('.for-subscribers').forEach(el => el.style.display = 'none');
+    
+    // إظهار عناصر الاشتراك
+    document.querySelectorAll('.for-guests').forEach(el => el.style.display = 'flex');
+}
 </script>
 
 
@@ -830,3 +822,4 @@ document.onkeydown = function (e) {
 </script> 
 </body>
 </html>
+
