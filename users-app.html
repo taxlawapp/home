@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="login.css" >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- مكتبة الأيقونات -->
+<!-- رابط خط Cairo من Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet"> 
+<title>بيانات مشتركي التطيبق</title>
+    <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+  
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Beiruti' , sans-serif;
+}      
+        body {
+            direction: rtl;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Beiruti', sans-serif;
+            background: linear-gradient(to right, #e1f5fe, white);
+            background-size: 600% 600%;
+            animation: gradientAnimation 10s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
+            -moz-user-select: none; /* لمتصفح فايرفوكس */
+            -ms-user-select: none; /* لإنترنت إكسبلورر */
+            user-select: none; /* المتصفحات الأخرى */           
+        }             
+
+.subscription-stats {
+    margin-top: 27.5px;
+    margin-bottom: 5px;
+    background: linear-gradient(to right, white, #e1f5fe); /* تدرج للخلفية */
+    border: 2.5px solid #ddd;
+    border-radius: 12px;
+    padding: 15px 20px;
+    font-size: 20px;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.subscription-stats span {
+    background: linear-gradient(to right, white, #e1f5fe); /* تدرج للخلفية */
+    border-radius: 8px;
+    padding: 7.5px 10px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    font-weight: bold;
+    min-width: 120px;
+}
+
+.subscription-stats span.active {
+    color: #2e7d32;
+    border: 2px solid #2e7d32;
+    background: linear-gradient(to right, #e1f5fe , white); /* تدرج للخلفية */
+}
+
+.subscription-stats span.inactive {
+    color: #d32f2f;
+    border: 2px solid #d32f2f;
+    background: linear-gradient(to right, #e1f5fe , white); /* تدرج للخلفية */
+}
+
+.subscription-stats span.lifetime {
+    color: #1a237e;
+    border: 2px solid #1a237e;
+    background: linear-gradient(to right, #e1f5fe , white); /* تدرج للخلفية */
+}
+
+.subscription-stats span.loyalty {
+    color: #8e24aa;
+    border: 2px solid #8e24aa;
+    background: linear-gradient(to right, #e1f5fe , white); /* تدرج للخلفية */
+}
+
+.subscription-stats span.total {
+    color: #1976d2;
+    border: 2px solid #1976d2;
+    background: linear-gradient(to right, #e1f5fe , white); /* تدرج للخلفية */
+    padding: 12px 85px;
+}
+     
+        /* استايل الحاوية */
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-bottom: 45px;
+            padding: 20px;
+            border-radius: 0px;
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+             
+        }
+
+    .container {
+        display: none; /* إخفاء المحتوى افتراضيًا */
+    }
+
+.no-access {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #ffdddd;
+    padding: 12.5px;
+    border: 2px solid red;
+    border-radius: 5px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 300px; /* عرض العنصر */
+    height: 75px; /* ارتفاع العنصر */
+    overflow: hidden; /* لاحتواء المحتوى داخل الأبعاد المحددة */
+}
+    
+.no-access i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    color: red; /* لون الأيقونة أحمر */
+    font-size: 24px; /* حجم الأيقونة 24 بكسل */
+}     
+        .user-cards {         
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            background: linear-gradient(to right, white, #e1f5fe); /* تدرج للخلفية */
+        }
+      
+        .user-cards .user-card:first-child {
+        margin-top: 25px; /* تحديد المسافة العلوية */
+        }
+      
+        .user-cards .user-card:last-child {
+            margin-bottom: 10px; /* مسافة سفلية للكار الأخير */
+        }  
+      
+        .user-card {
+            background: ;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            border: 2.5px solid #1a237e; /* حدود */
+            border-bottom: 3px solid red; /* حدود */
+        }
+        .user-card:hover {
+            transform: scale(1.05);
+        }
+        .user-card h3 {
+            margin-top: 0;
+            border: 3px solid #171414;          
+            font-size: 18px; 
+            text-align: center;
+            padding: 7.5px;
+            border-radius: 3px;
+            background-color: #f0f8ff;
+            color: #171414;          
+        }
+        .user-card p {
+            margin: 8px 0;
+            color: #666;
+        }
+        .subscription-status {
+            font-weight: bold;
+            color: green;
+        }
+        .subscription-status.inactive {
+            color: red;
+        }
+        .user-card.active {
+            background: linear-gradient(to right, white, #e1f5fe); /* تدرج للخلفية */
+        }      
+        .user-card.inactive {
+            border: 3px solid #f44336; /* لون أحمر مميز */
+            background-color: #fddcdd; /* لون خلفية خفيف ليظهر أن البطاقة غير نشطة */
+        }
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            width: 85%;
+            max-width: 400px;
+            position: relative;
+            border: 3px solid #DDD; 
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #d9534f;
+        }   
+          
+        .popup-close:hover {
+            background-color: #cc0000;
+        }      
+        /* أيقونات المستخدم */
+        .icon {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        /* تنسيق زر تفاصيل */
+        .user-card button {
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            border: none;
+            padding: 7.5px 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 3px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 10px; /* وضع المسافة بين الزر والعناصر */
+            display: block; /* لتوسيط الزر في البطاقة */
+            width:100%;
+        }
+        .user-card button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        /* تنسيق عنوان نافذة المنبثقة */
+        .popup h2 {
+            margin-top: 0;
+            border: 3px solid #171414;          
+            font-size: 20px; 
+            text-align: center;
+            padding: 7.5px;
+            border-radius: 3px;
+            background-color: #f0f8ff;
+            color: #171414;
+        }
+
+        /* تنسيق زر الفلتر */
+        .filter-btn {
+            position: fixed;
+            bottom: 75px;
+            right: 10px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            font-size: 26px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: #01579b;
+        }
+
+        .filter-options {
+            display: none;
+            position: fixed;
+            bottom: 140px; /* زيادة المسافة بين الزر والنافذة المنبثقة */
+            right: 10px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            z-index: 999;
+            border: 3px solid #DDD;
+        }
+
+        .filter-options label {
+            font-size: 20px;
+            display: block;
+            margin: 10px 0;
+            
+        }
+
+        .filter-options input {
+            margin-right: 10px;
+        }
+
+        .filter-options button {
+            margin-top: 2.5px;
+            background-color: red; /* تغيير لون زر إلغاء الفلتر إلى الأحمر */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .filter-options button:hover {
+            background-color: #c0392b;
+        }      
+      
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 92.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            z-index: 1000;
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+      
+        /* أنماط الوضع الليلي للقائمة */
+        body.dark-mode .navbar {
+            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+            border-top: 2px solid #fafafa; /* حدود علوية */
+        }
+
+        body.dark-mode .navbar .nav-item {
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: transparent; /* حدود شفافة */
+        }
+
+        body.dark-mode .navbar .nav-item.home {
+            border-color: #ddd; /* حدود العنصر الرئيسي */
+            border: none; /* إزالة الحدود */  
+        }
+      
+        body.dark-mode .icon {
+            color: #ddd; /* لون الأيقونات في الوضع الليلي */
+        }
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }      
+      
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 97.5%; /* عرض العنصر */
+            height: 57.5px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }
+
+
+.top-bar .menu-icon {
+    font-size: 27.5px;
+    cursor: pointer;
+}
+
+.top-bar .title {
+    font-size: 20px; /* حجم الخط لعناصر العنوان */
+    margin-left: 20px; /* مسافة بين السهم والعنوان */
+    flex-grow: 1; /* يسمح للعناصر الأخرى بالتقلص عندما تكون الشاشة صغيرة */
+    text-align: center; /* توسيط العنوان */
+    font-weight: bold;  
+
+}
+
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+}
+      
+    </style>
+    </head>
+    <body>
+      
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='https://taxlawapp.github.io/home/home.html'"></i> <!-- سهم العودة -->
+    </div>
+    <div class="title">
+        إدارة الإشتراكات | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div> 
+
+<div class="no-access" id="noAccessMessage">
+    <i class="fas fa-times-circle"></i> <!-- أيقونة الخطأ -->
+    عفوا، ليس لديك صلاحية الوصول للمحتوى.
+</div>    
+      
+<div class="container" id="content">  
+  
+    <!-- إظهار نتائج الإحصائيات -->
+    <div id="subscriptionStats" class="subscription-stats"></div>
+  
+    <div class="user-cards" id="user-cards-container"></div>    
+  
+    <!-- Popup Modal -->
+    <div id="userDetailsPopup" class="popup">
+        <div class="popup-content" id="popupContent">
+            <h2>البيانات التفصيلية للمشترك</h2>
+            <div id="userDetailsContent"></div>
+            <span class="popup-close" onclick="closePopup()">❌</span>
+        </div>
+    </div>      
+
+<!-- زر الفلتر -->
+<button class="filter-btn" id="filterBtn" onclick="toggleFilter()"><i class="fas fa-filter"></i></button>
+
+<!-- خيارات الفلتر -->
+<div class="filter-options" id="filterOptions">
+    <label>
+        <input type="radio" name="status" value="active" id="activeFilter" onchange="applyFilter()"> نشط
+    </label>
+    <label>
+        <input type="radio" name="status" value="inactive" id="inactiveFilter" onchange="applyFilter()"> غير نشط
+    </label>
+    <label>
+        <input type="radio" name="status" value="lifetime" id="lifetimeFilter" onchange="applyFilter()"> مدي الحياة
+    </label>
+    <label>
+        <input type="radio" name="status" value="loyalty" id="loyaltyFilter" onchange="applyFilter()"> مكافأة الولاء
+    </label>  
+    <button onclick="clearFilter()"><i class="fas fa-times-circle"></i> إلغاء الفلتر</button>
+</div>
+</div>
+  
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div>       
+      
+<script>
+const storedUsers = JSON.parse(localStorage.getItem('users'));
+let filteredUsers = [...storedUsers];
+
+function renderUsers(users) {
+    const container = document.getElementById("user-cards-container");
+    const noAccessMessage = document.getElementById("noAccessMessage"); // تحديد عنصر الرسالة
+    
+    if (noAccessMessage) {
+        noAccessMessage.style.display = "none"; // إخفاء رسالة عدم الصلاحية
+    }
+
+    container.innerHTML = ''; // مسح المحتوى السابق
+
+    users.forEach(user => {
+        const card = document.createElement("div");
+        card.classList.add("user-card");
+
+        if (user.subscriptionStatus === 'غير نشط') {
+            card.classList.add("inactive");
+          
+        }
+
+        card.innerHTML = `
+            <h3><i class="fas fa-id-card icon"></i><strong> الإسـم :</strong> ${user.fullName}</h3>
+            <p><i class="fas fa-user icon"></i><strong> اسم المستخدم :</strong> ${user.username}</p>
+            <p><i class="fas fa-info-circle icon"></i> باقة الاشتراك : ${user.subscriptionInfo}</p>
+            <p><i class="fas fa-calendar-times icon"></i><strong>تاريخ الانتهاء :</strong> ${user.expiryDate}</p>
+            <p><i class="fas fa-check-circle icon"></i><strong> حالة الاشتراك :</strong>           
+                <span class="subscription-status ${user.subscriptionStatus === 'نشط' ? '' : 'inactive'}">${user.subscriptionStatus}</span>
+            </p>
+            <button onclick="showDetails('${user.username}')">
+                <i class="fas fa-info-circle icon"></i> عرض بيانات المشترك
+            </button>
+        `;
+
+        container.appendChild(card);
+    });
+}
+  
+    function showDetails(username) {
+        const user = storedUsers.find(u => u.username === username);
+        const popupContent = document.getElementById("userDetailsContent");
+        const popupContainer = document.getElementById("popupContent");
+      
+        popupContent.innerHTML = `
+            <p><i class="fas fa-user icon"></i><strong>اسم المستخدم :</strong> ${user.username}</p>
+            <p><i class="fas fa-key icon"></i><strong>كلمة المرور :</strong> ${user.password}</p>
+            <p><i class="fas fa-id-card icon"></i><strong>الاسم بالكامل :</strong> ${user.fullName}</p>
+            <p><i class="fas fa-envelope icon"></i><strong>البريد الإلكتروني :</strong> ${user.email}</p>
+            <p><i class="fas fa-phone icon"></i><strong>رقم الهاتف :</strong> ${user.phoneNumber}</p>
+            <p><i class="fas fa-info-circle icon"></i> باقة الاشتراك : ${user.subscriptionInfo}</p>
+            <p><i class="fas fa-check-circle icon"></i><strong>حالة الاشتراك :</strong> ${user.subscriptionStatus}</p>
+            <p><i class="fas fa-dollar-sign icon"></i><strong>التكلفة :</strong> ${user.subscriptioncost}</p>         
+            <p><i class="fas fa-calendar-day icon"></i><strong>تاريخ الاشتراك :</strong> ${user.subscriptionDate}</p>
+            <p><i class="fas fa-calendar-check icon"></i><strong>تاريخ التفعيل :</strong> ${user.activationDate}</p>
+            <p><i class="fas fa-calendar-times icon"></i><strong>تاريخ الانتهاء :</strong> ${user.expiryDate}</p>
+            <p><i class="fas fa-code icon"></i><strong>كود المستخدم :</strong> ${user.code}</p>
+            <p><i class="fas fa-trophy icon"></i><strong>النقاط :</strong> ${user.points}</p>
+        `;
+
+        if (user.subscriptionStatus === 'غير نشط') {
+            popupContainer.style.backgroundColor = '#fddcdd';
+            popupContainer.style.border = '3px solid #f44336';
+        } else {
+            popupContainer.style.backgroundColor = '#fff';
+            popupContainer.style.border = '3px solid #ddd';
+        }
+
+        document.getElementById("userDetailsPopup").style.display = "flex";
+        document.body.style.overflow = "hidden"; // ✅ منع التمرير
+    }
+
+    function closePopup() {
+        document.getElementById("userDetailsPopup").style.display = "none";
+        document.body.style.overflow = ""; // ✅ إعادة التمرير
+    }
+
+    function toggleFilter() {
+        const filterOptions = document.getElementById("filterOptions");
+
+        filterOptions.style.display = filterOptions.style.display === "block" ? "none" : "block";
+    }
+
+function applyFilter() {
+    const activeFilter = document.getElementById("activeFilter").checked;
+    const inactiveFilter = document.getElementById("inactiveFilter").checked;
+    const lifetimeFilter = document.getElementById("lifetimeFilter").checked;
+    const loyaltyFilter = document.getElementById("loyaltyFilter").checked;
+
+    // فلترة المستخدمين بناءً على الخيار المختار
+    if (activeFilter) {
+        filteredUsers = storedUsers.filter(user => user.subscriptionStatus === 'نشط');
+    } else if (inactiveFilter) {
+        filteredUsers = storedUsers.filter(user => user.subscriptionStatus === 'غير نشط');
+    } else if (lifetimeFilter) {
+        filteredUsers = storedUsers.filter(user =>
+            user.subscriptionInfo && user.subscriptionInfo.includes("مدي الحياة")
+        );
+    } else if (loyaltyFilter) {
+        filteredUsers = storedUsers.filter(user =>
+            user.subscriptionInfo && user.subscriptionInfo.includes("مكافأة الولاء")
+        );
+    } else {
+        filteredUsers = [...storedUsers];
+    }
+
+    renderUsers(filteredUsers);
+}
+
+
+    function clearFilter() {
+        const filterOptions = document.getElementById("filterOptions");
+        document.getElementById("activeFilter").checked = false;
+        document.getElementById("inactiveFilter").checked = false;
+        document.getElementById("lifetimeFilter").checked = false;
+        document.getElementById("loyaltyFilter").checked = false;
+        filteredUsers = [...storedUsers];
+        renderUsers(filteredUsers);
+        filterOptions.style.display = "none"; // إغلاق نافذة الفلتر
+    }
+
+    renderUsers(filteredUsers); // عرض المستخدمين عند تحميل الصفحة 
+
+// عرض الإحصائيات عند تحميل الصفحة  
+window.onload = function() {
+    displaySubscriptionStats();
+};
+
+function displaySubscriptionStats() {
+    const activeCount = storedUsers.filter(user => user.subscriptionStatus === 'نشط').length;
+    const inactiveCount = storedUsers.filter(user => user.subscriptionStatus === 'غير نشط').length;
+    const lifetimeCount = storedUsers.filter(user => 
+        user.subscriptionInfo && user.subscriptionInfo.includes("مدي الحياة")
+    ).length;
+    const loyaltyCount = storedUsers.filter(user => 
+        user.subscriptionInfo && user.subscriptionInfo.includes("مكافأة الولاء")
+    ).length;
+    const totalCount = storedUsers.length;
+
+    document.getElementById("subscriptionStats").innerHTML = `
+        <span class="active">نشط: ${activeCount}</span>
+        <span class="inactive">غير نشط: ${inactiveCount}</span>
+        <span class="lifetime">مدي الحياة: ${lifetimeCount}</span>
+        <span class="loyalty">مكافأة الولاء: ${loyaltyCount}</span>
+        <span class="total">الإجمالي: ${totalCount}</span>
+    `;
+}
+
+</script>
+      
+<script>
+    // قراءة بيانات المستخدم من localStorage
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+    const contentDiv = document.getElementById("content");
+    const noAccessMessage = document.getElementById("noAccessMessage");
+    const usernameDisplay = document.getElementById("usernameDisplay");
+    
+    if (user && user.fullName === "محمود رزق سعد رزق") {
+        contentDiv.style.display = "block";
+        usernameDisplay.textContent = user.fullName;
+    } else {
+        noAccessMessage.style.display = "block";
+    }
+</script>
+
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script> 
+ </body>
+</html>
