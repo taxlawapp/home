@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <!-- رابط مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- رابط خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet">   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المفضلة للتطبيق</title>
+    <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <style>
+        body {
+            font-family: 'Beiruti', sans-serif;
+            direction: rtl; /* تحديد اتجاه النص إلى اليمين */
+            text-align: center; /* محاذاة النص إلى الوسط */
+            background-color: #e1f5fe;      
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s; /* تأثير الانتقال للتغييرات */
+            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
+            -moz-user-select: none; /* لمتصفح فايرفوكس */
+            -ms-user-select: none; /* لإنترنت إكسبلورر */
+            user-select: none; /* المتصفحات الأخرى */          
+        }
+
+      .marquee {
+            width: 100%; /* عرض كامل */
+            overflow: hidden; /* إخفاء المحتوى الزائد */
+            color: #1a237e; /* لون النص */
+            padding: 2.5px 0; /* حشو داخلي */
+            font-size: 18px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            position: fixed; /* تثبيت العنصر في الأعلى */
+            background: linear-gradient(to right, white, #e1f5fe); /* خلفية متدرجة */      
+            top: 0; /* تثبيت العنصر في الأعلى */
+            z-index: 1000; /* ترتيب العنصر */
+            padding-bottom: 30px; /* حشو سفلي */
+            margin-top: 52.5px; /* مسافة علوية */   
+          
+        }
+
+        .marquee span {
+            display: inline-block; /* عرض كتلة داخل السطر */
+            animation: marquee 10s linear infinite; /* تطبيق الحركة */
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(-100%); /* تحريك النص من اليسار */
+            }
+            to {
+                transform: translateX(100%); /* إلى اليمين */
+            }
+            animation-direction: normal; /* اتجاه الحركة */
+        }
+
+.view-toggle {
+    margin-top: 0px; /* إزالة المسافة العلوية */
+    display: flex; /* استخدام Flexbox لتوزيع الأزرار */
+    justify-content: center; /* توسيط الأزرار أفقياً */
+    gap: 2px; /* المسافة بين الأزرار */
+    margin: 5px 0; /* تقليل المسافة العلوية والسفلية */
+    position: fixed; /* تثبيت العنصر في الأعلى */
+    top: 40px; /* تثبيت العنصر أسفل الشريط المتحرك */
+    width: 100%; /* عرض الأزرار بالكامل */
+    z-index: 1000; /* ضبط ترتيب العنصر */
+    background: linear-gradient(to right, white, #e1f5fe);      
+    padding: 5px 0; /* الحشو الداخلي */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
+    margin-top: 50px; /* إضافة حشو سفلي لتقليل المسافة بين العناصر */ 
+  
+}
+
+.view-toggle button {
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white; /* لون النص في الأزرار */
+    padding: 10px 20px; /* الحشو الداخلي للأزرار */
+    cursor: pointer; /* تغيير شكل المؤشر عند التحويم */
+    font-size: 16px; /* حجم النص */
+    font-weight: bold; /* وزن النص */
+    display: flex; /* استخدام Flexbox داخل الأزرار */
+    align-items: center; /* توسيط العناصر عمودياً داخل الأزرار */
+    gap: 4px; /* المسافة بين الأيقونة والنص داخل الأزرار */
+    border-radius: 2.5px; /* زوايا مستديرة للأزرار */
+    transition: background-color 0.3s ease; /* تأثير الانتقال للتغييرات */
+    border: 1px solid #fafafa; /* إضافة حد */
+
+}
+
+.view-toggle button:hover {
+    background-color: #0056b3; /* تغيير لون الخلفية عند التحويم */
+    border: 2.5px solid #212121; /* إضافة حد */
+}
+
+.view-toggle button i {
+    font-size: 18px; /* حجم الأيقونة داخل الأزرار */
+}
+      
+      
+/* أنماط علامة الصح */
+.view-toggle button .checkmark {
+    display: none; /* إخفاء العلامة بشكل افتراضي */
+    color: #fafafa; /* لون العلامة */
+    font-size: 18px; /* حجم العلامة */
+    margin-left: 5px; /* مسافة يسار العلامة */
+}
+
+/* إظهار العلامة عند تفعيل الزر */
+.view-toggle button.active .checkmark {
+    display: inline; /* عرض العلامة */
+}      
+      
+      
+      
+
+        .icon-grid {
+            display: grid; /* استخدام عرض الشبكة */
+            grid-template-columns: repeat(2, 1fr); /* تكرار عمودين */
+            grid-gap: 10px; /* المسافة بين العناصر */
+            padding: 25px; /* الحشو الداخلي */
+            max-width: 500px; /* الحد الأقصى لعرض الشبكة */
+            margin: 130px auto 10px; /* توسيط الشبكة وتقليل المسافة العلوية */
+            margin-bottom: 50px; /* مسافة سفلية */        
+        }
+
+        .icon-item {
+            position: relative; /* ضروري لتحديد موضع التاج */          
+            margin-top: 0px; /* إزالة المسافة العلوية */
+            background: linear-gradient(to right, #eaecee, #e1f5fe);/* خلفية متدرجة */      
+            border-radius: 10px; /* زوايا مستديرة */
+            padding: 10px; /* الحشو الداخلي */
+            text-align: center; /* محاذاة النص إلى الوسط */
+            font-size: 16px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
+            text-decoration: none; /* إزالة التسطير عن النص */
+            color: #1a237e; /* لون النص */
+            transition: transform 0.2s, box-shadow 0.2s; /* تأثير الانتقال للتغييرات */
+            border: 2.5px solid #212121; /* إضافة حد */
+        }
+
+        .icon-item:hover {
+            transform: translateY(-5px); /* رفع العنصر عند التحويم */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* زيادة الظل عند التحويم */
+        }
+
+        .icon-item img {
+            width: 80px; /* عرض الصورة */
+            height: 80px; /* ارتفاع الصورة */
+            margin-bottom: 10px; /* مسافة سفلية للصورة */
+        }
+
+        .icon-item p {
+            margin-top: 5px; /* مسافة علوية للنص */
+            font-size: 16px; /* حجم النص */
+            color: #02076e; /* لون النص */
+        }
+      
+         .icon-item.active p {
+            color: #FFFF00; /* لون النص */
+        }      
+
+        /* تنسيق الأيقونة النشطة */
+        .icon-item.active {
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white; /* لون النص للعنصر النشط */
+        }
+
+        .icon-item.active img {
+            filter: none; /* إزالة أي فلاتر مضافة للصورة */
+        }
+      
+      
+      
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 87.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+      
+        /* أنماط الوضع الليلي للقائمة */
+        body.dark-mode .navbar {
+            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+            border-top: 2px solid #fafafa; /* حدود علوية */
+        }
+
+        body.dark-mode .navbar .nav-item {
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: transparent; /* حدود شفافة */
+        }
+
+        body.dark-mode .navbar .nav-item.home {
+            border-color: #ddd; /* حدود العنصر الرئيسي */
+            border: none; /* إزالة الحدود */  
+        }
+      
+        body.dark-mode .icon {
+            color: #ddd; /* لون الأيقونات في الوضع الليلي */
+        }
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+
+        /* أنماط الوضع الليلي */
+        body.dark-mode {
+            background-color: #121212; /* لون خلفية الصفحة في الوضع الليلي */
+            color: #fafafa; /* لون النص في الوضع الليلي */
+        }
+
+        body.dark-mode .marquee {
+            background: #121212; /* لون خلفية العنصر في الوضع الليلي */
+            color: #fafafa; /* لون النص في الوضع الليلي */
+        }
+      
+        .dark-mode .icon-item p {
+        color: #fafafa; /* لون النص في الوضع الليلي */
+        }    
+
+        body.dark-mode .icon-item {
+            background: #212121; /* لون خلفية العنصر في الوضع الليلي */
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: #ddd; /* لون الحد في الوضع الليلي */
+            border: 2.5px solid #fafafa; /* إضافة حد */          
+        }
+          
+
+        body.dark-mode .icon-item.active p {
+            color: #fafafa; /* لون النص */
+        }
+      
+        body.dark-mode .icon-item.active {
+            background: #0277bd; /* لون خلفية العنصر النشط في الوضع الليلي */
+            color: white; /* لون النص للعنصر النشط في الوضع الليلي */
+        }      
+
+        body.dark-mode .icon-item.active img {
+            filter: none; /* إزالة أي فلاتر مضافة للصورة في الوضع الليلي */
+        }
+      
+body.dark-mode .view-toggle {
+    background: #121212; /* لون خلفية العنصر في الوضع الليلي */
+    color: #fafafa; /* لون النص في الوضع الليلي */
+}
+
+body.dark-mode .view-toggle button {
+    background-color: #212121; /* لون خلفية الأزرار في الوضع الليلي */
+    color: #fafafa; /* لون النص في الأزرار في الوضع الليلي */
+    border: 1px solid #fafafa; /* لون الحد في الوضع الليلي */
+}  
+
+
+/* إظهار العلامة عند تفعيل الزر في وضع الدرك */
+.dark-mode .view-toggle button.active .checkmark {
+    color: #fafafa; /* لون العلامة في وضع الدرك */
+}
+      
+        
+      
+        /* زر تبديل الوضع الليلي */
+        .night-mode-toggle {
+            position: fixed; /* تثبيت الزر في مكان محدد */
+            bottom: 23px; /* المسافة من الأسفل */
+            right: 7.5px; /* المسافة من اليمين */
+            background: #1a237e; /* لون خلفية الزر */
+            color: white; /* لون النص في الزر */
+            border: none; /* إزالة الحدود */
+            border-radius: 50%; /* جعل الزر دائري */
+            width: 50px; /* عرض الزر */
+            height: 50px; /* ارتفاع الزر */
+            font-size: 24px; /* حجم النص في الزر */
+            cursor: pointer; /* تغيير شكل المؤشر عند التحويم */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف */
+            transition: background 0.3s; /* تأثير الانتقال للتغييرات */
+            margin-bottom: 45px; /* مسافة سفلية */
+
+        }
+
+        .night-mode-toggle:hover {
+            background: #0056b3; /* تغيير لون الخلفية عند التحويم */
+        }
+
+        .list-view {
+            grid-template-columns: 1fr; /* جعل العرض عمود واحد عند التحويل إلى عرض القائمة */
+
+        }     
+#usernameDisplay {
+    color: #1a237e; /* لون النص */
+    font-weight: bold; /* وزن الخط */  
+    background-color: ; /* خلفية النص */
+    border: 0px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    border: 2.5px solid #1a237e; /* إضافة حد */
+  
+      } 
+      
+        .icon-item .crown-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 30px;
+            color: gold; /* لون التاج */
+        } 
+      
+        .hidden {
+        display: none;
+      } 
+      
+      
+      
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 97.5%; /* عرض العنصر */
+            height: 35px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }
+
+.top-bar .menu-icon {
+    font-size: 27.5px;
+    cursor: pointer;
+}
+
+.top-bar .title {
+    font-size: 20px; /* حجم الخط لعناصر العنوان */
+    margin-left: 20px; /* مسافة بين السهم والعنوان */
+    flex-grow: 1; /* يسمح للعناصر الأخرى بالتقلص عندما تكون الشاشة صغيرة */
+    text-align: center; /* توسيط العنوان */
+    font-weight: bold;  
+
+}
+
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+    margin-left: auto; /* يجعل الأيقونة تتحرك إلى أقصى اليمين */
+}       
+    </style>
+    </head>
+    <body>
+      
+
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='https://taxlawapp.github.io/home/home.html'"></i> <!-- سهم العودة -->
+  </div>
+    <div class="title">
+       مفضلات المحتوي | 🇪🇬 🇵🇸 Tax Law App 
+    </div>
+</div>
+  
+  
+    <div class="marquee">
+        <span style="white-space: nowrap;">
+            <img src="https://www3.0zz0.com/2024/05/30/07/482205963.png" alt="Icon" style="vertical-align: middle; width: 38px; height: 38px; margin-right: 10px;">
+           المفضلة لـ محتوي التطبيق ( محاسبة - ضرائب - مراجعة - فيديوهات - إكسيل)  
+        </span>
+    </div> 
+  
+   <span style="display:none;" id="usernameDisplay"></span> <!-- عرض اسم المستخدم هنا -->      
+
+<div class="view-toggle">
+    <button onclick="toggleGridView()" id="grid-view-btn">
+        <i class="fas fa-th"></i><span class="checkmark">✔</span>
+    </button>
+    <button onclick="toggleListView()" id="list-view-btn">
+        <i class="fas fa-list"></i><span class="checkmark">✔</span>
+    </button>
+    <!-- زر التكبير -->
+    <button onclick="increaseFontSize()" id="increase-font-btn">
+        <i class="fas fa-search-plus"></i>A+
+    </button>
+    <!-- زر التصغير -->
+    <button onclick="decreaseFontSize()" id="decrease-font-btn">
+        <i class="fas fa-search-minus"></i>A-
+    </button>
+</div>
+   
+    <div class="icon-grid">
+        <a href="go:Favo-acc" id="" class="icon-item" onclick="setActive(this)">                                     
+            <img src="https://www2.0zz0.com/2025/01/13/23/878973044.png" alt="Icon 1">
+            <p>بوستات محاسبية</p>
+        </a>
+        <a href="go:Favo-tax" id="" class="icon-item" onclick="setActive(this)">                                     
+            <img src="https://www2.0zz0.com/2025/01/13/23/878973044.png" alt="Icon 2">
+            <p>بوستات ضريبية</p>
+        </a>
+        <a href="go:Favo-Audit" id="" class="icon-item" onclick="setActive(this)">                                     
+            <img src="https://www2.0zz0.com/2025/01/13/23/878973044.png" alt="Icon 2">
+            <p>بوستات مراجعة</p>
+        </a>      
+      
+    </div>
+
+      
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div>   
+
+
+    <script>
+// تعيين العنصر النشط
+function setActive(element) {
+    const items = document.querySelectorAll('.icon-item');
+    items.forEach(item => item.classList.remove('active'));
+    element.classList.add('active');
+}
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+}
+
+// تحويل العرض إلى الشبكة
+function toggleGridView() {
+    const iconGrid = document.querySelector('.icon-grid');
+    iconGrid.classList.remove('list-view');
+    const items = iconGrid.querySelectorAll('.icon-item');
+    items.forEach(item => {
+        item.style.display = 'flex';
+        item.style.flexDirection = 'column';
+        item.style.alignItems = 'center';
+    });
+    const images = iconGrid.querySelectorAll('img');
+    images.forEach(img => {
+        img.style.marginBottom = '10px';
+    });
+    localStorage.setItem('viewPreference', 'grid');
+
+    // تحديث حالة الأزرار
+    document.getElementById('grid-view-btn').classList.add('active');
+    document.getElementById('list-view-btn').classList.remove('active');
+}
+
+// تحويل العرض إلى القائمة
+function toggleListView() {
+    const iconGrid = document.querySelector('.icon-grid');
+    iconGrid.classList.add('list-view');
+    const items = iconGrid.querySelectorAll('.icon-item');
+    items.forEach(item => {
+        item.style.display = 'flex';
+        item.style.alignItems = 'center';
+    });
+    const images = iconGrid.querySelectorAll('img');
+    images.forEach(img => {
+        img.style.marginRight = '10px';
+    });
+    localStorage.setItem('viewPreference', 'list');
+
+    // تحديث حالة الأزرار
+    document.getElementById('grid-view-btn').classList.remove('active');
+    document.getElementById('list-view-btn').classList.add('active');
+}
+
+function showPopupMessage(message) {
+    // إنشاء العنصر الخاص بالنافذة المنبثقة
+    const popup = document.createElement('div');
+    popup.textContent = message;
+    popup.style.position = 'fixed';
+    popup.style.top = '50%'; // يتم التمركز عموديًا
+    popup.style.left = '50%'; // يتم التمركز أفقيًا
+    popup.style.transform = 'translate(-50%, -50%)'; // لضبط المركز بدقة
+    popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    popup.style.color = '#fff';
+    popup.style.padding = '5px 10px';
+    popup.style.borderRadius = '8px';
+    popup.style.border = '3px solid #DDD'; // إضافة الحد
+    popup.style.boxShadow = '0px 4px 6px rgba(0, 0, 0, 0.2)';
+    popup.style.fontSize = '20px';
+    popup.style.zIndex = '9999';
+    popup.style.opacity = '1';
+    popup.style.transition = 'opacity 0.5s ease';
+
+    // إضافة النافذة إلى الصفحة
+    document.body.appendChild(popup);
+
+    // إزالة النافذة بعد 2 ثانية
+    setTimeout(() => {
+        popup.style.opacity = '0'; // إخفاء تدريجي
+        setTimeout(() => popup.remove(), 500); // إزالة العنصر نهائيًا بعد انتهاء الإخفاء
+    }, 2000);
+}
+      
+// دالة لتكبير حجم الخط
+function increaseFontSize() {
+    const elements = document.querySelectorAll('.icon-item p');
+    let reachedMax = false;
+
+    elements.forEach(element => {
+        const currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+        // تحقق إذا كان حجم الخط 20
+        if (currentFontSize >= 20) {
+            reachedMax = true;
+        } else {
+            const newFontSize = currentFontSize + 2; // التكبير بمقدار 2
+            element.style.fontSize = Math.min(newFontSize, 20) + 'px'; // التأكد من عدم تجاوز 20
+            localStorage.setItem('fontSize', Math.min(newFontSize, 20) + 'px');
+        }
+    });
+
+    // عرض الرسالة إذا وصلنا للحد الأقصى (20)
+    if (reachedMax) {
+        showPopupMessage("لقد وصلت إلى الحد الأقصى المسموح به للتكبير.");
+    }
+}
+
+// دالة لتصغير حجم الخط
+function decreaseFontSize() {
+    const elements = document.querySelectorAll('.icon-item p');
+    let reachedMin = false;
+
+    elements.forEach(element => {
+        const currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
+        // تحقق إذا كان حجم الخط 14
+        if (currentFontSize <= 14) {
+            reachedMin = true;
+        } else {
+            const newFontSize = currentFontSize - 2; // التصغير بمقدار 2
+            element.style.fontSize = Math.max(newFontSize, 14) + 'px'; // التأكد من عدم انخفاض الحجم تحت 14
+            localStorage.setItem('fontSize', Math.max(newFontSize, 14) + 'px');
+        }
+    });
+
+    // عرض الرسالة إذا وصلنا للحد الأدنى (14)
+    if (reachedMin) {
+        showPopupMessage("لقد وصلت إلى الحد الأدنى المسموح به للتصغير.");
+    }
+}
+
+// تحميل تفضيل العرض المحفوظ
+document.addEventListener('DOMContentLoaded', function() {
+    const viewPreference = localStorage.getItem('viewPreference');
+    if (viewPreference === 'list') {
+        toggleListView();
+    } else {
+        toggleGridView();
+    }
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+        const elements = document.querySelectorAll('.icon-item p');
+        elements.forEach(element => {
+            element.style.fontSize = savedFontSize;
+        });
+    }
+});
+// تحميل تفضيل العرض المحفوظ والوضع الليلي
+document.addEventListener('DOMContentLoaded', function() {
+    const viewPreference = localStorage.getItem('viewPreference');
+    const darkModePreference = localStorage.getItem('darkModePreference'); // إضافة تفضيل الوضع الليلي
+    if (viewPreference === 'list') {
+        toggleListView();
+    } else {
+        toggleGridView();
+    }
+    // تطبيق الوضع الليلي إذا كان مفعلاً
+    if (darkModePreference === 'true') {
+        toggleNightMode();
+    }
+});
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+    // حفظ تفضيل الوضع الليلي
+    localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+}      
+
+    </script>
+       <script>  
+ // لتغيير اتجاه الصفحة من اليسار إلى اليمين  (RTL)
+document.dir = 'rtl';
+       </script> 
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script> 
+</body>
+</html>
