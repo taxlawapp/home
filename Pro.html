@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- مكتبة الأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet"> <!-- رابط خط Beiruti من Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script> 
+    <title>الإشتراك فـ النسخة الذهبية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Beiruti', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, white, #e1f5fe);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            direction: rtl;
+            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
+            -moz-user-select: none; /* لمتصفح فايرفوكس */
+            -ms-user-select: none; /* لإنترنت إكسبلورر */
+            user-select: none; /* المتصفحات الأخرى */ 
+        }
+
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+        }
+      
+        .header0 {
+            background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */
+            border: 2px solid #02076e;
+            color: white;
+            margin: 5px 0;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom:0px;
+            border-radius: 5px;
+        }      
+
+        .header {
+            background: linear-gradient(to right, #e1f5fe, white);
+            border: 2px solid #080808;
+            margin: 45px 0;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom:0px;
+            border-radius: 5px;
+            border: 2.5px solid #1a237e; /* حدود */
+            border-bottom: 3px solid red; /* حدود */
+        }
+
+.header p {
+    margin-top: 5px; /* مسافة علوية للنص */
+    font-size: 20px; /* حجم النص */
+    color: #02076e; /* لون النص */
+    position: relative; /* لجعل الحركة تعمل */
+    animation: bounce 1s infinite alternate ease-in-out;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+        .header img {
+            max-width: 60%; /* تقليل حجم الصورة */
+            padding: 0px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            animation: float 3s ease-in-out infinite, rotate 4s linear infinite; /* إضافة تأثيرات متحركة */
+
+        }
+
+        /* تأثير التكبير والتصغير */
+        @keyframes float {
+            0%, 100% {
+                transform: scale(1); /* الحجم الطبيعي */
+            }
+            50% {
+                transform: scale(1.1); /* تكبير الصورة */
+            }
+        }
+
+        /* تأثير التدوير */
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg); /* بدون تدوير */
+            }
+            25% {
+                transform: rotate(5deg); /* تدوير بسيط */
+            }
+            50% {
+                transform: rotate(0deg); /* العودة إلى الوضع الطبيعي */
+            }
+            75% {
+                transform: rotate(-5deg); /* تدوير في الاتجاه المعاكس */
+            }
+            100% {
+                transform: rotate(0deg); /* العودة إلى الوضع الطبيعي */
+            }
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: right;
+            padding: 0;
+        }
+
+        .feature-list li {
+            background: linear-gradient(to right, #eaecee, #e1f5fe);/* خلفية متدرجة */
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+           color: #02076e;
+            font-size: 18px;
+            text-align: right;
+            font-weight: bold;
+            border: 2.5px solid #1a237e; /* حدود */
+            border-bottom: 3px solid red; /* حدود */
+        }
+
+        .feature-list li span {
+            color: #02076e;
+            font-size: 18px;
+            text-align: right;
+            font-weight: bold;
+        }
+       .feature-list li i.fas.fa-check {
+        color: blue; 
+        margin-left: 5px; /* إضافة مسافة بين النص والأيقونة */
+         
+        }
+        .subscription-box {
+            margin-top: 5px;
+        }
+
+        .subscription-btn {           
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold; /* وزن النص */
+        }
+
+        .monthly {
+            margin-top: 0px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+        }
+
+        .quarterly {
+            margin-top: 0px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            position: relative;
+        }
+
+        .yearly {
+            margin-top: 0px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            position: relative;
+        }
+      
+        .Free {
+           margin-top: 0px;
+           background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+           color: white;
+           position: relative;
+           margin-bottom: 7.5px; 
+        }
+   
+        .quarterly::before {
+            content: "الأكثر شعبية";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: red;
+            color: white;
+            padding: 5px;
+            font-size: 15px;
+            border-radius: 5px;
+            font-weight: bold;       
+        }      
+
+        .Free::before {
+            content: "أفضل عرض";
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: red;
+            color: white;
+            padding: 5px;
+            font-size: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .subscription-btn:hover {
+            opacity: 0.8;
+            border: 3px solid white;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+        }
+
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 92.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            z-index: 1000;
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+      
+        /* أنماط الوضع الليلي للقائمة */
+        body.dark-mode .navbar {
+            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+            border-top: 2px solid #fafafa; /* حدود علوية */
+        }
+
+        body.dark-mode .navbar .nav-item {
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: transparent; /* حدود شفافة */
+        }
+
+        body.dark-mode .navbar .nav-item.home {
+            border-color: #ddd; /* حدود العنصر الرئيسي */
+            border: none; /* إزالة الحدود */  
+        }
+      
+        body.dark-mode .icon {
+            color: #ddd; /* لون الأيقونات في الوضع الليلي */
+        }
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+    
+      
+        .login-container {
+            margin-top: 0px;
+            background: linear-gradient(to right, #e1f5fe, #e1f5fe);
+            padding: 12.5px 15px 5px;
+            border-radius: 15px 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border: 2px solid #1a237e; /* إضافة حد */ 
+            position: relative;
+            margin-bottom: 50px;
+        }
+      
+        .login-container h1 {
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 7.5px;
+            background-color: linear-gradient(to right, white, #e1f5fe);
+            border-bottom: 3px solid #1a237e; /* إضافة حد */
+        }      
+        .login-container h2 {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #1a237e, #1a237e); 
+            border-bottom: 3px solid #FFD700; /* إضافة حد */          
+        }
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+    .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    background: ; 
+    font-weight: bold;
+    color: #02076e;
+    margin-bottom: 2.5px;
+    font-size: 20px;
+    border: 0px solid #420c0c;
+    margin-top: 0px;      
+        }
+      
+   .form-group input {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    background: #ffffff;
+    outline: none;
+    border-radius: 60px;
+    padding: 6px 20px;
+    font-size: 20px;
+    color: #0e1ba0;
+    height: 45px;
+    border: 2px solid #420c0c;
+    border-radius: 5px;            
+    margin:0px 0; 
+    margin-top: 0px;  
+        }
+ .form-group input:focus{
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}     
+        .form-group .fa {
+            position: absolute;
+            left: 10px;
+            top: 67.5%;
+            transform: translateY(-50%);
+            color: #1a237e;
+        }
+
+
+        .user-info {
+            margin-top: 350px;
+            text-align: right;
+            margin-bottom: 0px;          
+        }
+        .user-info p {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+
+            color: #1a237e;
+            font-weight: bold;
+            font-size: 20px;          
+          
+        }
+        .hidden {
+            display: none;
+        }
+        .full-name-display {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #007BFF;
+        }
+      
+#full-name-display {
+    color: #1a237e; /* لون النص */
+    font-weight: bold; /* وزن الخط */  
+    background-color: ; /* خلفية النص */
+    border: 0px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */
+  
+      }       
+      
+ 
+ .button {
+    font-size: 17px; /* حجم الخط */ 
+    font-weight: bold; /* وزن الخط */
+    padding: 7.5px 75px; /* حجم الحشو */
+    margin-top: 5px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */         
+    border: none; /* حذف الحدود */
+    border-radius: 5px; /* تقويس الزوايا */
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white; /* لون النص */
+    cursor: pointer; /* تحويل المؤشر إلى يد عند التحويم */
+    transition: background-color 0.3s, transform 0.3s; /* تأثير الانتقال */
+    text-decoration: none; /* إزالة الخط تحت النص داخل الزر */
+    display: block; /* عرض الزر ككتلة */
+    text-align: center; /* توسيط النص داخل الزر */
+}
+      
+.button:hover {
+    background-color: #1a237e; /* لون خلفية الزر عند التحويم */
+    color: #FFFF00; /* لون النص */  
+    transform: scale(1.05); /* تحجيم الزر عند التحويم */
+    border: 2px solid white; /* إضافة حد عند التحويم */
+  
+}
+
+.button:active {
+    transform: scale(0.95); /* تحجيم الزر عند الضغط */
+}
+
+.button a {
+    text-decoration: none; /* إزالة الخط تحت النص داخل الرابط */
+    color: inherit; /* الاحتفاظ بلون النص داخل الرابط */
+}
+      
+#error-message {
+    color: #d9534f; /* لون النص */
+    font-weight: bold; /* وزن الخط */
+    text-align: center;  
+    background-color: #f2dede; /* خلفية النص */
+    border: 1px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+}
+
+#error-message i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    font-size: 20px; /* حجم الأيقونة */
+}
+      
+.hidden {
+    display: none;
+}
+.password-recovery-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.password-recovery-form h3 {
+    margin-bottom: 20px;
+}
+.password-recovery-form .form-group {
+    margin-bottom: 15px;
+}
+.password-recovery-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.password-recovery-form .button {
+    margin-top: 10px;
+    display: block;
+}
+.password-recovery-form .message {
+    margin-top: 10px;
+    color: #1a237e;
+}
+      
+/* نماذج الاسترجاع */
+    #password-recovery-form {
+        display: none;
+        margin-top: 20px;
+        background: linear-gradient(to right, #e1f5fe, #e1f5fe);
+        padding: 15px 15px 10px;
+        border-radius: 15px 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        border: 2px solid #1a237e; /* إضافة حد */ 
+      
+    }
+    .password-recovery-form h3 {
+            margin-bottom: 10px;
+            color: #1a237e;
+            text-align: center;
+            background-color: linear-gradient(to right, white, #e1f5fe);
+            font-size: 30px;
+            font-weight: bold;
+            border-bottom: 3px solid #1a237e; /* إضافة حد */
+    }
+    .password-recovery-form .form-group {
+        margin-bottom: 15px;
+    }
+    .password-recovery-form input {
+        width: 100%;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold; /* وزن الخط */      
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    .password-recovery-form .button {
+        margin-top: 10px;
+        display: block;
+    }
+    .password-recovery-form .message {
+        margin-top: 10px;
+        color: #1a237e;
+    }
+
+      
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #d9534f; /* لون النص */
+}
+
+.close-btn:hover {
+    color: #c9302c; /* لون النص عند التحويم */
+}
+
+.password-recovery-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+#recovery-message {
+    color: #d9534f; /* لون النص */
+    font-weight: bold; /* وزن الخط */
+    text-align: center;  
+    background-color: #f2dede; /* خلفية النص */
+    border: 1px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;  
+}
+
+#recovery-message i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    font-size: 20px; /* حجم الأيقونة */
+}
+
+  
+/* حاوية الرابط */
+.link-container {
+    text-align: left; /* محاذاة النص إلى اليسار */
+}
+
+/* تنسيق الرابط */
+#PasswordRecovery {
+    color: #304ffe; /* لون النص */
+    text-decoration: none; /* إزالة التسطير */
+    font-weight: bold; /* جعل النص عريض */
+    font-size: 18px; /* حجم النص */
+    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
+}
+
+/* عند التمرير */
+#PasswordRecovery :hover {
+    color: #1565c0; /* لون النص عند التمرير */
+    text-decoration: underline; /* إضافة التسطير عند التمرير */
+}
+
+/* عند النقر */
+#PasswordRecovery:active {
+    color: #1a237e; /* لون النص عند النقر */
+}
+
+/* تنسيق الرابط */
+#SignUpLink {
+    color: #304ffe; /* لون النص */
+    text-decoration: none; /* إزالة التسطير */
+    font-weight: bold; /* جعل النص عريض */
+    font-size: 18px; /* حجم النص */
+    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
+}
+
+/* عند التمرير */
+#SignUpLink :hover {
+    color: #1565c0; /* لون النص عند التمرير */
+    text-decoration: underline; /* إضافة التسطير عند التمرير */
+}
+
+/* عند النقر */
+#SignUpLink :active {
+    color: #1a237e; /* لون النص عند النقر */
+}      
+      
+hr {
+    border: none; /* إزالة الحدود الافتراضية */
+    border-top: 3px solid #1a237e; /* تغيير سمك ولون الخط العلوي */
+    margin: 10px 0; /* إضافة هوامش فوق وتحت */
+    margin-bottom: 10px;  
+} 
+      
+        .gold-icon {
+            color: #FFD700; /* لون ذهبي */
+        } 
+      
+/* New styles for sign up form */
+.sign-up-form {
+    z-index: 1000;
+    display: none;
+    margin-top: 0px; /* المسافة من العنصر الأعلى */
+    background: linear-gradient(to right, #e1f5fe, #e1f5fe);
+    padding: 30px;
+    border-radius: 15px 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1a237e;
+    position: relative;
+    margin-bottom:50px;
+}
+      
+.sign-up-form h3 {
+            margin-bottom: 10px;
+            color: #1a237e;
+            text-align: center;
+            background-color: linear-gradient(to right, white, #e1f5fe);
+            font-size: 30px;
+            font-weight: bold;
+            border-bottom: 3px solid #1a237e; /* إضافة حد */
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #1a237e;
+    text-align: center;
+    font-size: 20px
+     
+}
+      
+ .form-group select:focus{
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}       
+      
+.sign-up-form .form-group {
+    margin-bottom: 15px;
+}
+.sign-up-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.sign-up-form .button {
+    margin-top: 10px;
+    display: block;
+}
+.sign-up-form .message {
+    margin-top: 10px;
+    color: #1a237e;
+}
+      
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #d9534f;
+}
+.close-btn:hover {
+    color: #c9302c;
+}      
+
+#signup-message {
+    color: #d9534f; /* لون النص */
+    font-weight: bold; /* وزن الخط */
+    text-align: center;  
+    background-color: #f2dede; /* خلفية النص */
+    border: 1px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;  
+}
+
+#signup-message i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    font-size: 20px; /* حجم الأيقونة */
+}       
+      
+      
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 100%; /* عرض العنصر */
+            height: 57.5px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }      
+.top-bar .menu-icon {
+    font-size: 27.5px;
+    cursor: pointer;
+}
+
+.top-bar .title {
+    font-size: 22px; /* حجم الخط لعناصر العنوان */
+    margin-left: 20px; /* مسافة بين السهم والعنوان */
+    flex-grow: 1; /* يسمح للعناصر الأخرى بالتقلص عندما تكون الشاشة صغيرة */
+    text-align: center; /* توسيط العنوان */
+    font-weight: bold;  
+
+}
+
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+}      
+    </style>
+    <style>
+        #cnmuSSlid {
+            width: 100%;
+            margin: 5px auto 7.5px;
+            background-color: #fff;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+            border: 0px solid #080808;
+            border-radius: 5px;
+        }
+
+        @keyframes cnmuSSlid-key-next {
+            0% { left: 100%; }
+            100% { left: 0; }
+        }
+
+        @keyframes cnmuSSlid-key-left {
+            0% { left: 0; }
+            100% { left: -100%; }
+        }
+
+        @keyframes cnmuSSlid-key-previous {
+            0% { left: -100%; }
+            100% { left: 0; }
+        }
+
+        @keyframes cnmuSSlid-key-right {
+            0% { left: 0; }
+            100% { left: 100%; }
+        }
+
+        #cnmuSSlid ul, #cnmuSSlid li {
+            list-style: none;
+            margin: unset;
+            padding: unset;
+        }
+
+        #cnmuSSlid li::before, #cnmuSSlid li::after {
+            display: none;
+        }
+
+        #cnmuSSlid ul li {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+        }
+
+        #cnmuSSlid ul li.active {
+            visibility: visible;
+            left: 0;
+        }
+
+        #cnmuSSlid ul li.left {
+            animation-name: cnmuSSlid-key-left;
+        }
+
+        #cnmuSSlid ul li.next {
+            animation-name: cnmuSSlid-key-next;
+        }
+
+        #cnmuSSlid ul li.right {
+            animation-name: cnmuSSlid-key-right;
+        }
+
+        #cnmuSSlid ul li.previous {
+            animation-name: cnmuSSlid-key-previous;
+        }
+
+        #cnmuSSlid ul li a {
+            margin: 0 !important;
+            padding: 0 !important;
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #cnmuSSlid ul li img {
+            display: block;
+            height: 100% !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        #cnmuSSlid ul li strong {
+            position: absolute;
+            bottom: 0;
+            font-weight: normal;
+            color: #fff;
+            padding: 20px 10px;
+            box-sizing: border-box;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, .7);
+        }
+
+        #cnmuSSlid button {
+            position: absolute;
+            top: calc(50% - 24px);
+            border: 0;
+            background-color: #fff;
+            opacity: .7;
+            width: 48px;
+            cursor: pointer;
+            height: 48px;
+            line-height: 48px;
+            font-size: 24px;
+            border-radius: 100%;
+            transition: all .4s ease;
+            color: #000;
+        }
+
+        #cnmuSSlid button:hover {
+            opacity: 1;
+        }
+
+        .BTlef {
+            left: 10px;
+        }
+
+        .BTRig {
+            right: 10px;
+        }
+
+        @media screen and (max-width: 600px) {
+            #cnmuSSlid {
+                height: 300px;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            #cnmuSSlid {
+                height: 260px;
+            }
+        }
+      
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 16px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-size: 17px;
+            position: sticky;
+            top: 0;
+        }
+        /* تلوين العمود الأول بنفس لون الصف الأول */
+        td:first-child {
+            background-color: #3498db;
+            color: white;
+        }
+        /* تعديل لون الأيقونات في العمود الأول */
+        td:first-child i {
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:nth-child(odd) {
+            background-color: white;
+        }
+        tr:hover {
+            background-color: #f1f8fe;
+        }
+        .highlight {
+            background-color: #e3f2fd;
+            font-weight: bold;
+        }
+        .save-row {
+            background-color: #e8f5e9;
+        }
+        .first-col {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        .package-icon {
+            color: white;
+            font-size: 1.3em;
+        }
+        .table-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        .fa-table {
+            margin-left: 10px;
+            color: #3498db;
+        }
+        @media (max-width: 768px) {
+            th, td {
+                padding: 12px 8px;
+                font-size: 14px;
+            }
+        }     
+    </style>  
+    </head>
+    <body>
+      
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='https://taxlawapp.github.io/home/home.html'"></i> <!-- سهم العودة -->
+    </div>
+    <div class="title">
+        الإشتراكات المميزة | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div>
+
+    <div class="container">
+        <div class="header">
+        <img src="https://www2.0zz0.com/2025/03/14/12/436036289.png" alt="">
+          <p> دليلك الشامل والموثوق فيه لإحتساب الضريبة.</p>
+          <p> التطبيق رقم (1) لإحتساب الضريبة فـ مصر 🇪🇬.</p>
+
+      </div>
+      
+      
+        <div class="header0">مزايا إشتراك النسخة الذهبية</div>  
+
+<div id="cnmuSSlid">
+    <ul>
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/08/11/632291232.png" alt="">
+                <strong>يضم التطبيق أكثر  من عدد (10) شاشات لإحتساب الضريبة فـ 🇪🇬</strong>
+            </a>          
+        </li>
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/08/11/486194439.png" alt="">
+                <strong>يضم التطبيق محتوي تأهيلي مميز (محاسبة & ضرائب & مراجعة)</strong>
+            </a>          
+        </li> 
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/10/01/827166118.png" alt="">
+                <strong>يضم التطبيق محتوي تأهيلي مميز لإجتياز إمتحانات سجل المحاسبين والمراجعين</strong>
+            </a>          
+        </li>      
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/08/11/748841489.png" alt="">
+                <strong>يضم التطبيق محتوي ضريبي شامل ويحدث بصفة مستمرة أول بأول</strong>
+            </a>          
+        </li>       
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/10/01/617276573.png" alt="">
+                <strong>التطبيق خالي تماماً ونهائياً من جميع الإعلانات المزعجة للمستخدمين</strong>
+            </a>          
+        </li> 
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/10/01/231905349.png" alt="">
+                <strong>إنشاء حسابك بالتطبيق وسهولة إدارة الحساب ومتابعة إشتراكك ومحتواك الذهبي</strong>
+            </a>          
+        </li>      
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/10/01/464482593.png" alt="">
+                <strong>إعلام المستخدمين بكافة التحديثات من خلال ميزة دفع الإشعارات التلقائية</strong>
+            </a>          
+        </li>         
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/10/01/144221348.png" alt="">
+                <strong>نرحب بأراء وإقتراحات المستخدمين والإبلاغ عن الأخطاء بشاشات إحتساب الضريبة</strong>
+            </a>          
+        </li>      
+        <li>
+            <a href="#">
+                <img src="https://www2.0zz0.com/2025/03/10/09/783713252.png" alt="">
+                <strong>دليلك الشامل والموثوق فيه لإحتساب الضريبة فـ مصر 🇪🇬</strong>
+            </a>          
+        </li>       
+      
+        <!-- يمكنك إضافة المزيد من العناصر هنا -->
+    </ul>
+
+    <button class="BTlef">❯</button>
+    <button class="BTRig">❮</button>
+</div>    
+        
+        <ul class="feature-list">
+            <li><span>👑</span> الوصول إلي شاشات حساب الضريبة الجديدة والمميزة والتحديثات الخاصة بهما.<i class="fas fa-check"></i></li>
+            <li><span>👑</span> الوصول إلي المحتوي التأهيلي الشامل (المحاسبي والضريبي والمراجعة) وتحديثاته.<i class="fas fa-check"></i></li>
+            <li><span>👑</span> الوصول إلي المحتوي التأهيلي لإجتياز إمتحانات سجل المحاسبين والمراجعين وتحديثاته.<i class="fas fa-check"></i></li>          
+            <li><span>👑</span> الوصول إلي المحتوي الضريبي الجديد (التعديلات والمستجدات الضريبية).<i class="fas fa-check"></i></li>
+            <li><span>👑</span> تصفح محتوي التطبيق كاملاً بدون أي قيود (الوصول غير المحدود لمحتوي التطبيق).<i class="fas fa-check"></i></li>
+            <li><span>👑</span> إدارة حسابك بالتطبيق بسهولة جداً ومتابعة الإشتراك الخاص بك (تصفح المحتوي فور نشره أول بأول).<i class="fas fa-check"></i></li>
+            <li><span>👑</span> تصفح التطبيق بدون قيود وإزالة الإعلانات المزعجة للمستخدمين وإزالة النوافذ الإعلانية.<i class="fas fa-check"></i></li>
+            <li><span>👑</span> العديد من المميزات الأخري بالتطبيق والتي يمكنك إكتشافها بنفسك الآن.<i class="fas fa-check"></i></li>
+        </ul> 
+      
+<div class="header0">مقارنة باقات إشتراك النسخة الذهبية</div> 
+<table id="packagesTable" border="1">
+    <thead>
+        <tr>
+            <th><div class="first-col"> البيان / الباقات</div></th>
+            <th><div class="first-col"> باقة شهرية</div></th>
+            <th><div class="first-col"> باقة نصف سنوية</div></th>
+            <th><div class="first-col"> باقة سنوية</div></th>
+            <th><div class="first-col"> باقة مدى الحياة</div></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><div class="first-col"> التكلفة الإجمالية</div></td>
+            <td>199.99 جنية</td>
+            <td>599.99 جنية</td>
+            <td>999.99 جنية</td>
+            <td>1999.99 جنية</td>
+        </tr>
+        <tr>
+            <td><div class="first-col"> الفترة السارية</div></td>
+            <td>1 شهر</td>
+            <td>6 أشهر</td>
+            <td>12 شهر</td>
+            <td>مدى الحياة</td>
+        </tr>
+        <tr>
+            <td><div class="first-col"> التكلفة الشهرية</div></td>
+            <td>199.99 جنية</td>
+            <td>100.00 جنية</td>
+            <td>83.33 جنية</td>
+            <td>مجاناً بعد الدفع</td>
+        </tr>
+        <tr class="highlight">
+            <td><div class="first-col"> تكلفة اليوم الواحد</div></td>
+            <td>6.67 جنية</td>
+            <td>3.33 جنية</td>
+            <td>2.78 جنية</td>
+            <td>-</td>
+        </tr>
+        <tr class="save-row">
+            <td><div class="first-col"> الباقة الأفضل (%)</div></td>
+            <td>-</td>
+            <td>حوالي 50%</td>
+            <td>حوالي 58%</td>
+            <td>أفضل قيمة</td>
+        </tr>
+    </tbody>
+</table>
+      
+      
+
+        <div class="header0">باقات إشتراك النسخة الذهبية</div>          
+        <div class="subscription-box">
+            <button href="javascript:void(0);" class="subscription-btn monthly" onclick="openSignUpForm('monthly')"><i class="fas fa-external-link-alt"></i> شهريًا - EGP 199.99</button>
+            <button href="javascript:void(0);" class="subscription-btn quarterly" onclick="openSignUpForm('quarterly')"><i class="fas fa-external-link-alt"></i> نصف سنوي - EGP 599.99 </button>
+            <button href="javascript:void(0);" class="subscription-btn yearly" onclick="openSignUpForm('yearly')"><i class="fas fa-external-link-alt"></i> سنويًا - EGP 999.99 </button>
+            <button href="javascript:void(0);" class="subscription-btn Free" onclick="openSignUpForm('Free')"><i class="fas fa-external-link-alt"></i> لمرة واحدة مدي الحياة - EGP 1999.99</button>
+        </div>
+      
+<!-- نموذج إنشاء حساب جديد -->
+<div class="sign-up-form" id="sign-up-form" style="display: none;">
+    <span class="close-btn" onclick="toggleSignUpForm()">❌</span>
+    <h3>إنشاء حساب جديد</h3>
+
+    <div class="form-group">
+        <label for="signup-username">إسم المستخدم :</label>
+        <input type="text" id="signup-username">
+        <i class="fa fa-user"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-password">كلمة المرور :</label>
+        <input type="password" id="signup-password">
+        <i class="fa fa-lock"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-confirm-password">تأكيد كلمة المرور :</label>
+        <input type="password" id="signup-confirm-password">
+        <i class="fa fa-lock"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-fullname">الإسم رباعي :</label>
+        <input type="text" id="signup-fullname">
+        <i class="fa fa-user"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-email">البريد الإلكتروني :</label>
+        <input type="email" id="signup-email">
+        <i class="fa fa-envelope"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-phone">رقم الهاتف :</label>
+        <input type="number" id="signup-phone">
+        <i class="fa fa-phone"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-date">تاريخ الاشتراك :</label>
+        <input type="text" id="signup-date" value="" readonly>
+        <i class="fa fa-calendar"></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-package">باقة الاشتراك :</label>
+        <select id="signup-package">
+            <option value="باقة شهرية ( بتكلفة 199.99 جنية شهريا | صالحة لمدة شهر )">باقة شهرية (  بتكلفة 199.99 جنية شهريا | صالحة لمدة شهر )</option>       
+            <option value="باقة نصف سنوية ( بتكلفة 599.99 جنية نصف سنويا | صالحة لمدة 6 أشهر )">باقة نصف سنوية ( بتكلفة 599.99 جنية نصف سنويا | صالحة لمدة 6 أشهر )</option>
+            <option value="باقة سنوية ( بتكلفة 999.99 جنية سنويا | صالحة لمدة سنة )">باقة سنوية ( بتكلفة 999.99 جنية سنويا | صالحة لمدة سنة )</option>
+            <option value="باقة مدي الحياة ( بتكلفة 1999.99 جنية لمرة واحدة | صالحة مدي الحياة )">باقة مدي الحياة ( بتكلفة 1999.99 جنية لمرة واحدة | صالحة مدي الحياة )</option>                  
+        </select>
+        <i class=""></i>
+    </div>
+    <div class="form-group">
+        <label for="signup-code">كود إحالة صديقك (إن وجد) :</label>
+        <input type="text" id="signup-code">
+        <i class="fa fa-qrcode"></i>
+    </div>
+    <a onclick="signUp()" class="button"><i class="fas fa-paper-plane"></i> إرسال</a>
+    <div class="message" id="signup-message"></div>
+</div>
+      
+    </div>
+
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div>
+            
+      
+  <script>
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+}
+// تحميل تفضيل العرض المحفوظ والوضع الليلي
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModePreference = localStorage.getItem('darkModePreference'); // إضافة تفضيل الوضع الليلي
+    // تطبيق الوضع الليلي إذا كان مفعلاً
+    if (darkModePreference === 'true') {
+        toggleNightMode();
+    }
+});
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+    // حفظ تفضيل الوضع الليلي
+    localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+} 
+    
+    
+// دالة لفتح نموذج التسجيل
+function openSignUpForm() {
+  
+    // عند تحميل النموذج جعل المسافة السلفية للزر المجاني 5
+    const freeElement = document.querySelector('.Free');
+    if (freeElement) {
+        freeElement.style.marginBottom = '5px';
+    }
+  
+    // عرض نموذج التسجيل
+    document.getElementById('sign-up-form').style.display = 'block';
+    
+    // وضع التركيز على حقل اسم المستخدم
+    const usernameInput = document.getElementById('signup-username');
+    if (usernameInput) {
+        usernameInput.focus();
+    }
+    
+    // إخفاء رسالة الخطأ
+    const messageInput = document.getElementById("signup-message");
+    if (messageInput) {
+        messageInput.style.display = 'none';
+    }
+}
+  
+          </script>
+    <script>      
+// دالة لفتح نموذج التسجيل مع تحديد الباقة المناسبة
+function openSignUpForm(packageType) {
+    // عند تحميل النموذج جعل المسافة السلفية للزر المجاني 5
+    const freeElement = document.querySelector('.Free');
+    if (freeElement) {
+        freeElement.style.marginBottom = '5px';
+    }
+    // عرض نموذج التسجيل
+    document.getElementById('sign-up-form').style.display = 'block';
+
+    // قراءة بيانات المستخدم من localStorage
+    const user = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    // ملء الحقول بالقيم المخزنة في localStorage إذا كان المستخدم مسجلاً
+    if (user) {
+        document.getElementById('signup-username').value = user.username || '';
+        document.getElementById('signup-password').value = user.password || '';
+        document.getElementById('signup-confirm-password').value = user.password || ''; // نضع كلمة المرور نفسها لتأكيدها
+        document.getElementById('signup-fullname').value = user.fullName || '';
+        document.getElementById('signup-email').value = user.email || '';
+        document.getElementById('signup-phone').value = user.phoneNumber || '';
+    }
+
+    // تعيين تاريخ اليوم تلقائيًا في حقل تاريخ الاشتراك
+    const signupDateField = document.getElementById('signup-date');
+    const today = new Date();
+    
+    // الحصول على اليوم، الشهر، والسنة
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // الشهور تبدأ من 0
+    const year = today.getFullYear(); // السنة كاملة
+    
+    // تنسيق التاريخ إلى dd/mm/yyyy
+    const formattedDate = `${day}/${month}/${year}`;
+    signupDateField.value = formattedDate;  
+  
+    // وضع التركيز على حقل اسم المستخدم
+    const usernameInput = document.getElementById('signup-username');
+    if (usernameInput) {
+        usernameInput.focus();
+    }
+    
+    // إخفاء رسالة الخطأ
+    const messageInput = document.getElementById("signup-message");
+    if (messageInput) {
+        messageInput.style.display = 'none';
+    }
+
+    // استهداف القائمة المنسدلة
+    var select = document.getElementById("signup-package");
+
+    // تفريغ جميع الخيارات
+    select.innerHTML = "";
+  
+    // تعريف خيارات الباقات
+    var packages = {
+        "monthly": {
+            value: "باقة شهرية ( بتكلفة 199.99 جنية شهريا | صالحة لمدة شهر )",
+            text: "باقة شهرية ( بتكلفة 199.99 جنية شهريا | صالحة لمدة شهر )"
+        },
+        "quarterly": {
+            value: "باقة نصف سنوية ( بتكلفة 599.99 جنية نصف سنويا | صالحة لمدة 6 أشهر  )",
+            text: "باقة نصف سنوية ( بتكلفة 599.99 جنية نصف سنويا | صالحة لمدة 6 أشهر  )",
+        },
+        "yearly": {
+            value: "باقة سنوية ( بتكلفة 999.99 جنية سنويا | صالحة لمدة سنة )",
+            text: "باقة سنوية ( بتكلفة 999.99 جنية سنويا | صالحة لمدة سنة )"
+        },
+        "Free": {
+            value: "باقة مدي الحياة ( بتكلفة 1999.99 جنية لمرة واحدة | صالحة مدي الحياة )",
+            text: "باقة مدي الحياة ( بتكلفة 1999.99 جنية لمرة واحدة | صالحة مدي الحياة )"
+        }          
+    };
+
+    // إضافة الخيار المناسب بناءً على الزر الذي تم الضغط عليه
+    if (packages[packageType]) {
+        var option = document.createElement("option");
+        option.value = packages[packageType].value;
+        option.textContent = packages[packageType].text;
+        select.appendChild(option);
+    }
+}
+
+
+
+// دالة لإغلاق نموذج التسجيل
+function toggleSignUpForm() {
+    const form = document.getElementById('sign-up-form');
+    const freeElement = document.querySelector('.Free');
+
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+        if (freeElement) {
+            freeElement.style.marginBottom = '5px'; // عند فتح النموذج
+        }
+    } else {
+        form.style.display = 'none';
+        if (freeElement) {
+            freeElement.style.marginBottom = '50px'; // عند إغلاق النموذج
+        }
+    }
+}
+
+     
+      
+function signUp() {
+    const usernameInput = document.getElementById("signup-username");
+    const passwordInput = document.getElementById("signup-password");
+    const confirmPasswordInput = document.getElementById("signup-confirm-password");
+    const fullnameInput = document.getElementById("signup-fullname");
+    const emailInput = document.getElementById("signup-email");
+    const phoneInput = document.getElementById("signup-phone");
+    const packageInput = document.getElementById("signup-package");
+    const messageInput = document.getElementById("signup-message");
+    const codeInput = document.getElementById("signup-code");
+
+    function hideMessage() {   
+        messageInput.style.display = 'none';
+    }
+
+    // إضافة مستمعين للأحداث لإخفاء الرسائل عند التعديل
+    usernameInput.addEventListener('input', hideMessage);
+    passwordInput.addEventListener('input', hideMessage);
+    confirmPasswordInput.addEventListener('input', hideMessage);
+    fullnameInput.addEventListener('input', hideMessage);
+    emailInput.addEventListener('input', hideMessage);
+    phoneInput.addEventListener('input', hideMessage);
+    packageInput.addEventListener('input', hideMessage);
+    codeInput.addEventListener('input', hideMessage);
+
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
+    const fullname = fullnameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const package = packageInput.value.trim();
+    const code = codeInput.value.trim();
+
+    messageInput.style.display = 'none';
+    usernameInput.style.borderColor = '#420c0c';
+    passwordInput.style.borderColor = '#420c0c';
+
+    if (!username) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> إسم المستخدم مطلوب';
+        messageInput.style.display = 'block';
+        usernameInput.focus();
+        return;
+    }
+    if (!password) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> كلمة المرور مطلوبة';
+        messageInput.style.display = 'block';
+        passwordInput.focus();
+        return;
+    }
+    if (!confirmPassword) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> تأكيد كلمة المرور مطلوب';
+        messageInput.style.display = 'block';
+        confirmPasswordInput.focus();
+        return;
+    }
+    if (password !== confirmPassword) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> كلمة المرور غير متطابقة';
+        messageInput.style.display = 'block';
+        confirmPasswordInput.focus();
+        return;
+    }
+    if (!fullname) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> الإسم رباعي مطلوب';
+        messageInput.style.display = 'block';
+        fullnameInput.focus();
+        return;
+    }
+    if (fullname.split(" ").length < 4) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يجب أن يحتوي الإسم الكامل على أربعة مقاطع';
+        messageInput.style.display = 'block';
+        fullnameInput.focus();
+        return;
+    }
+    if (!email) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> البريد الإلكتروني مطلوب';
+        messageInput.style.display = 'block';
+        emailInput.focus();
+        return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> البريد الإلكتروني غير صالح';
+        messageInput.style.display = 'block';
+        emailInput.focus();
+        return;
+    }
+    if (!phone) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> رقم الهاتف مطلوب';
+        messageInput.style.display = 'block';
+        phoneInput.focus();
+        return;
+    }
+    if (!/^01\d{9}$/.test(phone)) {
+        messageInput.innerHTML = '<i class="fas fa-exclamation-triangle"></i> رقم الهاتف يجب أن يبدأ ب 01 ويحتوي على 11 رقمًا';
+        messageInput.style.display = 'block';
+        phoneInput.focus();
+        return;
+    }  
+  
+    // افتراض نجاح التسجيل
+    const signupDate = document.getElementById("signup-date").value.trim();
+    const messageContent = `إسم المستخدم : ${username}\nكلمة المرور : ${password}\nالإسم رباعي : ${fullname}\nالبريد الإلكتروني : ${email}\nرقم الهاتف : ${phone}\nتاريخ الاشتراك : ${signupDate}\nنظام الاشتراك : ${package}\nكود إحالة صديقك : ${code}\nمعلومات الدفع : يتم دفع الإشتراك إما من خلال 1- محفظة ڤودافون كاش علي الرقم التالي : ( 01030069322 ) 2- تطبيق إنستا باي علي عنوان الدفع التالي : ( mahmoudrizk16@instapay ) 3- أي تطبيق بنكي آخر محافظ إلكترونية وحسابات علي الرقم التالي : ( 01030069322 ) وإرسال صورة إيصال الدفع لتفعيل الإشتراك الخاص بك .. وإرسال طلب إنضمام إلي جروب المشتركين : https://chat.whatsapp.com/FeGm9uVP4htHLivKimr5Ey | يرجي العلم أن صلاحية الطلب  ساعة فقط ولن يتم تفعيل الإشتراك إلا من خلال صورة إيصال الدفع الخاص بك.`;
+
+    // URL افتراضي لمثال
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=201030069322&text=${encodeURIComponent(messageContent)}`;
+    window.open(whatsappUrl, '_blank');
+
+    messageInput.innerHTML = '<i class="fas fa-check-circle"></i> تم إرسال البيانات بنجاح';
+    messageInput.style.color = '#28a745'; // لون أخضر للنجاح
+    messageInput.style.display = 'block';
+
+    // مسح الحقول بعد عرض رسالة النجاح
+    usernameInput.value = '';
+    passwordInput.value = '';
+    confirmPasswordInput.value = '';
+    fullnameInput.value = '';
+    emailInput.value = '';
+    phoneInput.value = '';
+    packageInput.value = '';
+    codeInput.value = '';
+    document.getElementById("signup-date").value = '';
+
+    // إغلاق نموذج التسجيل بعد التأكيد
+    setTimeout(() => {
+        toggleSignUpForm();
+    }, 2000);
+}      
+            
+  </script>
+    <script>
+        // لتغيير اتجاه الصفحة من اليسار إلى اليمين  (RTL)
+        document.dir = 'rtl';
+      
+// جعل مسافة سلفية للزر الدفع لمرة واحدة 50 عند تحميل الصفحة       
+document.addEventListener("DOMContentLoaded", function() {
+    const freeElement = document.querySelector('.Free');
+    if (freeElement) {
+        freeElement.style.marginBottom = '50px';
+    }
+});
+      
+   
+    </script>
+      
+<script type="text/javascript">
+    //<![CDATA[
+function cnmuSSlids(o) {
+    "use strict";
+    var time = o.time || 500,
+        autoTime = o.autoTime || 5e3,
+        selector = o.selector,
+        width_height = o.width_height || 100 / 70,
+        cnmuSSlids = document.querySelectorAll(selector),
+        i;
+
+    function css(elm, prop, val) {
+        elm.style[prop] = val;
+        prop = prop[0].toUpperCase() + prop.slice(1);
+        elm.style["webkit" + prop] = elm.style["moz" + prop] = elm.style["ms" + prop] = elm.style["o" + prop] = val;
+    }
+
+    function anonimFunc(cnmuSSlid) {
+        var buttonLeft = cnmuSSlid.children[1], // تغيير الأزرار
+            buttonRight = cnmuSSlid.children[2],
+            ul = cnmuSSlid.children[0],
+            li = ul.children,
+            activeIndex = 0,
+            isAnimate = false,
+            i, s;
+
+        ul.style.paddingTop = 100 / width_height + "%";
+
+        for (i = 0; i < li.length; i += 1) {
+            css(li[i], "animationDuration", time + "ms");
+        }
+
+        li[activeIndex].classList.add("active");
+
+        function right() { // عكس الاتجاه
+            if (isAnimate) {
+                return;
+            }
+            clearTimeout(s);
+            isAnimate = true;
+            var nextIndex = activeIndex < li.length - 1 ? activeIndex + 1 : 0;
+            li[nextIndex].classList.add("next");
+            li[activeIndex].classList.add("left");
+            li[nextIndex].classList.add("active");
+            setTimeout(function () {
+                li[activeIndex].classList.remove("active", "left");
+                li[nextIndex].classList.remove("next");
+                activeIndex = nextIndex;
+                isAnimate = false;
+                s = setTimeout(right, autoTime);
+            }, time);
+        }
+
+        function left() { // عكس الاتجاه
+            if (isAnimate) {
+                return;
+            }
+            clearTimeout(s);
+            isAnimate = true;
+            var nextIndex = activeIndex > 0 ? activeIndex - 1 : li.length - 1;
+            li[nextIndex].classList.add("previous");
+            li[activeIndex].classList.add("right");
+            li[nextIndex].classList.add("active");
+            setTimeout(function () {
+                li[activeIndex].classList.remove("active", "right");
+                li[nextIndex].classList.remove("previous");
+                activeIndex = nextIndex;
+                isAnimate = false;
+                s = setTimeout(left, autoTime);
+            }, time);
+        }
+
+        buttonLeft.addEventListener("click", left);
+        buttonRight.addEventListener("click", right);
+        s = setTimeout(right, autoTime);
+    }
+
+    for (i = 0; i < cnmuSSlids.length; i += 1) {
+        anonimFunc(cnmuSSlids[i]);
+    }
+}
+
+var cnmuSSlidsInstance = new cnmuSSlids({
+    selector: "#cnmuSSlid",
+    time: 500,
+    autoTime: 3000,
+    width_height: 350 / 250
+});
+    //]]>
+</script>
+</body>
+</html>
