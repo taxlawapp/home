@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الإعدادات</title>
+    <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <!-- رابط مكتبة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- رابط خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet">  
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #0277bd;
+            --accent-color: #E63946;
+            --text-color: #1a237e;
+            --light-bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }    
+        body {
+            font-family: 'Beiruti', sans-serif;
+            direction: rtl;
+            text-align: center;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            transition: var(--transition);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            color: var(--text-color);
+        }
+
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 97.5%;
+            height: 35px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0px 0px 22.5px 22.5px;
+            border-bottom: 3px solid white;
+            align-items: center;
+            z-index: 1001;
+            color: white;
+        }
+
+        .top-bar .menu-icon {
+            font-size: 27.5px;
+            cursor: pointer;
+        }
+
+        .top-bar .title {
+            font-size: 20px;
+            margin-left: 20px;
+            flex-grow: 1;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* استايلات الصفحة الرئيسية */
+        .settings-page {
+            padding: 20px;
+            margin-bottom: 50px;
+            margin-top: 55px;
+        }
+
+        /* استايل البطاقات */
+        .settings-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .settings-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-header i {
+            margin-left: 10px;
+            font-size: 20px;
+        }
+
+        /* استايل معلومات المشترك المحسنة */
+        .user-info-container {
+            background: linear-gradient(135deg, #1a1a2e, var(--primary-color));
+            color: white;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .user-info-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 5px 0;
+            align-items: center;
+        }
+
+        .user-info-label {
+            font-size: 16px;
+            font-weight: bold;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info-value {
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info-value i {
+            margin-left: 8px;
+        }
+
+        .user-status {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .premium-badge {
+            background-color: #FFD700;
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* استايل العناصر داخل البطاقات */
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: bold;
+            font-size: 16px;
+            transition: var(--transition);
+            color: var(--text-color);
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-item:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .setting-item.active {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+        }
+
+        .setting-item.active .setting-text,
+        .setting-item.active .setting-arrow {
+            color: white;
+        }
+
+        .setting-text {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .setting-text i {
+            margin-left: 10px;
+            font-size: 18px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .gold-icon {
+            color: #FFD700;
+        }
+
+        .setting-arrow {
+            font-size: 18px;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        /* استايل زر تبديل الوضع الليلي */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 55px;
+            height: 25px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 2.5px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* استايل الأزرار */
+        .button {
+            font-size: 17px;
+            font-weight: bold;
+            padding: 12px 30px;
+            margin: 15px auto;
+            border: none;
+            border-radius: var(--border-radius);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            width: fit-content;
+        }
+
+        .button:hover {
+            background-color: var(--primary-color);
+            color: #FFFF00;
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .button:active {
+            transform: scale(0.98);
+        }
+
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 87.5%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: space-around;
+            padding: 5px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 22.5px;
+            border-bottom: 3px solid white;
+            z-index: 1000;
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 0;
+            transition: var(--transition);
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px;
+            font-size: 20px;
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-item:active .icon {
+            font-size: 22px;
+        }
+
+       /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }     
+
+        /* شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: 87.5px;
+            background-color: red;
+            color: white;
+            font-size: 15px;
+            padding: 2.5px 5px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* أنماط الوضع الليلي */
+        body.dark-mode {
+            --text-color: #f5f5f5;
+            --light-bg: #121212;
+            --card-bg: #1e1e1e;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .settings-card {
+            border: 1px solid #333;
+        }
+
+        body.dark-mode .setting-item {
+            border-bottom: 1px solid #333;
+        }
+
+       body.dark-mode .setting-arrow {
+            color: #FFD700;
+        }
+
+        body.dark-mode .setting-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-mode .switch input[type="checkbox"] + .slider {
+            background-color: #555;
+        }
+
+        body.dark-mode .switch input[type="checkbox"]:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        body.dark-mode .user-info-container {
+            background: linear-gradient(135deg, #0f0c29, #1a1a2e);
+            border-bottom: 1px solid #333;
+        }
+
+        body.dark-mode .user-status {
+            font-size: 15px;
+        }
+
+
+        /* تعديلات للعرض على شاشات صغيرة */
+        @media (max-width: 480px) {
+            .settings-page {
+                padding: 10px;
+            }
+            
+            .setting-item {
+                padding: 12px 10px;
+                font-size: 16px;
+            }
+            
+            .setting-text i {
+                font-size: 16px;
+            }
+            
+            .user-info-container {
+                padding: 10px;
+            }
+            
+            .user-info-label, .user-info-value {
+                font-size: 16px;
+                
+            }
+        }
+    </style>
+</head>
+<body>
+      
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='https://taxlawapp.github.io/home/home.html'"></i>
+    </div>
+    <div class="title">
+         إعدادات التطبيق | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div>
+
+<div class="settings-page">
+    <!-- بطاقة معلومات المستخدم -->
+    <div class="settings-card">
+        <div class="card-header">
+            <i class="fas fa-user-circle"></i>
+            <span>معلومات الحساب والاشتراك</span>
+        </div>
+        
+        <div class="user-info-container" id="usernameDisplay">
+            <!-- سيتم ملؤها بواسطة الجافاسكريبت -->
+        </div>
+        
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="go:Ramadan" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+                <span class="setting-text"><i class="fa fa-crown gold-icon"></i>الإشتراكــات | إنشــئ حســابك</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="go:prooo" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+                <span class="setting-text"><i class="fa fa-user-plus"></i>برنامج الإحالة وكسب النقاط</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+          
+        <div class="setting-item" style="display: none;" onclick="toggleActive(this)">
+            <a href="go:Accinfo" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+                <span class="setting-text"><i class="fa fa-user"></i>حسابـــي | المــلف الشخصــي</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+        
+        <div class="setting-item" style="display: none;" onclick="toggleActive(this)">
+            <a href="go:proo" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+                <span class="setting-text"><i class="fa fa-share-alt"></i>شارك كــود إحالتك لأصدقائك</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>          
+        
+        <div class="setting-item" style="display: none;" onclick="toggleActive(this)">
+            <a href="https://chat.whatsapp.com/FeGm9uVP4htHLivKimr5Ey" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">                          
+                <span class="setting-text"><i class="fa fa-comments"></i>جروب المشتركين | واتساب</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- بطاقة الإعدادات العامة -->
+    <div class="settings-card">
+        <div class="card-header">
+            <i class="fas fa-cog"></i>
+            <span>الإعدادات العامة</span>
+        </div>
+        
+        <div class="setting-item" onclick="toggleActive(this)">
+            <span class="setting-text"><i class="fa fa-moon"></i>الوضـــع الليلـــي / النهـــاري</span>
+            <label class="switch">
+                <input type="checkbox" checked id="nightModeCheckbox">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="go:New" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+                <span class="setting-text"><i class="fa fa-rocket"></i>الجـــــديد فـ الإصــــدار | 5.2.2</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>  
+     
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="go:Favorites" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+                <span class="setting-text"><i class="fa fa-heart"></i>المفضــلة | محتويات التطبيق</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- بطاقة خدمات الـ AI -->
+    <div class="settings-card">
+        <div class="card-header">
+            <i class="fas fa-brain"></i>
+            <span>خدمات ذكية بـ AI</span>
+        </div>  
+     
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://taxlawapp.github.io/home/taxAI.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+                <span class="setting-text"><i class="fas fa-robot"></i>المساعد الضريبي الذكي بـ AI</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- بطاقة التواصل والمجتمع -->
+    <div class="settings-card">
+        <div class="card-header">
+            <i class="fas fa-users"></i>
+            <span>التواصل والمجتمع</span>
+        </div>
+        
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://chat.whatsapp.com/CdbylNPvwdR4zqK2GcjK0t" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">                          
+                <span class="setting-text"><i class="fa fa-users"></i>جروب المستخدمين | واتساب</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>              
+
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://taxlawapp.github.io/home/users-app.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">                            
+                <span class="setting-text"><i class="fas fa-gem"></i>مشتركـي النسـخة الـذهبية</span>
+                <span class="setting-arrow">❯</span>
+            </a>  
+        </div>          
+
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://taxlawapp.github.io/home/info.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">                            
+                <span class="setting-text"><i class="fa fa-info-circle"></i>مطــور التطـــبيق والتواصل</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+          
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://www.facebook.com/TaxLawApp" target="_blank" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;"> 
+                <span class="setting-text"><i class="fab fa-facebook"></i>الصفحـة الرسـمية للتطــبيق</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://youtube.com/@taxlawapp" target="_blank" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;"> 
+                <span class="setting-text"><i class="fab fa-youtube"></i>القنـــاة الرســمية للتطــبيق</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- بطاقة التقييم والمشاركة -->
+    <div class="settings-card">
+        <div class="card-header">
+            <i class="fas fa-share-alt"></i>
+            <span>المشاركة والتقييم</span>
+        </div>
+        
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://play.google.com/store/apps/details?id=com.mrizk.taxlawapp" target="_blank" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;"> 
+                <span class="setting-text"><i class="fas fa-star"></i>قيمنا بخمس نجوم عـ المتجر</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>          
+
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://taxlawapp.github.io/home/Share-app.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+                <span class="setting-text"><i class="fa fa-share"></i>شارك التطبيق بين أصدقائك</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div> 
+    </div>
+
+    <!-- بطاقة الإعدادات الأخرى -->
+    <div class="settings-card">
+        <div class="card-header">
+            <i class="fas fa-ellipsis-h"></i>
+            <span>إعدادات أخرى</span>
+        </div>
+        
+        <div class="setting-item" onclick="toggleActive(this)">
+            <a href="https://taxlawapp.github.io/home/privacy-policy.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">                            
+                <span class="setting-text"><i class="fa fa-lock"></i>سياسة الخصوصية للتطبيق</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+         
+
+        <div class="setting-item" style="display: block !important;" onclick="toggleActive(this)">
+            <a href="go:12345" target="_blank" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">                            
+                <span class="setting-text"><i class="fas fa-exclamation-triangle"></i>الصفحـــة غير متاحــــة حاليا</span>
+                <span class="setting-arrow">❯</span>
+            </a>
+        </div>
+    </div>
+</div>                      
+
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div> 
+
+<script>
+    function toggleActive(element) {
+        document.querySelectorAll('.setting-item').forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+    }          
+    
+    // تحميل تفضيل العرض المحفوظ والوضع الليلي
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkModePreference = localStorage.getItem('darkModePreference');
+        const nightModeCheckbox = document.getElementById('nightModeCheckbox');
+
+        if (darkModePreference === 'true') {
+            document.body.classList.add('dark-mode');
+            nightModeCheckbox.checked = true;
+        } else {
+            document.body.classList.remove('dark-mode');
+            nightModeCheckbox.checked = false;
+        }
+
+        nightModeCheckbox.addEventListener('change', toggleNightMode);
+    });
+
+    function toggleNightMode() {
+        const body = document.body;
+        const isNightMode = document.getElementById('nightModeCheckbox').checked;
+
+        body.classList.toggle('dark-mode', isNightMode);
+        localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+    }
+    
+    function confirmExit() {
+        const modal = document.createElement('div');
+        modal.id = 'modal';
+        modal.style.display = 'flex';
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.right = '0';
+        modal.style.bottom = '0';
+        modal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        modal.style.justifyContent = 'center';
+        modal.style.alignItems = 'center';
+        modal.style.zIndex = '9999';
+        document.body.appendChild(modal);
+
+        const modalContent = document.createElement('div');
+        modalContent.style.padding = '25px';
+        modalContent.style.borderRadius = '15px';
+        modalContent.style.textAlign = 'center';
+        modalContent.style.width = '75%';
+        modalContent.style.maxWidth = '400px';
+        modalContent.style.background = 'linear-gradient(135deg, #f5f7fa, #e1f5fe)';
+        modalContent.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)';
+        modalContent.style.border.top = '4px solid var(--primary-color)';
+        
+        if (document.body.classList.contains('dark-mode')) {
+            modalContent.style.background = 'linear-gradient(135deg, #1e1e1e, #2a2a2a)';
+            modalContent.style.border = '2px solid var(--secondary-color)';
+        }
+        
+        modal.appendChild(modalContent);
+
+        // عنوان الرسالة
+        const title = document.createElement('div');
+        title.style.fontSize = '22px';
+        title.style.fontWeight = 'bold';
+        title.style.color = 'var(--primary-color)';
+        title.style.marginBottom = '15px';
+        title.style.display = 'flex';
+        title.style.alignItems = 'center';
+        title.style.justifyContent = 'center';
+        
+        if (document.body.classList.contains('dark-mode')) {
+            title.style.color = '#f5f5f5';
+        }
+        
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-exclamation-triangle';
+        icon.style.marginLeft = '10px';
+        icon.style.color = 'var(--accent-color)';
+        
+        const titleText = document.createElement('span');
+        titleText.textContent = 'تأكيد الخروج';
+        
+        title.appendChild(icon);
+        title.appendChild(titleText);
+        modalContent.appendChild(title);
+
+        // رسالة التأكيد
+        const message = document.createElement('div');
+        message.style.fontSize = '18px';
+        message.style.marginBottom = '25px';
+        message.style.color = 'var(--text-color)';
+        message.textContent = "هل أنت متأكد أنك تريد الخروج من التطبيق ؟";
+        modalContent.appendChild(message);
+
+        // أزرار التأكيد
+        const buttonsContainer = document.createElement('div');
+        buttonsContainer.style.display = 'flex';
+        buttonsContainer.style.justifyContent = 'space-around';
+        buttonsContainer.style.gap = '15px';
+        modalContent.appendChild(buttonsContainer);
+
+        // زر الإلغاء
+        const cancelBtn = document.createElement('button');
+        cancelBtn.textContent = 'إلغاء';
+        cancelBtn.style.padding = '12px 25px';
+        cancelBtn.style.fontSize = '16px';
+        cancelBtn.style.fontWeight = 'bold';
+        cancelBtn.style.backgroundColor = 'var(--primary-color)';
+        cancelBtn.style.color = 'white';
+        cancelBtn.style.border = 'none';
+        cancelBtn.style.borderRadius = '8px';
+        cancelBtn.style.cursor = 'pointer';
+        cancelBtn.style.transition = 'all 0.3s ease';
+        cancelBtn.style.flex = '1';
+        cancelBtn.onmouseover = function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        };
+        cancelBtn.onmouseout = function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = 'none';
+        };
+        cancelBtn.onclick = function() {
+            document.body.removeChild(modal);
+        };
+        buttonsContainer.appendChild(cancelBtn);
+
+        // زر الموافقة
+        const confirmBtn = document.createElement('button');
+        confirmBtn.textContent = 'نعم، أخرج';
+        confirmBtn.style.padding = '12px 25px';
+        confirmBtn.style.fontSize = '16px';
+        confirmBtn.style.fontWeight = 'bold';
+        confirmBtn.style.backgroundColor = 'var(--accent-color)';
+        confirmBtn.style.color = 'white';
+        confirmBtn.style.border = 'none';
+        confirmBtn.style.borderRadius = '8px';
+        confirmBtn.style.cursor = 'pointer';
+        confirmBtn.style.transition = 'all 0.3s ease';
+        confirmBtn.style.flex = '1';
+        confirmBtn.onmouseover = function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+        };
+        confirmBtn.onmouseout = function() {
+            this.style.transform = 'scale(1)';
+            this.style.boxShadow = 'none';
+        };
+        confirmBtn.onclick = function() {
+            window.location.href = "http://action_exit";
+        };
+        buttonsContainer.appendChild(confirmBtn);
+    }
+
+    document.dir = 'rtl';
+    
+// قراءة بيانات المستخدم من localStorage
+const user = JSON.parse(localStorage.getItem('loggedInUser'));
+
+function updateUserInfo(user, daysDiff) {
+    const userInfoContainer = document.getElementById('usernameDisplay');
+    
+    // معالجة نص الباقة
+    let subscriptionDisplay = user.subscriptionInfo;
+    if (subscriptionDisplay.includes('مدي الحياة')) {
+        subscriptionDisplay = 'مدي الحياة - بدون رسوم إضافية';
+    }
+    
+    if (daysDiff > 0) {
+        // حالة المستخدم المشترك
+        userInfoContainer.innerHTML = `
+            <div class="user-info-row">
+                <span class="user-info-label"><i class="fas fa-user"></i>  إسم المستخدم :</span>
+                <span class="user-info-value">${user.fullName}</span>
+            </div>
+            <div class="user-info-row">
+                <span class="user-info-label"><i class="fas fa-envelope"></i>  البريد الإلكتروني :</span>
+                <span class="user-info-value">${user.email || 'غير متوفر'}</span>
+            </div>
+            <div class="user-info-row">
+                <span class="user-info-label"><i class="fas fa-info-circle"></i> باقة الإشتراكـ :</span>
+                <span class="user-info-value">${subscriptionDisplay}</span>
+            </div>
+            <div class="user-info-row">
+                <span class="user-info-label"><i class="fas fa-calendar-alt"></i> تاريخ الانتهاء :</span>
+                <span class="user-info-value">${user.expiryDate}</span>
+            </div>
+            <div class="user-info-row">
+                <span class="user-info-label"><i class="fas fa-trophy"></i> عدد النقاط :</span>
+                <span class="user-info-value">${user.points}</span>
+            </div>
+            <div class="user-status">
+                <span class="premium-badge">PREMIUM</span>
+                <span>  حالة الحساب : نشط | الأيام المتبقية :  ${daysDiff} يوم</span>
+            </div>
+        `;
+            
+            // إظهار العناصر المخفية للمشتركين
+            document.querySelectorAll('.setting-item[style="display: none;"]').forEach(element => {
+                element.style.display = 'flex';
+            });
+            
+            // إخفاء عناصر الاشتراك
+            document.querySelector('.setting-item a[href="go:Ramadan"]').parentElement.style.display = 'none';
+            document.querySelector('.setting-item a[href="go:prooo"]').parentElement.style.display = 'none';
+        } else {
+            // حالة انتهاء الاشتراك
+            userInfoContainer.innerHTML = `
+                <div class="user-info-row">
+                    <span class="user-info-label"><i class="fas fa-user"></i>  إسم المستخدم :</span>
+                    <span class="user-info-value">${user.fullName}</span>
+                </div>
+                <div class="user-info-row">
+                    <span class="user-info-label"><i class="fas fa-exclamation-triangle"></i>  حالة الاشتراك :</span>
+                    <span class="user-info-value" style="color: #ff6b6b;"> منتهي</span>
+                </div>
+                <div class="user-status">
+                    <span>الاشتراك منتهي الصلاحية، يرجى التجديد</span>
+                </div>
+            `;
+            
+            // إخفاء العناصر الخاصة بالمشتركين
+            document.querySelectorAll('.setting-item[style="display: none;"]').forEach(element => {
+                element.style.display = 'none';
+            });
+            
+            // إظهار عناصر الاشتراك
+            document.querySelector('.setting-item a[href="go:Ramadan"]').parentElement.style.display = 'flex';
+            document.querySelector('.setting-item a[href="go:prooo"]').parentElement.style.display = 'flex';
+        }
+    }
+
+    if (user) {
+        const currentDate = new Date();
+        const expiryDateParts = user.expiryDate.split('/');
+        const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+        const timeDiff = expiryDate - currentDate;
+        let daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+        if (isNaN(daysDiff) || daysDiff <= 0) {
+            daysDiff = 0;
+        }
+
+        updateUserInfo(user, daysDiff);
+    } else {
+        // حالة الزائر
+        document.getElementById('usernameDisplay').innerHTML = `
+            <div class="user-info-row" style="justify-content: center;">
+                <span class="user-info-value"><i class="fas fa-user"></i> مرحباً بك : زائر</span>
+            </div>
+            <div class="user-status">
+                <span>أنصحك بالإشتراك في النسخة الذهبية للوصول لجميع المميزات</span>
+            </div>
+        `;
+        
+        // إخفاء العناصر الخاصة بالمشتركين
+        document.querySelectorAll('.setting-item[style="display: none;"]').forEach(element => {
+            element.style.display = 'none';
+        });
+        
+        // إظهار عناصر الاشتراك
+        document.querySelector('.setting-item a[href="go:Ramadan"]').parentElement.style.display = 'flex';
+        document.querySelector('.setting-item a[href="go:prooo"]').parentElement.style.display = 'flex';
+    }
+</script>
+</body>
+</html>
