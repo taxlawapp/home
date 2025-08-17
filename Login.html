@@ -1,161 +1,210 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="login.css" >
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- مكتبة الأيقونات -->
-<!-- رابط خط Cairo من Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet"> 
-<title>حسابي</title>
-          <!-- لو الأيقونة بصيغة PNG -->
-    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">  
-    <style>
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Beiruti' , sans-serif;
-}      
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الأسئلة الشائعة</title>
+<!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- مكتبة الأيقونات -->
+    <!-- رابط خط Cairo من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet">      
+  <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #0277bd;
+            --accent-color: #E63946;
+            --text-color: #1a237e;
+            --light-bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }      
         body {
             font-family: 'Beiruti', sans-serif;
-            background: linear-gradient(to right, #e1f5fe, white);
-            background-size: 600% 600%;
-            animation: gradientAnimation 10s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
             direction: rtl;
-            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
-            -moz-user-select: none; /* لمتصفح فايرفوكس */
-            -ms-user-select: none; /* لإنترنت إكسبلورر */
-            user-select: none; /* المتصفحات الأخرى */           
-        }
-     
-        .login-container {
-            margin-top: 0px;
-            background: linear-gradient(to right, #eaecee, #e1f5fe);
-            padding: 12.5px 15px 5px;
-            border-radius: 15px 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            border: 2.5px solid #1a237e; /* حدود */
-            border-bottom: 3px solid red; /* حدود */ 
-            position: relative;
-            margin-bottom: 50px;
-        }
-      
-        .login-container h1 {
-            color: #1a237e;
             text-align: center;
-            margin-bottom: 7.5px;
-            background-color: linear-gradient(to right, white, #e1f5fe);
-            border-bottom: 3px solid #1a237e; /* إضافة حد */
-        }      
-        .login-container h2 {
-            color: #FFD700;
-            text-align: center;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */ 
-            border-bottom: 3px solid #FFD700; /* إضافة حد */          
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            transition: var(--transition);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            color: var(--text-color);
         }
-        .form-group {
-            margin-bottom: 15px;
+        /* استايل الحاوية الرئيسية */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-bottom: 55px;
+            margin-top: 55px;
+        }
+    
+        .search-bar {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            padding: 12.5px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 18px;
+            font-weight: bold;          
+            border: 2px solid #1a237e;
+            border-radius: 10px;
             position: relative;
+            color: #b71c1c;
         }
-    .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    background: ; 
-    font-weight: bold;
-    color: #02076e;
-    margin-bottom: 2.5px;
-    font-size: 20px;
-    border: 0px solid #420c0c;
-    margin-top: 0px;      
-        }
-      
-   .form-group input {
-    text-align: center;
-    font-weight: bold;
-    width: 100%;
-    background: #ffffff;
-    outline: none;
-    border-radius: 60px;
-    padding: 6px 20px;
-    font-size: 20px;
-    color: #0e1ba0;
-    height: 45px;
-    border: 2px solid #420c0c;
-    border-radius: 5px;            
-    margin:0px 0; 
-    margin-top: 0px;  
-        }
- .form-group input:focus{
+    
+#searchInput:focus {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
-}     
-        .form-group .fa {
-            position: absolute;
-            left: 10px;
-            top: 67.5%;
-            transform: translateY(-50%);
-            color: #1a237e;
-        }
+}
 
-
-        .user-info {
-            margin-top: 375px;
-            text-align: right;
-            margin-bottom: 0px;          
-        }
-        .user-info p {
-            background-color: #e9ecef;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 5px;
-
-            color: #1a237e;
-            font-weight: bold;
-            font-size: 20px;          
-          
-        }
-        .hidden {
-            display: none;
-        }
-        .full-name-display {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 16px;
-            color: #007BFF;
-        }
-      
-#full-name-display { 
-    text-align: center;  
-    color: #1a237e; /* لون النص */
-    font-weight: bold; /* وزن الخط */  
-    background-color: ; /* خلفية النص */
-    border: 0px solid #ebccd1; /* حدود النص */
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 22px;
+    
+.tag-bar {
+    margin-bottom: 10px; /* تم تقليل المسافة السفلية */
     display: flex;
-    align-items: center;
-    margin-top: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
-    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */
+    gap: 2.5px;
+    justify-content: center;
   
-      }       
-      
- 
- .button {
-    font-size: 17px; /* حجم الخط */ 
+}
+.tag {
+    font-size: 15px;
+    padding: 5px 10px;
+    background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    border: 2px solid #1a237e;
+    font-weight: bold; /* وزن الخط */
+  
+}
+        .tag .checkmark {
+            display: none;
+            color: #fafafa;
+            font-size: 15px;
+            margin-left: 0.5px;
+        }
+        .tag.selected .checkmark {
+            display: inline;
+        }
+
+        /* استايل البطاقات */
+        .version-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 7.5px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .version-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .version-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .version-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            text-align: right;
+            padding: 0 15px;
+        }
+
+        .version-content.show {
+            max-height: 20000px; /* قيمة كبيرة تكفي لعرض المحتوى */
+            padding: 15px;
+        }
+
+        .version-content p {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .arrow-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .arrow-icon.rotate {
+            transform: rotate(180deg);
+        }
+    
+.version-header {
+    position: relative; /* ✅ هذا يجعل position: absolute داخل .tags تعمل بشكل صحيح */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+    
+        .tags {
+            display: inline-block;
+            position: absolute;
+            top: -10px;
+            left: -5px;
+            color: white;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            font-weight: bold;              
+           }
+
+          .tags span {
+           background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */
+           padding: 2px 6px;
+           border-radius: 4px;
+           margin-right: -8px; /* تقليل المسافة بين الوسوم */
+           }
+#placeholder {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* تم تعديل الموقع ليكون على يمين حقل الإدخال مع ترك مسافة صغيرة */
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    opacity: 0.5;
+    font-size: 20px;
+    color: #b71c1c; /* لون النص أحمر */
+}
+        .clear-search {
+            position: absolute;
+            top: 50%;
+            left: 10px; /* Adjusted position */
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: red; /* Red color */
+
+        }
+        .clear-search:hover {
+            color: darkred; /* Darker red color on hover */
+        }
+
+.button {
+    font-size: 17px; /* حجم الخط */
     font-weight: bold; /* وزن الخط */
     padding: 7.5px 75px; /* حجم الحشو */
-    margin-top: 5px; /* قم بتعديل هذا الرقم حسب الحاجة */  
-    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */         
+    margin: 10px auto; /* تقليل هامش الزر */
     border: none; /* حذف الحدود */
     border-radius: 5px; /* تقويس الزوايا */
     background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
@@ -166,7 +215,7 @@
     display: block; /* عرض الزر ككتلة */
     text-align: center; /* توسيط النص داخل الزر */
 }
-      
+
 .button:hover {
     background-color: #1a237e; /* لون خلفية الزر عند التحويم */
     color: #FFFF00; /* لون النص */  
@@ -182,227 +231,47 @@
 .button a {
     text-decoration: none; /* إزالة الخط تحت النص داخل الرابط */
     color: inherit; /* الاحتفاظ بلون النص داخل الرابط */
-}
-      
-#error-message {
-    color: #d9534f; /* لون النص */
-    font-weight: bold; /* وزن الخط */
-    text-align: center;  
-    background-color: #f2dede; /* خلفية النص */
-    border: 1px solid #ebccd1; /* حدود النص */
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    margin-top: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
-    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
-}
-
-#error-message i {
-    margin-right: 10px; /* مسافة بين الأيقونة والنص */
-    font-size: 20px; /* حجم الأيقونة */
-}
-      
-.hidden {
-    display: none;
-}
-.password-recovery-form {
-    display: none;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.password-recovery-form h3 {
-    margin-bottom: 20px;
-}
-.password-recovery-form .form-group {
-    margin-bottom: 15px;
-}
-.password-recovery-form input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-}
-.password-recovery-form .button {
-    margin-top: 10px;
-    display: block;
-}
-.password-recovery-form .message {
-    margin-top: 10px;
-    color: #1a237e;
-}
-      
-/* نماذج الاسترجاع */
-    #password-recovery-form {
-        display: none;
-        margin-top: 20px;
-        background: linear-gradient(to right, #eaecee, #e1f5fe);
-        padding: 15px 15px 10px;
-        border-radius: 15px 15px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        position: relative;
-        border: 2.5px solid #1a237e; /* حدود */
-        border-bottom: 3px solid red; /* حدود */ 
-      
-    }
-    .password-recovery-form h3 {
-            margin-bottom: 10px;
-            color: #1a237e;
-            text-align: center;
-            background-color: linear-gradient(to right, white, #e1f5fe);
-            font-size: 30px;
-            font-weight: bold;
-            border-bottom: 3px solid #1a237e; /* إضافة حد */
-    }
-    .password-recovery-form .form-group {
-        margin-bottom: 15px;
-    }
-    .password-recovery-form input {
-        width: 100%;
-        padding: 10px;
-        font-size: 20px;
-        font-weight: bold; /* وزن الخط */      
-        border-radius: 5px;
-        border: 1px solid #ddd;
-    }
-    .password-recovery-form .button {
-        margin-top: 10px;
-        display: block;
-    }
-    .password-recovery-form .message {
-        margin-top: 10px;
-        color: #1a237e;
-    }
-
-      
-.close-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #d9534f; /* لون النص */
-}
-
-.close-btn:hover {
-    color: #c9302c; /* لون النص عند التحويم */
-}
-
-.password-recovery-form {
-    display: none;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-
-#recovery-message {
-    color: #d9534f; /* لون النص */
-    font-weight: bold; /* وزن الخط */
-    text-align: center;  
-    background-color: #f2dede; /* خلفية النص */
-    border: 1px solid #ebccd1; /* حدود النص */
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;  
-}
-
-#recovery-message i {
-    margin-right: 10px; /* مسافة بين الأيقونة والنص */
-    font-size: 20px; /* حجم الأيقونة */
-}
-
-  
-/* حاوية الرابط */
-.link-container {
-    text-align: left; /* محاذاة النص إلى اليسار */
-}
-
-/* تنسيق الرابط */
-#PasswordRecovery {
-    color: #304ffe; /* لون النص */
-    text-decoration: none; /* إزالة التسطير */
-    font-weight: bold; /* جعل النص عريض */
-    font-size: 18px; /* حجم النص */
-    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
-}
-
-/* عند التمرير */
-#PasswordRecovery :hover {
-    color: #1565c0; /* لون النص عند التمرير */
-    text-decoration: underline; /* إضافة التسطير عند التمرير */
-}
-
-/* عند النقر */
-#PasswordRecovery:active {
-    color: #1a237e; /* لون النص عند النقر */
-}
-
-/* تنسيق الرابط */
-#SignUpLink {
-    color: #304ffe; /* لون النص */
-    text-decoration: none; /* إزالة التسطير */
-    font-weight: bold; /* جعل النص عريض */
-    font-size: 18px; /* حجم النص */
-    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
-}
-
-/* عند التمرير */
-#SignUpLink :hover {
-    color: #1565c0; /* لون النص عند التمرير */
-    text-decoration: underline; /* إضافة التسطير عند التمرير */
-}
-
-/* عند النقر */
-#SignUpLink :active {
-    color: #1a237e; /* لون النص عند النقر */
 }      
+        /* استايل الفيديو */
+        .video-container {
+            margin: 20px auto; /* هامش العلوي والسفلي */
+            padding: 5px;
+            background-color: #000; /* لون خلفية الحاوية */
+            border: 2px solid #fafafa; /* لون الحدود */
+            border-radius: 10px; /* تقويس الزوايا */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* إضافة ظل للحاوية */
+            max-width: 560px; /* تحديد العرض الأقصى */
+        }
 
-/* تنسيق الرابط */
-#Link {
-    color: #304ffe; /* لون النص */
-    text-decoration: none; /* إزالة التسطير */
-    font-weight: bold; /* جعل النص عريض */
-    font-size: 18px; /* حجم النص */
-    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
-}
-
-/* عند التمرير */
-#Link :hover {
-    color: #1565c0; /* لون النص عند التمرير */
-    text-decoration: underline; /* إضافة التسطير عند التمرير */
-}
-
-/* عند النقر */
-#Link :active {
-    color: #1a237e; /* لون النص عند النقر */
-} 
-      
-        .gold-icon {
-            color: #FFD700; /* لون ذهبي */
+        .video-container iframe {
+            width: 100%; /* عرض الفيديو بنسبة 100% من الحاوية */
+            height: 315px; /* ارتفاع الفيديو */
+            border-radius: 10px; /* تقويس زوايا الفيديو */
         } 
-            
-        .user-icon {
-            max-width: 50%; /* عرض الصورة بنسبة 50% من الحاوية */
-            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
-            border-radius: 0px; /* تقويس زوايا الصورة */
-            box-shadow: 0 0 0px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
-            margin: 0 auto 20px auto; /* توسيط الصورة وإضافة مسافة سفلية */
-            display: block;
-          }
-
+    
+#extraClearButton {
+    color: white; /* لون النص */
+    background: red; /* لون الخلفية */
+    border: none; /* إزالة الحدود */
+    border-radius: 5px; /* زوايا مستديرة */
+    text-decoration: none; /* إزالة التسطير عن النص */
+    display: inline-block; /* العرض المدمج مع الحافة */
+    font-size: 16px; /* حجم الخط */
+    font-weight: bold; /* وزن الخط */
+    padding: 5px 75px; /* حجم الحشو */
+    margin: 5px auto; /* هامش الزر */
+    color:white; /* لون النص */
+    cursor: pointer; /* تحويل المؤشر إلى يد عند التحويم */
+    transition: background-color 0.3s, transform 0.3s; /* تأثير الانتقال */
+    text-decoration: none; /* إزالة الخط تحت النص داخل الزر */
+    display: block; /* عرض الزر ككتلة */
+    text-align: center; /* توسيط النص داخل الزر */  
+  }
+  
+  #extraClearButton:hover {
+    background-color: darkred; /* تغيير لون الخلفية عند التحويم */
+  }
+    
 
         /* أنماط القائمة السفلية */
         .navbar {
@@ -469,57 +338,164 @@
             justify-content: center;
         }   
       
-        /* أنماط الوضع الليلي للقائمة */
-        body.dark-mode .navbar {
-            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
-            border-top: 2px solid #fafafa; /* حدود علوية */
-        }
-
-        body.dark-mode .navbar .nav-item {
-            color: #ddd; /* لون النص في الوضع الليلي */
-            border-color: transparent; /* حدود شفافة */
-        }
-
-        body.dark-mode .navbar .nav-item.home {
-            border-color: #ddd; /* حدود العنصر الرئيسي */
-            border: none; /* إزالة الحدود */  
-        }
-      
-        body.dark-mode .icon {
-            color: #ddd; /* لون الأيقونات في الوضع الليلي */
-        }
-
         /* إزالة الخط تحت أسماء القوائم */
         .navbar-nav .nav-link {
             text-decoration: none;
         }
         .navbar a {
             text-decoration: none;
+        } 
+  
+        /* أنماط الوضع الليلي */
+        body.dark-mode {
+            --text-color: #f5f5f5;
+            --light-bg: #121212;
+            --card-bg: #1e1e1e;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
-      
-/* نمط الحاوية لعناصر "ذكرني" */
-.remember-me {
+
+        body.dark-mode .version-card {
+            border: 1px solid #333;
+        }
+
+
+/* استايل حقل البحث */
+body.dark-mode .search-bar {
+    background: #212121; /* لون خلفية الشريط الجاري في الوضع الليلي */  
+    border-color: #fafafa; /* لون حدود حقل البحث في الوضع الليلي */
+    color: #fafafa; /* لون النص في حقل البحث في الوضع الليلي */
+    margin-top: 10px;  
+}
+    
+/* استايل الأسئلة والأجوبة */
+body.dark-mode .faq-item {
+    border-color: #fafafa; /* لون حدود الأسئلة والأجوبة في الوضع الليلي */
+    color: #fafafa; /* لون النص في الأسئلة والأجوبة في الوضع الليلي */
+}
+
+body.dark-mode #placeholder {
+    color: #fafafa; /* لون النص في حقل البحث في الوضع الليلي */}
+    
+/* استايل الزر الأحمر */
+body.dark-mode #extraClearButton {
+    background-color: red; /* لون خلفية العنصر في الوضع الليلي */
+    color: #fafafa; /* لون النص في الوضع الليلي */
+    padding: 5px; /* الحشو الداخلي */
+    border-radius: 7.5px; /* تقويس الزوايا */
+    margin: 0px 3; /* الهوامش العلوية والسفلية */
+}
+
+/* استايل الزر الليلي */
+body.dark-mode .night-mode-toggle {
+    background: #0056b3; /* تغيير لون خلفية الزر الليلي عند التحويم */
+}
+/* استايل الزر  */
+body.dark-mode .button {
+    background-color: #424242; /* لون خلفية العنصر في الوضع الليلي */
+    color: #fafafa; /* لون النص في الوضع الليلي */
+    padding: 5px; /* الحشو الداخلي */
+    border-radius: 7.5px; /* تقويس الزوايا */
+    margin: 0px 3; /* الهوامش العلوية والسفلية */
+}
+/* استايل الفيديو */
+body.dark-mode .video-container {
+    background-color: #212121; /* لون خلفية الفيديو في الوضع الليلي */
+    border-color: #fafafa; /* لون حدود الفيديو في الوضع الليلي */
+}
+
+/* استايل الصورة */
+body.dark-mode .image-container img {
+    background-color: #212121; /* لون خلفية الصورة في الوضع الليلي */
+    border-color: #fafafa; /* لون حدود الصورة في الوضع الليلي */
+}
+    
+        /* تعديلات للعرض على شاشات صغيرة */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .version-header {
+                font-size: 20px;
+                padding: 12px;
+                font-weight: bold;
+            }
+            
+            .version-content p {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+    
+        /* استايل الصورة */
+        .image-container {
+            text-align: center; /* محاذاة الصورة إلى الوسط */
+            margin: 7.5px 0; /* هامش علوي وسفلي */
+        }
+
+        .image-container img {
+            max-width: 100%; /* عرض الصورة بنسبة 100% من الحاوية */
+            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+            border-radius: 0px; /* تقويس زوايا الصورة */
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
+            border: 0px solid #1a237e;
+          
+        } 
+        .gold-icon {
+            display: inline-block;
+            position: absolute;
+            top: -10px;
+            left: 117.5px;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;           
+            color: #FFD700; /* لون ذهبي */
+            font-size: 16px;
+            background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */
+        }
+
+   
+#usernameDisplay {
+    color: #1a237e; /* لون النص */
+    font-weight: bold; /* وزن الخط */  
+    background-color: ; /* خلفية النص */
+    border: 0px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
     display: flex;
-    align-items: center; /* توسيط عمودي للعناصر */
-    margin: 10px 0; /* مسافة بينية فوق وتحت */
+    align-items: center;
+    border: 2.5px solid #1a237e; /* إضافة حد */
+  
+      }    
+ .hidden {
+  display: none;
+}    
 
-}
-
-/* نمط حقل الإدخال "checkbox" */
-.remember-me input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin-right: 5px; /* مسافة بينية بين الـ checkbox والنص */
-    cursor: pointer; /* تغيير شكل المؤشر عند التمرير فوق الـ checkbox */
-}
-
-/* نمط نص التسمية (label) */
-.remember-me label {
-    font-size: 20px;
-    color: #02076e; /* لون النص */
-    cursor: pointer; /* تغيير شكل المؤشر عند التمرير فوق التسمية */
-}
-
+#scrollToTopBtn {
+    position: fixed;
+    bottom: 27.5px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* إخفاء الزر في البداية */
+    z-index: 1000;
+    transition: opacity 0.3s;
+    padding: 15px;
+    border-radius: 10px; /* جعل الأيقونة مربعة */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: bounce 2s infinite; /* تطبيق تأثير الحركة */
+    margin-bottom: 45px; /* مسافة سفلية */
+    align-items: center;
+}    
 
         /* أنماط الشريط العلوي */
         .top-bar {
@@ -527,8 +503,8 @@
             top: 0px; /* المسافة من الأعلى */
             left: 50%; /* توسيط العنصر أفقيًا */
             transform: translateX(-50%); /* توسيط العنصر بدقة */
-            width: 100%; /* عرض العنصر */
-            height: 57.5px; /* ارتفاع العنصر */
+            width: 97.5%; /* عرض العنصر */
+            height: 35px; /* ارتفاع العنصر */
             background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
             display: flex;
             justify-content: space-between; /* توزيع العناصر */
@@ -539,26 +515,27 @@
             align-items: center; /* توسيط العناصر عموديًا */
             z-index: 1001; /* ترتيب العنصر */
             color: white; /* لون النص */
-        }
+        }  
 
+.top-bar .menu-icon {
+    font-size: 27.5px;
+    cursor: pointer;
+}
 
-        .top-bar .menu-icon {
-            font-size: 27.5px; /* حجم الأيقونة */
-            cursor: pointer; /* تغيير شكل المؤشر */
-        }
+.top-bar .title {
+    font-size: 20px; /* حجم الخط لعناصر العنوان */
+    margin-left: 20px; /* مسافة بين السهم والعنوان */
+    flex-grow: 1; /* يسمح للعناصر الأخرى بالتقلص عندما تكون الشاشة صغيرة */
+    text-align: center; /* توسيط العنوان */
+    font-weight: bold;  
 
-        .top-bar .title {
-            font-size: 20px; /* حجم النص */
-            margin-left: 20px; /* مسافة بين السهم والعنوان */
-            flex-grow: 1; /* توسيط العنوان */
-            text-align: center; /* توسيط النص */
-            font-weight: bold;  
-        } 
+}
+
 .top-bar .icon {
     display: none; /* إخفاء الأيقونات بعد التعديل */
-}    
-    </style>  
-</head>
+}      
+    </style>
+    </head>
     <body>
       
 <div class="top-bar">
@@ -566,59 +543,948 @@
         <i class="fas fa-arrow-right" onclick="window.location.href='https://taxlawapp.github.io/home/home.html'"></i> <!-- سهم العودة -->
     </div>
     <div class="title">
-        تسـجيل الدخـول | 🇪🇬 🇵🇸 Tax Law App
+        الأسئلة الشائعة | 🇪🇬 🇵🇸 Tax Law App
     </div>
-</div>      
+</div>
+
+    <div class="container">
+
       
-    <div class="login-container" id="login-container">
-      <img src="https://www2.0zz0.com/2025/03/07/13/256839169.png" alt="User Icon" class="user-icon">
-        <h1>تسجيل الدخول</h1>
-        <h2>النسخة الذهبية <i class="fa fa-crown gold-icon"></i></h2>
-        <div class="form-group">
-            <label for="username">إسم المستخدم / البريد الإلكتروني :</label>
-            <i class="fa fa-user"></i>
-            <input type="text" id="username" required onblur="displayFullName()">
+        <span style="display:none;" id="usernameDisplay"></span> <!-- عرض اسم المستخدم هنا --> 
+      
+        <div style="position: relative;">
+            <input type="text" id="searchInput" class="search-bar" placeholder="">
+<span id="placeholder">أكتب ما ترغب في البحث عنه</span>
+            <button id="clearSearch" class="clear-search"><i class="fas fa-times"></i></button>
         </div>
-        <div class="form-group">
-            <label for="password">كلمة المرور :</label>
-            <i class="fa fa-lock" id="toggle-password-icon" onclick="togglePasswordVisibility()"></i>
-            <input type="password" id="password" required>
+      
+       <a id="extraClearButton" class="button"><i class="fas fa-times-circle"></i> إفراغ البيانات</a>
+        
+        <div class="tag-bar">
+            <div class="tag" data-tag="Tax Law App">Tax Law App<span class="checkmark">✔</span></div>
+            <div class="tag" data-tag="ميزات التطبيق">ميزات التطبيق<span class="checkmark">✔</span></div>          
+            <div class="tag" data-tag="دليل الإستخدام">دليل الإستخدام<span class="checkmark">✔</span></div>
+            <div class="tag" data-tag="PRO">PRO<span class="checkmark">✔</span><i class="fa fa-crown gold-icon1"></i></div>          
         </div>
-       <div class="form-group remember-me">
-       <input type="checkbox" id="remember-me">
-       <label for="remember-me">ذكرني المرة القادمة</label>
-       </div>
-        <div class="link-container">
-            <a href="javascript:void(0);" id="PasswordRecovery" onclick="togglePasswordRecoveryForm()">هل نسيت كلمة المرور ؟</a>
+
+
+<!-- بطاقات الإصدارات بنظام السؤال والجواب -->
+<div class="version-card" data-tags="Tax Law App">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span>✔️ ما هو النظام الداعم لتشغيل التطبيق ؟</span>
+        <div class="tags"><span>Tax Law App</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content">
+    <p>🔘 يدعم تطبيق | Tax Law App عدة أنظمة للتشغيل حتي يستفيد من التطبيق كافة المستخدمين كالأتي :-</p>
+    <p> 1️⃣ أنظمة التشغيل ( Android ) :</p>
+    <p>حيث يوفر نظام تشغيل Android سهولة تحميل وتشغيل التطبيق علي كافة الهواتف الذكية التي تعمل بنظام تشغيل Android إضافة إلي المحاكيات التي توفر مثل هذه الميزة.</p>
+              
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/QeYx2OCvbsk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>  
+              
+    <a href="https://play.google.com/store/apps/details?id=com.mrizk.taxlawapp" target='_blank' class="button"><i class="fas fa-external-link-alt"></i> تحميل التطبيق ( Android )</a> <!-- زر تنفيذي مع أيقونة تحقق -->
+             
+              
+    <p> 2️⃣ أنظمة التشغيل ( Windows ) :</p>
+    <p>حيث يوفر نظام تشغيل Windows سهولة تحميل وتشغيل التطبيق علي كافة أجهزة PC التي تعمل بنظام تشغيل Windows.</p>
+              
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/qH_Sfe8-Kg4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div> 
+              
+    <a href="https://download946.mediafire.com/bpogxm4zv7sgL9p34hd3wB5Fn_7lg02yrB0TyFSsJVts3e4GiQZSdQLL-pywsqyeT8dY_oQDu-6ZZtkc5H7eFpqNvUvv9K8lLwAol_hYDzquOSHfwFaEanlUlM62MtLQ4TUoQhCzGZdygUnCa52xWAJmMP1kbNbGwFqAq9UdWlHzaeI/i1gvrf7hr8eupsy/Tax+Law+91+V1+-+2024+.zip" class="button"><i class="fas fa-external-link-alt"></i> تحميل البرنامج ( Windows )</a> <!-- زر تنفيذي مع أيقونة تحقق -->                                        
+              
         </div>
-        <div class="link-container">
-            <a href="https://taxlawapp.github.io/home/pro.html" id="Link" onclick="">لا أمتلك حساب، إنشاء حساب جديد</a>
+    </div>
+ 
+
+<div class="version-card" data-tags="Tax Law App">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span>✔️ هل التطبيق تابع لأي جهة حكومية أو رسمية ؟</span>
+        <div class="tags"><span>Tax Law App</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content">
+    <p> 🔘 إخلاء طرف :</p>
+    <p>نود أن أوضح بأن تطبيق  | Tax Law App، هو مبادرة فردية خاصة ولا يمثل بأي شكل من الأشكال جهة حكومية أو رسمية.</p>
+    <p> 🔘 جمع ومشاركة المعلومات :</p>
+    <p>يتم جمع البيانات ومشاركتها لتوفير الميزات في التطبيق، على سبيل المثال، إتاحة وظائف التطبيق أو إرسال إشعارات فورية لإعلام المستخدمين بتحديث أمان مُهمّ، أو إعلامِهم بميزات جديدة في تطبيقك.</p>              
+    <a href="go:privacy" class="button"><i class="fas fa-external-link-alt"></i> سياسة الخصوصية</a> <!-- زر تنفيذي مع أيقونة تحقق -->
+          
+        </div>
+    </div>
+      
+
+<div class="version-card" data-tags="ميزات التطبيق">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span>✔️ ما هي أهم ميزات التطبيق ؟</span>
+        <div class="tags"><span>ميزات التطبيق</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content">      
+     <p>🔘 يتميز تطبيق | Tax Law App بمزايا عديدة ليستفيد منها كافة المستخدمين كالأتي :-</p>
+    <p> 1️⃣ ميزة ( عدم الإتصال بالإنترنت ) :</p>              
+    <p>يعد من أهم مزايا تطبيق | Tax Law App إمكانية إستخدام التطبيق بالنسبة لجميع شاشات إحتساب الضريبة دون الحاجة إلي الإتصال بالإنترنت، وهذه الميزة مدعومة خصيصاً لمساعدة المستخدم في إستخدام التطبيق فـ أي وقت لإحتساب الضريبة وبدون التقيد بالإتصال بالإنترنت.</p>
+
+              
+    <p> 2️⃣ ميزة ( لا إعلانات ) :</p>              
+    <p>يعد من أهم مزايا تطبيق | Tax Law App خلو التطبيق من جميع أنواع الإعلانات المزعجة، وهذه الميزة مدعومة خصيصاً لمساعدة المستخدم في إستخدام التطبيق دون التقيد بمشاهدة الإعلانات لعرض المحتوي.</p>
+
+              
+    <p> 3️⃣ ميزة ( الإشعارات ) :</p>
+    <p>من خلال تفعيل هذه الميزة تحصل علي كافة الإشعارات داخل التطبيق، حيث نقوم بإرسال إشعارات وتحديثات هامة للمستخدم بما هو جديد داخل التطبيق، لجعل المستخدمين علي درايه بكافة التحديثات والإضافات الجديدة أول بأول.</p>
+    <p>⚠️ لتفعيل هذه الميزة : يرجي منح الإذن للتطبيق بإرسال إشعارات لك، ويتم التفعيل من خلال طريقيتن إتبع أحدهما :-</p>
+    <p>🔘 الطريقة الأولي : بعد تحميل التطبيق وتشغيله لأول مرة يطلب منك السماح بإرسال إشعارات .. يرجي الضغط علي موافق.</p>
+    <p>🔘 الطريقة الثانية : فتح إعدادات الجهاز ثم إختر الإشعارات وإختيار التطبيق والضغط علي الإشعارات .. يرجي تفعيل إرسال الإشعارات.</p>
+
+                                              
+    <p> 4️⃣ ميزة ( إحتساب الضريبة المستحقة وغرامة الإقرار من نفس شاشة الحساب المستخدمة ) :</p>              
+    <p>في تطبيق | Tax Law App تم برمجة شاشات إحتساب الضريبة ( شاشة حساب الضريبة 91 لسنة 2005 وتعديلاته ، شاشة حساب الضريبة المادة الثالثة ق 30 لسنة 2023 ) بحيث يتم ( إحتساب الضريبة المستحقة + إحتساب غرامة الإقرار بالمادة 87 مكرر القانون 11 لسنة 2013 في حالة الحسابات فقط، المادة 87 مكرر القانون 26 لسنة 2020 حسابات أو تقديري ) من نفس الشاشة، بالإضافة إلي إختيار المستخدم نوع المحاسبة سواء ملف دفتري ووارد بالعينة أو تقديري غير مؤيد بحسابات بالإضافة إلي إختيار أساس الربط سواء إتفاق مباشر أو لجنة داخلية متخصصة أو لجنة طعن إلخ.</p>
+              
+
+    <p> 5️⃣ ميزة ( إحتساب ضريبة القيمة المضافة وضريبة الجدول ) :</p>              
+    <p>حيث تم إضافة بعض السلع والخدمات ومنها الخاضع لضريبة الجدول فقط أو القيمة المضافة فقط أو الجدول والقيمة المضافة معاً، وتم برمجة شاشة إحتساب ضريبة القيمة المضافة لمساعدة المستخدم بحيث يتم إدخال القيمة البيعية للسلعة أو الخدمة ثم إختيار السلع أو الخدمة من القائمة المنسدلة ويظهر توضيح للمستخدم إذا كانت خاضغة جدول فقط أو قيمة مضافة فقط أو الأثنين معاً مع إحتساب الضريبة.</p>
+
+              
+    <p> 6️⃣ ميزة ( الإبلاغ عن الأخطاء بشاشات حساب الضريبة إن وجد ) :</p>              
+    <p>إبلاغنا بالأخطاء بشاشات إحتساب الضريبة ( إن وجد ) يساعدنا على تصحيحها لنجعل تطبيقنا رقم ( 1 ) في إحتساب الضريبة، ولضمان إحتساب الضريبة المستحقة عن السنة الضريبية محل الحساب بالطريقة الصحيحة.</p>
+    <a href="go:Feed1" class="button"><i class="fas fa-external-link-alt"></i> الإبلاغ عن الأخطاء</a> <!-- زر تنفيذي مع أيقونة تحقق -->          
+ 
+              
+    <p> 7️⃣ ميزة ( تقديم الإقتراحات والإفكار البناءة لتطوير التطبيق ) :</p>              
+    <p>تقديم الإقتراحات يساعدنا على التطوير والتحديث المستمر، لنجعل تطبيقنا رقم ( 1 ) في إحتساب الضريبة، وتطوير التطبيق بشكل دوري ليلائم التعديلات الحديثة في القوانين الضريبية.</p>
+    <a href="go:Feed2" class="button"><i class="fas fa-external-link-alt"></i> تقديم الإقتراحات</a> <!-- زر تنفيذي مع أيقونة تحقق -->
+                                        
+              
+        </div>
+    </div>      
+      
+      
+<div class="version-card" data-tags="ميزات التطبيق">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span style="text-align: right; display: block;">✔️ ما هي أهم ميزات التطبيق بالنسبة لشاشات إحتساب الضريبة ؟</span>
+        <div class="tags"><span>ميزات التطبيق</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content">      
+     <p>🔘 يتميز تطبيق | Tax Law App بمزايا عديدة تم اضافتها بالإصدار 5.1.0 ليستفيد منها كافة المستخدمين كالأتي :-</p>
+<p>1️⃣ تم إضافة إعدادات إستخدام فريدة لكافة شاشات إحتساب الضريبة تضمن للمستخدم سهولة وإنسيابية في الإستخدام مع حفظ الإعدادات المفضلة للمستخدم وإسترجاعها تلقائي عند إعادة تحميل الشاشة إذا تم تفعليها من قبل 👌.</p>
+                <p>2️⃣ عدم إفراغ الحقول الأساسية عند الضغط علي زر الافراغ أو عند إعادة تحميل الصفحة أو عند تغيير المدخلات & إحتساب الضريبة بدون التمتع بالشريحة المفعاة (بدون أعباء) عند تفعيل الإعداد بضرب صافي الدخل × أعلى شريحة طبقًا للقانون المطبق عن سنة الحساب.</p>         
+                <p>3️⃣ حساب ضريبة فترات سنة ٢٠٢٣ : إعداد هام لتسهيل الاستخدام وإضافة الثلاث فترات لسنة ٢٠٢٣ بسهولة فقط، فعل الإعداد واختر الفترة وادخل صافي الدخل واتوماتيك يتم إدخال بداية ونهاية الفترة المدخلة & تمييز لون احتساب حقول الضريبة : إعداد مهم لتمييز الحقول المهمة التي تظهر فيها نتائج الضريبة مثل الضريبة المستحقة والمادة ٨٧ مكرر والضريبة النهائية.</p>
+                <p>4️⃣ تفعيل اختفاء جميع الرسائل التنبيهية : إعداد هام للمستخدمين الذين يرغبون في استخدام الشاشة بدون رسائل تنبيهية، فعند تفعيل الإعداد لن يتم ظهور أي رسائل داخل الشاشة ما عدا الرسائل النظامية & تفعيل مدة عرض / اختفاء جميع الرسائل التنبيهية : إعداد هام للمستخدمين الذين يرغبون في استخدام الشاشة بعرض رسائل تنبيهية ولكن بتحديد مدة الظهور والاختفاء تلقائيًا، فعند تفعيل الإعداد يتم ظهور أي رسائل داخل الشاشة ثم تختفي تلقائيًا بمجرد مرور المدة.</p>                            
+                <p>5️⃣ تم إضافة تأثيرات وتحسينات بشكل عام لتصفح تطبيقنا بدون حدوث أي أخطاء أو مشكلات & تطوير وتحسين معظم الصفحات لتحسين تجربة الاستخدام.</p>               
+              
+        </div>
+    </div>  
+     
+      
+<div class="version-card" data-tags="دليل الإستخدام">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة الدخل | ق 187 لسنة 1993 وتعديلاته</span>
+        <div class="tags"><span>دليل الإستخدام</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content"> 
+    <p> 👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب ضريبة الدخل وفقاً لقانون 187 لسنة 1993 وتعديلاته :</p>
+    <p> 🔴 1) البيانات الأساسية :</p>    
+    <p> 1️⃣ إختر من القائمة الكيان القانوني ( حقل إجباري )</p>
+    <p> 2️⃣  إدخال صافي الدخل الخاضع للضريبة ( حقل إجباري )</p>
+    <p> 3️⃣ إختر من القائمة الحالة الإجتماعية ( حقل إجباري )</p>
+    <p> 👈 إختيار الحالة الإجتماعية من القائمة المنسدلة حيث أن الأعباء العائلية يتم خصمها من صافي الدخل كالأتي  :</p>
+    <p>🔘 الأعباء العائلية وفقا القانون 187 لسنة 1993 :</p>
+    <p>⚠️ أعزب : 1440 جنية </p>
+    <p>⚠️ متزوج ولا يعول أولاد أو غير متزوج ويعول ولدا أو أكثر : 1680 جنية </p>
+    <p>⚠️ متزوج ويعول ولدا أو أكثر : 1920 جنية </p>
+    <p>🔘 الأعباء العائلية وفقا القانون 162 لسنة 1997 :</p>
+    <p>⚠️ أعزب : 2000 جنية </p>
+    <p>⚠️ متزوج ولا يعول أولاد أو غير متزوج ويعول ولدا أو أكثر : 2500 جنية </p>
+    <p>⚠️ متزوج ويعول ولدا أو أكثر : 3000 جنية </p>
+    <p>4️⃣ إختر من القائمة السنة الضريبية ( حقل إجباري )</p>    
+    <p>  👈 إختيار السنة الضريبية من القائمة المنسدلة التي تحتوي علي السنوات الضريبية من 1994 حتي 2004</p>     
+    <p>5️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>
+    <p>👈 عند إختيار المستخدم السنة الضريبية من 1994 حتي 2004 بمجرد الضغط علي زر إحسب الضريبة المستحقة ستظهر الضريبة مباشرة</p>
+    <p>⚠️ بالنسبة للجداول المرفقة أسفل زر حساب الضريبة المستحقة : </p>
+    <p>🔶 الجدول الأول : يتم عرض بداخله الحالة الإجتماعية والأعباء العائلية التي يتم خصمها من صافي الدخل</p>
+    <p>🔶 الجدول الثاني : يتم عرض بداخله شرائح الضريبة وفقا للبيانات السابق إدخالها يدوياً من قبل المستخدم </p>
+    <p>🔴 2) بيانات الربط :</p>
+    <p> 1️⃣ إختر من القائمة نوع المحاسبة ( حقل إجباري )</p>
+    <p> 2️⃣  إدخال الضريبة من واقع الإقرار ( إن وجد أو كتابة رقم صفر في حالة عدم سداد أي ضريبة بالإقرار )</p>
+    <p> 3️⃣ إختر من القائمة أساس الربط ( حقل إجباري )</p>
+    <p> 4️⃣ الضغط علي زر إحسب الضريبة النهائية</p>    
+    <p>⚠️ الضغط علي زر " إحسب الضريبة النهائية " يتم إحتساب المادة 87 مكرر بعد خصم الضريبة المسددة بالإقرار من الضريبة المحسوبة سابقاً إن وجد</p>
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/cNoDjc-a1JU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>      
+      
+    <p>🔴 الشرح بالصور ( شخص طبيعي | فردي سنة الحساب : 2000 ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www12.0zz0.com/2024/06/15/12/896386831.png" alt="صورة">
+            </div>  
+
+    <p>🔴 الشرح بالصور ( شركات | شركات أشخاص سنة الحساب : 2000 ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www4.0zz0.com/2024/06/15/12/350517048.png" alt="صورة">
+            </div>
+
+    <a href="https://taxlawapp.github.io/Tax-calculation/law187.html" class="button"><i class="fas fa-external-link-alt"></i> ضريبة الدخل | ق 187</a> <!-- زر تنفيذي مع أيقونة تحقق -->
+  </div>
+</div>
+
+
+<div class="version-card" data-tags="دليل الإستخدام">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة الدخل | ق 91 لسنة 2005 وتعديلاته</span>
+        <div class="tags"><span>دليل الإستخدام</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content">
+    <p> 👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب ضريبة الدخل وفقاً لقانون 91 لسنة 2005 وتعديلاته :</p>
+    <p> 🔴 1) البيانات الأساسية :</p>    
+    <p> 1️⃣ إختر من القائمة الكيان القانوني ( حقل إجباري )</p>
+    <p> 2️⃣  إدخال صافي الدخل الخاضع للضريبة ( حقل إجباري )</p>
+    <p> 3️⃣ إختر من القائمة السنة الضريبية ( حقل إجباري )</p>
+    <p> 👈 إختيار السنة الضريبية من القائمة المنسدلة التي تحتوي علي السنوات الضريبية من 2005 حتي 2025</p>
+    <p> 4️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>
+    <p>👈 عند إختيار المستخدم السنة الضريبية من 2005 حتي 2022 بمجرد الضغط علي زر إحسب الضريبة المستحقة ستظهر الضريبة مباشرة، بينما عند إختيار المستخدم للسنة الضريبية 2023 ستظهر رسالة "يرجي إدخال الفترة الضريبية" أن 2023 بها ثلاث فترات ضريبية</p>
+    <p>🔘 الفترة الأولي : حتي 15/06/2023 يتم إحتساب ضريبة هذه الفترة وفقاً لقانون 26 لسنة 2020 ( الشريحة المعفاة : 15000 جنية سنوياً )</p>
+    <p>🔘 الفترة الثانية : حتي 30/10/2023 يتم إحتساب ضريبة هذه الفترة وفقاً لقانون 30 لسنة 2023 ( الشريحة المعفاة : 21000 جنية سنوياً )</p>
+    <p>🔘 الفترة الثالثة : حتي 31/12/2023 يتم إحتساب ضريبة هذه الفترة وفقاً لقانون 175 لسنة 2023 ( الشريحة المعفاة : 30000 جنية سنوياً )</p>
+    <p>⚠️ يرجي مراعاة إدخال بداية ونهاية الفترة الضريبية بالنسبة للسنوات 2023 بالشكل التالي : علي سبيل المثال تاريخ بداية الفترة الضريبية 01/01/2023 وتاريخ نهاية الفترة الضريبية 30/06/2023 .. بمعني أنه يتم إدخال التاريخ بالشكل اليوم/ الشهر/ السنة وقد أضفنا ميزة فتح التقويم لإختيار تواريخ الفترات الضريبية بسهولة دون حدوث أي أخطاء في تنسيق إدخال التاريخ</p>
+    <p>⚠️ الضغط علي زر " إحسب الضريبة المستحقة " ستظهر لك رسالة بمعلومات تفصيلية عن الضريبة ،، وبالنسبة للسنوات 2017 / 2019 يوجد خصم ضريبي بها بنسب مختلفة حسب الشريحة ستظهر أيضا رسالة للمستخدم بذلك</p>
+    <p>⚠️ بالنسبة للجداول المرفقة أسفل زر حساب الضريبة المستحقة :</p>
+    <p>🔶 الجدول الأول : يتم عرض بداخله شرائح الضريبة وفقا للبيانات السابق إدخالها يدوياً من قبل المستخدم </p>
+    <p>🔶 الجدول الثاني : يتم عرض بداخله الخصم الضريبي بالنسبة للسنوات 2017 / 2019 ومبلغ الخصم </p>
+    <p>🔴 2) بيانات الربط :</p>
+    <p> 1️⃣ إختر من القائمة نوع المحاسبة ( حقل إجباري )</p>
+    <p> 2️⃣  إدخال الضريبة من واقع الإقرار ( إن وجد أو كتابة رقم صفر في حالة عدم سداد أي ضريبة بالإقرار )</p>
+    <p> 3️⃣ إختر من القائمة أساس الربط ( حقل إجباري )</p>
+    <p> 4️⃣ الضغط علي زر إحسب الضريبة النهائية</p>    
+    <p>⚠️ الضغط علي زر " إحسب الضريبة النهائية " يتم إحتساب المادة 87 مكرر بعد خصم الضريبة المسددة بالإقرار من الضريبة المحسوبة سابقاً بنسبة 20% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أكبر من أو يساوي 50% من الضريبة المستحقة وتخفض هذه النسبة إلي 10% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أقل من 50% من الضريبة المستحقة وذلك في حالة الربط [ عدم الطعن - لجنة داخلية - لجنة داخلية متخصصة ]، بينما تكون النسبة 40% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أكبر من أو يساوي 50% من الضريبة المستحقة وتخفض هذه النسبة إلي 20% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أقل من 50% من الضريبة المستحقة وذلك في حالة الربط [ لجنة الطعن- حكم المحكمة ] وتظهر غرامة الإقرار في خانة المادة 87 مكرر والضريبة النهائية .. تشتمل علي ضريبة الإقرار أو الضريبة المحسوبة وفقاً للمادة 3 من قانون 30 لسنة 2023 أيهما أكبر مضافة إليها المادة 87 مكرر</p>
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/y28bVPizoTY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              
+    <p>🔴 الشرح بالصور ( حساب ضريبة الدخل ق 91 سنة الحساب : 2023 ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www5.0zz0.com/2024/06/15/13/261077617.png" alt="صورة">
+            </div>  
+
+    <p>🔴 الشرح بالصور (بيانات الربط وحساب م 87 مكرر سنة الحساب : 2023 ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www5.0zz0.com/2024/06/15/13/728464495.png" alt="صورة">
+            </div>
+
+
+    <a href="https://taxlawapp.github.io/Tax-calculation/law91.html" class="button"><i class="fas fa-external-link-alt"></i> ضريبة الدخل | ق 91</a> <!-- زر تنفيذي مع أيقونة تحقق -->
+              
+  </div>
+        </div>
+      
+      
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة الدخل | المادة الثالثة ق 30 لسنة 2023</span>
+    </div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
+    </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">     
+    <p>  👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب ضريبة الدخل وفقاً للمادة الثالثة من قانون 30 لسنة 2023 :</p>
+    <p> 🔴 1) البيانات الأساسية :</p>    
+    <p> 1️⃣ إختر من القائمة الكيان القانوني ( حقل إجباري )</p>
+    <p> 2️⃣  إدخال رقم الأعمال من واقع الفحص / اللجنة ( حقل إجباري )</p>
+    <p> 3️⃣ إختر من القائمة السنة الضريبية ( حقل إجباري )</p>
+    <p>👈 إختيار السنة الضريبية من القائمة المنسدلة التي تحتوي علي السنوات الضريبية من 1994 حتي 2023</p>         
+    <p> 4️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>    
+    <p>👈 عند إختيار المستخدم السنة الضريبية من 1994 حتي 2022 بمجرد الضغط علي زر إحسب الضريبة من واقع الفحص أو اللجنة ستظهر الضريبة مباشرة، بينما عند إختيار المستخدم للسنة الضريبية 2023 ستظهر رسالة "يرجي إدخال الفترة الضريبية" مع العلم أن تاريخ 16/06/2023 هو تاريخ إنتهاء العمل بالمادة الثالثة من القانون 30 لسنة 2023، وعند إدخال المستخدم تاريخ إنتهاء الفترة الضريبية بعد هذا التاريخ مثلا 17/06/2023 ستظهر هذه الرسالة ( * عفوا الفترة الضريبية المدخلة لا ينطبق عليها تطبيق المادة ( الثالثة ) من قانون 30 لسنة 2023 حيث أن نهاية العمل بالقانون تاريخ 16/06/2023 .. وبالتالي تتم المحاسبة الضريبية وفقا لمواد القانون رقم ( 91 ) لسنة 2005 وتعديلاته )</p>     
+    <p>⚠️ يرجي مراعاة إدخال بداية ونهاية الفترة الضريبية بالنسبة للسنوات 2023 بالشكل التالي : علي سبيل المثال تاريخ بداية الفترة الضريبية 01/01/2023 وتاريخ نهاية الفترة الضريبية 16/06/2023 .. بمعني أنه يتم إدخال التاريخ بالشكل اليوم / الشهر / السنة وقد أضفنا ميزة فتح التقويم لإختيار تواريخ الفترات الضريبية بسهولة دون حدوث أي أخطاء في تنسيق إدخال التاريخ</p>
+    <p>⚠️ الضغط علي زر " إحسب الضريبة المستحقة " ستظهر لك رسالة بمعلومات تفصيلية عن الضريبة سواء كانت ضريبة قطعية أو نسبة من رقم الأعمال  السنوي ويتم إحتساب الضريبة تلقائي وظهورها للمستخدم في خانة الضريبة من واقع الفحص / اللجنة</p>
+    <p>⚠️ بالنسبة للجداول المرفقة أسفل زر حساب الضريبة المستحقة : </p>
+    <p>🔶 الجدول الأول : يتم عرض بداخله حجم الأعمال بالقانون 152 لسنة 2020 والضريبة المستحقة وفقاً لحجم الأعمال وهل ضريبة قطعية أم نسبة من رقم الأعمال</p>
+    <p>🔶 الجدول الثاني : يتم عرض بداخله رقم الأعمال ( الذي يرغب المستخدم في إحتساب ضريبته ) والضريبة المستحقة وفقاً لحجم الأعمال وهل ضريبة قطعية أم نسبة من رقم الأعمال</p>
+    <p>🔴 2) بيانات الربط :</p>
+    <p> 1️⃣ إختر من القائمة نوع المحاسبة ( حقل إجباري )</p>
+    <p> 2️⃣  إدخال الضريبة من واقع الإقرار ( إن وجد أو كتابة رقم صفر في حالة عدم سداد أي ضريبة بالإقرار )</p>
+    <p> 3️⃣ إختر من القائمة أساس الربط ( حقل إجباري )</p>
+    <p> 4️⃣ الضغط علي زر إحسب الضريبة النهائية</p>    
+    <p>⚠️ الضغط علي زر " إحسب الضريبة النهائية " يتم إحتساب المادة 87 مكرر بعد خصم الضريبة المسددة بالإقرار من الضريبة المحسوبة بالمادة 3 من قانون 30 لسنة 2023 بنسبة 20% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أكبر من أو يساوي 50% من الضريبة المستحقة وتخفض هذه النسبة إلي 10% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أقل من 50% من الضريبة المستحقة وذلك في حالة الربط [ عدم الطعن - لجنة داخلية - لجنة داخلية متخصصة ]، بينما تكون النسبة 40% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أكبر من أو يساوي 50% من الضريبة المستحقة وتخفض هذه النسبة إلي 20% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أقل من 50% من الضريبة المستحقة وذلك في حالة الربط [ لجنة الطعن- حكم المحكمة ] وتظهر غرامة الإقرار في خانة المادة 87 مكرر والضريبة النهائية .. تشتمل علي ضريبة الإقرار أو الضريبة المحسوبة وفقاً للمادة 3 من قانون 30 لسنة 2023 أيهما أكبر مضافة إليها المادة 87 مكرر</p>
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/H8SxEScIhYA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              
+    <p>🔴 الشرح بالصور ( حساب ضريبة الدخل المادة الثالثة | ق 30 سنة الحساب : 2023 ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www12.0zz0.com/2024/06/15/13/283777779.png" alt="صورة">
+            </div>  
+
+    <p>🔴 الشرح بالصور (بيانات الربط وحساب م 87 مكرر سنة الحساب : 2023 ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www5.0zz0.com/2024/06/15/13/427559350.png" alt="صورة">
+            </div>
+
+
+    <a href="" class="button" id="actionButton6"><i class="fas fa-external-link-alt"></i> ضريبة الدخل | المادة الثالثة</a> <!-- زر تنفيذي مع أيقونة تحقق -->       
+  </div>
+        </div>
+
+       
+<div class="version-card" data-tags="دليل الإستخدام">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة الدخل | تسوية النزاع وفق القانون رقم (5) لسنة 2025</span>
+        <div class="tags"><span>دليل الإستخدام</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content"> 
+    <p> 👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب ضريبة الدخل | تسوية النزاع طبقا للمادة (4 ، 5) من القانون رقم (5) لسنة 2025 :</p>
+    <p> 🔴 1) البيانات الأساسية :</p>    
+    <p> 1️⃣ إختر من القائمة الكيان القانوني ( حقل إجباري )</p>
+    <p> 2️⃣  إختر من القائمة نوع المحاسبة ( حقل إجباري )</p>
+    <p> 3️⃣ إختر من القائمة السنة الضريبية ( حقل إجباري )</p>
+    <p> 👈 إختيار السنة الضريبية من القائمة المنسدلة التي تحتوي علي السنوات الضريبية من 1994 حتي 2019</p>
+    <p> 4️⃣ إختر من القائمة أساس الإتفاق ( حقل إجباري )</p>
+    <p> 5️⃣  إدخال الضريبة من ( واقع الإقرار أو أخر إتفاق ) فـ حالة الفحص التقديري أو ( نماذج 19 ضرائب ) فـ حالة الفحص الدفتري</p>
+    <p> 6️⃣ الضغط علي زر إحسب الضريبة النهائية</p>
+    <p> 🔴 ملاحظات هامة جدا :</p>
+    <p> 1) يتم تسوية النزاع طبقا للمادة رقم (4) من القانون 5 لسنة 2025 - تقديري السنوات قبل 2020 طبقا للأتي :</p>           
+    <p> 🔘 في حالة تقديم الاقرار الضريبي بضريبة تكون الضريبة المستحقة لتسوية النزاع هي : ( ضريبة الاقرار مضافا اليها 30% | أي بضريبة ضريبة الإقرار * 130% )</p>              
+    <p> 🔘 في حالة تقديم الاقرار بدون ضريبة أو عدم تقديم الاقرار أو تقديم الاقرار بخسائر تكون الضريبة المستحقة لتسوية النزاع هي : ( ضريبة أخر إتفاق مضافا إليها 40% | أي بضرب ضريبة أخر إتفاق * 140% )</p>              
+    <p> 🔴 بالنسبة للسنوات 2019/2017 وهي سنوات الخصم الضريبي، في حالة تقديم الاقرار الضريبي بضريبة يتم ضرب ( الضريبة قبل الخصم الضريبي * 130% )</p>              
+    <p> 2) يتم تسوية النزاع طبقا للمادة رقم (5) من القانون 5 لسنة 2025 - حسابات السنوات قبل 2020 طبقا للأتي :</p>
+    <p> 🔘 في حالة الحسابات الضريبة المستحقة لتسوية النزاع هي : ( إعتماد ضريبة نموذج 19 ضرائب عن كل سنة محل النزاع )</p>
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/z5yRy2U7J00" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>              
+              
+    <p>🔴 الشرح بالصور ( حساب ضريبة الدخل | تسوية النزاع طبقا للمادة (4) من القانون رقم (5) لسنة 2025 - سنة 2017 تقديري ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/20/14/822181972.png" alt="صورة">
+            </div>  
+
+    <p>🔴 الشرح بالصور ( حساب ضريبة الدخل | تسوية النزاع طبقا للمادة (5) من القانون رقم (5) لسنة 2025 - سنة 2017 حسابات ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/20/14/850343038.png" alt="صورة">
+            </div>
+
+
+    <a href="https://taxlawapp.github.io/Tax-calculation/law5.html" class="button"><i class="fas fa-external-link-alt"></i> تسوية النزاع | ق 5</a> <!-- زر تنفيذي مع أيقونة تحقق -->
+              
+  </div>
         </div>      
-        <a onclick="login()" id="login" class="button"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a>
-        <div class="full-name-display" id="full-name-display"></div>
-        <div class="error-message" id="error-message" style="display: none;"></div>
+      
+
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة الدخل | المادة العاشرة ق 6 لسنة 2025</span>
     </div>
-
-    <div class="password-recovery-form" id="password-recovery-form">
-        <span class="close-btn" onclick="togglePasswordRecoveryForm()">❌</span>
-        <h3>استرجاع كلمة المرور</h3>
-
-        <div class="form-group">
-            <label for="recovery-username">إسم المستخدم / البريد الإلكتروني :</label>
-            <input type="text" id="recovery-username">
-            <i class="fa fa-user"></i>
-        </div>
-        <div class="form-group">
-            <label for="recovery-phone">رقم الهاتف :</label>
-            <input type="text" id="recovery-phone">
-            <i class="fa fa-phone"></i>
-        </div>
-        <a onclick="recoverPassword()" class="button"><i class="fas fa-unlock-alt"></i> استرجاع كلمة المرور</a>
-        <div class="message" id="recovery-message"></div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
     </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">       
+    <p>   👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب ضريبة الدخل وفقاً للمادة العاشرة من قانون 6 لسنة 2025 :</p>
+    <p> 🔴 1) البيانات الأساسية :</p>    
+    <p> 1️⃣ إختر من القائمة الكيان القانوني ( حقل إجباري )</p>
+    <p> 2️⃣  إدخال رقم الأعمال من واقع الفحص / اللجنة ( حقل إجباري )</p>
+    <p> 3️⃣ إختر من القائمة السنة الضريبية ( حقل إجباري )</p>
+    <p>👈 إختيار السنة الضريبية من القائمة المنسدلة التي تحتوي علي السنوات الضريبية من 2026</p>         
+    <p> 4️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>    
+    <p>⚠️  الضغط علي زر " إحسب الضريبة المستحقة " ستظهر لك رسالة بمعلومات تفصيلية عن حجم الأعمال المدخل والضريبة المستحقة ويتم إحتساب الضريبة تلقائي وظهورها للمستخدم في خانة الضريبة من واقع الفحص / اللجنة</p>
+    <p>⚠️ بالنسبة للجداول المرفقة أسفل زر حساب الضريبة المستحقة : </p>
+    <p>🔶 الجدول الأول : يتم عرض بداخله حجم الأعمال طبقا للمادة العاشرة بالقانون 6 لسنة 2025 والضريبة المستحقة وفقاً لحجم الأعمال ونسبة الضريبة من رقم الأعمال.</p>
+    <p>🔶 الجدول الثاني : يتم عرض بداخله رقم الأعمال ( الذي يرغب المستخدم في إحتساب ضريبته ) والضريبة المستحقة وفقاً لحجم الأعمال الدخل ونسبتها من رقم الأعمال.</p>
+    <p>🔴 ملاحظات هامة :</p>
+    <p>⚠️ إذا تجاوز حجم الأعمال السنوي 20 مليون جنية بنسبة لا تجاوز 20% تظهر الرسالة التالية : تجاوز رقم الأعمال السنوي 20 مليون جنية بنسبة لا تجاوز 20% فاذا تكرر هذا التجاوز خلال مدة 5 سنوات من تاريخ تقديم طلب الإستفادة تنتهي إستفادة المشروع من أحكام هذا القانون من السنة التالية.</p>
+    <p>⚠️ إذا تجاوز حجم الأعمال السنوي 20 مليون جنية بنسبة تجاوز 20% تظهر الرسالة التالية : تجاوز رقم الأعمال السنوي 20 مليون جنيه بنسبة تخطت الـ 20%، وبذلك تنتهي استفادة المشروع من أحكام هذا القانون من السنة التالية.</p>
+    <p>🔴 2) بيانات الربط :</p>
+    <p> 1️⃣ إختر من القائمة نوع المحاسبة ( حقل إجباري )</p>
+    <p> 2️⃣  إدخال الضريبة من واقع الإقرار ( إن وجد أو كتابة رقم صفر في حالة عدم سداد أي ضريبة بالإقرار )</p>
+    <p> 3️⃣ إختر من القائمة أساس الربط ( حقل إجباري )</p>
+    <p> 4️⃣ الضغط علي زر إحسب الضريبة النهائية</p>    
+    <p>⚠️ الضغط علي زر " إحسب الضريبة النهائية " يتم إحتساب المادة 87 مكرر بعد خصم الضريبة المسددة بالإقرار من الضريبة المحسوبة بالمادة 3 من قانون 30 لسنة 2023 بنسبة 20% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أكبر من أو يساوي 50% من الضريبة المستحقة وتخفض هذه النسبة إلي 10% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أقل من 50% من الضريبة المستحقة وذلك في حالة الربط [ عدم الطعن - لجنة داخلية - لجنة داخلية متخصصة ]، بينما تكون النسبة 40% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أكبر من أو يساوي 50% من الضريبة المستحقة وتخفض هذه النسبة إلي 20% إذا كان الفرق بين ضريبة الإقرار والضريبة المستحقة أقل من 50% من الضريبة المستحقة وذلك في حالة الربط [ لجنة الطعن- حكم المحكمة ] وتظهر غرامة الإقرار في خانة المادة 87 مكرر والضريبة النهائية .. تشتمل علي ضريبة الإقرار أو الضريبة المحسوبة وفقاً للمادة 3 من قانون 30 لسنة 2023 أيهما أكبر مضافة إليها المادة 87 مكرر</p>
 
-    <div class="user-info hidden" id="user-info"></div> 
-  
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/0D_0iDGsIMc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              
+    <p>🔴 الشرح بالصور ( حساب ضريبة الدخل المادة العاشرة | ق 6 سنة الحساب : 2026 ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/07/12/10/427963889.png" alt="صورة">
+            </div>  
+
+    <p>🔴 الشرح بالصور (بيانات الربط وحساب م 87 مكرر سنة الحساب : 2026 ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/07/12/10/503331633.png" alt="صورة">
+            </div>
+
+
+    <a href="#" class="button" id="actionButton9"><i class="fas fa-external-link-alt"></i> ضريبة الدخل | ق6</a> <!-- زر تنفيذي مع أيقونة تحقق -->       </div>
+        </div>      
+
+      
+<div class="version-card" data-tags="دليل الإستخدام">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة المرتبات | ق 91 لسنة 2005 وتعديلاته</span>
+        <div class="tags"><span>دليل الإستخدام</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content">      
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام الموقع في حساب ضريبة المرتبات والأجور وفقاً لقانون 91 لسنة 2005 وتعديلاته :</p>
+    <p>🔴 1) البيانات الأساسية :</p>    
+    <p>1️⃣ إختيار من القائمة  السنة الضريبية  ( حقل إجباري )</p>
+    <p>👈 إختر السنة الضريبية من القائمة المنسدلة التي تحتوي علي السنوات من 2005 حتي 2024</p>
+    <p>2️⃣  إدخال صافي الوعاء الخاضع للضريبة السنوات 2005 / 2012 ، 2014 / 2019 ، 2021 / 2022 ( حقل إجباري )</p>
+    <p>3️⃣ إدخال صافي وعاء الفترة الأولي / الفترة الثانية / الفترة الثالثة  السنوات 2013 ، 2023 ( حقول إجبارية )</p>
+    <p>4️⃣ إدخال صافي وعاء الفترة الأولي / الفترة الثانية  السنوات 2020 ، 2024 ( حقول إجبارية )</p>
+    <p>5️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>
+    <p>👈 الجداول التي تظهر أسفل زر "حساب الضريبة المستحقة " :</p>
+    <p>🔴 جدول أساسي : لعرض شرائح الضريبة الخاصة بسنة الحساب في حالة إدخال صافي وعاء ( سنة كاملة )</p>
+    <p>🔴 جدول أساسي : لعرض الخصم الضريبي ( إن وجد )</p>    
+    <p>🔴 جداول فرعية : لعرض شرائح الضريبة الخاصة بسنة الحساب في حالة إدخال صافي وعاء ثلاثة فترات ( أولي / ثانية / ثالثة )</p>
+    <p>🔴 جداول فرعية : لعرض الخصم الضريبي بالنسبة للسنة التي تحتوي علي فترتين وبهما خصم ضريبي ( إن وجد )</p> 
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/545ze3kQrL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              
+    <p>🔴 الشرح بالصور ( حساب ضريبة المرتبات سنة الحساب : 2023 ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www6.0zz0.com/2024/06/15/12/172190926.png" alt="صورة">
+            </div>  
+
+    <p>🔴 الشرح بالصور ( تشريح الضريبة عـ الفترات الثلاثة سنة الحساب : 2023 ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www10.0zz0.com/2024/06/15/12/344848323.png" alt="صورة">
+            </div>
+
+      
+    <a href="https://taxlawapp.github.io/Tax-calculation/salary91.html" class="button"><i class="fas fa-external-link-alt"></i> ضريبة المرتبات | ق 91</a> <!-- زر تنفيذي مع أيقونة تحقق -->       </div>
+        </div>        
+
+      
+<div class="version-card" data-tags="دليل الإستخدام">
+    <div class="version-header" onclick="toggleVersion(this)">
+        <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة السيارات | ق 91 لسنة 2005 وتعديلاته</span>
+        <div class="tags"><span>دليل الإستخدام</span></div>
+        <i class="fas fa-chevron-down arrow-icon"></i>
+    </div>
+    <div class="version-content">       
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب ضريبة السيارات :</p>
+    <p>🔴 1) البيانات الأساسية للسيارات :</p>    
+    <p>1️⃣ إختيار من القائمة  السنة الضريبية  ( حقل إجباري )</p>
+    <p>👈 إختر السنة الضريبية من القائمة المنسدلة التي تحتوي علي السنوات من 2012 حتي 2025</p>         
+    <p>2️⃣  إختر من القائمة نوع السيارة  ( حقل إجباري )</p>    
+    <p>👈 إختر من القائمة المنسدلة نوع السيارة حيث أن :</p>     
+    <p>🔘 عند إختيار سيارة أجرة  : سيظهر للمستخدم قائمة منسدلة جديدة بعنوان عدد الركاب</p>
+    <p>🔘 عند إختيار سيارة نقل : سيظهر للمستخدم قائمة منسدلة جديدة بعنوان الحمولة</p>
+    <p>3️⃣ إختر من القائمة محافظة الترخيص ( حقل إجباري )</p>
+    <p>4️⃣ إختر من القائمة عدد الركاب  في حالة السيارة الأجرة ،، الحمولة في حالة السيارة النقل </p>
+    <p>5️⃣ إختر من القائمة سنة موديل السيارة </p>
+    <p>6️⃣ إختر من القائمة نوع الوقود</p>
+    <p>7️⃣ الضغط علي زر إحسب صافي الربح</p>
+    <p>🔴 2) حساب ضريبة السيارات :</p>
+    <p>1️⃣ عند الضغط علي رز حساب صافي الربح يتم إحتسابه و ظهوره في حقل صافي الربح</p>
+    <p>2️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>  
+    <p>3️⃣ الضغط علي زر إحسب أصل المبلغ .. يتم إحتساب المبلغ المحسوب عليه الضريبة و ضريبته</p>      
+    <p>👈يتم إحتساب الضريبة المستحقة وتظهر البيانات في الجدولين الأتين :</p>      
+    <p>🔶 الجدول الأول : يتم عرض بداخله شرائح الضريبة وفقا لبيانات السيارة السابق إدخالها يدوياً من قبل المستخدم وتم إحتساب صافي ربحها خلال السنة</p>      
+    <p>🔶 الجدول الثاني : يتم عرض بداخله الخصم الضريبي بالنسبة للسنوات 2017 / 2019 ومبلغ الخصم</p>
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/akIzOdVs5FU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              
+    <p>🔴 الشرح بالصور ( حساب ضريبة السيارات سنة الحساب : 2020 ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www7.0zz0.com/2024/06/15/13/665592314.png" alt="صورة">
+            </div>  
+
+    <p>🔴 الشرح بالصور ( تشريح الضريبة سنة الحساب : 2020 ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www9.0zz0.com/2024/06/15/13/454786865.png" alt="صورة">
+            </div>
+
+          
+    <a href="https://taxlawapp.github.io/Tax-calculation/cars91.html" class="button"><i class="fas fa-external-link-alt"></i> ضريبة السيارات | ق 91</a> <!-- زر تنفيذي مع أيقونة تحقق -->       </div>
+        </div>       
+      
+
+      
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة القيمة المضافة | ق 67 لسنة 2016 وتعديلاته</span>
+    </div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
+    </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">       
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب ضريبة القيمة المضافة وفقاً  لقانون 67 لسنة 2016 وتعديلاته :</p>
+    <p>🔴 1) حساب ضريبة القيمة المضافة علي المبيعات :</p>    
+    <p>1️⃣ إدخال القيمة البيعية للسلعة / الخدمة  ( حقل إجباري )</p>
+    <p>2️⃣  إختر من القائمة السلعة / الخدمة ( حقل إجباري )</p>
+    <p>👈 إختيار السلعة / الخدمة  من القائمة المنسدلة التي تحتوي علي بعض السلع والخدمات العامة  ،  الجدول  ،  الجدول والقيمة المضافة معاً</p>         
+    <p>3️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>    
+    <p>👈 عند الضغط علي زر حساب الضريبة يتم ظهور رسالة معلومات بالبيانات التي تم إدخالها والضريبة حيث :</p>     
+    <p>🔘 سلع عامة : تخضع لضريبة القيمة المضافة فقط ( بالسعر العام  14% )</p>
+    <p>🔘 سلع تخضع لضريبة الجدول فقط  : تخضع لضريبة الجدول فقط حسب السلعة</p>
+    <p>🔘 سلع تخضع لضريبة الجدول + ضريبة القيمة المضافة معاً : ويلاحظ أنه يتم إحتساب ضريبة الجدول أولاً حسب السلعة ثم إضافة مبلغ الضريبة إلي القيمة البيعية وإحتساب ضريبة القيمة المضافة ثانياَ</p>
+    <p>🔴 2) حساب أصل المبلغ المحسوب عليه ضريبة القيمة المضافة :</p>
+    <p>1️⃣ إدخال المبلغ شامل ضريبة القيمة المضافة ( حقل إجباري )</p>
+    <p>2️⃣  إختر من القائمة السلعة / الخدمة ( حقل إجباري )</p>
+    <p>3️⃣ الضغط علي زر إحسب أصل المبلغ .. يتم إحتساب المبلغ المحسوب عليه الضريبة و ضريبته</p>
+    <p>🔴 3) حساب أصل المبلغ المحسوب عليه ضريبة الجدول :</p>
+    <p>1️⃣ إدخال المبلغ شامل ضريبة الجدول ( حقل إجباري )</p>
+    <p>2️⃣  إختر من القائمة السلعة / الخدمة ( حقل إجباري )</p>
+    <p>3️⃣ الضغط علي زر إحسب أصل المبلغ .. يتم إحتساب المبلغ المحسوب عليه الضريبة و ضريبته</p>
+
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/i8VINSBA_S8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div> 
+
+
+    <p>🔴 الشرح بالصور ( حساب ضريبة القيمة المضافة علي المبيعات ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www8.0zz0.com/2024/06/15/12/730807235.png" alt="صورة">
+            </div>  
+
+    <p>🔴 الشرح بالصور ( حساب أصل المبلغ المحسوب عليه ضريبة القيمة المضافة ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www3.0zz0.com/2024/06/15/12/808272959.png" alt="صورة">
+            </div>
+
+    <p>🔴 الشرح بالصور ( حساب أصل المبلغ المحسوب عليه ضريبة الجدول ) :</p>      
+      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www4.0zz0.com/2024/06/15/12/356979763.png" alt="صورة">
+            </div>
+
+    <a href="#" class="button" id="actionButton7"><i class="fas fa-external-link-alt"></i> ضريبة ق مضافة | ق 67</a> <!-- زر تنفيذي مع أيقونة تحقق -->       
+     </div>
+     </div>
+
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة توزيعات الأرباح القانون 91 لسنة 2005 وتعديلاته</span>
+    </div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
+    </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">        
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب الضريبة حساب ضريبة توزيعات الأرباح القانون 91 لسنة 2005 وتعديلاته :</p>
+    <p>🔴 1) البيانات الأساسية :</p>    
+    <p>1️⃣ إختيار السنة الضريبية  ( حقل إجباري )</p>
+    <p>2️⃣  إدخال صافي أرباح الشركة بالإقرار الضريبي ( حقل إجباري )</p>
+    <p>3️⃣ السنوات 2014 / 2019 إختر من القائمة هل للممول نشاط تجاري آخر أو لا ( حقل إجباري )،+ إختر من القائمة مدة حيازة الأسهم أقل من سنتين أو أكبر من سنتين ( حقل إجباري )، السنوات 2020/ 2025 إختر من القائمة حالة قيد الأوراق المالية في البورصة نعم أو لا ( حقل إجباري )</p>
+    <p>⚠️ في حالة إختيار أن للممول نشاط تجاري آخر لا يتم خصم مبلغ 10000 جنية، بينما تم إختيار ليس له نشاط تجاري آخر يتم خصم 10000 جنية من حصة الشريك في الأرباح.</p>              
+    <p>4️⃣ إدخال نسبة الشريك في رأس المال ( حقل إجباري )</p>
+    <p>5️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/IkwZ-7mu_Cg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+
+
+    <p>🔴 الشرح بالصور ( حساب ضريبة توزيعات الأرباح سنة : 2019 ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/07/12/02/879963947.png" alt="صورة">
+            </div>  
+
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/07/12/02/602230928.png" alt="صورة">
+            </div>  
+              
+    <p>🔴 الشرح بالصور ( حساب ضريبة توزيعات الأرباح سنة : 2025 ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/07/12/02/424313156.png" alt="صورة">
+            </div>  
+
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/07/12/02/185674279.png" alt="صورة">
+            </div>              
+
+    <a href="#" class="button" id="actionButton1"><i class="fas fa-external-link-alt"></i> ضريبة التوزيعات | ق 67</a> <!-- زر تنفيذي مع أيقونة تحقق -->       </div>
+     </div>
+
+      
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب الضريبة الإضافية ( فروق فحص ضريبة القيمة المضافة ) القانون 67 لسنة 2016 وتعديلاته</span>
+    </div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
+    </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب الضريبة الإضافية ( فروق فحص ضريبة القيمة المضافة ) القانون 67 لسنة 2016 وتعديلاته :</p>
+    <p>🔴 1) البيانات الأساسية :</p>    
+    <p>1️⃣ إدخال تاريخ الفترة الضريبية  ( حقل إجباري )</p>
+    <p>2️⃣  إدخال المبلغ ( حقل إجباري )</p>
+    <p>3️⃣ إدخال تاريخ الإخطار من المأمورية ( حقل إجباري )</p>    
+    <p>4️⃣ إدخال تاريخ السداد ( حقل إجباري )</p>
+    <p>5️⃣ الضغط علي زر إحسب فروق الفحص</p>
+
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/mp4EbhifHDQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+
+
+    <p>🔴 الشرح بالصور ( حساب الضريبة الإضافية علي القيمة المضافة علي المبيعات ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www6.0zz0.com/2024/07/14/19/793227261.png" alt="صورة">
+            </div>  
+
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www6.0zz0.com/2024/07/14/19/973698522.png" alt="صورة">
+            </div>               
+
+    <a href="#" class="button" id="actionButton2"><i class="fas fa-external-link-alt"></i> الضريبة الإضافية | ق 67</a> <!-- زر تنفيذي مع أيقونة تحقق -->       </div>
+     </div>
+      
+      
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب مقابل التأخير ( تجاري ) القانون 91 لسنة 2005 وتعديلاته</span>
+    </div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
+    </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">       
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب مقابل التأخير ( تجاري ) القانون 91 لسنة 2005 وتعديلاته :</p>
+    <p>🔴 1) البيانات الأساسية :</p>    
+<p>1️⃣ إختر من القائمة الكيان القانوني ( حقل إجباري )</p>
+<p>2️⃣ إدخال تاريخ حساب مقابل التأخير ( حقل إجباري )</p>
+<p>3️⃣ الضغط علي زر إضافة رصيد سابق ( حيث يتم فتح نافذة منبثقة لإدخال بيانات الرصيد السابق )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة الربط وتاريخ إستحقاق الرصيد ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ الرصيد السابق ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة الرصيد السابق</p>
+<p>4️⃣ الضغط علي زر إضافة ربط جديد ( حيث يتم فتح نافذة منبثقة لإدخال بيانات الربط الجديد )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة الربط وتاريخ إستحقاق الربط ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ الربط ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة ربط</p>
+<p>5️⃣ الضغط علي زر إضافة سداد جديد ( حيث يتم فتح نافذة منبثقة لإدخال بيانات السداد الجديد )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة السداد وتاريخ السداد ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ السداد ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة سداد</p>
+<p>⚠️ يتم إضافة الأرصدة والربوط والسدادات في الجدول وترتيبها حسب التسلسل التاريخي لكل عملية قبل الضغط علي زر حساب مقابل التأخير.</p>
+<p>6️⃣ الضغط علي زر حساب مقابل التأخير</p>
+<p>⭕ ملاحظات هامة جداً :</p>
+<p>🔘 بعد حساب مقابل التأخير يمكنك عدم خصم الـ ٢٠٠ج من كافة الصفوف لأنه سبق خصمها من قبل، ويمكنك ذلك عن طريق تحديد عنصر تم خصم مبلغ (٢٠٠ جنية) من قبل.</p>
+<p>🔘 إختر نسبة التجاوز عن مقابل التأخير إن وجدت (تم إضافة النسب بما فيها المادة ٤٥ مكرر الخاصة بالتسهيلات الضريبية).</p>               
+
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/t3ZBj9mNGWo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+
+    <p>🔴 الشرح بالصور ( حساب مقابل التأخير | تجاري ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/00/991915109.png" alt="صورة">
+            </div>  
+
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/10/306148675.png" alt="صورة">
+            </div>               
+              
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/00/735296459.png" alt="صورة">
+            </div> 
+              
+    <a href="#" class="button" id="actionButton3"><i class="fas fa-external-link-alt"></i> مقابل التأخير | تجاري</a> <!-- زر تنفيذي مع أيقونة تحقق -->       </div>
+     </div>      
+      
+
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب مقابل التأخير ( كسب عمل ) القانون 91 لسنة 2005 وتعديلاته</span>
+    </div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
+    </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">       
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب مقابل التأخير ( كسب عمل ) القانون 91 لسنة 2005 وتعديلاته :</p>
+    <p>🔴 1) البيانات الأساسية :</p>    
+<p>1️⃣ إختر من القائمة الكيان القانوني ( حقل إجباري )</p>
+<p>2️⃣ إدخال تاريخ حساب مقابل التأخير ( حقل إجباري )</p>
+<p>3️⃣ الضغط علي زر إضافة رصيد سابق ( حيث يتم فتح نافذة منبثقة لإدخال بيانات الرصيد السابق )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة الربط وتاريخ إستحقاق الرصيد ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ الرصيد السابق ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة الرصيد السابق</p>
+<p>4️⃣ الضغط علي زر إضافة ربط جديد ( حيث يتم فتح نافذة منبثقة لإدخال بيانات الربط الجديد )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة الربط وتاريخ إستحقاق الربط ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ الربط ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة ربط</p>
+<p>5️⃣ الضغط علي زر إضافة سداد جديد ( حيث يتم فتح نافذة منبثقة لإدخال بيانات السداد الجديد )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة السداد وتاريخ السداد ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ السداد ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة سداد</p>
+<p>⚠️ يتم إضافة الأرصدة والربوط والسدادات في الجدول وترتيبها حسب التسلسل التاريخي لكل عملية قبل الضغط علي زر حساب مقابل التأخير.</p>
+<p>6️⃣ الضغط علي زر حساب مقابل التأخير</p>
+<p>⭕ ملاحظات هامة جداً :</p>
+<p>🔘 بعد حساب مقابل التأخير يمكنك عدم خصم الـ ٢٠٠ج من كافة الصفوف لأنه سبق خصمها من قبل، ويمكنك ذلك عن طريق تحديد عنصر تم خصم مبلغ (٢٠٠ جنية) من قبل.</p>
+<p>🔘 إختر نسبة التجاوز عن مقابل التأخير إن وجدت (تم إضافة النسب بما فيها المادة ٤٥ مكرر الخاصة بالتسهيلات الضريبية).</p>               
+
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/GfkyM4usITU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+
+    <p>🔴 الشرح بالصور ( حساب مقابل التأخير | كسب عمل ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/10/725977383.png" alt="صورة">
+            </div>  
+
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/10/121485934.png" alt="صورة">
+            </div>               
+              
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/10/746112086.png" alt="صورة">
+            </div> 
+              
+    <a href="#" class="button" id="actionButton8"><i class="fas fa-external-link-alt"></i> مقابل التأخير | مرتبات</a> <!-- زر تنفيذي مع أيقونة تحقق -->       </div>
+     </div>         
+      
+      
+
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب ضريبة التصرفات العقارية القانون 91 لسنة 2005 وتعديلاته</span>
+    </div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
+    </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">      
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب ضريبة التصرفات العقارية القانون 91 لسنة 2005 وتعديلاته :</p>
+    <p>🔴 1) البيانات الأساسية :</p>    
+    <p>1️⃣ إختر من القائمة الحصة التي تم التصرف فيها ( حقل إجباري )</p>
+    <p>🔘 تحتوي هذه القائمة علي خيارات ( غير محدد / أرض زراعية / أرض بناء / عقار بالكامل / وحدة سكنية / حصة )</p>
+    <p>2️⃣  إختر من القائمة نوع التصرف ( حقل إجباري</p>    
+    <p>🔘 تحتوي هذه القائمة علي خيارات ( بيع / وصية / تبرع / ميراث )</p>
+    <p>3️⃣ إدخال تاريخ التصرف ( حقل إجباري )</p>
+    <p>4️⃣ إدخال قيمة التصرف ( حقل إجباري )</p>    
+    <p>5️⃣ الضغط علي زر إحسب الضريبة المستحقة</p>
+              
+
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>              
+
+    <p>🔴 الشرح بالصور ( حساب ضريبة التصرفات العقارية ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/15/568235188.png" alt="صورة">
+            </div>  
+             
+
+    <a href="#" class="button" id="actionButton4"><i class="fas fa-external-link-alt"></i> ضريبة التصرفات | ق 91</a> <!-- زر تنفيذي مع أيقونة تحقق -->       
+          </div>
+     </div>       
+      
+
+      
+<div class="version-card" data-tags="دليل الإستخدام">
+  <div class="version-header" onclick="toggleVersion(this)">
+    <div class="left-section">
+      <i class="fa fa-crown gold-icon"></i>
+      <span style="text-align: right; display: block;">✔️ دليل إستخدام شاشة حساب مقابل التأخير ( تصرفات عقارية ) القانون 91 لسنة 2005 وتعديلاته</span>
+    </div>
+    <div class="tags">
+      <span>PRO</span>
+      <span>دليل الإستخدام</span>
+    </div>
+    <i class="fas fa-chevron-down arrow-icon"></i>
+  </div>
+  <div class="version-content">       
+    <p>👈 مرحباً بك في الدليل الإرشادي لإستخدام التطبيق في حساب مقابل التأخير ( تصرفات عقارية ) القانون 91 لسنة 2005 وتعديلاته :</p>
+    <p>🔴 1) البيانات الأساسية :</p>    
+<p>1️⃣ إختر من القائمة الكيان القانوني ( حقل إجباري )</p>
+<p>2️⃣ إدخال تاريخ حساب مقابل التأخير ( حقل إجباري )</p>
+<p>3️⃣ الضغط علي زر إضافة رصيد سابق ( حيث يتم فتح نافذة منبثقة لإدخال بيانات الرصيد السابق )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة الربط وتاريخ إستحقاق الرصيد ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ الرصيد السابق ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة الرصيد السابق</p>
+<p>4️⃣ الضغط علي زر إضافة ربط جديد ( حيث يتم فتح نافذة منبثقة لإدخال بيانات الربط الجديد )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة الربط وتاريخ إستحقاق الربط ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ الربط ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة ربط</p>
+<p>5️⃣ الضغط علي زر إضافة سداد جديد ( حيث يتم فتح نافذة منبثقة لإدخال بيانات السداد الجديد )</p>
+<p>⭕ تحتوي هذه النافذة علي الحقول الأتية :</p>
+<p>🔘 إدخال السنة الضريبية ( حقل إجباري )</p>
+<p>🔘 يتم تلقائي إدخال سنة السداد وتاريخ السداد ( ملحوظة : يمكن تعديل هذه البيانات | حقل إجباري )</p>
+<p>🔘 إدخال مبلغ السداد ( حقل إجباري )</p>
+<p>⭕ الضغط علي زر إضافة سداد</p>
+<p>⚠️ يتم إضافة الأرصدة والربوط والسدادات في الجدول وترتيبها حسب التسلسل التاريخي لكل عملية قبل الضغط علي زر حساب مقابل التأخير.</p>
+<p>6️⃣ الضغط علي زر حساب مقابل التأخير</p>
+<p>⭕ ملاحظات هامة جداً :</p>
+<p>🔘 بعد حساب مقابل التأخير يمكنك عدم خصم الـ ٢٠٠ج من كافة الصفوف لأنه سبق خصمها من قبل، ويمكنك ذلك عن طريق تحديد عنصر تم خصم مبلغ (٢٠٠ جنية) من قبل.</p>
+<p>🔘 إختر نسبة التجاوز عن مقابل التأخير إن وجدت (تم إضافة النسب بما فيها المادة ٤٥ مكرر الخاصة بالتسهيلات الضريبية).</p>               
+
+
+    <p>🔴 فيديو مبسط ووافي لإستخدام الشاشة :</p>      
+      
+            <!-- تضمين الفيديو من YouTube -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+
+    <p>🔴 الشرح بالصور ( حساب مقابل التأخير | تصرفات عقارية ) :</p>      
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/15/118611418.png" alt="صورة">
+            </div>  
+
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/15/583603233.png" alt="صورة">
+            </div>               
+              
+            <div class="image-container">
+                <img src="https://www2.0zz0.com/2025/06/21/15/122947054.png" alt="صورة">
+            </div>  
+             
+
+    <a href="#" class="button" id="actionButton5"><i class="fas fa-external-link-alt"></i> مقابل التأخير | تصرفات</a> <!-- زر تنفيذي مع أيقونة تحقق -->       </div>
+     </div>       
+      
+      
+      
+     </div>          
+
 <!-- القائمة السفلية -->
 <div class="navbar">
     <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
@@ -642,1465 +1508,267 @@
         <span>المزيد</span>
     </a>      
 </div>
-
  
+
+<button id="scrollToTopBtn"><i class="fas fa-arrow-up"></i></button>  
+  
 <script>
-// التحقق من الاتصال بالإنترنت
-function checkInternetConnection() {
-    return navigator.onLine;
-}
+// قراءة بيانات المستخدم من localStorage
+const user = JSON.parse(localStorage.getItem('loggedInUser'));
 
-  
-  
-// تنفيذ الفحص عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', async () => {
-    if (!checkInternetConnection()) {
-        alert('📢 يرجى الاتصال بالإنترنت عن طريق تشغيل البيانات أو شبكة الواي فاي ثم إعادة المحاولة.');
-        window.location.href = 'http://action_exit'; // إعادة التوجيه إلى الرابط المحدد
-    } else {
+if (user) {
+    // الحصول على التاريخ والوقت الحاليين
+    const now = new Date();
+    const dateString = now.toLocaleDateString(); // يمكنك تغيير التنسيق حسب الحاجة
+    const timeString = now.toLocaleTimeString(); // يمكنك تغيير التنسيق حسب الحاجة
+    const currentDate = new Date();
+    const expiryDateParts = user.expiryDate.split('/');
+    const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+    const timeDiff = expiryDate - currentDate;
+    let daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
-        // بعد التحقق، إخفاء نافذة التحميل بعد 2.5 ثانية
-        setTimeout(function() {
-            document.getElementById('loading').style.display = 'none';
-        }, 2500); // 2500 ميلي ثانية = 2.5 ثانية
-    }
-});
-
-  
-function togglePasswordVisibility() {
-    const passwordInput = document.getElementById("password");
-    const toggleIcon = document.getElementById("toggle-password-icon");
-
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleIcon.classList.remove("fa-eye-slash");
-        toggleIcon.classList.add("fa-eye");
-    } else {
-        passwordInput.type = "password";
-        toggleIcon.classList.remove("fa-eye");
-        toggleIcon.classList.add("fa-eye-slash");
-    }
-}
-
-document.getElementById("password").addEventListener("input", function() {
-    const toggleIcon = document.getElementById("toggle-password-icon");
-    if (this.value) {
-        toggleIcon.classList.remove("fa-lock");
-        toggleIcon.classList.add("fa-eye-slash");
-    } else {
-        toggleIcon.classList.remove("fa-eye");
-        toggleIcon.classList.add("fa-lock");
-    }
-});
-
-const users = [
-    {            
-        username: "MRizk",
-        password: "160894",
-        fullName: "محمود رزق سعد رزق",          
-        email: "mahmoudr.saad16@gmail.com",
-        phoneNumber: "01030069322",                 
-        subscriptionDate: "01/08/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "31/12/2025",
-        code: "MRizk-01/08/2024", 
-        points: "10000 نقطة",
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "400 جنية مصري", 
-        subscriptionStatus: "نشط"       
-    },
-    {            
-        username: "Asmaa Ebrahim",
-        password: "123456Aa@",
-        fullName: "أسماء إبراهيم حسن القطان",          
-        email: "elkhahmed9@gmail.com",
-        phoneNumber: "01229866107",                 
-        subscriptionDate: "28/07/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "31/12/2030",
-        code: "Asmaa-01/08/2024",     
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "omaryamany",
-        password: "Om@3209798",
-        fullName: "عمر يماني سالم محمد",          
-        email: "omaryamany28@gmail.com",
-        phoneNumber: "01003209798",                 
-        subscriptionDate: "28/07/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "01/02/2025",
-        code: "omaryamany-01/08/2024",
-        points: "450 نقطة",  
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري",
-        subscriptionStatus: "غير نشط"             
-    },
-    { 
-        username: "Mahmoud1951",
-        password: "Mahmoud@1234",
-        fullName: "محمود السيد محمد المدني",          
-        email: "mahmoud.madany.almadanyauditor@gmail.com",
-        phoneNumber: "01066637883",                 
-        subscriptionDate: "21/07/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "31/12/2030",
-        code: "Mahmoud1951-01/08/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "yasser1234",
-        password: "Yasser@1234",
-        fullName: "ياسر حسنى محمد المهداوى",          
-        email: "yasser.elmehdawi@gmail.com",
-        phoneNumber: "01001420400",                 
-        subscriptionDate: "28/07/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "31/12/2030",
-        code: "yasser1234-01/08/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1200 جنية مصري فقط بدلا من 1500 جنية",  
-        subscriptionStatus: "نشط"            
-    },
-    { 
-        username: "Abd Elaziz Waheed",
-        password: "O1o187o7291",
-        fullName: "Abd Elaziz Waheed Abd Elaziz Mohamed",          
-        email: "abdelazizwaheed44@outlook.com",
-        phoneNumber: "01018707291",                 
-        subscriptionDate: "29/07/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "01/08/2025", 
-        code: "AbdElaziz-01/08/2024",
-        points: "550 نقطة",
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "400 جنية مصري",  
-        subscriptionStatus: "نشط"             
-    },
-    { 
-        username: "NAGY MORCOS",
-        password: "D@niel2005",
-        fullName: "Nagy Kamal Morcos Guirguis",          
-        email: "Nagy_sas_esta@hotmail.com",
-        phoneNumber: "01223578181",                 
-        subscriptionDate: "21/07/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "31/12/2030",
-        code: "NAGY-01/08/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "hesham Osman",
-        password: "Hoa@1962",
-        fullName: "هشام عثمان أبو المجد عيسى",          
-        email: "heshamaboulmagd62@gmail.com",
-        phoneNumber: "01002599328",                 
-        subscriptionDate: "29/07/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "31/12/2030", 
-        code: "hesham-01/08/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "sabry omar",
-        password: "Saber@12345",
-        fullName: "صبري احمد حسن علي",          
-        email: "sabry.abotrika68@gmail.com",
-        phoneNumber: "01224593363",                 
-        subscriptionDate: "19/07/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "31/12/2030", 
-        code: "sabry-01/08/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1100 جنية مصري فقط",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "Ali elgamsi",
-        password: "Kingo1122#",
-        fullName: "علي محمد علي محمد",          
-        email: "alielgamsi5@gmail.com",
-        phoneNumber: "01024459219",                 
-        subscriptionDate: "01/08/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "01/02/2025",  
-        code: "Ali-01/08/2024",
-        points: "450 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري",
-        subscriptionStatus: "غير نشط"             
-    },
-    { 
-        username: "Ib1991",
-        password: "IBRsar77_$",
-        fullName: "إبراهيم أحمد عبد العال سرحان",          
-        email: "91acc2023@gmail.com",
-        phoneNumber: "01028969099",                 
-        subscriptionDate: "01/08/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "01/02/2025",
-        code: "Ib1991-01/08/2024",
-        points: "450 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري",  
-        subscriptionStatus: "غير نشط"             
-    },
-    { 
-        username: "جمال حسنين",
-        password: "#1968g",
-        fullName: "جمال حسنين علي حسنين",          
-        email: "gamal.hassanein4@gmail.com",
-        phoneNumber: "01126409994",                 
-        subscriptionDate: "01/08/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "01/02/2025",
-        code: "جمال-01/08/2024",
-        points: "450 نقطة", 
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري", 
-        subscriptionStatus: "غير نشط"             
-    },
-    { 
-        username: "daliahanafy",
-        password: "D112233h@",
-        fullName: "داليا حنفي محمود محمد",          
-        email: "daliahanafy50@gmail.com",
-        phoneNumber: "01094179986",                 
-        subscriptionDate: "01/08/2024",
-        activationDate: "01/08/2024",
-        expiryDate: "31/12/2030",  
-        code: "daliahanafy-01/08/2024", 
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "اشرف",
-        password: "as313hraf",
-        fullName: "أشرف السيد شحاته عبد الرحيم محمد",          
-        email: "ashrafshehata22@gmail.com",
-        phoneNumber: "01068129062",                 
-        subscriptionDate: "01/08/2024",
-        activationDate: "02/08/2024",
-        expiryDate: "31/12/2030",
-        code: "اشرف-02/08/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1100 جنية مصري فقط بدلا من 1500 جنية",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "Miva",
-        password: "P@s035063388#",
-        fullName: "Peter Naguib Aguib Wassief",          
-        email: "peterAguib777@gmail.com",
-        phoneNumber: "01289305124",                 
-        subscriptionDate: "31/07/2024",
-        activationDate: "03/08/2024",
-        expiryDate: "03/02/2025",
-        code: "Miva-03/08/2024",
-        points: "450 نقطة", 
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري", 
-        subscriptionStatus: "غير نشط"             
-    },
-    { 
-        username: "Saadazzam",
-        password: "saadazzam9497",
-        fullName: "سعد محمد عبدالظاهر عزام",          
-        email: "saaadazzzam@gmail.com",
-        phoneNumber: "01069497900",                 
-        subscriptionDate: "10/08/2024",
-        activationDate: "10/08/2024",
-        expiryDate: "31/12/2030",
-        code: "Saadazzam-10/08/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1300 جنية مصري فقط بدلا من 1500 جنية",  
-        subscriptionStatus: "نشط"            
-    },
-    { 
-        username: "Abdelmonem",
-        password: "Monem$69",
-        fullName: "عبدالمنعم عبدالمنعم محمد علي",          
-        email: "anbarabdelmonem@gmail.com",
-        phoneNumber: "01221053357",                 
-        subscriptionDate: "14/08/2024",
-        activationDate: "14/08/2024",
-        expiryDate: "14/02/2025",
-        code: "Abdelmonem-14/08/2024",
-        points: "400 نقطة", 
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري", 
-        subscriptionStatus: "غير نشط"             
-    },
-    { 
-        username: "Mohamed Abdallah",
-        password: "mm1422",
-        fullName: "محمد عبدالله سيد عيد",          
-        email: "mabdallah0079@gmail.com",
-        phoneNumber: "01119990123",                 
-        subscriptionDate: "14/08/2024",
-        activationDate: "14/08/2024",
-        expiryDate: "14/08/2025",
-        code: "Mohamed-14/08/2024",
-        points: "500 نقطة",
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "400 جنية مصري",  
-        subscriptionStatus: "نشط"             
-     },
-    { 
-        username: "Gamal436",
-        password: "Gamal1234",
-        fullName: "جمال ابو الحسن محمد إبراهيم",          
-        email: "gg222429@gmail.com",
-        phoneNumber: "01060607007",                 
-        subscriptionDate: "16/08/2024",
-        activationDate: "16/08/2024",
-        expiryDate: "16/02/2025",
-        code: "Gamal436-16/08/2024",
-        points: "400 نقطة", 
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري",    
-        subscriptionStatus: "غير نشط"             
-     },
-    { 
-        username: "MinaMoris",
-        password: "M$m12122014",
-        fullName: "Mina Moris Arnoes wesa",          
-        email: "Mena.Moris@Outlook.Com",
-        phoneNumber: "01229668380",                 
-        subscriptionDate: "19/08/2024",
-        activationDate: "19/08/2024",
-        expiryDate: "19/08/2025",
-        code: "MinaMoris-19/08/2024",
-        points: "300 نقطة", 
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "400 جنية مصري",
-        subscriptionStatus: "نشط"             
-     },
-    { 
-        username: "علاء الدين سليمان",
-        password: "alaa2000",
-        fullName: "علاء الدين سليمان عبدالجواد",          
-        email: "alaasolinan14766@gmail.com",
-        phoneNumber: "01006582161",                 
-        subscriptionDate: "20/08/2024",
-        activationDate: "20/08/2024",
-        expiryDate: "20/08/2025",
-        code: "Alaa-20/08/2024",
-        points: "500 نقطة",
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "400 جنية مصري",  
-        subscriptionStatus: "نشط"             
-     },
-    { 
-        username: "Rahaf Ahmed",
-        password: "Rahoofa181199@",
-        fullName: "Rahaf Ahmed Ragaa Abd El_mawla",          
-        email: "rahafabdelmawla@gmail.com",
-        phoneNumber: "01069057149",                 
-        subscriptionDate: "18/09/2024",
-        activationDate: "18/09/2024",
-        expiryDate: "18/03/2025",
-        code: "Rahaf-18/09/2024",
-        points: "400 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري", 
-        subscriptionStatus: "غير نشط"             
-     },
-    { 
-        username: "Mohamed_niazy",
-        password: "moh2adel7niazy",
-        fullName: "محمد عادل نيازي علي",          
-        email: "mohamedadel01021qaz@gmail.com",
-        phoneNumber: "01016898927",                 
-        subscriptionDate: "18/09/2024",
-        activationDate: "18/09/2024",
-        expiryDate: "18/03/2025",
-        code: "Mohamed-18/09/2024",
-        points: "400 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري", 
-        subscriptionStatus: "غير نشط"             
-     },
-    { 
-        username: "Mohamed Tammam",
-        password: "ASD268221asd",
-        fullName: "محمد احمد محمد تمام",          
-        email: "mohamedtammam670@gmail.com",
-        phoneNumber: "01147800743",                 
-        subscriptionDate: "21/09/2024",
-        activationDate: "22/09/2024",
-        expiryDate: "22/03/2025",
-        code: "Mohamed-22/09/2024",
-        points: "400 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري",   
-        subscriptionStatus: "غير نشط"             
-     },
-    { 
-        username: "kamal elbendary",
-        password: "@Travelart1970@",
-        fullName: "كمال احمد مصطفى احمد",          
-        email: "kamalelbendary@gmail.com",
-        phoneNumber: "01020666229",                 
-        subscriptionDate: "01/10/2024",
-        activationDate: "01/10/2024",
-        expiryDate: "01/04/2025",
-        code: "kamal-01/10/2024",
-        points: "400 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري",  
-        subscriptionStatus: "غير نشط"             
-     },
-    { 
-        username: "afify",
-        password: "0106751028",
-        fullName: "محمد  حسن  محمد عفيفي",          
-        email: "afify78@gmail.com",
-        phoneNumber: "0106751028",                 
-        subscriptionDate: "05/10/2024",
-        activationDate: "05/10/2024",
-        expiryDate: "05/04/2025",
-        code: "afify-05/10/2024",
-        points: "400 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري",   
-        subscriptionStatus: "غير نشط"             
-     },
-    { 
-        username: "Hany",
-        password: "19750518",
-        fullName: "هاني عبده سليم محمد",          
-        email: "hanyseleem6@gmail.com",
-        phoneNumber: "01111956043",                 
-        subscriptionDate: "10/10/2024",
-        activationDate: "10/10/2024",
-        expiryDate: "31/12/2030",
-        code: "Hany-10/10/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط"             
-     },
-    { 
-        username: "Elhussiny",
-        password: "FOA@hu1619",
-        fullName: "الحسينى احمد محمد محمد",          
-        email: "accsafaga2@gmail.com",
-        phoneNumber: "01068827479",                 
-        subscriptionDate: "14/10/2024",
-        activationDate: "14/10/2024",
-        expiryDate: "14/10/2025",
-        code: "Elhussiny-14/10/2024",
-        points: "500 نقطة",
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "400 جنية مصري",  
-        subscriptionStatus: "نشط"             
-     },
-    { 
-        username: "Amrhanafi",
-        password: "Amr123456@",
-        fullName: "عمرو محمد حنفى محمود",          
-        email: "amrhanafi545@gmail.com",
-        phoneNumber: "01013958816",                 
-        subscriptionDate: "17/10/2024",
-        activationDate: "17/10/2024",
-        expiryDate: "31/12/2030",
-        code: "Amrhanafi-17/10/2024",
-        points: "7500 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",   
-        subscriptionStatus: "نشط"             
-     },
-    { 
-        username: "Essay acc1959",
-        password: "Az01147205005",
-        fullName: "عبدالعزيز السيد محمود محمد",          
-        email: "Abdelazizelsayed966@gmail.com",
-        phoneNumber: "01005091228",                 
-        subscriptionDate: "18/10/2024",
-        activationDate: "18/10/2024",
-        expiryDate: "18/10/2025",
-        code: "Essay-18/10/2024",
-        points: "500 نقطة",
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "400 جنية مصري",  
-        subscriptionStatus: "نشط" 
-     },
-    { 
-        username: "احمدفهمي",
-        password: "19amaf66",
-        fullName: "أحمد محمد أحمد فهمى",          
-        email: "ahmadabofahmey@gmail.com",
-        phoneNumber: "01011630934",                 
-        subscriptionDate: "09/12/2024",
-        activationDate: "09/12/2024",
-        expiryDate: "09/01/2025",
-        code: "Ahmed-09/12/2024",
-        points: "300 نقطة",
-        subscriptionInfo: "شهرية", 
-        subscriptioncost: "150 جنية مصري",  
-        subscriptionStatus: "غير نشط"          
-     },
-    { 
-        username: "عبدالحليم كمال البرداني",
-        password: "01280970049",
-        fullName: "عبدالحليم كمال سعيد البرداني",          
-        email: "halemkamal3@gmail.com",
-        phoneNumber: "01280970049",                 
-        subscriptionDate: "12/12/2024",
-        activationDate: "12/12/2024",
-        expiryDate: "31/12/2030",
-        code: "AbdulHalim-12/12/2024",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1200 جنية مصري فقط بدلا من 1500 جنية",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "Ahmed khalil",
-        password: "101062",
-        fullName: "Ahmed Mahmoud khalil gomaa",          
-        email: "medokhelo96@gmail.com",
-        phoneNumber: "01273005406",                 
-        subscriptionDate: "26/12/2024",
-        activationDate: "26/12/2024",
-        expiryDate: "25/01/2025",
-        code: "Ahmed-26/12/2024",
-        points: "300 نقطة",
-        subscriptionInfo: "شهرية", 
-        subscriptioncost: "75 جنية مصري خصم 50% رأس السنة",  
-        subscriptionStatus: "غير نشط"        
-     },
-    { 
-        username: "Hussein.Alkhayatt",
-        password: "Accounting@2025",
-        fullName: "Hussein Alsaeed Hussein  Alkhayatt",          
-        email: "hussein.alkhayatt@gmail.com",
-        phoneNumber: "01271264817",                 
-        subscriptionDate: "02/01/2025",
-        activationDate: "02/01/2025",
-        expiryDate: "31/12/2030",
-        code: "Hussein-02/01/2025",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "Nahed Mahmoud",
-        password: "123456789",
-        fullName: "Nahed Mahmoud Taha Hussien",          
-        email: "nonycat75@gmail.com",
-        phoneNumber: "01143201924",                 
-        subscriptionDate: "02/01/2025",
-        activationDate: "02/01/2025",
-        expiryDate: "02/07/2025",
-        code: "Nahed-02/01/2025",
-        points: "400 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "250 جنية مصري خصم 50% رأس السنة",  
-        subscriptionStatus: "غير نشط" 
-     },
-    { 
-        username: "Triplrm",
-        password: "M112233m@",
-        fullName: "محمد محمد محمد عبدالصادق",          
-        email: "mmm.triplem3@gmail.com",
-        phoneNumber: "01062280985",                 
-        subscriptionDate: "10/01/2025",
-        activationDate: "10/01/2025",
-        expiryDate: "10/01/2026",
-        code: "Triplrm-10/01/2025",
-        points: "100 نقطة",
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "510 بدلا من 850 جنية مصري خصم 40% عجلة الهدايا",  
-        subscriptionStatus: "نشط" 
-     },
-    { 
-        username: "عبدالله عبدالخالق",
-        password: "123456@sA",
-        fullName: "عبدالله عبدالخالق عبدالقادر إبراهيم",          
-        email: "acc4abdo@gmail.com",
-        phoneNumber: "01002374096",                 
-        subscriptionDate: "24/01/2025",
-        activationDate: "24/01/2025",
-        expiryDate: "24/01/2026",
-        code: "abdo-24/01/2025",
-        points: "100 نقطة",
-        subscriptionInfo: "سنوية", 
-        subscriptioncost: "510 بدلا من 850 جنية مصري خصم 40% عجلة الهدايا",  
-        subscriptionStatus: "نشط"  
-     },
-    { 
-        username: "mohamedsab",
-        password: "Sabry@4259",
-        fullName: "محمد صبرى السيد موسى",          
-        email: "mhamedsabry4259@gmail.com",
-        phoneNumber: "01550701613",                 
-        subscriptionDate: "22/02/2025",
-        activationDate: "22/02/2025",
-        expiryDate: "31/12/2030",
-        code: "mohamedsab-22/02/2025",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط"       
-    },
-    { 
-        username: "Mohamed.Mousa",
-        password: "M1810",
-        fullName: "Mohamed  Sayed  mousa",          
-        email: "m.m.mousa.m@gmail.com",
-        phoneNumber: "01000081232",                 
-        subscriptionDate: "08/03/2025",
-        activationDate: "08/03/2025",
-        expiryDate: "08/06/2026",
-        code: "Mohamed-08/03/2025",
-        points: "300 نقطة",
-        subscriptionInfo: "سنوية (بخصم 35% + 3 أشهر مجاناً بمناسبة شهر الفرحة 🌙)", 
-        subscriptioncost: "975 جنية بدلا من 1500 جنية | وفرت 525 جنية",  
-        subscriptionStatus: "نشط" 
-     },
-    { 
-        username: "Fathi Serry",
-        password: "Fathi#1980",
-        fullName: "Fathi Gamal Fathi Serry",          
-        email: "fathi.acc@gmail.com",
-        phoneNumber: "01090007326",                 
-        subscriptionDate: "26/03/2025",
-        activationDate: "26/03/2025",
-        expiryDate: "25/05/2025",
-        code: "Fathi-26/03/2025",
-        points: "300 نقطة",
-        subscriptionInfo: "شهرية (بخصم 15% + شهر مجاناً بمناسبة شهر الفرحة 🌙)", 
-        subscriptioncost: "225 جنية بدلا من 300 جنية | وفرت 525 جنية",  
-        subscriptionStatus: "غير نشط"  
-     },
-    { 
-        username: "محمد حجازي",
-        password: "P@ssw0rd",
-        fullName: "محمد عبد الرازق مصطفي حجازي",          
-        email: "mhegazy130@gmail.com",
-        phoneNumber: "01097477340",                 
-        subscriptionDate: "06/05/2025",
-        activationDate: "06/05/2025",
-        expiryDate: "31/12/2030",
-        code: "Mohamed-06/05/2025",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1000 جنية مصري فقط",  
-        subscriptionStatus: "نشط" 
-    },
-    { 
-        username: "meta verse",
-        password: "samoha13833",
-        fullName: "سماح محمد ابراهيم النجار",          
-        email: "samoha13833@gmail.com",
-        phoneNumber: "01004822200",                 
-        subscriptionDate: "22/05/2025",
-        activationDate: "22/05/2025",
-        expiryDate: "22/06/2025",
-        code: "meta-22/05/2025",
-        points: "200 نقطة",
-        subscriptionInfo: "شهرية", 
-        subscriptioncost: "100 جنية مصري",  
-        subscriptionStatus: "غير نشط"    
-    },
-    { 
-        username: "essam20",
-        password: "3101970",
-        fullName: "عصام حسن سليمان بركات",          
-        email: "essamhasan7574@gmail.com",
-        phoneNumber: "01224667234",                 
-        subscriptionDate: "29/05/2025",
-        activationDate: "29/05/2025",
-        expiryDate: "29/11/2025",
-        code: "essam20-29/05/2025",
-        points: "200 نقطة",
-        subscriptionInfo: "نصف سنوية", 
-        subscriptioncost: "450 جنية مصري",  
-        subscriptionStatus: "نشط"    
-    },
-    { 
-        username: "Ahmedtaxofficer",
-        password: "Ahmed@361997",
-        fullName: "AHMED GAMAL HAMDY AHMED",          
-        email: "Ahmedgamalhamdy.sp@gmail.com",
-        phoneNumber: "01068959090",                 
-        subscriptionDate: "20/06/2025",
-        activationDate: "20/06/2025",
-        expiryDate: "20/07/2025",
-        code: "Ahmed-20/06/2025",
-        points: "200 نقطة",
-        subscriptionInfo: "شهرية", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "غير نشط"  
-    },
-    { 
-        username: "sameh",
-        password: "Nsameh@88",
-        fullName: "سامح شعبان اسماعيل محمد",          
-        email: "sameh.shaaban@yahoo.com",
-        phoneNumber: "01119377395",                 
-        subscriptionDate: "30/06/2025",
-        activationDate: "30/06/2025",
-        expiryDate: "30/07/2025",
-        code: "sameh-30/06/2025",
-        points: "200 نقطة",
-        subscriptionInfo: "شهرية", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "نشط" 
-    },
-    { 
-        username: "Karim",
-        password: "166Kimo",
-        fullName: "Karim Mahrous thabet hana",          
-        email: "Karim.mahrous93@gmail.com",
-        phoneNumber: "01275771695",                 
-        subscriptionDate: "05/07/2025",
-        activationDate: "05/07/2025",
-        expiryDate: "08/07/2025",
-        code: "Karim-05/07/2025",
-        points: "0 نقطة",
-        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "غير نشط"   
-    },
-    { 
-        username: "MostafaNassr",
-        password: "mostafa011",
-        fullName: "مصطفي نصر السيد عبد الراضي",          
-        email: "mostafanassr169@gmail.com",
-        phoneNumber: "01152690226",                 
-        subscriptionDate: "06/07/2025",
-        activationDate: "06/07/2025",
-        expiryDate: "09/07/2025",
-        code: "Mostafa-06/07/2025",
-        points: "0 نقطة",
-        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "غير نشط" 
-    },
-    { 
-        username: "ممدوح محمد عباس",
-        password: "e$EC2fUZ1e-xvZy",
-        fullName: "ممدوح محمد عباس احمد",          
-        email: "asddrgam1111@gmail.com",
-        phoneNumber: "01143830006",                 
-        subscriptionDate: "07/07/2025",
-        activationDate: "07/07/2025",
-        expiryDate: "10/07/2025",
-        code: "ممدوح-07/07/2025",
-        points: "0 نقطة",
-        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "غير نشط"  
-    },
-    { 
-        username: "عماد الطويل",
-        password: "Emad@12345",
-        fullName: "عماد عبدالنعيم احمد عبدالهادي",          
-        email: "e12566827@gmail.com",
-        phoneNumber: "01068000644",                 
-        subscriptionDate: "14/07/2025",
-        activationDate: "14/07/2025",
-        expiryDate: "31/12/2030",
-        code: "عماد-14/07/2025",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1500 جنية مصري فقط",  
-        subscriptionStatus: "نشط" 
-    },
-    { 
-        username: "Farid Hassanin",
-        password: "Fordegy@1965",
-        fullName: "فريد سيد حسنين حبلص",          
-        email: "faridhassanin@gmail.com",
-        phoneNumber: "01005000835",                 
-        subscriptionDate: "14/07/2025",
-        activationDate: "14/07/2025",
-        expiryDate: "17/07/2025",
-        code: "Farid-14/07/2025",
-        points: "0 نقطة",
-        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "غير نشط" 
-    },
-    { 
-        username: "Hassannegm25",
-        password: "12345@Ofc",
-        fullName: "Hassan Mohamed Negm Ali",          
-        email: "hnegm93@gmail.com",
-        phoneNumber: "01121523254",                 
-        subscriptionDate: "18/07/2025",
-        activationDate: "18/07/2025",
-        expiryDate: "31/12/2030",
-        code: "Hassan-18/07/2025",
-        points: "7000 نقطة",
-        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
-        subscriptioncost: "1500 جنية مصري فقط",  
-        subscriptionStatus: "نشط"
-    },
-    { 
-        username: "mido hendy",
-        password: "Mido@7563m",
-        fullName: "محمد هندي حسب الله السيد",          
-        email: "midohendy7563@gmail.com",
-        phoneNumber: "01004038413",                 
-        subscriptionDate: "18/07/2025",
-        activationDate: "18/07/2025",
-        expiryDate: "21/07/2025",
-        code: "mido-18/07/2025",
-        points: "0 نقطة",
-        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "غير نشط" 
-    },
-    { 
-        username: "MohamedBadr",
-        password: "0101572499Mb$",
-        fullName: "محمد عبد المحسن بدر",          
-        email: "mohamed_badr2008@yahoo.com",
-        phoneNumber: "01009123457",                 
-        subscriptionDate: "19/07/2025",
-        activationDate: "19/07/2025",
-        expiryDate: "22/07/2025",
-        code: "Mohamed-19/07/2025",
-        points: "0 نقطة",
-        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "غير نشط"
-    },
-    { 
-        username: "احمد اسامه",
-        password: "ahmed2@8",
-        fullName: "احمد اسامه محمد محمد",          
-        email: "Ahmedosama031@gmail.com",
-        phoneNumber: "01006593874",                 
-        subscriptionDate: "30/07/2025",
-        activationDate: "30/07/2025",
-        expiryDate: "30/08/2025",
-        code: "Ahmed-30/07/2025",
-        points: "200 نقطة",
-        subscriptionInfo: "شهرية", 
-        subscriptioncost: "مجانية",  
-        subscriptionStatus: "نشط" 
-    }
-];
-  
-// حفظ البيانات في التخزين المحلي
-localStorage.setItem('users', JSON.stringify(users));
-  
-    
-function displayFullName() {
-    const usernameOrEmail = document.getElementById("username").value;
-    const user = users.find(u => u.username === usernameOrEmail || u.email === usernameOrEmail);
-    const errorMessage = document.getElementById("error-message");
-
-    if (user) {
-        errorMessage.style.display = 'none'; // اخفاء رسالة الخطأ
-        document.getElementById("full-name-display").innerHTML = `<i class="fa fa-user"></i> : ${user.fullName}`;
-    } else {
-        errorMessage.style.display = 'none'; // اخفاء رسالة الخطأ              
-        document.getElementById("full-name-display").innerText = '';
-    }
-}
-
-function login() {
-    const usernameInput = document.getElementById("username");
-    const passwordInput = document.getElementById("password");
-    const errorMessage = document.getElementById("error-message");
-    var rememberMe = document.getElementById('remember-me').checked;
-
-    function hideErrorMessage() {
-        errorMessage.style.display = 'none';
-    }
-    usernameInput.addEventListener('input', hideErrorMessage);
-    passwordInput.addEventListener('input', hideErrorMessage);
-
-    const usernameOrEmail = usernameInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    errorMessage.style.display = 'none';
-    usernameInput.style.borderColor = '#420c0c';
-    passwordInput.style.borderColor = '#420c0c';
-
-    if (usernameOrEmail === '') {
-        errorMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يرجى إدخال إسم المستخدم';
-        errorMessage.style.display = 'block';
-        usernameInput.focus();
-        return;
+    // إذا كانت الفترة المتبقية فارغة أو أقل من أو تساوي صفر، تعيينها إلى صفر
+    if (isNaN(daysDiff) || daysDiff <= 0) {
+        daysDiff = 0;
     }
 
-    if (password === '') {
-        errorMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يرجى إدخال كلمة المرور';
-        errorMessage.style.display = 'block';
-        passwordInput.focus();
-        return;
-    }
-
-    if (!/\d/.test(password) && !/[a-zA-Z]/.test(password)) {
-        errorMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> كلمة المرور يجب أن تحتوي على رقم وحرف';
-        errorMessage.style.display = 'block';
-        passwordInput.focus();
-        return;
-    }
-
-    const user = users.find(u => 
-        (u.username === usernameOrEmail || u.email === usernameOrEmail) && u.password === password
-    );
-
-    if (user) {
-        const currentDate = new Date();
-        const expiryDateParts = user.expiryDate.split('/');
-        const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
-
-        const activationDateParts = user.activationDate.split('/');
-        const activationDate = new Date(activationDateParts[2], activationDateParts[1] - 1, activationDateParts[0]);
-
-        if (currentDate < activationDate) {
-            errorMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> يتم تفعيل حسابك إعتباراً من ${user.activationDate}`;
-            errorMessage.style.display = 'block';
-            return;
-        }      
-      
-
-if (currentDate >= expiryDate) {
-    document.getElementById("user-info").classList.remove('hidden');
-    let message = `<p><i class="fa fa-exclamation-triangle"></i> عفوا، اشتراكك انتهى في ${user.expiryDate}</p>`;
-    errorMessage.innerHTML = message;
-    errorMessage.style.display = 'block';
-
-    // حذف بيانات المستخدم من localStorage
-    localStorage.removeItem('loggedInUser');
-
-    // إفراغ حقول تسجيل الدخول
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-
-    // إفراغ حقل عرض الاسم الكامل
-    document.getElementById("full-name-display").innerText = "";
-
-    // إخفاء رسالة الخطأ بعد ثانية واحدة
-    setTimeout(() => {
-        errorMessage.style.display = 'none';
-
-        // إزالة التحديد من خانة "تذكرني"
-        document.getElementById("remember-me").checked = false;
-
-    }, 1000);
-
-    return;
-}
-
-if (user.subscriptionStatus === "غير نشط") {
-    document.getElementById("user-info").classList.remove('hidden');
-    let message = `<p><i class="fa fa-exclamation-triangle"></i> عفوا، اشتراكك غير نشط، انتهى في ${user.expiryDate}</p>`;
-    errorMessage.innerHTML = message;
-    errorMessage.style.display = 'block';
-
-    // حذف بيانات المستخدم من localStorage
-    localStorage.removeItem('loggedInUser');
-
-    // إفراغ حقول تسجيل الدخول
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-
-    // إفراغ حقل عرض الاسم الكامل
-    document.getElementById("full-name-display").innerText = "";
-
-    // إخفاء رسالة الخطأ بعد ثانية واحدة
-    setTimeout(() => {
-        errorMessage.style.display = 'none';
-
-        // إزالة التحديد من خانة "تذكرني"
-        document.getElementById("remember-me").checked = false;
-
-    }, 1000);
-
-    return;
-}
-
-
-        const timeDiff = expiryDate - currentDate;
-        const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-// تحديد ما إذا كان المستخدم قد سجل دخوله من قبل
-const hasLoggedInBefore = localStorage.getItem('hasLoggedInBefore') === 'true';
-
-// رسالة الترحيب
-let welcomeMessage;
-
-if (user.subscriptionInfo === "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )") {
-    welcomeMessage = `📢 مرحبا بعودتك : ${user.fullName} | نتمني لك تجربة ممتعة فـ النسخة الذهبية من تطبيق Tax Law App > الباقة الحالية : مدي الحياة سارية حتي 2030 وتجدد تلقائي بدون أي رسوم إضافية > الفترة المتبقية علي إنتهاء إشتراكك : ${daysDiff} يوم`;
-} else if (!hasLoggedInBefore) {
-    welcomeMessage = `📢 أهلا بك : ${user.fullName} | في النسخة الذهبية من تطبيق Tax Law App سعدنا بإنضمامك لنا ونتمني لك تجربة ممتعة > الفترة المتبقية علي إنتهاء إشتراكك : ${daysDiff} يوم`;
-    localStorage.setItem('hasLoggedInBefore', 'true');
-} else {
-    welcomeMessage = `📢 مرحبا بعودتك : ${user.fullName} | نتمني لك تجربة ممتعة فـ النسخة الذهبية من تطبيق Tax Law App > الفترة المتبقية علي إنتهاء إشتراكك : ${daysDiff} يوم`;
-}
-     
-      
-// إنشاء نافذة منبثقة
-const modal = document.createElement('div');
-modal.id = 'modal';
-modal.style.display = 'flex';
-modal.style.position = 'fixed';
-modal.style.top = '0';
-modal.style.left = '0';
-modal.style.right = '0';
-modal.style.bottom = '0';
-modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-modal.style.justifyContent = 'center';
-modal.style.alignItems = 'center'; 
-modal.style.zIndex = '9999';     
-document.body.appendChild(modal);
-
-const modalContent = document.createElement('div');
-modalContent.style.background = 'linear-gradient(to right, white, #e1f5fe)'; // تعيين التدرج اللوني
-modalContent.style.padding = '20px';
-modalContent.style.borderRadius = '5px';
-modalContent.style.textAlign = 'center';
-modalContent.style.border = '3px solid #DDD';
-modalContent.style.width = '87.5%'; // تقليل عرض النافذة المنبثقة إلى 87.5%
-modal.appendChild(modalContent);
-
-// عنوان الرسالة
-const title = document.createElement('h1');
-title.innerHTML = '<i class="fa fa-info-circle" style="color: blue;"></i> Tax Law App Pro';
-title.style.fontSize = '35px'; // حجم الخط
-title.style.fontWeight = 'bold'; // جعل الخط غليظ
-title.style.color = '#1a237e'; // تغيير اللون
-title.style.marginTop = '5px'; // تقليل المسافة العلوية
-title.style.marginBottom = '5px'; // تقليل المسافة السفلية
-modalContent.appendChild(title);
-
-// خط تحت العنوان
-const hr = document.createElement('hr');
-hr.style.border = 'none'; // إزالة الحدود الافتراضية
-hr.style.height = '2px'; // تحديد سماكة الخط
-hr.style.backgroundColor = 'red'; // تغيير لون الخط إلى الأحمر
-hr.style.margin = '3px 3px'; // تحديد المسافة العلوية والسفلية
-modalContent.appendChild(hr);
-
-// عرض رسالة الترحيب
-const message = document.createElement('p');
-message.style.fontSize = '23px';
-message.style.fontWeight = 'bold';
-message.textContent = welcomeMessage;
-modalContent.appendChild(message);
-
-// زر الإغلاق
-const closeBtn = document.createElement('button');
-closeBtn.textContent = 'موافق';
-closeBtn.style.marginTop = '10px';
-closeBtn.style.padding = '10px 20px';
-closeBtn.style.fontSize = '22px';
-closeBtn.style.fontWeight = 'bold';
-closeBtn.style.backgroundColor = 'red'; // تغيير لون زر الإغلاق إلى الأحمر
-closeBtn.style.color = 'white'; // تغيير لون النص إلى الأبيض لزيادة وضوحه
-closeBtn.style.cursor = 'pointer';
-closeBtn.onclick = function() {
-    document.body.removeChild(modal); // إغلاق النافذة المنبثقة
-    window.location.href = "go:Accinfo"; // الانتقال إلى الرابط بعد الضغط على "موافق"
-};
-modalContent.appendChild(closeBtn);
-
-
-        localStorage.setItem('loggedInUser', JSON.stringify(user)); // تخزين بيانات المستخدم في localStorage
-
-        // تحقق من صحة اسم المستخدم وكلمة المرور
-        if (validateCredentials(usernameOrEmail, password)) {
-            // إذا كان خيار "ذكرني" مفعلاً، احفظ اسم المستخدم وكلمة المرور في localStorage
-            if (rememberMe) {
-                localStorage.setItem('rememberedUsername', usernameOrEmail);
-                localStorage.setItem('rememberedPassword', password);
-            } else {
-                // إذا لم يكن مفعلاً، قم بإزالة البيانات المخزنة
-                localStorage.removeItem('rememberedUsername');
-                localStorage.removeItem('rememberedPassword');
-            }
-        }
-
-        const subscriptionInfo = getSubscriptionInfo(user.activationDate, user.expiryDate);
-        var navbar = document.querySelector(".navbar");
-        navbar.style.display = "none";  // إخفاء النافبار
-
-        document.querySelector('.login-container').classList.add('hidden');
-        document.getElementById("user-info").classList.remove('hidden');
-        document.getElementById("user-info").innerHTML = `
-        <div class="container">
-        
-
-        `;
-      
-    } else {
-        document.getElementById("user-info").classList.remove('hidden');
-        errorMessage.innerHTML  = '<p><i class="fa fa-exclamation-triangle"></i> بيانات الدخول غير صحيحة</p>';
-        errorMessage.style.display = 'block';
-    }
-}
-
-// دالة للتحقق من صحة اسم المستخدم وكلمة المرور
-function validateCredentials(username, password) {
-    // أضف هنا منطق التحقق من صحة البيانات
-    return true; // هذا مجرد مثال
-}
-
-// استعادة اسم المستخدم وكلمة المرور المخزنين إذا كان موجوداً
-window.onload = function() {
-    var rememberedUsername = localStorage.getItem('rememberedUsername');
-    var rememberedPassword = localStorage.getItem('rememberedPassword');
-    if (rememberedUsername) {
-        document.getElementById('username').value = rememberedUsername;
-        document.getElementById('password').value = rememberedPassword;
-        document.getElementById('remember-me').checked = true;
-    }
-}
-
-function calculateRemainingPeriod(expiryDate) {
-    const today = new Date();
-    const expiry = new Date(expiryDate.split('/').reverse().join('-'));
-    const timeDiff = expiry - today;
-    return Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // تحويل الفرق الزمني إلى أيام
-}
-
-function isLeapYear(year) {
-    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-}
-
-function getSubscriptionInfo(activationDate, expiryDate) {
-    const activation = new Date(activationDate.split('/').reverse().join('-'));
-    const expiry = new Date(expiryDate.split('/').reverse().join('-'));
-    const timeDiff = expiry - activation;
-    const activationYear = activation.getFullYear();
-    const expiryYear = expiry.getFullYear();
-    
-    let daysInYear = 365;
-    if (isLeapYear(activationYear) || isLeapYear(expiryYear)) {
-        daysInYear = 366;
-    }
-
-    const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
-    const monthsDiff = daysDiff / (daysInYear / 12);
-
-    if (monthsDiff <= 6) {
-        return { type: 'باقة نصف سنوية', cost: 250 };
-    } else {
-        return { type: 'باقة سنوية', cost: 400 };
-    }
-}
-
-  
-  
-function recoverPassword() {
-    const recoveryUsernameInput = document.getElementById("recovery-username");
-    const recoveryPhoneInput = document.getElementById("recovery-phone");
-    const recoveryMessage = document.getElementById("recovery-message");
-
-    function hideErrorMessage() {
-        recoveryMessage.style.display = 'none';
-    }
-
-    recoveryUsernameInput.addEventListener('input', hideErrorMessage);
-    recoveryPhoneInput.addEventListener('input', hideErrorMessage);
-
-    const recoveryUsername = recoveryUsernameInput.value.trim();
-    const recoveryPhone = recoveryPhoneInput.value.trim();
-
-    if (recoveryUsername === '') {
-        recoveryMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يرجى إدخال اسم المستخدم';
-        recoveryMessage.style.color = '#d9534f';
-        recoveryMessage.style.display = 'block'; // اظهار رسالة الخطأ
-        recoveryUsernameInput.focus();
-        return;
-    }
-
-    if (recoveryPhone === '') {
-        recoveryMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يرجى إدخال رقم الهاتف';
-        recoveryMessage.style.color = '#d9534f';
-        recoveryMessage.style.display = 'block'; // اظهار رسالة الخطأ
-        recoveryPhoneInput.focus();
-        return;
-    }
-
-    const user = users.find(u => (u.username === recoveryUsername || u.email === recoveryUsername) && u.phoneNumber === recoveryPhone);
-
-    if (user) {
-        recoveryMessage.innerHTML = `<i class="fas fa-check-circle"></i> كلمة المرور الخاصة بك هي : ${user.password}`;
-        recoveryMessage.style.color = '#1a237e';
-    } else {
-        recoveryMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> البيانات المدخلة غير صحيحة';
-        recoveryMessage.style.color = '#d9534f';
-    }
-    recoveryMessage.style.display = 'block'; // اظهار رسالة الخطأ
-}
-
-function togglePasswordRecoveryForm() {
-    const loginContainer = document.getElementById("login-container");
-    const passwordRecoveryForm = document.getElementById("password-recovery-form");
-    const recoverymessage = document.getElementById("recovery-message");
-    document.getElementById("recovery-message").innerHTML = "";
-    recoverymessage.style.display = 'none'; // اخفاء رسالة الخطأ 
-
-    if (passwordRecoveryForm.style.display === "none" || passwordRecoveryForm.style.display === "") {
-        loginContainer.style.display = "none";
-        passwordRecoveryForm.style.display = "block";
-        clearLoginForm(); // تفريغ بيانات فورم تسجيل الدخول
-    } else {
-        loginContainer.style.display = "block";
-        passwordRecoveryForm.style.display = "none";
-        clearPasswordRecoveryForm(); // تفريغ الحقول عند الإغلاق
-    }
-}
-
-function clearLoginForm() {
-    const errorMessage = document.getElementById("error-message");
-
-    document.getElementById("username").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("error-message").innerHTML = "";
-    errorMessage.style.display = 'none'; // اخفاء رسالة الخطأ              
-    document.getElementById("full-name-display").innerText = '';
-}
-
-function clearPasswordRecoveryForm() {
-    const recoverymessage = document.getElementById("recovery-message");
-
-    document.getElementById("recovery-username").value = "";
-    document.getElementById("recovery-phone").value = "";
-    document.getElementById("recovery-message").innerHTML = "";
-    recoverymessage.style.display = 'none'; // اخفاء رسالة الخطأ  
-}
-
-
-  
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const signupDateField = document.getElementById('signup-date');
-            const today = new Date();
-            
-            // الحصول على اليوم، الشهر، والسنة
-            const day = String(today.getDate()).padStart(2, '0');
-            const month = String(today.getMonth() + 1).padStart(2, '0'); // الشهور تبدأ من 0
-            const year = today.getFullYear(); // السنة كاملة
-            
-            // تنسيق التاريخ إلى dd/mm/yyyy
-            const formattedDate = `${day}/${month}/${year}`;
-            signupDateField.value = formattedDate;
-        });
-  
-function toggleSignUpForm() {
-        const signUpForm = document.getElementById("sign-up-form");
-        signUpForm.style.display = (signUpForm.style.display === "none" || signUpForm.style.display === "") ? "block" : "none";
-        const loginContainer = document.getElementById("login-container");
-        loginContainer.style.display = (signUpForm.style.display === "none") ? "block" : "none";
-    }
-
-// تحديد العنصر الذي يحتوي على الرسالة
-let errorMessage = document.getElementById("errorMessage");
-
-// التحقق من وجود النص عند تحديث المحتوى
-if (errorMessage) {
-    let messageText = `عفوا، اشتراكك انتهى في`;
-    
-    if (errorMessage.innerHTML.includes(messageText)) {
-        localStorage.setItem("expiredMessage", "true"); // تخزين العلامة
-    }
-}  
-</script>
-<script>
-    // إضافة CSS باستخدام JavaScript
-    var style = document.createElement('style');
-    style.innerHTML = `
-        .notification-bell {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: blue;
-            color: white;
-            padding: 15px;
-            border-radius: 10px; /* جعل الأيقونة مربعة */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            z-index: 1000;
-            animation: bounce 2s infinite; /* تطبيق تأثير الحركة */
-            margin-bottom: 0px; /* مسافة سفلية */
-            display: none; /* الجرس مخفي في البداية */
-        }
-        
-        .notification-count {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: red;
-            color: white;
-            border-radius: 50%;
-            padding: 5px;
-            font-size: 12px;
-        }
-
-        /* الخلفية الشبه شفافة */
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* خلفية نصف شفافة */
-            z-index: 999; /* فوق كل محتويات الصفحة */
-        }
-
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000; /* فوق الخلفية الشبه شفافة */
-            font-size: 25px;
-            font-weight: bold; /* جعل الخط غليظًا */
-        }
-
-        .popup-content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .close-popup-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: red; /* خلفية الزر حمراء */
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold; /* جعل الخط غليظًا */
-            border-radius: 5px;
-        }
-
-        .close-popup-btn:hover {
-            background-color: #ff6666;
-        }
-
-        .share-btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 10px 20px;
-            background-color: blue; /* خلفية الزر زرقاء */
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: bold; /* جعل الخط غليظًا */
-            border-radius: 5px;
-            margin-left: 10px; /* مسافة بجانب زر الإغلاق */
-        }
-
-        .share-btn:hover {
-            background-color: #4a90e2; /* تغيير لون الخلفية عند التمرير */
-        }
+    document.getElementById('usernameDisplay').innerHTML = `
+        <p><i class="fas fa-user"></i> المستخدم الحالي : ${user.fullName}</p>
+        <p><i class="fas fa-hourglass-half"></i> الفترة المتبقية : ${daysDiff} يوم</p>
+        <p><i class="fas fa-calendar-day"></i> تاريخ الدخول : ${dateString}</p>
+        <p><i class="fas fa-clock"></i> الوقت : ${timeString}</p>
     `;
-    document.head.appendChild(style);
 
-    // إنشاء أيقونة الجرس والنقطة الحمراء
-    var bellContainer = document.createElement('div');
-    bellContainer.className = 'notification-bell';
-    
-    var bellIcon = document.createElement('i');
-    bellIcon.className = 'fa fa-bell';
-    bellContainer.appendChild(bellIcon);
-    
-    var notificationCount = document.createElement('span');
-    notificationCount.className = 'notification-count';
-    notificationCount.innerText = '+1';
-    bellContainer.appendChild(notificationCount);
+    // تحديث الروابط بناءً على حالة تسجيل الدخول
+    const userLoggedIn = daysDiff > 0;
 
-    document.body.appendChild(bellContainer);
+    document.getElementById('actionButton1').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/Profit91.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton2').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/vat67+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton3').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/Amount91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton4').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/estate91.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton5').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/estate91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton6').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/law30.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton7').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/vat67+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton8').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/law6.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton9').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/salary91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
 
-    // إنشاء الخلفية الشبه شفافة
-    var popupOverlay = document.createElement('div');
-    popupOverlay.className = 'popup-overlay';
-    document.body.appendChild(popupOverlay);
 
-    // إنشاء نافذة الإشعار المنبثقة
-    var popup = document.createElement('div');
-    popup.id = 'notificationPopup';
-    popup.className = 'popup';
-    
-    var popupContent = document.createElement('div');
-    popupContent.className = 'popup-content';
-    
-    var popupMessage = document.createElement('p');
-    popupMessage.innerText = 'عزيزي المشترك فـ النسخة الذهبية | يمكنك زيادة النقاط الخاصة بك عن طريق مشاركة كود إحالتك ودعوة الأصدقاء للإشتراك في النسخة الذهبية وبذلك تربح نقاط إضافية مجانية .. يتم الإستفادة بها في تجديد الإشتراك الخاص بك بعد إنتهائه أو منح النقاط كهدية ( إشتراك مجاني ) لصديقك العزيز.';
-    popupContent.appendChild(popupMessage);
-    
-    // زر مشاركة كود الإحالة مع أيقونة
-    var shareBtn = document.createElement('button');
-    shareBtn.className = 'share-btn';
-    shareBtn.innerHTML = '<i class="fa fa-share-alt"></i> شارك كودك'; // إضافة الأيقونة بجانب النص
-    shareBtn.onclick = function() {
-        window.location.href = 'go:proo'; // فتح الرابط go:proo
-    };
-    popupContent.appendChild(shareBtn);
-    
-    // زر الإغلاق مع أيقونة
-    var closePopupBtn = document.createElement('button');
-    closePopupBtn.className = 'close-popup-btn';
-    closePopupBtn.innerHTML = '<i class="fa fa-times"></i> إغلاق'; // إضافة أيقونة الإغلاق بجانب النص
-    closePopupBtn.onclick = function() {
-        document.getElementById('notificationPopup').style.display = 'none';
-        document.querySelector('.popup-overlay').style.display = 'none'; // إخفاء الخلفية الشبه شفافة
-    };
-    popupContent.appendChild(closePopupBtn);  
-  
-    popup.appendChild(popupContent);
-    document.body.appendChild(popup);
 
-    // إضافة حدث الضغط على الجرس
-    bellContainer.addEventListener('click', function() {
-        document.getElementById('notificationPopup').style.display = 'block';
-        document.querySelector('.popup-overlay').style.display = 'block'; // إظهار الخلفية الشبه شفافة
-    });
-
-    // مراقبة ظهور الفقرة <p> لعرض الجرس
-    document.addEventListener('DOMContentLoaded', function() {
-        var observer = new MutationObserver(function(mutationsList, observer) {
-            var targetElement = document.querySelector('.name');
-            if (targetElement && window.getComputedStyle(targetElement).display !== 'none') {
-                document.querySelector('.notification-bell').style.display = 'block';
-                observer.disconnect(); // إيقاف المراقبة بعد ظهور العنصر
+    // إخفاء أو إظهار الأيقونات والعناصر المحتوية على "PRO"
+    const icons = document.querySelectorAll('.fa-crown');
+    const proElements = document.querySelectorAll('.tag[data-tag="PRO"], span');
+    
+    if (userLoggedIn) {
+        icons.forEach(icon => icon.classList.add('hidden'));
+        proElements.forEach(element => {
+            if (element.innerText.includes('PRO')) {
+                element.classList.add('hidden');
             }
         });
-
-        // مراقبة تغييرات DOM للتأكد من ظهور العنصر المستهدف
-        observer.observe(document.body, { childList: true, subtree: true });
+    } else {
+        icons.forEach(icon => icon.classList.remove('hidden'));
+        proElements.forEach(element => {
+            if (element.innerText.includes('PRO')) {
+                element.classList.remove('hidden');
+            }
+        });
+    }
+} else {
+    // إظهار الأيقونات المخفية والعناصر المحتوية على "PRO" إذا لم تكن بيانات المستخدم موجودة
+    const icons = document.querySelectorAll('.fa-crown');
+    const proElements = document.querySelectorAll('.tag[data-tag="PRO"], span');
+    
+    icons.forEach(icon => icon.classList.remove('hidden'));
+    proElements.forEach(element => {
+        if (element.innerText.includes('PRO')) {
+            element.classList.remove('hidden');
+        }
     });
- 
+
+    // تحديث الروابط لتوجيه إلى صفحة PRO
+    document.getElementById('actionButton1').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    document.getElementById('actionButton2').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    document.getElementById('actionButton3').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    document.getElementById('actionButton4').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    document.getElementById('actionButton5').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    document.getElementById('actionButton6').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    document.getElementById('actionButton7').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    document.getElementById('actionButton8').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+    document.getElementById('actionButton9').onclick = () => isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html';
+}
+
+
+  
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+}
+// تحميل تفضيل العرض المحفوظ والوضع الليلي
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModePreference = localStorage.getItem('darkModePreference'); // إضافة تفضيل الوضع الليلي
+    // تطبيق الوضع الليلي إذا كان مفعلاً
+    if (darkModePreference === 'true') {
+        toggleNightMode();
+    }
+});
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+    // حفظ تفضيل الوضع الليلي
+    localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+}      
+  
+
+  
+  
+  
+document.addEventListener('DOMContentLoaded', function() {
+    var searchInput = document.getElementById('searchInput');
+    var placeholder = document.getElementById('placeholder');
+
+    searchInput.addEventListener('input', function() {
+        if (this.value) {
+            placeholder.style.display = 'none';
+        } else {
+            placeholder.style.display = 'inline-block';
+        }
+        filterFAQs();
+    });
+
+    searchInput.addEventListener('focus', function() {
+        if (!this.value) {
+            placeholder.style.display = 'inline-block';
+        }
+    });
+
+    searchInput.addEventListener('blur', function() {
+        placeholder.style.display = 'none';
+    });
+
+    function clearSearchAndReset() {
+        searchInput.value = '';
+        placeholder.style.display = 'inline-block';
+
+        var tags = document.querySelectorAll('.tag');
+        tags.forEach(function(tag) {
+            tag.classList.remove('selected');
+        });
+
+        var versionCards = document.querySelectorAll('.version-card');
+        versionCards.forEach(function(card) {
+            card.style.display = '';
+            card.querySelector('.version-content').classList.remove('show');
+            card.querySelector('.arrow-icon').classList.remove('rotate');
+        });
+
+        filterFAQs();
+    }
+
+    document.getElementById('clearSearch').addEventListener('click', clearSearchAndReset);
+    document.getElementById('extraClearButton').addEventListener('click', clearSearchAndReset);
+
+    var tags = document.querySelectorAll('.tag');
+    tags.forEach(function(tag) {
+        tag.addEventListener('click', function() {
+            tags.forEach(function(t) {
+                t.classList.remove('selected');
+            });
+            this.classList.add('selected');
+
+            var selectedTag = this.getAttribute('data-tag');
+            searchInput.value = selectedTag + ' | ';
+            searchInput.focus();
+            placeholder.style.display = 'none';
+
+            filterFAQs();
+        });
+    });
+
+    function filterFAQs() {
+        var filter = searchInput.value.toLowerCase().split('|');
+        var keyword = filter[0].trim();
+        var searchTerm = filter[1] ? filter[1].trim() : '';
+        var versionCards = document.querySelectorAll('.version-card');
+
+        versionCards.forEach(function(card) {
+            var questionText = card.querySelector('.version-header').textContent.toLowerCase();
+            var itemTags = card.getAttribute('data-tags').toLowerCase();
+
+            var matchesKeyword = itemTags.includes(keyword) || questionText.includes(keyword);
+            var matchesSearchTerm = questionText.includes(searchTerm);
+
+            if ((keyword === '' || keyword === '|') && searchTerm === '') {
+                card.style.display = '';
+            } else if (matchesKeyword && matchesSearchTerm) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // ✅ وظيفة تبديل عرض/إخفاء محتوى الإصدار
+    function toggleVersion(header) {
+        const card = header.parentElement;
+        const content = card.querySelector('.version-content');
+        const arrow = header.querySelector('.arrow-icon');
+
+        const isShown = content.classList.contains('show');
+
+        // إغلاق كل البطاقات الأخرى
+        document.querySelectorAll('.version-card').forEach(otherCard => {
+            otherCard.querySelector('.version-content').classList.remove('show');
+            otherCard.querySelector('.arrow-icon').classList.remove('rotate');
+        });
+
+        // إظهار هذه البطاقة فقط إذا لم تكن مفتوحة
+        if (!isShown) {
+            content.classList.add('show');
+            arrow.classList.add('rotate');
+        }
+    }
+
+    // ربط النقر على رؤوس البطاقات بوظيفة التبديل
+    document.querySelectorAll('.version-header').forEach(header => {
+        header.addEventListener('click', function() {
+            toggleVersion(this);
+        });
+    });
+});
+
+// لتغيير اتجاه الصفحة من اليسار إلى اليمين (RTL)
+document.dir = 'rtl';
+
+// جلب زر الصعود
+let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+// إظهار وإخفاء الزر عند التمرير
+window.onscroll = function() {
+    if (document.documentElement.scrollTop > 200) { // عند التمرير 200 بكسل يظهر الزر
+        scrollToTopBtn.style.display = "block";
+    } else {
+        scrollToTopBtn.style.display = "none";
+    }
+};
+
+// عند الضغط على الزر، يتم التمرير إلى الأعلى بسلاسة
+scrollToTopBtn.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}); 
 </script>
+</body>
+</html>      
+
 
 
 <script>
@@ -2134,6 +1802,3 @@ document.onkeydown = function (e) {
     }
 };
 </script> 
-</body>
-</html>
-
