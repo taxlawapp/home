@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المساعد الذكي للضرائب المصرية</title>
+    <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#C8102E', // أحمر مصري
+                        'secondary': '#D4AF37', // ذهبي
+                        'accent': '#00205B', // أزرق داكن
+                        'light': '#F8FAFC',
+                        'dark': '#1E293B',
+                    },
+                    fontFamily: {
+                        'Beiruti': ['Beiruti', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.08)',
+                        'btn': '0 4px 15px rgba(200, 16, 46, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts - Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Beiruti', sans-serif;
+            background-color: #F8FAFC;
+            color: #333;
+            line-height: 1.6;
+            background-color: #e1f5fe; 
+            font-size: 18px;
+            font-weight: bold;
+        }
+      
+      
+           #blog-pager {
+    margin: 1em 0;
+    text-align: center;
+    overflow: hidden;
+    display: none;
+}
+      
+      
+      
+      html .post-footer-line {
+    margin: 10px 0;
+    display: none;
+}
+      
+      html #blog-pager-home-link {
+    width: 140px;
+    margin: 0 auto;
+    display: none;
+}
+      
+      .mobile .date-header span {
+    padding: 0.1em 10px;
+    margin: 0 -10px;
+    font-size: 30px;
+}
+      .header-inner .Header #header-inner {
+    overflow: hidden;
+    display: none;
+}
+      
+      .mobile .footer-outer {
+    border-top: none;
+    display: none;
+}
+      
+      #footer-blanter {
+    position: relative;
+    padding: 50px 0 20px;
+    margin: 0;
+    background: linear-gradient(to right, #3ec2f2,#0067b0);
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    display: none;
+}
+
+      
+      #header-blanter {
+    background: linear-gradient(to right, #3ec2f2,#0067b0);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 20px 0 80px;
+    text-align: center;
+    line-height: 1.8;
+    display: none;
+}
+
+        /* تحسينات عامة */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #C8102E 0%, #D4AF37 100%);
+            border-radius: 2px;
+        }
+
+        /* بطاقات الميزات */
+        .feature-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 0px;
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(200,16,46,0.1) 0%, rgba(212,175,55,0.1) 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feature-card:hover:before {
+            opacity: 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+
+        /* عناصر القوائم */
+        .benefit-item {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .benefit-item:before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0.6rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #C8102E;
+            border-radius: 50%;
+        }
+
+        /* أزرار */
+        .btn-primary {
+            background: linear-gradient(135deg, #C8102E 0%, #00205B 100%);
+            color: white;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(200, 16, 46, 0.35);
+        }
+
+        /* نافذة المساعد */
+        .assistant-modal {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .chat-bubble-user {
+            background: linear-gradient(135deg, #C8102E 0%, #00205B 100%);
+            color: white;
+            border-radius: 18px 18px 0 18px;
+            max-width: 85%;
+        }
+        
+        .chat-bubble-ai {
+            background-color: #FFFFFF;
+            color: #333;
+            border-radius: 18px 18px 18px 0;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            max-width: 85%;
+        }
+        
+        /* مؤشر الكتابة */
+        .typing-indicator span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #9CA3AF;
+            animation: typing 1.4s infinite;
+        }
+        
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-4px); }
+        }
+
+        /* أمثلة الأسئلة */
+        .example-prompt {
+            transition: all 0.25s ease;
+            border: 1px solid #E2E8F0;
+            cursor: pointer;
+        }
+        
+        .example-prompt:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            border-color: #C8102E;
+        }
+
+        /* لوحة الإعدادات */
+        .settings-panel {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            z-index: 60;
+            padding: 20px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .settings-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .settings-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .settings-panel.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .settings-item {
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .settings-item:hover {
+            background-color: rgba(200, 16, 46, 0.05);
+        }
+
+        /* التنبيهات */
+        .alert-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .alert-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .alert-content {
+            background-color: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            overflow: hidden;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .alert-modal.show .alert-content {
+            transform: translateY(0);
+        }
+        
+        .alert-header {
+            background-color: #C8102E;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .alert-body {
+            padding: 20px;
+            color: #333;
+        }
+        
+        .alert-footer {
+            padding: 15px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        .alert-btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        
+        .alert-btn-primary {
+            background-color: #C8102E;
+            color: white;
+            border: none;
+        }
+        
+        .alert-btn-primary:hover {
+            background-color: #A00D26;
+        }
+        
+        .alert-btn-secondary {
+            background-color: #f0f0f0;
+            color: #333;
+            border: none;
+        }
+        
+        .alert-btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* شريط التمرير */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A0AEC0;
+        }
+
+        /* تأثيرات النص */
+        .text-gradient {
+            background: linear-gradient(135deg, #C8102E 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        /* الهيدر */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(200,16,46,0.05) 0%, rgba(212,175,55,0.05) 100%);
+            border-radius: 24px;
+        }
+
+        /* التكيف مع الأجهزة الصغيرة */
+        @media (max-width: 640px) {
+            .section-title:after {
+                width: 40%;
+            }
+            
+            .feature-card {
+                padding: 1rem;
+            }
+        }
+
+        /* الخطوط */
+        body, p, div, span, a, button, input, textarea {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .sub-content {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .main-heading {
+            font-size: 22px;
+        }
+        
+        .sub-heading {
+            font-size: 20px;
+        }
+        
+        .modal-heading {
+            font-size: 22px;
+        }
+        
+        .modal-subheading {
+            font-size: 20px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #C8102E 0%, #00205B 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        
+        /* محتوى نافذة المساعد */
+        .assistant-content {
+            font-size: 20px;
+        }
+        
+        .assistant-subcontent {
+            font-size: 18px;
+        }
+        
+
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #0277bd;
+            --accent-color: #E63946;
+            --text-color: #1a237e;
+            --light-bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }         
+        
+
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 100%; /* عرض العنصر */
+            height: 57.5px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }
+
+
+        .top-bar .menu-icon {
+            font-size: 27.5px; /* حجم الأيقونة */
+            cursor: pointer; /* تغيير شكل المؤشر */
+        }
+
+        .top-bar .title {
+            font-size: 18px; /* حجم النص */
+            margin-left: 20px; /* مسافة بين السهم والعنوان */
+            flex-grow: 1; /* توسيط العنوان */
+            text-align: center; /* توسيط النص */
+            font-weight: bold;  
+        }
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+}
+        
+/* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92.5%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: space-around;
+            padding: 5px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 22.5px;
+            border-bottom: 3px solid white;
+            z-index: 1000;
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 0;
+            transition: var(--transition);
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px;
+            font-size: 18px;
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-item:active .icon {
+            font-size: 20px;
+        }
+
+       /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }     
+
+        /* شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: 87.5px;
+            background-color: red;
+            color: white;
+            font-size: 15px;
+            padding: 2.5px 5px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* نافذة مصغرة معدلة */
+        #miniTaxWindow {
+            position: fixed;
+            bottom: 82.5px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            z-index: 50;
+        }
+    
+</style>
+</head>
+<body class="bg-light">
+    
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='go:home'"></i>
+    </div>
+    <div class="title">
+         المساعد الذكي | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div>
+
+<!-- الصفحة التعريفية -->
+<div class="container mx-auto px-4 py-4" style="margin-top: 52.5px; margin-bottom: 2.5px">
+
+    <!-- القسم الأول: نبذة تعريفية -->
+    <section class="mb-6">
+        <div class="hero-section text-center mb-6 p-4 md:p-6">
+            <h1 class="text-[26px] font-bold mb-3 text-primary">
+                <span class="text-gradient">المساعد الذكي الضريبي</span>
+            </h1>
+            <p class="text-gray-600 max-w-3xl mx-auto leading-relaxed text-center">
+                أداة ذكية مقدمة من Tax Law App متخصصة في النظام الضريبي المصري تقدم إجابات دقيقة وفق أحدث القوانين والتعديلات
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-primary/10 p-2 rounded-full">
+                        <i class="fas fa-info-circle text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">ما هو المساعد الذكي الضريبي ؟</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed text-center">
+                    المساعد الذكي الضريبي هو أداة ذكية مقدمة من Tax Law App، مصممة خصيصاً لمساعدة الأفراد والشركات في فهم وتطبيق النظام الضريبي المصري. يعتمد المساعد على أحدث القوانين واللوائح الضريبية الصادرة عن وزارة المالية ومصلحة الضرائب المصرية، ويقدم إجابات دقيقة وموثوقة باللغة العربية.
+                </p>
+            </div>
+
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-primary/10 p-2 rounded-full">
+                        <i class="fas fa-cogs text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">كيف يعمل المساعد الضريبي ؟</h3>
+                </div>
+                <p class="text-gray-600 leading-relaxed text-center">
+                    يعمل المساعد من خلال تحليل الأسئلة والاستفسارات الضريبية، ثم يقوم بتقديم إجابات شاملة تستند إلى التشريعات الضريبية المصرية. يمكنه تفسير القوانين، شرح الإجراءات، وتقديم إرشادات حول كيفية الامتثال للالتزامات الضريبية.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم خطوات الاستخدام -->
+    <section class="mb-6">
+        <div class="section-divider"></div>
+
+        <div class="text-center mb-4">
+            <h2 class="text-[19px] font-bold mb-2 text-gray-800">خطوات استخدام المساعد</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto text-center font-bold text-[17px]">
+                كيف تستخدم المساعد الذكي الضريبي بخطوات بسيطة جداً
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center mb-2">
+                    <div class="step-number">1</div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">اكتب سؤالك</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    اكتب سؤالك الضريبي بوضوح في مربع المحادثة، يمكنك طرح أي استفسار يتعلق بالنظام الضريبي المصري.
+                </p>
+            </div>
+
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center mb-2">
+                    <div class="step-number">2</div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">انتظر الإجابة</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    سيقوم المساعد بتحليل سؤالك وتقديم إجابة دقيقة تستند إلى القوانين واللوائح الضريبية المصرية.
+                </p>
+            </div>
+
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center mb-2">
+                    <div class="step-number">3</div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">احصل على المعلومات</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    ستتلقى إجابة شاملة تحتوي على المواد القانونية ذات الصلة، التفسيرات، والإجراءات المطلوبة.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم أهمية الاستخدام -->
+    <section class="mb-6">
+        <div class="section-divider"></div>
+
+        <div class="text-center mb-4">
+            <h2 class="text-[19px] font-bold mb-2 text-gray-800">أهمية استخدام المساعد الذكي</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto text-center font-bold text-[17px]">
+                لماذا يجب عليك أن تستخدم المساعد الذكي الضريبي بتقنية الـ AI
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-primary/10 p-2 rounded-full">
+                        <i class="fas fa-clock text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">توفير الوقت والجهد</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    بدلاً من البحث في المواقع الرسمية، يمكنك الحصول على إجابات فورية ودقيقة من المساعد الذكي في ثوانٍ معدودة.
+                </p>
+            </div>
+
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-primary/10 p-2 rounded-full">
+                        <i class="fas fa-money-bill-wave text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">تجنب الأخطاء المكلفة</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    الأخطاء الضريبية قد تكلفك غرامات كبيرة. المساعد يقدم معلومات دقيقة محدثة وفق أحدث التعديلات القانونية لضمان الامتثال الصحيح.
+                </p>
+            </div>
+
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-primary/10 p-2 rounded-full">
+                        <i class="fas fa-user-shield text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">حماية من المشكلات القانونية</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    فهم النظام الضريبي يحميك من الوقوع في مشكلات قانونية. المساعد يشرح لك الالتزامات والحقوق الضريبية بوضوح.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المزايا -->
+    <section class="mb-6">
+        <div class="section-divider"></div>
+
+        <div class="text-center mb-4">
+            <h2 class="text-[19px] font-bold mb-2 text-gray-800">مزايا المساعد الذكي</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto text-center font-bold text-[17px]">
+                مزايا تجعل المساعد الذكي خيارك الأمثل للاستشارات الضريبية
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+            <!-- الميزة 1 -->
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-secondary/10 p-2 rounded-full">
+                        <i class="fas fa-bolt text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">سرعة الاستجابة</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    إجابات فورية على استفساراتك الضريبية دون انتظار، متاح 24/7 لأي سؤال أو استفسار.
+                </p>
+            </div>
+
+            <!-- الميزة 2 -->
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-secondary/10 p-2 rounded-full">
+                        <i class="fas fa-gem text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">دقة المعلومات</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    معلومات محدثة وفق أحدث القوانين واللوائح الضريبية المصرية، مع الإشارة إلى المواد القانونية ذات الصلة.
+                </p>
+            </div>
+
+            <!-- الميزة 3 -->
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-secondary/10 p-2 rounded-full">
+                        <i class="fas fa-lock text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">خصوصية وأمان</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    لا يتم تخزين بياناتك الشخصية أو مشاركتها مع أي جهات خارجية. استفسر بكل خصوصية وأمان.
+                </p>
+            </div>
+
+            <!-- الميزة 4 -->
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-secondary/10 p-2 rounded-full">
+                        <i class="fas fa-language text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">لغة عربية واضحة</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    إجابات بلغة عربية واضحة خالية من المصطلحات المعقدة، مع شرح للمفاهيم القانونية بطريقة مبسطة.
+                </p>
+            </div>
+
+            <!-- الميزة 5 -->
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-secondary/10 p-2 rounded-full">
+                        <i class="fas fa-link text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">روابط رسمية</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    يوفر روابط مباشرة للمواقع الرسمية والخدمات الإلكترونية التابعة لمصلحة الضرائب المصرية.
+                </p>
+            </div>
+
+            <!-- الميزة 6 -->
+            <div class="feature-card bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="bg-secondary/10 p-2 rounded-full">
+                        <i class="fas fa-hand-holding-usd text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="text-gray-800 font-bold text-[17px]">مجاني بالكامل</h3>
+                </div>
+                <p class="text-gray-600 text-right">
+                    خدمة مجانية بالكامل بدون أي رسوم أو اشتراكات، متاحة للجميع دون قيود.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+<!-- قسم بدء الاستخدام -->
+<section class="text-center py-4 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl" style="margin-bottom: 62.5px; margin-top: 2.5px">
+    <h2 class="text-[21px] font-bold mb-4 text-gray-800">
+        جرب المساعد الذكي الضريبي الآن
+    </h2>
+
+    <!-- إخلاء المسؤولية قبل الزر -->
+    <div class="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-3 rounded-lg max-w-3xl mx-auto mb-4 text-[16px] font-bold leading-relaxed text-right" style="width: 95%;">
+        ⚠️ <strong>تنويه هام جدًا :</strong><strong class="text-gray-900">المساعد الذكي الضريبي</strong> خدمة ذكية مقدمة من <strong>Tax Law App</strong> متخصصة في الرد على التساؤلات الضريبية وفق النظام الضريبي المصري.
+            يعتمد على أحدث تقنيات <strong>AI</strong> وغير تابعة لأي جهة حكومية أو رسمية.  
+      
+        <!-- الموافقة على الشروط -->
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-800 p-3 rounded-lg max-w-2xl mx-auto mb-2 text-right text-[17px] font-bold leading-relaxed" style="width: 95%;">
+            ⚠️ باستخدامك للمساعد الذكي الضريبي فإنك توافق على أن مطور التطبيق غير مسؤول عن أي قرارات تتخذ بناءً على المعلومات المقدمة. ✔️
+        </div>
+
+        <!-- الخصوصية -->
+        <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-800 p-3 rounded-lg max-w-2xl mx-auto mb-2 text-right text-[17px] font-bold leading-relaxed" style="width: 95%;">
+            ⚠️ المساعد يقوم بجمع ومشاركة بياناتك فقط مع أحد تقنيات AI للرد على استفساراتك، ولا يتم الاحتفاظ بها أو مشاركتها مع أطراف خارجية أخرى. ✔️
+        </div>      
+
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-800 p-3 rounded-lg max-w-2xl mx-auto mb-3 text-right text-[17px] font-bold leading-relaxed" style="width: 95%;">
+            📌 تنبيه هام : بالضغط على الزر أدناه، فأنت تقر بأنك قرأت وفهمت إخلاء المسؤولية وتوافق على الشروط.✔️
+        </div>  
+
+    <button id="openAssistantBtn2" class="btn-primary text-white text-sm md:text-base py-2 px-4 md:py-3 md:px-6 rounded-lg flex items-center gap-2 mx-auto hover:bg-red-800 transition-colors">
+        <i class="fas fa-robot text-base md:text-lg"></i>
+        <span>أوافق وأفتح المساعد الضريبي</span>
+    </button>
+    </div>  
+</section>
+
+<!-- نافذة منبثقة (Modal) للإخلاء عند فتح المساعد لأول مرة -->
+<div id="disclaimerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-xl max-w-md w-full shadow-lg text-right mx-4">
+        <h3 class="text-lg font-bold mb-3 text-red-600">⚠️ تنويه هام جداً :</h3>
+<strong class="text-gray-900">المساعد الذكي الضريبي</strong> خدمة ذكية مقدمة من <strong>Tax Law App</strong> متخصصة في الرد على التساؤلات الضريبية وفق النظام الضريبي المصري.
+            يعتمد على أحدث تقنيات <strong>AI</strong> وغير تابعة لأي جهة حكومية أو رسمية.  
+        يعتمد هذا المساعد الذكي على معلومات من المصادر الرسمية مثل :- 
+        <a href="https://mof.gov.eg/" target="_blank" class="underline"><i class="fas fa-up-right-from-square text-xs"></i> وزارة المالية المصرية</a>       
+        <a href="https://eta.gov.eg/ar/home" target="_blank" class="underline"><i class="fas fa-up-right-from-square text-xs"></i> مصلحة الضرائب المصرية</a>
+        <a href="https://customs.gov.eg" target="_blank" class="underline"><i class="fas fa-up-right-from-square text-xs"></i> مصلحة الجمارك المصرية</a> 
+        <a href="https://www.rta.gov.eg/" target="_blank" class="underline"><i class="fas fa-up-right-from-square text-xs"></i> مصلحة الضرائب العقارية</a> 
+        <a href="https://eservice.incometax.gov.eg/etax" target="_blank" class="underline"><i class="fas fa-up-right-from-square text-xs"></i> البوابة الإلكترونية للخدمات الضريبية</a> 
+        <a href="https://workspace.eta.gov.eg/" target="_blank" class="underline"><i class="fas fa-up-right-from-square text-xs"></i> بوابة الممول الإلكترونية</a> 
+        <a href="https://ssp.eta.gov.eg/" target="_blank" class="underline"><i class="fas fa-up-right-from-square text-xs"></i> منصة التسهيلات الضريبية</a> 
+        <a href="http://www.alamiria.com/Sec/Home" target="_blank" class="underline"><i class="fas fa-up-right-from-square text-xs"></i> الهيئة العامة لشئون المطابع الأميرية</a> 
+، لكن <span class="underline">دقة الردود ليست 100%</span> وقد تحتوي على معلومات غير محدثة.
+            يُنصح دائمًا بمراجعة الجهات الرسمية السابقة أو استشارة محاسب قانوني مختص.
+        <div class="flex justify-end gap-3">
+            <button id="declineBtn" class="bg-gray-300 text-gray-800 py-2 px-4 rounded-lg">إلغاء</button>
+            <button id="acceptBtn" class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700">أوافق وأكمل</button>
+        </div>
+    </div>
+</div>
+
+
+    <!-- نافذة المساعد الضريبي -->
+    <div id="taxModal" class="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-2 md:p-4 hidden opacity-0 -translate-y-4">
+        <div class="assistant-modal bg-white w-full max-w-3xl h-[77.5vh] flex flex-col overflow-hidden">
+            <!-- Header -->
+            <div class="flex items-center justify-between p-4 md:p-5 border-b border-gray-200 bg-white">
+                <div class="flex items-center gap-3 md:gap-4">
+                    <div class="text-gradient text-2xl md:text-3xl">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base md:text-xl font-bold text-gray-800 modal-heading">المساعد الذكي للضرائب المصرية</h3>
+<p class="text-[15px] font-bold mb-4 text-blue-600">
+    خدمة ذكية بتقنية الـ AI من Tax Law App
+</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 md:gap-3">
+                    <button id="settingsBtn" class="text-gray-500 hover:text-primary transition-colors p-1 md:p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-cog text-base md:text-lg"></i>
+                    </button>
+                    <button id="minimizeTaxModal" class="text-gray-500 hover:text-gray-700 transition-colors p-1 md:p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-window-minimize text-base md:text-lg"></i>
+                    </button>
+                    <button id="closeTaxModal" class="text-gray-500 hover:text-primary transition-colors p-1 md:p-2 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-times text-lg md:text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Chat History -->
+            <div id="taxChatHistory" class="flex-grow p-3 md:p-6 space-y-3 md:space-y-4 overflow-y-auto bg-gray-50">
+                <div class="flex justify-start">
+                    <div class="chat-bubble-ai p-4 md:p-5 rounded-lg md:rounded-xl max-w-[100%]">
+                        <h4 class="font-bold mb-2 md:mb-3 text-primary assistant-content">مرحباً بك في المساعد الذكي للضرائب المصرية!</h4>
+                        <p class="mb-2 md:mb-3 assistant-subcontent">أنا هنا لمساعدتك في فهم النظام الضريبي المصري وتقديم الإرشادات اللازمة لتنفيذ متطلباتك الضريبية وفقاً للقوانين والتشريعات الضريبية المعمول بها.</p>
+                       
+                        <div class="bg-blue-50 p-3 md:p-4 rounded-lg mb-2 md:mb-3">
+                            <h5 class="font-bold text-blue-800 mb-1 md:mb-2 flex items-center gap-1 md:gap-2 assistant-content">
+                                <i class="fas fa-question-circle"></i> يمكنني مساعدتك في :
+                            </h5>
+                            <ul class="list-disc pr-4 md:pr-5 space-y-1 assistant-subcontent">
+                                <li>شرح أنواع الضرائب في مصر (VAT، الدخل، العقارية، الجمارك)</li>
+                                <li>الإجراءات اللازمة للتسجيل الضريبي الإلكتروني</li>
+                                <li>تقديم الإقرارات الضريبية إلكترونياً عبر المنصات الرسمية</li>
+                                <li>الاستعلام عن القوانين والتشريعات الضريبية وفق أحدث التعديلات</li>
+                            </ul>
+                        </div>
+                      
+                        <div class="bg-yellow-50 p-3 md:p-4 rounded-lg mb-2 md:mb-3 border border-yellow-200">
+                            <p class="text-yellow-800 text-sm assistant-subcontent">
+                                <i class="fas fa-exclamation-triangle mr-1"></i> 
+                                <strong> ملاحظة هامة :</strong> المعلومات المقدمة هي للإرشاد العام فقط، الرجاء زيارة المواقع الرسمية للمصلحة أو استشارة متخصص ضريبي.
+                            </p>
+                        </div> 
+                                             
+                        <div class="bg-blue-50 p-3 md:p-4 rounded-lg mb-2 md:mb-3">
+                            <h5 class="font-bold text-blue-800 mb-1 md:mb-2 flex items-center gap-1 md:gap-2 assistant-content">
+                                <i class="fas fa-external-link-alt"></i> الروابط الرسمية ذات الصلة :
+                            </h5>
+<ul class="space-y-0.5 assistant-subcontent">
+    <li class="border-b border-gray-300 pb-1">
+        <a href="https://mof.gov.eg/" target="_blank" class="official-link text-sm md:text-base text-gray-700 px-2 py-1 rounded inline-flex items-center">
+            <i class="fas fa-external-link-alt mr-1 text-xs"></i> وزارة المالية المصرية
+        </a>
+    </li>                    
+    <li class="border-b border-gray-300 pb-1">
+        <a href="https://eta.gov.eg/ar/home" target="_blank" class="official-link text-sm md:text-base text-gray-700 px-2 py-1 rounded inline-flex items-center">
+            <i class="fas fa-external-link-alt mr-1 text-xs"></i> مصلحة الضرائب المصرية
+        </a>
+    </li>
+    <li class="border-b border-gray-300 pb-1">
+        <a href="https://customs.gov.eg" target="_blank" class="official-link text-sm md:text-base text-gray-700 px-2 py-1 rounded inline-flex items-center">
+            <i class="fas fa-external-link-alt mr-1 text-xs"></i> مصلحة الجمارك المصرية
+        </a>
+    </li>
+    <li class="border-b border-gray-300 pb-1">
+        <a href="https://www.rta.gov.eg/" target="_blank" class="official-link text-sm md:text-base text-gray-700 px-2 py-1 rounded inline-flex items-center">
+            <i class="fas fa-external-link-alt mr-1 text-xs"></i> مصلحة الضرائب العقارية
+        </a>
+    </li>                        
+    <li class="border-b border-gray-300 pb-1">
+        <a href="https://eservice.incometax.gov.eg/etax" target="_blank" class="official-link text-sm md:text-base text-gray-700 px-2 py-1 rounded inline-flex items-center">
+            <i class="fas fa-external-link-alt mr-1 text-xs"></i> البوابة الإلكترونية للخدمات الضريبية
+        </a>
+    </li>
+    <li class="border-b border-gray-300 pb-1">
+        <a href="https://workspace.eta.gov.eg/" target="_blank" class="official-link text-sm md:text-base text-gray-700 px-2 py-1 rounded inline-flex items-center">
+            <i class="fas fa-external-link-alt mr-1 text-xs"></i> بوابة الممول الإلكترونية
+        </a>
+    </li>
+    <li class="border-b border-gray-300 pb-1">
+        <a href="https://ssp.eta.gov.eg/" target="_blank" class="official-link text-sm md:text-base text-gray-700 px-2 py-1 rounded inline-flex items-center">
+            <i class="fas fa-external-link-alt mr-1 text-xs"></i> منصة التسهيلات الضريبية
+        </a>
+    </li>
+    <li class="border-b border-gray-300 pb-1">
+        <a href="http://www.alamiria.com/Sec/Home" target="_blank" class="official-link text-sm md:text-base text-gray-700 px-2 py-1 rounded inline-flex items-center">
+            <i class="fas fa-external-link-alt mr-1 text-xs"></i> الهيئة العامة لشئون المطابع الأميرية
+        </a>
+    </li>
+</ul>                        </div> 
+                      
+                      <p class="assistant-subcontent">كيف يمكنني مساعدتك اليوم ؟</p>
+                    </div>
+                </div> 
+
+                <!-- Example Prompts -->
+                <div id="taxExamples" class="space-y-3 md:space-y-4">
+                  <p class="font-bold text-blue-800 mb-1 md:mb-2 flex items-center justify-center gap-1 md:gap-2 assistant-content">
+                  اختر أحد الأسئلة الشائعة :
+                  </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+                        <div class="example-prompt p-3 md:p-4 bg-white rounded-lg cursor-pointer text-right text-gray-700 hover:bg-gray-50">
+                            <div class="flex items-center gap-1 md:gap-2">
+                                <i class="fas fa-file-signature text-primary text-sm md:text-base"></i>
+                                <span class="text-[16px] font-bold">ما هي إجراءات التسجيل في مصلحة الضرائب المصرية بالنسبة ( للدخل & القيمة المضافة ) ؟</span>
+                            </div>
+                        </div>
+                        <div class="example-prompt p-3 md:p-4 bg-white rounded-lg cursor-pointer text-right text-gray-700 hover:bg-gray-50">
+                            <div class="flex items-center gap-1 md:gap-2">
+                                <i class="fas fa-file-invoice text-secondary text-sm md:text-base"></i>
+                                <span class="text-[16px] font-bold">ما هي إجراءات التسجيل في منظومة الفاتورة الضريبية الإلكترونية ؟</span>
+                            </div>
+                        </div>
+                        <div class="example-prompt p-3 md:p-4 bg-white rounded-lg cursor-pointer text-right text-gray-700 hover:bg-gray-50">
+                            <div class="flex items-center gap-1 md:gap-2">
+                                <i class="fas fa-receipt text-accent text-sm md:text-base"></i>
+                                <span class="text-[16px] font-bold">ما هي إجراءات التسجيل في منظومة الإيصال الضريبي الإلكتروني ؟</span>
+                            </div>
+                        </div>
+                        <div class="example-prompt p-3 md:p-4 bg-white rounded-lg cursor-pointer text-right text-gray-700 hover:bg-gray-50">
+                            <div class="flex items-center gap-1 md:gap-2">
+                                <i class="fas fa-balance-scale text-blue-600 text-sm md:text-base"></i>
+                                <span class=" text-[16px] font-bold">ما هو الفرق بين الضرائب المباشرة والضرائب غير المباشرة ؟</span>
+                            </div>
+                        </div>
+                        <div class="example-prompt p-3 md:p-4 bg-white rounded-lg cursor-pointer text-right text-gray-700 hover:bg-gray-50">
+                            <div class="flex items-center gap-1 md:gap-2">
+                                <i class="fas fa-user-tie text-green-600 text-sm md:text-base"></i>
+                                <span class=" text-[16px] font-bold">شروط اعتبار الشخص الطبيعي والإعتباري مقيم في مصر ؟</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input Form -->
+            <div class="p-3 md:p-5 border-t border-gray-200 bg-white/80 backdrop-blur-sm">
+                <form id="taxForm" class="flex items-end gap-2 md:gap-3">
+                    <div class="flex-grow relative">
+                        <textarea id="taxInput" rows="1" class="w-full p-3 md:p-4 pr-10 md:pr-12 bg-gray-100 text-gray-800 rounded-lg md:rounded-xl focus:outline-none focus:ring-2 focus:ring-primary resize-none transition-all" placeholder="اكتب سؤالك أو إستفسارك هنا .."></textarea>
+                        <button type="button" id="clearInput" class="absolute left-3 md:left-4 bottom-3 md:bottom-4 text-gray-400 hover:text-gray-600 hidden">
+                            <i class="fas fa-times text-sm md:text-lg"></i>
+                        </button>
+                    </div>
+                    <button type="submit" id="taxSubmitButton" class="send-btn bg-primary hover:bg-red-800 text-white rounded-lg md:rounded-xl w-12 h-12 md:w-14 md:h-14 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-paper-plane text-base md:text-xl"></i>
+                    </button>
+                </form>
+                <p class="text-[18px] font-bold mb-4 text-blue-600 text-center">
+                    جميع حقوق المساعد الذكي © Tax Law App
+                </p>
+            </div>
+        </div>
+
+        <!-- لوحة الإعدادات -->
+        <div id="settingsPanel" class="settings-panel">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-xl font-bold text-gray-800 modal-heading">إعدادات المساعد الذكي :</h3>
+                <button id="closeSettings" class="text-gray-500 hover:text-primary p-1 rounded-full">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <div class="settings-item p-3 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-gray-800 modal-subheading">حفظ المحادثات :</h4>
+                            <p class="text-sm text-gray-600 sub-content">تخزين المحادثات تلقائياً للرجوع إليها لاحقاً</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="saveConversations" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="settings-item p-3 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-gray-800 modal-subheading">حذف المحادثات القديمة :</h4>
+                            <p class="text-sm text-gray-600 sub-content">حذف المحادثات المحفوظة بعد شهر</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" id="autoDeleteConversations">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <button id="clearAllConversations" class="w-full py-2 px-4 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors">
+                        <i class="fas fa-trash-alt mr-2"></i> حذف جميع المحادثات
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- خلفية معتمة للإعدادات -->
+        <div id="settingsOverlay" class="settings-overlay"></div>
+    </div>
+
+    <!-- نافذة مصغرة -->
+    <div id="miniTaxWindow" class="fixed z-50 hidden">
+        <button id="restoreTaxModal" class="relative bg-primary text-white rounded-full w-14 h-14 md:w-16 md:h-16 flex items-center justify-center shadow-lg md:shadow-xl hover:bg-red-800 transition-colors group">
+            <i class="fas fa-robot text-xl md:text-2xl"></i>
+            <span class="absolute -right-1 -top-1 md:-right-2 md:-top-2 bg-secondary text-accent text-xs font-bold rounded-full w-5 h-5 md:w-6 md:h-6 flex items-center justify-center group-hover:animate-pulse">!</span>
+        </button>
+    </div>
+
+    <!-- نافذة التنبيه -->
+    <div id="alertModal" class="alert-modal">
+        <div class="alert-content">
+            <div class="alert-header">
+                <h3 id="alertTitle" class="text-lg font-bold">عنوان التنبيه</h3>
+                <button id="closeAlert" class="text-white hover:text-gray-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="alert-body">
+                <p id="alertMessage">هذه رسالة تنبيه للمستخدم</p>
+            </div>
+            <div class="alert-footer">
+                <button id="confirmAction" class="alert-btn alert-btn-primary">موافق</button>
+                <button id="cancelAction" class="alert-btn alert-btn-secondary">إلغاء</button>
+            </div>
+        </div>
+    </div>
+    
+    
+
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div> 
+    
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- متغيرات النافذة المنبثقة للإخلاء ---
+        const openBtn = document.getElementById('openAssistantBtn2');
+        const disclaimerModal = document.getElementById('disclaimerModal');
+        const acceptBtn = document.getElementById('acceptBtn');
+        const declineBtn = document.getElementById('declineBtn');
+        
+        // --- متغيرات المساعد الضريبي ---
+        const taxModal = document.getElementById('taxModal');
+        const miniWindow = document.getElementById('miniTaxWindow');
+        const closeBtn = document.getElementById('closeTaxModal');
+        const minimizeBtn = document.getElementById('minimizeTaxModal');
+        const restoreBtn = document.getElementById('restoreTaxModal');
+        const form = document.getElementById('taxForm');
+        const input = document.getElementById('taxInput');
+        const clearInputBtn = document.getElementById('clearInput');
+        const chatHistoryEl = document.getElementById('taxChatHistory');
+        const examplesContainer = document.getElementById('taxExamples');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const settingsPanel = document.getElementById('settingsPanel');
+        const settingsOverlay = document.getElementById('settingsOverlay');
+        const closeSettingsBtn = document.getElementById('closeSettings');
+        const saveConversations = document.getElementById('saveConversations');
+        const autoDeleteConversations = document.getElementById('autoDeleteConversations');
+        const clearAllConversations = document.getElementById('clearAllConversations');
+        const alertModal = document.getElementById('alertModal');
+        const alertTitle = document.getElementById('alertTitle');
+        const alertMessage = document.getElementById('alertMessage');
+        const closeAlert = document.getElementById('closeAlert');
+        const confirmAction = document.getElementById('confirmAction');
+        const cancelAction = document.getElementById('cancelAction');
+        
+        let chatHistory = [];
+        let savedConversations = JSON.parse(localStorage.getItem('taxAssistantConversations')) || [];
+
+        // --- وظائف النافذة المنبثقة للإخلاء ---
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // إذا كانت هذه أول مرة، عرض نافذة الإخلاء
+            if (!localStorage.getItem('disclaimerAccepted')) {
+                showDisclaimerModal();
+            } else {
+                // إذا سبق الموافقة، فتح المساعد مباشرة
+                showTaxModal();
+            }
+        });
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('disclaimerAccepted', 'true');
+            hideDisclaimerModal();
+            showTaxModal();
+        });
+
+        declineBtn.addEventListener('click', () => {
+            hideDisclaimerModal();
+        });
+
+        function showDisclaimerModal() {
+            disableBodyScroll();
+            disclaimerModal.classList.remove('hidden');
+            disclaimerModal.classList.add('flex');
+        }
+
+        function hideDisclaimerModal() {
+            enableBodyScroll();
+            disclaimerModal.classList.remove('flex');
+            disclaimerModal.classList.add('hidden');
+        }
+
+        // --- وظائف المساعد الضريبي ---
+        
+        // عرض نافذة التنبيه
+        function showAlert(title, message, confirmCallback = null, cancelCallback = null) {
+            alertTitle.textContent = title;
+            alertMessage.textContent = message;
+            alertModal.classList.add('show');
+            
+            const handleConfirm = () => {
+                if (confirmCallback) confirmCallback();
+                hideAlert();
+            };
+            
+            const handleCancel = () => {
+                if (cancelCallback) cancelCallback();
+                hideAlert();
+            };
+            
+            confirmAction.onclick = handleConfirm;
+            closeAlert.onclick = handleCancel;
+            cancelAction.onclick = handleCancel;
+            
+            confirmAction.removeEventListener('click', handleConfirm);
+            closeAlert.removeEventListener('click', handleCancel);
+            cancelAction.removeEventListener('click', handleCancel);
+            
+            confirmAction.addEventListener('click', handleConfirm);
+            closeAlert.addEventListener('click', handleCancel);
+            cancelAction.addEventListener('click', handleCancel);
+        }
+        
+        // إخفاء نافذة التنبيه
+        function hideAlert() {
+            alertModal.classList.remove('show');
+        }
+
+        // تحميل المحادثات المحفوظة
+        function loadSavedConversations() {
+            if (savedConversations.length > 0 && saveConversations.checked) {
+                const welcomeMessage = chatHistoryEl.children[0];
+                const examplesSection = chatHistoryEl.querySelector('#taxExamples');
+                
+                chatHistoryEl.innerHTML = '';
+                if (welcomeMessage) chatHistoryEl.appendChild(welcomeMessage);
+                if (examplesSection) chatHistoryEl.appendChild(examplesSection);
+                
+                savedConversations.forEach(msg => {
+                    if (msg.role === 'user') {
+                        addMessageToHistory('user', msg.content, true);
+                    } else if (msg.role === 'ai') {
+                        addMessageToHistory('ai', msg.content, true);
+                    }
+                });
+                
+                if (savedConversations.length > 0) {
+                    examplesContainer.style.display = 'none';
+                } else {
+                    examplesContainer.style.display = 'block';
+                }
+            }
+        }
+
+        // حفظ المحادثات
+        function saveCurrentConversation() {
+            if (saveConversations.checked) {
+                const messages = Array.from(chatHistoryEl.children).map(el => {
+                    const bubble = el.querySelector('.chat-bubble-user, .chat-bubble-ai');
+                    if (!bubble || bubble.textContent.includes('مرحباً بك في المساعد الذكي') || 
+                        bubble.textContent.includes('يمكنني مساعدتك في') || 
+                        bubble.textContent.includes('ملاحظة هامة') || 
+                        bubble.textContent.includes('الروابط الرسمية ذات الصلة') || 
+                        bubble.textContent.includes('كيف يمكنني مساعدتك اليوم') || 
+                        bubble.textContent.includes('اختر أحد الأسئلة الشائعة')) {
+                        return null;
+                    }
+                    
+                    return {
+                        role: bubble.classList.contains('chat-bubble-user') ? 'user' : 'ai',
+                        content: bubble.innerHTML,
+                        timestamp: new Date().toISOString()
+                    };
+                }).filter(Boolean);
+                
+                localStorage.setItem('taxAssistantConversations', JSON.stringify(messages));
+            }
+        }
+
+        // تعطيل التمرير عند فتح النافذة
+        function disableBodyScroll() {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+        }
+
+        // تمكين التمرير عند إغلاق النافذة
+        function enableBodyScroll() {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+        }
+
+        // فتح وإغلاق نافذة المساعد الضريبي
+        closeBtn.addEventListener('click', () => {
+            hideTaxModal();
+        });
+        
+        minimizeBtn.addEventListener('click', () => {
+            taxModal.classList.add('opacity-0', '-translate-y-4');
+            setTimeout(() => {
+                taxModal.classList.add('hidden');
+                miniWindow.classList.remove('hidden');
+            }, 300);
+            enableBodyScroll();
+        });
+        
+        restoreBtn.addEventListener('click', () => {
+            miniWindow.classList.add('hidden');
+            showTaxModal();
+        });
+        
+        function showTaxModal() {
+            disableBodyScroll();
+            taxModal.classList.remove('hidden');
+            setTimeout(() => {
+                taxModal.classList.remove('opacity-0', '-translate-y-4');
+            }, 10);
+            input.focus();
+            loadSavedConversations();
+        }
+        
+        function hideTaxModal() {
+            enableBodyScroll();
+            taxModal.classList.add('opacity-0', '-translate-y-4');
+            setTimeout(() => taxModal.classList.add('hidden'), 300);
+            saveCurrentConversation();
+        }
+
+        // إدارة الإعدادات
+        settingsBtn.addEventListener('click', () => {
+            settingsOverlay.classList.add('open');
+            settingsPanel.classList.add('open');
+            disableBodyScroll();
+        });
+
+        function closeSettings() {
+            settingsOverlay.classList.remove('open');
+            settingsPanel.classList.remove('open');
+            enableBodyScroll();
+        }
+
+        closeSettingsBtn.addEventListener('click', closeSettings);
+        settingsOverlay.addEventListener('click', closeSettings);
+
+        // حذف جميع المحادثات
+        clearAllConversations.addEventListener('click', () => {
+            showAlert(
+                'حذف المحادثات', 
+                'هل أنت متأكد من رغبتك في حذف جميع المحادثات ؟', 
+                () => {
+                    localStorage.removeItem('taxAssistantConversations');
+                    chatHistory = [];
+                    
+                    const welcomeMessage = chatHistoryEl.children[0];
+                    const examplesSection = chatHistoryEl.querySelector('#taxExamples');
+                    
+                    chatHistoryEl.innerHTML = '';
+                    if (welcomeMessage) chatHistoryEl.appendChild(welcomeMessage);
+                    if (examplesSection) {
+                        examplesSection.style.display = 'block';
+                        chatHistoryEl.appendChild(examplesSection);
+                    }
+                    
+                    showAlert('تم الحذف', 'تم حذف جميع المحادثات بنجاح');
+                }
+            );
+        });
+
+        // إرسال الأسئلة مباشرة عند النقر على الأمثلة
+        examplesContainer.addEventListener('click', (e) => {
+            if (e.target.closest('.example-prompt')) {
+                const promptText = e.target.closest('.example-prompt').querySelector('span').textContent;
+                submitQuestion(promptText);
+            }
+        });
+
+        // دالة لإرسال الأسئلة مباشرة
+        async function submitQuestion(prompt) {
+            input.value = prompt;
+            form.dispatchEvent(new Event('submit'));
+        }
+
+        // أحداث حقبة الإدخال
+        input.addEventListener('input', () => {
+            input.style.height = 'auto';
+            input.style.height = (input.scrollHeight) + 'px';
+            
+            if (input.value.trim()) {
+                clearInputBtn.classList.remove('hidden');
+            } else {
+                clearInputBtn.classList.add('hidden');
+            }
+        });
+        
+        clearInputBtn.addEventListener('click', () => {
+            input.value = '';
+            input.style.height = 'auto';
+            clearInputBtn.classList.add('hidden');
+            input.focus();
+        });
+
+        // إرسال الاستفسار
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const prompt = input.value.trim();
+            if (!prompt) return;
+
+            addMessageToHistory('user', prompt);
+            examplesContainer.style.display = 'none';
+            input.value = '';
+            input.style.height = 'auto';
+            clearInputBtn.classList.add('hidden');
+            
+            const loadingBubble = addMessageToHistory('ai', '<div class="typing-indicator flex gap-1"><span></span><span></span><span></span></div>');
+
+            try {
+                const taxContext = `
+        أنت خبير ضريبي متخصص في النظام الضريبي المصري، وأحتاج إلى استشارة ضريبية دقيقة ومفصلة بناءً على أحدث القوانين واللوائح المعمول بها في مصر.  
+
+يرجى تقديم الإجابة وفقاً للهيكل التالي:  
+
+1- السياق القانوني :  
+   - اسم القانون أو اللائحة ذات الصلة.  
+   - رقم المادة أو البند المعني.  
+   - النص الكامل للمادة مع توضيح أي تفسيرات أو تعديلات حديثة.  
+
+2- التطبيق العملي :  
+   - شرح كيفية تطبيق النص القانوني في السيناريوهات المختلفة.  
+   - ذكر أي استثناءات أو شروط خاصة مرتبطة بالموضوع.  
+
+3-  الالتزامات والإجراءات المطلوبة :  
+   - الخطوات العملية التي يجب على المكلف اتباعها لضمان الامتثال للقانون.  
+   - المواعيد النهائية أو الفترات الزمنية المحددة قانوناً.  
+
+4-  المخالفات والعقوبات :  
+   - ذكر العقوبات المترتبة على عدم الامتثال، مع الاستناد إلى المواد القانونية ذات الصلة.  
+   - أي غرامات أو إجراءات تأديبية قد تفرضها الجهات الضريبية.  
+
+5-  أحدث التعديلات والتحديثات :  
+   - أي تغييرات حديثة في التشريعات الضريبية قد تؤثر على الموضوع المطروح.  
+   - توضيح الفروق بين النصوص القديمة والجديدة إن وجدت.  
+
+أعتمد على خبرتك العميقة في النظام الضريبي المصري لتقديم إجابة شاملة ودقيقة، مع التأكيد على الدقة في الاستشهاد بالمواد القانونية واللوائح الرسمية والكتب الدورية والتعليمات التنفيذية الصادرة عن وزارة المالية أو مصلحة  الضرائب المصرية.
+                
+                السؤال: ${prompt}
+                `;
+                
+                chatHistory.push({ role: "user", parts: [{ text: taxContext }] });
+                
+                const payload = { contents: chatHistory };
+                const apiKey = "AIzaSyD-vekscHlIQcxt80pWDj4H1Kw_5rcp5D8";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`خطأ في الاتصال: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                let text = "عذراً، لم أتمكن من العثور على إجابة محددة. يرجى التأكد من أن سؤالك يتعلق بالضرائب في مصر.";
+                
+                if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    text = formatResponse(result.candidates[0].content.parts[0].text);
+                }
+                
+                loadingBubble.parentElement.remove();
+                addMessageToHistory('ai', text);
+                
+                chatHistory.push({ role: "model", parts: [{ text: text }] });
+
+                if (saveConversations.checked) {
+                    saveCurrentConversation();
+                }
+
+            } catch (error) {
+                console.error("API Error:", error);
+                loadingBubble.innerHTML = `
+                    <div class="bg-red-50 p-3 rounded-lg">
+                        <p class="text-red-600 font-medium mb-1 md:mb-2 text-sm md:text-base">
+                            <i class="fas fa-exclamation-circle mr-1"></i> حدث خطأ في الاتصال
+                        </p>
+                        <p class="text-xs md:text-sm">
+                            يرجى المحاولة مرة أخرى أو زيارة الموقع الرسمي :
+                            <a href="https://eta.gov.eg/ar/home" target="_blank" class="text-blue-600 hover:underline">مصلحة الضرائب المصرية</a>
+                        </p>
+                    </div>
+                `;
+            }
+        });
+
+        // تنسيق الردود
+        function formatResponse(text) {
+            const cleanedText = text.replace(/الروابط الرسمية ذات الصلة:.*?$/gsi, '')
+                                   .replace(/ملاحظة هامة:.*?$/gsi, '')
+                                   .replace(/<table.*?<\/table>/gsi, '')
+                                   .replace(/\|.*?\|\n/gsi, '')
+                                   .replace(/-+\|/g, '')
+                                   .trim();
+            
+            return `
+                <div class="space-y-1">
+                    ${formatTextContent(cleanedText)}
+                </div>
+            `;
+        }
+        
+        // تنسيق محتوى النص
+        function formatTextContent(text) {
+            return `
+                <p>
+                    ${text
+                        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary">$1</strong>')
+                        .replace(/\n\n/g, '</p><p>')
+                        .replace(/\n/g, '<br>')
+                    }
+                </p>
+            `;
+        }
+
+        // إضافة رسالة للسجل
+        function addMessageToHistory(sender, message, isFromStorage = false) {
+            const wrapper = document.createElement('div');
+            wrapper.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'} relative`;
+            
+            const bubble = document.createElement('div');
+            bubble.className = `p-4 md:p-5 rounded-lg md:rounded-xl max-w-[95%] ${sender === 'user' ? 'chat-bubble-user' : 'chat-bubble-ai'}`;
+            
+            if (message.includes('<div')) {
+                bubble.innerHTML = message;
+            } else {
+                bubble.innerHTML = `<p class="leading-relaxed">${message.replace(/\n/g, '<br>')}</p>`;
+            }
+            
+            wrapper.appendChild(bubble);
+            chatHistoryEl.appendChild(wrapper);
+            chatHistoryEl.scrollTop = chatHistoryEl.scrollHeight;
+            
+            return bubble;
+        }
+
+        // التركيز على حقل الإدخال عند فتح النافذة
+        taxModal.addEventListener('click', (e) => {
+            if (e.target === taxModal) {
+                input.focus();
+            }
+        });
+        
+        // السماح بإغلاق النافذة بالضغط على ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (!taxModal.classList.contains('hidden')) {
+                    if (settingsPanel.classList.contains('open')) {
+                        closeSettings();
+                    } else {
+                        hideTaxModal();
+                    }
+                } else if (disclaimerModal.classList.contains('flex')) {
+                    hideDisclaimerModal();
+                }
+            }
+        });
+
+        // تحميل الإعدادات المحفوظة
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('taxAssistantSettings')) || {};
+            
+            if (settings.saveConversations !== undefined) saveConversations.checked = settings.saveConversations;
+            if (settings.autoDeleteConversations !== undefined) autoDeleteConversations.checked = settings.autoDeleteConversations;
+        }
+
+        // حفظ الإعدادات
+        function saveSettings() {
+            const settings = {
+                saveConversations: saveConversations.checked,
+                autoDeleteConversations: autoDeleteConversations.checked
+            };
+            
+            localStorage.setItem('taxAssistantSettings', JSON.stringify(settings));
+        }
+
+        // أحداث حفظ الإعدادات
+        saveConversations.addEventListener('change', saveSettings);
+        autoDeleteConversations.addEventListener('change', saveSettings);
+ 
+        // تحميل الإعدادات عند بدء التشغيل
+        loadSettings();
+    });
+</script>
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script>    
+</body>
+</html>
