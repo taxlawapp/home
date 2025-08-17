@@ -460,28 +460,28 @@
         </div>
         
         <div class="setting-item" onclick="toggleActive(this)">
-            <a href="go:Ramadan" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+            <a href="https://taxlawapp.github.io/home/pro.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-crown gold-icon"></i>الإشتراكــات | إنشــئ حســابك</span>
                 <span class="setting-arrow">❯</span>
             </a>
         </div>
 
         <div class="setting-item" onclick="toggleActive(this)">
-            <a href="go:prooo" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+            <a href="https://taxlawapp.github.io/home/Referral-code.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-user-plus"></i>برنامج الإحالة وكسب النقاط</span>
                 <span class="setting-arrow">❯</span>
             </a>
         </div>
           
         <div class="setting-item" style="display: none;" onclick="toggleActive(this)">
-            <a href="go:Accinfo" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+            <a href="https://taxlawapp.github.io/home/Accinfo.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-user"></i>حسابـــي | المــلف الشخصــي</span>
                 <span class="setting-arrow">❯</span>
             </a>
         </div>
         
         <div class="setting-item" style="display: none;" onclick="toggleActive(this)">
-            <a href="go:proo" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+            <a href="https://taxlawapp.github.io/home/Referral.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-share-alt"></i>شارك كــود إحالتك لأصدقائك</span>
                 <span class="setting-arrow">❯</span>
             </a>
@@ -511,14 +511,14 @@
         </div>
 
         <div class="setting-item" onclick="toggleActive(this)">
-            <a href="go:New" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+            <a href="https://taxlawapp.github.io/home/versions.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-rocket"></i>الجـــــديد فـ الإصــــدار | 5.2.2</span>
                 <span class="setting-arrow">❯</span>
             </a>
         </div>  
      
         <div class="setting-item" onclick="toggleActive(this)">
-            <a href="go:Favorites" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
+            <a href="https://taxlawapp.github.io/home/Favorites.html" style="text-decoration: none; color: inherit; display: flex; justify-content: space-between; align-items: center; width: 100%;">              
                 <span class="setting-text"><i class="fa fa-heart"></i>المفضــلة | محتويات التطبيق</span>
                 <span class="setting-arrow">❯</span>
             </a>
@@ -919,5 +919,38 @@ function updateUserInfo(user, daysDiff) {
         document.querySelector('.setting-item a[href="go:prooo"]').parentElement.style.display = 'flex';
     }
 </script>
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script> 
 </body>
 </html>
