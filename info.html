@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معلومات عن المطور | Tax Law App</title>
+    <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #0277bd;
+            --accent-color: #E63946;
+            --text-color: #1a237e;
+            --light-bg: #f5f7fa;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Beiruti', sans-serif;
+            direction: rtl;
+            text-align: center;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            transition: var(--transition);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            color: var(--text-color);
+        }
+
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 97.5%;
+            height: 35px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 0px 0px 22.5px 22.5px;
+            border-bottom: 3px solid white;
+            align-items: center;
+            z-index: 1001;
+            color: white;
+        }
+
+        .top-bar .menu-icon {
+            font-size: 27.5px;
+            cursor: pointer;
+        }
+
+        .top-bar .title {
+            font-size: 20px;
+            margin-left: 20px;
+            flex-grow: 1;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* استايل الحاوية الرئيسية */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-bottom: 55px;
+            margin-top: 55px;
+        }
+
+        /* استايل البطاقات */
+        .developer-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 7.5px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .developer-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-header i {
+            margin-left: 10px;
+            font-size: 20px;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+
+        .developer-name {
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary-color);
+            
+        }
+
+        /* استايل قوائم التواصل */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 7.5px 0;
+        }
+
+        .contact-item {
+            background-color: var(--card-bg);
+            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: var(--border-radius);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: var(--box-shadow);
+            font-weight: bold;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .contact-item i {
+            margin-left: 10px;
+            font-size: 20px;
+            width: 25px;
+            text-align: center;
+        }
+
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 87.5%;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            justify-content: space-around;
+            padding: 5px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 22.5px;
+            border-bottom: 3px solid white;
+            z-index: 1000;
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 5px 0;
+            transition: var(--transition);
+            border-width: 1px;
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px;
+            font-size: 20px;
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .nav-item:active .icon {
+            font-size: 22px;
+        }
+        
+/* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+
+        /* شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: 87.5px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 15px;
+            padding: 2.5px 5px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+/* استايل الأيقونة العائمة */
+        .floating-icon {
+            position: fixed;
+            bottom: 27.5px;
+            right: 7.5px;
+            background: red; 
+            color: white;
+            padding: 15px;
+            border-radius: 10px; /* جعل الأيقونة مربعة */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            animation: bounce 2s infinite; /* تطبيق تأثير الحركة */
+            margin-bottom: 45px; /* مسافة سفلية */
+        }
+
+        /* تأثير الحركة */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* استايل النص العائم */
+        .floating-text {
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            bottom: 27.5px;
+            right: 60px; /* تعديل المسافة بين النص والأيقونة */
+            background-color: #ffffff;
+            color: red;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* الإخفاء الافتراضي للنص */
+            margin-bottom: 50px; /* مسافة سفلية */          
+        }
+
+        /* أنماط الوضع الليلي */
+        body.dark-mode {
+            --text-color: #f5f5f5;
+            --light-bg: #121212;
+            --card-bg: #1e1e1e;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode .developer-card,
+        body.dark-mode .contact-item {
+            border: 1px solid #333;
+        }
+
+        body.dark-mode .contact-item a {
+            color: #f5f5f5;
+        }
+
+        body.dark-mode .developer-name {
+            color: #f5f5f5;
+            border-bottom-color: #f5f5f5;
+        }
+
+
+        /* تعديلات للعرض على شاشات صغيرة */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card-header {
+                font-size: 20px;
+                padding: 12px;
+                font-weight: bold;
+            }
+            
+            .card-content {
+                font-size: 18px;
+                padding: 12px;
+                font-weight: bold;
+
+            }
+            
+            .contact-item {
+                font-size: 18px;
+                padding: 10px;
+                font-weight: bold;
+
+            }
+            
+            .floating-text {
+                font-size: 18px;
+                left: 70px;
+                padding: 8px 12px;
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+            <i class="fas fa-arrow-right" onclick="window.location.href='go:home'"></i>
+        </div>
+        <div class="title">
+            مطور التطبيق | 🇪🇬 🇵🇸 Tax Law App
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="developer-card">
+            <div class="card-header">
+                معلومات عن المطور
+            </div>
+            <div class="card-content">
+                <div class="developer-name">د/ محمود رزق سعد رزق</div>
+                <p>مأمور فحص تجاري - مأمورية ضرائب الفيوم أول (دخل) .. باحث بالدكتوراه ( تخصص المحاسبة والضرائب ) / حاصل علي درجة الماجستير في المحاسبة كلية التجارة / جامعة بني سويف يونيو 2023، بكالوريوس التجارة شعبة المحاسبة 2017 بتقدير ممتاز مع مرتبة الشرف الأولي، عملت محاسب لمدة سنتين ونصف سابقاً ولديه خبرة بالبرمجة والحاسب الألي بدرجة ممتاز، أعمل علي تطويع خبراتي ومهاراتي في خدمة مجتمعي.</p>
+            </div>
+        </div>
+
+        <div class="developer-card">
+            <div class="card-header">
+                تواصل معنا
+            </div>
+            <div class="card-content">
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <a href="tel:+201030069322"><i class="fas fa-phone" style="color: green;"></i> الإتصال: 01030069322</a>
+                    </li>
+                    <li class="contact-item">
+                        <a href="https://wa.me/+201030069322"><i class="fab fa-whatsapp" style="color: #25D366;"></i> إرسـال رسالـة عبـر الواتسـاب</a>
+                    </li>
+                    <li class="contact-item">
+                        <a href="mailto:MahmoudR.Saad16@Gmail.com"><i class="fas fa-envelope" style="color: #FF5722;"></i> إرســال رسالــة عبــر البريــد</a>
+                    </li>
+                    <li class="contact-item">
+                        <a href="https://www.facebook.com/Dr.MahmoudR.Saad/"><i class="fab fa-facebook" style="color: #1877F2;"></i> صفحة الرسمية عـ فيسبوك</a>
+                    </li>
+                    <li class="contact-item">
+                        <a href="https://www.youtube.com/channel/UCbt1y11fBjwAfFOe1s8_4Ew"><i class="fab fa-youtube" style="color: #FF0000;"></i> القنـاة الرسميـة عـ يـوتيوب</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="developer-card">
+            <div class="card-content" text-align: center;>
+                شكراً جزيلاً لزيارة صفحة المطور.
+            </div>
+        </div>
+    </div>
+
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div>
+
+
+    <div class="floating-icon" id="youtubeIcon">
+        <i class="fab fa-youtube"></i>
+    </div>
+    
+    <div class="floating-text" id="floatingText">
+        اشترك في قناة اليوتيوب وتابع الجديد
+    </div>
+
+    <script>
+        // تبديل الوضع الليلي
+        function toggleNightMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const isNightMode = body.classList.contains('dark-mode');
+            localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+        }
+
+        // تحميل تفضيل العرض المحفوظ والوضع الليلي
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkModePreference = localStorage.getItem('darkModePreference');
+            if (darkModePreference === 'true') {
+                document.body.classList.add('dark-mode');
+            }
+        });
+
+        // إظهار النص العائم عند تحميل الصفحة
+        window.onload = function() {
+            showFloatingText();
+            
+            // تكرار إظهار النص العائم كل 30 ثانية
+            setInterval(function() {
+                showFloatingText();
+            }, 30000);
+        };
+
+        // دالة لإظهار النص العائم
+        function showFloatingText() {
+            var floatingText = document.getElementById("floatingText");
+            floatingText.style.display = "block";
+
+            // إخفاء النص العائم بعد 5 ثواني
+            setTimeout(function() {
+                floatingText.style.display = "none";
+            }, 5000);
+        }
+
+        // إعادة توجيه المستخدم عند الضغط على الأيقونة العائمة
+        document.getElementById("youtubeIcon").onclick = function() {
+            window.location.href = "https://www.youtube.com/channel/UCbt1y11fBjwAfFOe1s8_4Ew?sub_confirmation=1";
+        };
+    </script>
+
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script> 
+</body>
+</html>
