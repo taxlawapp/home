@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- مكتبة الأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet"> <!-- رابط خط Beiruti من Google Fonts -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script> 
+    <title>برنامج الإحالة</title>
+    <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Beiruti', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, white, #e1f5fe);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            direction: rtl;
+            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
+            -moz-user-select: none; /* لمتصفح فايرفوكس */
+            -ms-user-select: none; /* لإنترنت إكسبلورر */
+            user-select: none; /* المتصفحات الأخرى */ 
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 65px; /* إضافة مسافة بين العنصر .container والعنصر .navbar */
+            margin-top: 50px; /* إضافة المسافة السفلية */
+        }
+
+        header {
+            background: linear-gradient(to right, #eaecee, #e1f5fe);
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            border: 2.5px solid #1a237e; /* حدود */
+            border-bottom: 3px solid red; /* حدود */
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 30px;
+            font-weight: bold;
+            animation: fadeIn 1.5s ease-in-out;
+            color: #1a237e;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 25px;
+            font-weight: bold;
+            animation: fadeIn 2s ease-in-out;
+            color: #1a237e;
+        }
+
+        #features {
+            width: 100%;
+            margin: 7px 0;
+        }
+
+        #features h2 {
+            font-size: 25px; /* حجم الخط */
+            font-weight: bold;
+            color: white; /* لون النص */
+            text-align: center; /* محاذاة النص في المنتصف */
+            margin-top: 0px; /* المسافة أسفل العنوان */  
+            margin-bottom: 5px; /* المسافة أسفل العنوان */
+            padding: 10px; /* تباعد داخل العنصر */
+            background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */
+            border-radius: 8px; /* زوايا دائرية */
+            border: 2px solid #1a237e; /* حدود */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+        }
+
+        .feature {
+            background-color: white;
+            padding: 20px;
+            margin: 7.5px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            animation: slideIn 0.5s ease-out;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 3px solid #1a237e;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature h3 {
+            color: #1a237e;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        hr {
+            border: none;
+            border-top: 2.5px solid #1a237e;
+            margin: 10px 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .gold-icon {
+            color: #FFD700; /* لون ذهبي */
+        }   
+
+        /* استايل قسم التقييمات */
+        #reviews {
+            width: 100%;
+            margin-top: 0px;
+            text-align: center;
+        }
+
+        #reviews h2 {
+            font-size: 25px; /* حجم الخط */
+            font-weight: bold;
+            color: #007bff; /* لون الخط */
+            text-align: center; /* محاذاة النص في المنتصف */
+            margin-top: 0px; /* المسافة أسفل العنوان */  
+            margin-bottom: 5px; /* المسافة أسفل العنوان */
+            padding: 10px; /* تباعد داخل العنصر */
+            background-color: #e1f5fe; /* لون خلفية */
+            border-radius: 8px; /* زوايا دائرية */
+            border: 2px solid #1a237e; /* حدود */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+        }
+
+        .review {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            font-weight: bold;
+            text-align: left;
+          border-bottom: 3px solid #1a237e;
+        }
+
+        .review p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a237e;
+            text-align: right;
+        }
+
+        .review .rating {
+            color: #FFD700; /* لون ذهبي */
+            margin-bottom: 10px;
+        }
+      
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 92.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+      
+        /* أنماط الوضع الليلي للقائمة */
+        body.dark-mode .navbar {
+            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+            border-top: 2px solid #fafafa; /* حدود علوية */
+        }
+
+        body.dark-mode .navbar .nav-item {
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: transparent; /* حدود شفافة */
+        }
+
+        body.dark-mode .navbar .nav-item.home {
+            border-color: #ddd; /* حدود العنصر الرئيسي */
+            border: none; /* إزالة الحدود */  
+        }
+      
+        body.dark-mode .icon {
+            color: #ddd; /* لون الأيقونات في الوضع الليلي */
+        }
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+      
+        /* زر تبديل الوضع الليلي */
+        .night-mode-toggle {
+            position: fixed; /* تثبيت الزر في مكان محدد */
+            bottom: 23px; /* المسافة من الأسفل */
+            right: 10px; /* المسافة من اليمين */
+            background: #1a237e; /* لون خلفية الزر */
+            color: white; /* لون النص في الزر */
+            border: none; /* إزالة الحدود */
+            border-radius: 50%; /* جعل الزر دائري */
+            width: 50px; /* عرض الزر */
+            height: 50px; /* ارتفاع الزر */
+            font-size: 24px; /* حجم النص في الزر */
+            cursor: pointer; /* تغيير شكل المؤشر عند التحويم */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف */
+            transition: background 0.3s; /* تأثير الانتقال للتغييرات */
+            margin-bottom: 50px; /* مسافة سفلية */
+        }
+
+        .night-mode-toggle:hover {
+            background: #0056b3; /* تغيير لون الخلفية عند التحويم */
+        }
+      
+body.dark-mode {
+    background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+    color: #ffffff;
+}
+
+.dark-mode .container {
+    background: #121212;
+
+}
+
+.dark-mode .container header {  
+  background: #2a2a2a;
+}      
+.dark-mode header h1, .dark-mode h2, .dark-mode h3 {  
+  color: #ffffff;
+}
+
+.dark-mode .container header p {  
+  color: #ffffff;
+}       
+.dark-mode hr {
+    border-color: #ffffff;
+}
+
+.dark-mode .gold-icon {
+    color: gold;
+}
+
+.dark-mode .button {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.dark-mode .button:hover {
+    background-color: #555555;
+}
+      
+.dark-mode .feature {
+    background-color: #2a2a2a;
+
+}
+      
+.dark-mode .feature p {
+color: #ffffff;
+}          
+      
+.dark-mode .review {
+    background-color: #2a2a2a;
+
+}
+      
+.dark-mode .review p {
+color: #ffffff;
+} 
+.dark-mode .rating i {
+    color: gold;
+}
+
+        /* استايل الصورة */
+        .image-container {
+            text-align: center; /* محاذاة الصورة إلى الوسط */
+            margin-top: 0px; /* هامش علوي وسفلي */
+            margin-bottom: 0px; /* مسافة سفلية */
+        }
+
+        .image-container img {
+            max-width: 100%; /* عرض الصورة بنسبة 100% من الحاوية */
+            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+            border-radius: 5px; /* تقويس زوايا الصورة */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
+            margin-top: 10px; /* هامش علوي وسفلي */
+            margin-bottom: 0px; /* مسافة سفلية */
+                     
+        } 
+      
+        /* استايل الأيقونة العائمة */
+        .floating-icon {
+            position: fixed;
+            bottom: 27.5px;
+            right: 7.5px;
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            color: white;
+            padding: 15px;
+            border-radius: 10px; /* جعل الأيقونة مربعة */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            animation: bounce 2s infinite; /* تطبيق تأثير الحركة */
+            margin-bottom: 45px; /* مسافة سفلية */
+        }
+
+        /* تأثير الحركة */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* استايل النص العائم */
+        .floating-text {
+            font-size: 18px;
+            font-weight: bold;
+            position: fixed;
+            bottom: 27.5px;
+            right: 60px; /* تعديل المسافة بين النص والأيقونة */
+            background-color: #ffffff;
+            color: red;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* الإخفاء الافتراضي للنص */
+            margin-bottom: 50px; /* مسافة سفلية */          
+        }
+      
+#shareOptions {
+    display: none; /* مخفية افتراضياً */
+    position: absolute; /* لتحديد موقع النافذة المنبثقة بدقة */
+    top: 100%; /* وضع النافذة المنبثقة أسفل الأيقونة */
+    left: 0; /* محاذاة النافذة مع الأيقونة */
+    background: white; /* خلفية بيضاء */
+    border: 1px solid #ddd; /* حد خفيف */
+    padding: 10px; /* حشو حول المحتوى */
+    border-radius: 5px; /* زوايا دائرية */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* ظل خفيف */
+    z-index: 1000; /* تأكد من أن النافذة المنبثقة فوق العناصر الأخرى */
+}
+      
+      
+#shareOptions button {
+    background: none;         /* خلفية غير ملونة */
+    border: none;             /* بدون حدود */
+    cursor: pointer;          /* مؤشر المؤشر يتغير إلى يد عند المرور */
+    margin: 5px;              /* هامش حول الأزرار */
+    padding: 0;               /* بدون حشو داخل الأزرار */
+    font-size: 30px;          /* حجم الخط داخل الأزرار */
+    color: #333;              /* لون النص داخل الأزرار */
+    transition: color 0.3s, transform 0.3s; /* تأثير الانتقال لتغيير اللون وتحويل الحجم */
+}
+
+#shareOptions button:hover {
+    color: #007bff;           /* تغيير لون النص عند التمرير فوق الأزرار */
+    transform: scale(1.1);    /* تكبير الأزرار عند التمرير فوقها */
+}
+
+#shareOptions button:active {
+    transform: scale(0.9);    /* تصغير الأزرار عند النقر عليها */
+}
+
+
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 97.5%; /* عرض العنصر */
+            height: 57.5px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }
+
+
+.top-bar .menu-icon {
+    font-size: 27.5px;
+    cursor: pointer;
+}
+
+.top-bar .title {
+    font-size: 20px; /* حجم الخط لعناصر العنوان */
+    margin-left: 20px; /* مسافة بين السهم والعنوان */
+    flex-grow: 1; /* يسمح للعناصر الأخرى بالتقلص عندما تكون الشاشة صغيرة */
+    text-align: center; /* توسيط العنوان */
+    font-weight: bold;  
+
+}
+
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+}      
+    </style>
+    </head>
+    <body>
+      
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='https://taxlawapp.github.io/home/Settings.html'"></i> <!-- سهم العودة -->
+    </div>
+    <div class="title">
+        برنامج الإحالة | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div> 
+
+    <div class="container">
+        <header>
+            <h1>برنامج الإحالة وكسب النقاط</h1>
+            <hr>
+            <p>اكتشف المزايا الإضافية في النسخة الذهبية وتجربة المزايا الحصرية، وإشترك في النسخة الذهبية الآن للحصول علي النقاط الإضافية</p>   
+   <span style="display:none;" id="usernameDisplay"></span> <!-- عرض اسم المستخدم هنا -->                
+        </header>
+
+
+           <section id="features">
+           <h2>تفاصيل برنامج الإحالة والنقاط الإضافية <i class=""></i></h2>  
+            <header>              
+                <p style="text-align: right; font-size: 20px;">1️⃣ بعد الإشتراك في النسخة الذهبية يكون للمستخدم كود إحالة خاص به، يمكن له من نسخه ومشاركته مع أصدقائه المقربين لدعوتهم للإشتراك في النسخة الذهبية، حيث عند إنضمام صديق لك يحصل علي 100 نقطة وأنت أيضا تحصل علي 100 نقطة كالصورة المرفقة.</p>
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www11.0zz0.com/2024/08/09/22/302579360.png" alt="صورة">
+            </div>  
+              <hr>
+                <p style="text-align: right; font-size: 20px;">2️⃣ لضمان حصولك علي النقاط الإضافية 100 نقطة بعد إنضمام كل مشترك إلي النسخة الذهبية بكود إحالتك، يرجي التأكيد عليه أنه عند التسجيل يتم إدخال كود الإحالة الخاص بك في حقل الإدخال المخصص لذلك كالصورة التالية.</p>
+            <!-- إضافة الصورة -->
+            <div class="image-container">
+                <img src="https://www11.0zz0.com/2024/08/09/22/398621855.png" alt="صورة">
+            </div> 
+              <hr>
+                <p style="text-align: right; font-size: 20px;">3️⃣ يمكنك الإستفادة من النقاط في تجديد الإشتراك الخاص بك بعد إنتهائه، حيث إذا كان إجمالي نقاطك 1500 نقطة يتم التجديد لمدة شهر واحد مجاناً .. وإذا كان إجمالي النقاط 5000 نقطة يتم التجديد لمدة ستة أشهر مجاناً .. وإذا كان إجمالي النقاط 8500 نقطة يتم التجديد لمدة سنة كاملة مجاناً.</p>
+              <hr>
+                <p style="text-align: right; font-size: 20px;">4️⃣ يمكنك أيضا منح النقاط لأصدقاء جدد للإشتراك حيث إذا كان إجمالي النقاط 2500 نقطة يتم منح صديقك الذي تختاره باقة إشتراك : شهرية مجاناً وإذا كان إجمالي النقاط 7500 نقطة يتم منح صديقك الذي تختاره باقة إشتراك : نصف سنوية مجاناً وإذا كان إجمالي النقاط 12000 نقطة يتم منح صديقك الذي تختاره باقة إشتراك : سنوية مجاناً.</p>
+             </header>               
+            </section> 
+
+
+      
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="https://taxlawapp.github.io/home/Login.html" class="nav-item">
+        <i class="fas fa-user icon"></i>
+        <span>حسابي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/pro.html" class="nav-item">
+        <i class="fas fa-crown icon" style="color: gold;"></i>
+        <span>برو</span>
+    </a>     
+    <a href="https://taxlawapp.github.io/home/home.html" class="nav-item home">
+        <i class="fas fa-home icon"></i>
+        <span>الرئيسية</span>
+    </a>
+    <a href="https://youtube.com/@taxlawapp" class="nav-item">
+        <i class="fab fa-youtube icon"></i>
+        <span>قناتي</span>
+    </a>
+    <a href="https://taxlawapp.github.io/home/Settings.html" class="nav-item">
+        <i class="fas fa-ellipsis-h icon"></i>
+        <span>المزيد</span>
+    </a>      
+</div> 
+      
+</div>
+
+  
+   <!-- الأيقونة العائمة -->
+    <div class="floating-icon" id="youtubeIcon">
+        <i class="fa fa-crown gold-icon"></i>
+    </div>
+
+    <!-- النص العائم -->
+    <div class="floating-text" id="floatingText">
+        إشترك الآن وتصفح المحتوي دون أي قيود
+    </div>
+  
+  <script>
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+}
+// تحميل تفضيل العرض المحفوظ والوضع الليلي
+document.addEventListener('DOMContentLoaded', function() {
+    const darkModePreference = localStorage.getItem('darkModePreference'); // إضافة تفضيل الوضع الليلي
+    // تطبيق الوضع الليلي إذا كان مفعلاً
+    if (darkModePreference === 'true') {
+        toggleNightMode();
+    }
+});
+
+// تبديل الوضع الليلي
+function toggleNightMode() {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+    const nightModeToggle = document.querySelector('.night-mode-toggle');
+    const isNightMode = body.classList.contains('dark-mode');
+    nightModeToggle.innerHTML = isNightMode ? '☀' : '🌙';
+    // حفظ تفضيل الوضع الليلي
+    localStorage.setItem('darkModePreference', isNightMode ? 'true' : 'false');
+} 
+    
+    
+       // إظهار النص العائم عند تحميل الصفحة
+        window.onload = function() {
+            showFloatingText(); // استدعاء الدالة لأول مرة عند تحميل الصفحة
+
+            // تكرار إظهار النص العائم كل 30 ثانية
+            setInterval(function() {
+                showFloatingText();
+            }, 30000);
+        };
+
+        // دالة لإظهار النص العائم
+        function showFloatingText() {
+            var floatingText = document.getElementById("floatingText");
+            floatingText.style.display = "block";
+
+            // إخفاء النص العائم بعد 5 ثواني
+            setTimeout(function() {
+                floatingText.style.display = "none";
+            }, 5000);
+        }
+
+      
+      // إعادة توجيه المستخدم عند الضغط على الأيقونة العائمة
+        document.getElementById("youtubeIcon").onclick = function() {
+            window.location.href = "https://taxlawapp.github.io/home/pro.html";
+        };
+
+      </script>
+    <script>
+
+// إطلاق الألعاب النارية
+function launchConfetti() {
+    confetti({
+        particleCount: 400,
+        spread: 100,
+        origin: { y: 0.6 }
+    });
+}
+
+// إيقاف الألعاب النارية
+function stopConfetti() {
+    // إيقاف تكرار الألعاب النارية
+    clearInterval(confettiInterval);
+}
+
+// إطلاق الألعاب النارية عند تحميل الصفحة
+launchConfetti();
+const confettiInterval = setInterval(launchConfetti, 3000); // تكرار الألعاب النارية كل 3 ثوانٍ
+
+// إيقاف الألعاب النارية عند النقر على أي رابط
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', stopConfetti);
+    });
+});
+ 
+      
+  </script>
+    <script>
+        // لتغيير اتجاه الصفحة من اليسار إلى اليمين  (RTL)
+        document.dir = 'rtl';
+    </script> 
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script> 
+</body>
+</html>
