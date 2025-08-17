@@ -853,7 +853,7 @@ body.dark-mode .image-container img {
             </div>
 
 
-    <a href="https://taxlawapp.github.io/home/pro.html" class="button" id="actionButton6"><i class="fas fa-external-link-alt"></i> ضريبة الدخل | المادة الثالثة</a> <!-- زر تنفيذي مع أيقونة تحقق -->       
+    <a href="#" class="button" id="actionButton6"><i class="fas fa-external-link-alt"></i> ضريبة الدخل | المادة الثالثة</a> <!-- زر تنفيذي مع أيقونة تحقق -->       
   </div>
         </div>
 
@@ -1539,20 +1539,19 @@ if (user) {
         <p><i class="fas fa-clock"></i> الوقت : ${timeString}</p>
     `;
 
+    // تحديث الروابط بناءً على حالة تسجيل الدخول
+    const userLoggedIn = daysDiff > 0;
 
-    // إذا كان المستخدم مسجل الدخول، يتم تحديث الروابط
-    if (userLoggedIn) {
-        document.getElementById('actionButton1').href = 'https://taxlawapp.github.io/Tax-calculation/Profit91.html';
-        document.getElementById('actionButton2').href = 'https://taxlawapp.github.io/Tax-calculation/vat67+.html';
-        document.getElementById('actionButton3').href = 'https://taxlawapp.github.io/Tax-calculation/Amount91+.html';
-        document.getElementById('actionButton4').href = 'https://taxlawapp.github.io/Tax-calculation/estate91.html';
-        document.getElementById('actionButton5').href = 'https://taxlawapp.github.io/Tax-calculation/estate91+.html';
-        document.getElementById('actionButton6').href = 'https://taxlawapp.github.io/Tax-calculation/law30.html';
-        document.getElementById('actionButton7').href = 'https://taxlawapp.github.io/Tax-calculation/vat67+.html';
-        document.getElementById('actionButton8').href = 'https://taxlawapp.github.io/Tax-calculation/law6.html';
-        document.getElementById('actionButton9').href = 'https://taxlawapp.github.io/Tax-calculation/salary91+.html';
-    }
-}
+    document.getElementById('actionButton1').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/Profit91.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton2').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/vat67+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton3').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/Amount91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton4').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/estate91.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton5').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/estate91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton6').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/law30.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton7').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/vat67+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton8').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/law6.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+    document.getElementById('actionButton9').onclick = () => userLoggedIn ? window.location.href = 'https://taxlawapp.github.io/Tax-calculation/salary91+.html' : (isPopupOpen ? null : window.location.href = 'https://taxlawapp.github.io/home/pro.html');
+
 
 
     // إخفاء أو إظهار الأيقونات والعناصر المحتوية على "PRO"
@@ -1803,5 +1802,3 @@ document.onkeydown = function (e) {
     }
 };
 </script> 
-
-
