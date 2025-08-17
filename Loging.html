@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="login.css" >
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- مكتبة الأيقونات -->
+<!-- رابط خط Cairo من Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Beiruti:wght@400;700&display=swap" rel="stylesheet"> 
+<title>حسابي</title>
+          <!-- لو الأيقونة بصيغة PNG -->
+    <link rel="icon" type="image/png" href="https://www3.0zz0.com/2024/05/30/07/482205963.png">  
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Beiruti' , sans-serif;
+}      
+        body {
+            font-family: 'Beiruti', sans-serif;
+            background: linear-gradient(to right, #e1f5fe, white);
+            background-size: 600% 600%;
+            animation: gradientAnimation 10s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            direction: rtl;
+            -webkit-user-select: none; /* للمتصفحات التي تعتمد على محرك WebKit */
+            -moz-user-select: none; /* لمتصفح فايرفوكس */
+            -ms-user-select: none; /* لإنترنت إكسبلورر */
+            user-select: none; /* المتصفحات الأخرى */           
+        }
+     
+        .login-container {
+            margin-top: 0px;
+            background: linear-gradient(to right, #eaecee, #e1f5fe);
+            padding: 12.5px 15px 5px;
+            border-radius: 15px 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border: 2.5px solid #1a237e; /* حدود */
+            border-bottom: 3px solid red; /* حدود */ 
+            position: relative;
+            margin-bottom: 50px;
+        }
+      
+        .login-container h1 {
+            color: #1a237e;
+            text-align: center;
+            margin-bottom: 7.5px;
+            background-color: linear-gradient(to right, white, #e1f5fe);
+            border-bottom: 3px solid #1a237e; /* إضافة حد */
+        }      
+        .login-container h2 {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #212121, #1a237e); /* خلفية متدرجة */ 
+            border-bottom: 3px solid #FFD700; /* إضافة حد */          
+        }
+        .form-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+    .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    background: ; 
+    font-weight: bold;
+    color: #02076e;
+    margin-bottom: 2.5px;
+    font-size: 20px;
+    border: 0px solid #420c0c;
+    margin-top: 0px;      
+        }
+      
+   .form-group input {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    background: #ffffff;
+    outline: none;
+    border-radius: 60px;
+    padding: 6px 20px;
+    font-size: 20px;
+    color: #0e1ba0;
+    height: 45px;
+    border: 2px solid #420c0c;
+    border-radius: 5px;            
+    margin:0px 0; 
+    margin-top: 0px;  
+        }
+ .form-group input:focus{
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.50);
+}     
+        .form-group .fa {
+            position: absolute;
+            left: 10px;
+            top: 67.5%;
+            transform: translateY(-50%);
+            color: #1a237e;
+        }
+
+
+        .user-info {
+            margin-top: 375px;
+            text-align: right;
+            margin-bottom: 0px;          
+        }
+        .user-info p {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+
+            color: #1a237e;
+            font-weight: bold;
+            font-size: 20px;          
+          
+        }
+        .hidden {
+            display: none;
+        }
+        .full-name-display {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #007BFF;
+        }
+      
+#full-name-display { 
+    text-align: center;  
+    color: #1a237e; /* لون النص */
+    font-weight: bold; /* وزن الخط */  
+    background-color: ; /* خلفية النص */
+    border: 0px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    margin-top: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */
+  
+      }       
+      
+ 
+ .button {
+    font-size: 17px; /* حجم الخط */ 
+    font-weight: bold; /* وزن الخط */
+    padding: 7.5px 75px; /* حجم الحشو */
+    margin-top: 5px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */         
+    border: none; /* حذف الحدود */
+    border-radius: 5px; /* تقويس الزوايا */
+    background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+    color: white; /* لون النص */
+    cursor: pointer; /* تحويل المؤشر إلى يد عند التحويم */
+    transition: background-color 0.3s, transform 0.3s; /* تأثير الانتقال */
+    text-decoration: none; /* إزالة الخط تحت النص داخل الزر */
+    display: block; /* عرض الزر ككتلة */
+    text-align: center; /* توسيط النص داخل الزر */
+}
+      
+.button:hover {
+    background-color: #1a237e; /* لون خلفية الزر عند التحويم */
+    color: #FFFF00; /* لون النص */  
+    transform: scale(1.05); /* تحجيم الزر عند التحويم */
+    border: 2px solid white; /* إضافة حد عند التحويم */
+  
+}
+
+.button:active {
+    transform: scale(0.95); /* تحجيم الزر عند الضغط */
+}
+
+.button a {
+    text-decoration: none; /* إزالة الخط تحت النص داخل الرابط */
+    color: inherit; /* الاحتفاظ بلون النص داخل الرابط */
+}
+      
+#error-message {
+    color: #d9534f; /* لون النص */
+    font-weight: bold; /* وزن الخط */
+    text-align: center;  
+    background-color: #f2dede; /* خلفية النص */
+    border: 1px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+    margin-bottom: 0px; /* قم بتعديل هذا الرقم حسب الحاجة */  
+}
+
+#error-message i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    font-size: 20px; /* حجم الأيقونة */
+}
+      
+.hidden {
+    display: none;
+}
+.password-recovery-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.password-recovery-form h3 {
+    margin-bottom: 20px;
+}
+.password-recovery-form .form-group {
+    margin-bottom: 15px;
+}
+.password-recovery-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.password-recovery-form .button {
+    margin-top: 10px;
+    display: block;
+}
+.password-recovery-form .message {
+    margin-top: 10px;
+    color: #1a237e;
+}
+      
+/* نماذج الاسترجاع */
+    #password-recovery-form {
+        display: none;
+        margin-top: 20px;
+        background: linear-gradient(to right, #eaecee, #e1f5fe);
+        padding: 15px 15px 10px;
+        border-radius: 15px 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        border: 2.5px solid #1a237e; /* حدود */
+        border-bottom: 3px solid red; /* حدود */ 
+      
+    }
+    .password-recovery-form h3 {
+            margin-bottom: 10px;
+            color: #1a237e;
+            text-align: center;
+            background-color: linear-gradient(to right, white, #e1f5fe);
+            font-size: 30px;
+            font-weight: bold;
+            border-bottom: 3px solid #1a237e; /* إضافة حد */
+    }
+    .password-recovery-form .form-group {
+        margin-bottom: 15px;
+    }
+    .password-recovery-form input {
+        width: 100%;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold; /* وزن الخط */      
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    .password-recovery-form .button {
+        margin-top: 10px;
+        display: block;
+    }
+    .password-recovery-form .message {
+        margin-top: 10px;
+        color: #1a237e;
+    }
+
+      
+.close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #d9534f; /* لون النص */
+}
+
+.close-btn:hover {
+    color: #c9302c; /* لون النص عند التحويم */
+}
+
+.password-recovery-form {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+#recovery-message {
+    color: #d9534f; /* لون النص */
+    font-weight: bold; /* وزن الخط */
+    text-align: center;  
+    background-color: #f2dede; /* خلفية النص */
+    border: 1px solid #ebccd1; /* حدود النص */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;  
+}
+
+#recovery-message i {
+    margin-right: 10px; /* مسافة بين الأيقونة والنص */
+    font-size: 20px; /* حجم الأيقونة */
+}
+
+  
+/* حاوية الرابط */
+.link-container {
+    text-align: left; /* محاذاة النص إلى اليسار */
+}
+
+/* تنسيق الرابط */
+#PasswordRecovery {
+    color: #304ffe; /* لون النص */
+    text-decoration: none; /* إزالة التسطير */
+    font-weight: bold; /* جعل النص عريض */
+    font-size: 18px; /* حجم النص */
+    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
+}
+
+/* عند التمرير */
+#PasswordRecovery :hover {
+    color: #1565c0; /* لون النص عند التمرير */
+    text-decoration: underline; /* إضافة التسطير عند التمرير */
+}
+
+/* عند النقر */
+#PasswordRecovery:active {
+    color: #1a237e; /* لون النص عند النقر */
+}
+
+/* تنسيق الرابط */
+#SignUpLink {
+    color: #304ffe; /* لون النص */
+    text-decoration: none; /* إزالة التسطير */
+    font-weight: bold; /* جعل النص عريض */
+    font-size: 18px; /* حجم النص */
+    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
+}
+
+/* عند التمرير */
+#SignUpLink :hover {
+    color: #1565c0; /* لون النص عند التمرير */
+    text-decoration: underline; /* إضافة التسطير عند التمرير */
+}
+
+/* عند النقر */
+#SignUpLink :active {
+    color: #1a237e; /* لون النص عند النقر */
+}      
+
+/* تنسيق الرابط */
+#Link {
+    color: #304ffe; /* لون النص */
+    text-decoration: none; /* إزالة التسطير */
+    font-weight: bold; /* جعل النص عريض */
+    font-size: 18px; /* حجم النص */
+    transition: color 0.3s, text-decoration 0.3s; /* تأثيرات التغيير */
+}
+
+/* عند التمرير */
+#Link :hover {
+    color: #1565c0; /* لون النص عند التمرير */
+    text-decoration: underline; /* إضافة التسطير عند التمرير */
+}
+
+/* عند النقر */
+#Link :active {
+    color: #1a237e; /* لون النص عند النقر */
+} 
+      
+        .gold-icon {
+            color: #FFD700; /* لون ذهبي */
+        } 
+            
+        .user-icon {
+            max-width: 50%; /* عرض الصورة بنسبة 50% من الحاوية */
+            height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+            border-radius: 0px; /* تقويس زوايا الصورة */
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0.2); /* إضافة ظل للصورة */
+            margin: 0 auto 20px auto; /* توسيط الصورة وإضافة مسافة سفلية */
+            display: block;
+          }
+
+
+        /* أنماط القائمة السفلية */
+        .navbar {
+            position: fixed;
+            bottom: 3px;
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 92.5%; /* عرض العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-around; /* توزيع العناصر */
+            padding: 5px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+        }
+
+        .navbar .nav-item {
+            flex: 1;
+            text-align: center;
+            color: white; /* لون النص */
+            font-size: 14px; /* حجم النص */
+            cursor: pointer; /* تغيير شكل المؤشر */
+            padding: 5px 0; /* حشو داخلي */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* تأثيرات الانتقال */
+            border-width: 1px; /* حدود */
+            border-style: solid;
+            border-color: transparent;
+        }
+
+        .icon {
+            margin-bottom: 2px; /* مسافة سفلية للأيقونة */
+            font-size: 20px; /* حجم الأيقونة */
+        }
+
+        .nav-item span {
+            display: block;
+            font-size: 15px; /* حجم النص */
+            font-weight: bold; /* وزن النص */
+            text-decoration: none; /* إزالة التسطير */
+        }
+
+        .nav-item span:active {
+            font-size: 20px; /* حجم النص */
+            font-weight: bold; /* وزن النص */ 
+        }
+
+        .nav-item:active .icon {
+          font-size: 22px; /* حجم الأيقونة */
+        }  
+     
+        /* أنماط شعار الإشعارات */
+        .notification-badge {
+            position: absolute;
+            top: -5px; /* المسافة من الأعلى */
+            right: 87.5px; /* المسافة من اليمين */
+            background-color: red; /* لون الخلفية */
+            color: white; /* لون النص */
+            font-size: 15px; /* حجم النص */
+            padding: 2.5px 5px; /* حشو داخلي */
+            border-radius: 50%; /* زوايا مستديرة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }   
+      
+        /* أنماط الوضع الليلي للقائمة */
+        body.dark-mode .navbar {
+            background: #121212; /* لون خلفية القائمة في الوضع الليلي */
+            border-top: 2px solid #fafafa; /* حدود علوية */
+        }
+
+        body.dark-mode .navbar .nav-item {
+            color: #ddd; /* لون النص في الوضع الليلي */
+            border-color: transparent; /* حدود شفافة */
+        }
+
+        body.dark-mode .navbar .nav-item.home {
+            border-color: #ddd; /* حدود العنصر الرئيسي */
+            border: none; /* إزالة الحدود */  
+        }
+      
+        body.dark-mode .icon {
+            color: #ddd; /* لون الأيقونات في الوضع الليلي */
+        }
+
+        /* إزالة الخط تحت أسماء القوائم */
+        .navbar-nav .nav-link {
+            text-decoration: none;
+        }
+        .navbar a {
+            text-decoration: none;
+        }
+      
+/* نمط الحاوية لعناصر "ذكرني" */
+.remember-me {
+    display: flex;
+    align-items: center; /* توسيط عمودي للعناصر */
+    margin: 10px 0; /* مسافة بينية فوق وتحت */
+
+}
+
+/* نمط حقل الإدخال "checkbox" */
+.remember-me input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px; /* مسافة بينية بين الـ checkbox والنص */
+    cursor: pointer; /* تغيير شكل المؤشر عند التمرير فوق الـ checkbox */
+}
+
+/* نمط نص التسمية (label) */
+.remember-me label {
+    font-size: 20px;
+    color: #02076e; /* لون النص */
+    cursor: pointer; /* تغيير شكل المؤشر عند التمرير فوق التسمية */
+}
+
+
+        /* أنماط الشريط العلوي */
+        .top-bar {
+            position: fixed;
+            top: 0px; /* المسافة من الأعلى */
+            left: 50%; /* توسيط العنصر أفقيًا */
+            transform: translateX(-50%); /* توسيط العنصر بدقة */
+            width: 100%; /* عرض العنصر */
+            height: 57.5px; /* ارتفاع العنصر */
+            background: linear-gradient(135deg, #0277bd, #1a237e); /* خلفية متدرجة */
+            display: flex;
+            justify-content: space-between; /* توزيع العناصر */
+            padding: 10px 15px; /* حشو داخلي */
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+            border-radius: 0px 0px 22.5px 22.5px; /* زوايا مستديرة */
+            border-bottom: 3px solid white; /* حدود */
+            align-items: center; /* توسيط العناصر عموديًا */
+            z-index: 1001; /* ترتيب العنصر */
+            color: white; /* لون النص */
+        }
+
+
+        .top-bar .menu-icon {
+            font-size: 27.5px; /* حجم الأيقونة */
+            cursor: pointer; /* تغيير شكل المؤشر */
+        }
+
+        .top-bar .title {
+            font-size: 20px; /* حجم النص */
+            margin-left: 20px; /* مسافة بين السهم والعنوان */
+            flex-grow: 1; /* توسيط العنوان */
+            text-align: center; /* توسيط النص */
+            font-weight: bold;  
+        } 
+.top-bar .icon {
+    display: none; /* إخفاء الأيقونات بعد التعديل */
+}    
+    </style>  
+</head>
+    <body>
+      
+<div class="top-bar">
+    <div class="menu-icon" id="menuIcon" onclick="toggleSidebar()">
+        <i class="fas fa-arrow-right" onclick="window.location.href='go:Home'"></i> <!-- سهم العودة -->
+    </div>
+    <div class="title">
+        تسـجيل الدخـول | 🇪🇬 🇵🇸 Tax Law App
+    </div>
+</div>      
+      
+    <div class="login-container" id="login-container">
+      <img src="https://www2.0zz0.com/2025/03/07/13/256839169.png" alt="User Icon" class="user-icon">
+        <h1>تسجيل الدخول</h1>
+        <h2>النسخة الذهبية <i class="fa fa-crown gold-icon"></i></h2>
+        <div class="form-group">
+            <label for="username">إسم المستخدم / البريد الإلكتروني :</label>
+            <i class="fa fa-user"></i>
+            <input type="text" id="username" required onblur="displayFullName()">
+        </div>
+        <div class="form-group">
+            <label for="password">كلمة المرور :</label>
+            <i class="fa fa-lock" id="toggle-password-icon" onclick="togglePasswordVisibility()"></i>
+            <input type="password" id="password" required>
+        </div>
+       <div class="form-group remember-me">
+       <input type="checkbox" id="remember-me">
+       <label for="remember-me">ذكرني المرة القادمة</label>
+       </div>
+        <div class="link-container">
+            <a href="javascript:void(0);" id="PasswordRecovery" onclick="togglePasswordRecoveryForm()">هل نسيت كلمة المرور ؟</a>
+        </div>
+        <div class="link-container">
+            <a href="go:Ramadan" id="Link" onclick="">لا أمتلك حساب، إنشاء حساب جديد</a>
+        </div>      
+        <a onclick="login()" id="login" class="button"><i class="fas fa-sign-in-alt"></i> تسجيل الدخول</a>
+        <div class="full-name-display" id="full-name-display"></div>
+        <div class="error-message" id="error-message" style="display: none;"></div>
+    </div>
+
+    <div class="password-recovery-form" id="password-recovery-form">
+        <span class="close-btn" onclick="togglePasswordRecoveryForm()">❌</span>
+        <h3>استرجاع كلمة المرور</h3>
+
+        <div class="form-group">
+            <label for="recovery-username">إسم المستخدم / البريد الإلكتروني :</label>
+            <input type="text" id="recovery-username">
+            <i class="fa fa-user"></i>
+        </div>
+        <div class="form-group">
+            <label for="recovery-phone">رقم الهاتف :</label>
+            <input type="text" id="recovery-phone">
+            <i class="fa fa-phone"></i>
+        </div>
+        <a onclick="recoverPassword()" class="button"><i class="fas fa-unlock-alt"></i> استرجاع كلمة المرور</a>
+        <div class="message" id="recovery-message"></div>
+    </div>
+
+    <div class="user-info hidden" id="user-info"></div> 
+  
+<!-- القائمة السفلية -->
+<div class="navbar">
+    <a href="go:Login" class="nav-item"><i class="fas fa-user icon"></i><span>حسابي</span></a>
+    <a href="http://action_notifications" class="nav-item">
+        <i class="fa fa-bell icon"></i>
+        <span>إشعارات</span>
+        <span class="notification-badge">1</span> <!-- شعار الإشعارات -->
+    </a>     
+    <a href="go:home" class="nav-item home"><i class="fas fa-home icon"></i><span>الرئيسية</span></a>
+    <a href="https://youtube.com/@MahmoudR_Saad" class="nav-item"><i class="fab fa-youtube icon"></i><span>قناتي</span></a>
+    <a href="go:Settings" class="nav-item"><i class="fas fa-ellipsis-h icon"></i><span>المزيد</span></a>      
+</div>
+ 
+<script>
+// التحقق من الاتصال بالإنترنت
+function checkInternetConnection() {
+    return navigator.onLine;
+}
+
+  
+  
+// تنفيذ الفحص عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', async () => {
+    if (!checkInternetConnection()) {
+        alert('📢 يرجى الاتصال بالإنترنت عن طريق تشغيل البيانات أو شبكة الواي فاي ثم إعادة المحاولة.');
+        window.location.href = 'http://action_exit'; // إعادة التوجيه إلى الرابط المحدد
+    } else {
+
+        // بعد التحقق، إخفاء نافذة التحميل بعد 2.5 ثانية
+        setTimeout(function() {
+            document.getElementById('loading').style.display = 'none';
+        }, 2500); // 2500 ميلي ثانية = 2.5 ثانية
+    }
+});
+
+  
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById("password");
+    const toggleIcon = document.getElementById("toggle-password-icon");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.classList.remove("fa-eye-slash");
+        toggleIcon.classList.add("fa-eye");
+    } else {
+        passwordInput.type = "password";
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-eye-slash");
+    }
+}
+
+document.getElementById("password").addEventListener("input", function() {
+    const toggleIcon = document.getElementById("toggle-password-icon");
+    if (this.value) {
+        toggleIcon.classList.remove("fa-lock");
+        toggleIcon.classList.add("fa-eye-slash");
+    } else {
+        toggleIcon.classList.remove("fa-eye");
+        toggleIcon.classList.add("fa-lock");
+    }
+});
+
+const users = [
+    {            
+        username: "MRizk",
+        password: "160894",
+        fullName: "محمود رزق سعد رزق",          
+        email: "mahmoudr.saad16@gmail.com",
+        phoneNumber: "01030069322",                 
+        subscriptionDate: "01/08/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "31/12/2025",
+        code: "MRizk-01/08/2024", 
+        points: "10000 نقطة",
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "400 جنية مصري", 
+        subscriptionStatus: "نشط"       
+    },
+    {            
+        username: "Asmaa Ebrahim",
+        password: "123456Aa@",
+        fullName: "أسماء إبراهيم حسن القطان",          
+        email: "elkhahmed9@gmail.com",
+        phoneNumber: "01229866107",                 
+        subscriptionDate: "28/07/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "31/12/2030",
+        code: "Asmaa-01/08/2024",     
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "omaryamany",
+        password: "Om@3209798",
+        fullName: "عمر يماني سالم محمد",          
+        email: "omaryamany28@gmail.com",
+        phoneNumber: "01003209798",                 
+        subscriptionDate: "28/07/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "01/02/2025",
+        code: "omaryamany-01/08/2024",
+        points: "450 نقطة",  
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري",
+        subscriptionStatus: "غير نشط"             
+    },
+    { 
+        username: "Mahmoud1951",
+        password: "Mahmoud@1234",
+        fullName: "محمود السيد محمد المدني",          
+        email: "mahmoud.madany.almadanyauditor@gmail.com",
+        phoneNumber: "01066637883",                 
+        subscriptionDate: "21/07/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "31/12/2030",
+        code: "Mahmoud1951-01/08/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "yasser1234",
+        password: "Yasser@1234",
+        fullName: "ياسر حسنى محمد المهداوى",          
+        email: "yasser.elmehdawi@gmail.com",
+        phoneNumber: "01001420400",                 
+        subscriptionDate: "28/07/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "31/12/2030",
+        code: "yasser1234-01/08/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1200 جنية مصري فقط بدلا من 1500 جنية",  
+        subscriptionStatus: "نشط"            
+    },
+    { 
+        username: "Abd Elaziz Waheed",
+        password: "O1o187o7291",
+        fullName: "Abd Elaziz Waheed Abd Elaziz Mohamed",          
+        email: "abdelazizwaheed44@outlook.com",
+        phoneNumber: "01018707291",                 
+        subscriptionDate: "29/07/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "01/08/2025", 
+        code: "AbdElaziz-01/08/2024",
+        points: "550 نقطة",
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "400 جنية مصري",  
+        subscriptionStatus: "نشط"             
+    },
+    { 
+        username: "NAGY MORCOS",
+        password: "D@niel2005",
+        fullName: "Nagy Kamal Morcos Guirguis",          
+        email: "Nagy_sas_esta@hotmail.com",
+        phoneNumber: "01223578181",                 
+        subscriptionDate: "21/07/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "31/12/2030",
+        code: "NAGY-01/08/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "hesham Osman",
+        password: "Hoa@1962",
+        fullName: "هشام عثمان أبو المجد عيسى",          
+        email: "heshamaboulmagd62@gmail.com",
+        phoneNumber: "01002599328",                 
+        subscriptionDate: "29/07/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "31/12/2030", 
+        code: "hesham-01/08/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "sabry omar",
+        password: "Saber@12345",
+        fullName: "صبري احمد حسن علي",          
+        email: "sabry.abotrika68@gmail.com",
+        phoneNumber: "01224593363",                 
+        subscriptionDate: "19/07/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "31/12/2030", 
+        code: "sabry-01/08/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1100 جنية مصري فقط",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "Ali elgamsi",
+        password: "Kingo1122#",
+        fullName: "علي محمد علي محمد",          
+        email: "alielgamsi5@gmail.com",
+        phoneNumber: "01024459219",                 
+        subscriptionDate: "01/08/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "01/02/2025",  
+        code: "Ali-01/08/2024",
+        points: "450 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري",
+        subscriptionStatus: "غير نشط"             
+    },
+    { 
+        username: "Ib1991",
+        password: "IBRsar77_$",
+        fullName: "إبراهيم أحمد عبد العال سرحان",          
+        email: "91acc2023@gmail.com",
+        phoneNumber: "01028969099",                 
+        subscriptionDate: "01/08/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "01/02/2025",
+        code: "Ib1991-01/08/2024",
+        points: "450 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري",  
+        subscriptionStatus: "غير نشط"             
+    },
+    { 
+        username: "جمال حسنين",
+        password: "#1968g",
+        fullName: "جمال حسنين علي حسنين",          
+        email: "gamal.hassanein4@gmail.com",
+        phoneNumber: "01126409994",                 
+        subscriptionDate: "01/08/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "01/02/2025",
+        code: "جمال-01/08/2024",
+        points: "450 نقطة", 
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري", 
+        subscriptionStatus: "غير نشط"             
+    },
+    { 
+        username: "daliahanafy",
+        password: "D112233h@",
+        fullName: "داليا حنفي محمود محمد",          
+        email: "daliahanafy50@gmail.com",
+        phoneNumber: "01094179986",                 
+        subscriptionDate: "01/08/2024",
+        activationDate: "01/08/2024",
+        expiryDate: "31/12/2030",  
+        code: "daliahanafy-01/08/2024", 
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "اشرف",
+        password: "as313hraf",
+        fullName: "أشرف السيد شحاته عبد الرحيم محمد",          
+        email: "ashrafshehata22@gmail.com",
+        phoneNumber: "01068129062",                 
+        subscriptionDate: "01/08/2024",
+        activationDate: "02/08/2024",
+        expiryDate: "31/12/2030",
+        code: "اشرف-02/08/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1100 جنية مصري فقط بدلا من 1500 جنية",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "Miva",
+        password: "P@s035063388#",
+        fullName: "Peter Naguib Aguib Wassief",          
+        email: "peterAguib777@gmail.com",
+        phoneNumber: "01289305124",                 
+        subscriptionDate: "31/07/2024",
+        activationDate: "03/08/2024",
+        expiryDate: "03/02/2025",
+        code: "Miva-03/08/2024",
+        points: "450 نقطة", 
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري", 
+        subscriptionStatus: "غير نشط"             
+    },
+    { 
+        username: "Saadazzam",
+        password: "saadazzam9497",
+        fullName: "سعد محمد عبدالظاهر عزام",          
+        email: "saaadazzzam@gmail.com",
+        phoneNumber: "01069497900",                 
+        subscriptionDate: "10/08/2024",
+        activationDate: "10/08/2024",
+        expiryDate: "31/12/2030",
+        code: "Saadazzam-10/08/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1300 جنية مصري فقط بدلا من 1500 جنية",  
+        subscriptionStatus: "نشط"            
+    },
+    { 
+        username: "Abdelmonem",
+        password: "Monem$69",
+        fullName: "عبدالمنعم عبدالمنعم محمد علي",          
+        email: "anbarabdelmonem@gmail.com",
+        phoneNumber: "01221053357",                 
+        subscriptionDate: "14/08/2024",
+        activationDate: "14/08/2024",
+        expiryDate: "14/02/2025",
+        code: "Abdelmonem-14/08/2024",
+        points: "400 نقطة", 
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري", 
+        subscriptionStatus: "غير نشط"             
+    },
+    { 
+        username: "Mohamed Abdallah",
+        password: "mm1422",
+        fullName: "محمد عبدالله سيد عيد",          
+        email: "mabdallah0079@gmail.com",
+        phoneNumber: "01119990123",                 
+        subscriptionDate: "14/08/2024",
+        activationDate: "14/08/2024",
+        expiryDate: "14/08/2025",
+        code: "Mohamed-14/08/2024",
+        points: "500 نقطة",
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "400 جنية مصري",  
+        subscriptionStatus: "نشط"             
+     },
+    { 
+        username: "Gamal436",
+        password: "Gamal1234",
+        fullName: "جمال ابو الحسن محمد إبراهيم",          
+        email: "gg222429@gmail.com",
+        phoneNumber: "01060607007",                 
+        subscriptionDate: "16/08/2024",
+        activationDate: "16/08/2024",
+        expiryDate: "16/02/2025",
+        code: "Gamal436-16/08/2024",
+        points: "400 نقطة", 
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري",    
+        subscriptionStatus: "غير نشط"             
+     },
+    { 
+        username: "MinaMoris",
+        password: "M$m12122014",
+        fullName: "Mina Moris Arnoes wesa",          
+        email: "Mena.Moris@Outlook.Com",
+        phoneNumber: "01229668380",                 
+        subscriptionDate: "19/08/2024",
+        activationDate: "19/08/2024",
+        expiryDate: "19/08/2025",
+        code: "MinaMoris-19/08/2024",
+        points: "300 نقطة", 
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "400 جنية مصري",
+        subscriptionStatus: "نشط"             
+     },
+    { 
+        username: "علاء الدين سليمان",
+        password: "alaa2000",
+        fullName: "علاء الدين سليمان عبدالجواد",          
+        email: "alaasolinan14766@gmail.com",
+        phoneNumber: "01006582161",                 
+        subscriptionDate: "20/08/2024",
+        activationDate: "20/08/2024",
+        expiryDate: "20/08/2025",
+        code: "Alaa-20/08/2024",
+        points: "500 نقطة",
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "400 جنية مصري",  
+        subscriptionStatus: "نشط"             
+     },
+    { 
+        username: "Rahaf Ahmed",
+        password: "Rahoofa181199@",
+        fullName: "Rahaf Ahmed Ragaa Abd El_mawla",          
+        email: "rahafabdelmawla@gmail.com",
+        phoneNumber: "01069057149",                 
+        subscriptionDate: "18/09/2024",
+        activationDate: "18/09/2024",
+        expiryDate: "18/03/2025",
+        code: "Rahaf-18/09/2024",
+        points: "400 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري", 
+        subscriptionStatus: "غير نشط"             
+     },
+    { 
+        username: "Mohamed_niazy",
+        password: "moh2adel7niazy",
+        fullName: "محمد عادل نيازي علي",          
+        email: "mohamedadel01021qaz@gmail.com",
+        phoneNumber: "01016898927",                 
+        subscriptionDate: "18/09/2024",
+        activationDate: "18/09/2024",
+        expiryDate: "18/03/2025",
+        code: "Mohamed-18/09/2024",
+        points: "400 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري", 
+        subscriptionStatus: "غير نشط"             
+     },
+    { 
+        username: "Mohamed Tammam",
+        password: "ASD268221asd",
+        fullName: "محمد احمد محمد تمام",          
+        email: "mohamedtammam670@gmail.com",
+        phoneNumber: "01147800743",                 
+        subscriptionDate: "21/09/2024",
+        activationDate: "22/09/2024",
+        expiryDate: "22/03/2025",
+        code: "Mohamed-22/09/2024",
+        points: "400 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري",   
+        subscriptionStatus: "غير نشط"             
+     },
+    { 
+        username: "kamal elbendary",
+        password: "@Travelart1970@",
+        fullName: "كمال احمد مصطفى احمد",          
+        email: "kamalelbendary@gmail.com",
+        phoneNumber: "01020666229",                 
+        subscriptionDate: "01/10/2024",
+        activationDate: "01/10/2024",
+        expiryDate: "01/04/2025",
+        code: "kamal-01/10/2024",
+        points: "400 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري",  
+        subscriptionStatus: "غير نشط"             
+     },
+    { 
+        username: "afify",
+        password: "0106751028",
+        fullName: "محمد  حسن  محمد عفيفي",          
+        email: "afify78@gmail.com",
+        phoneNumber: "0106751028",                 
+        subscriptionDate: "05/10/2024",
+        activationDate: "05/10/2024",
+        expiryDate: "05/04/2025",
+        code: "afify-05/10/2024",
+        points: "400 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري",   
+        subscriptionStatus: "غير نشط"             
+     },
+    { 
+        username: "Hany",
+        password: "19750518",
+        fullName: "هاني عبده سليم محمد",          
+        email: "hanyseleem6@gmail.com",
+        phoneNumber: "01111956043",                 
+        subscriptionDate: "10/10/2024",
+        activationDate: "10/10/2024",
+        expiryDate: "31/12/2030",
+        code: "Hany-10/10/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط"             
+     },
+    { 
+        username: "Elhussiny",
+        password: "FOA@hu1619",
+        fullName: "الحسينى احمد محمد محمد",          
+        email: "accsafaga2@gmail.com",
+        phoneNumber: "01068827479",                 
+        subscriptionDate: "14/10/2024",
+        activationDate: "14/10/2024",
+        expiryDate: "14/10/2025",
+        code: "Elhussiny-14/10/2024",
+        points: "500 نقطة",
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "400 جنية مصري",  
+        subscriptionStatus: "نشط"             
+     },
+    { 
+        username: "Amrhanafi",
+        password: "Amr123456@",
+        fullName: "عمرو محمد حنفى محمود",          
+        email: "amrhanafi545@gmail.com",
+        phoneNumber: "01013958816",                 
+        subscriptionDate: "17/10/2024",
+        activationDate: "17/10/2024",
+        expiryDate: "31/12/2030",
+        code: "Amrhanafi-17/10/2024",
+        points: "7500 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",   
+        subscriptionStatus: "نشط"             
+     },
+    { 
+        username: "Essay acc1959",
+        password: "Az01147205005",
+        fullName: "عبدالعزيز السيد محمود محمد",          
+        email: "Abdelazizelsayed966@gmail.com",
+        phoneNumber: "01005091228",                 
+        subscriptionDate: "18/10/2024",
+        activationDate: "18/10/2024",
+        expiryDate: "18/10/2025",
+        code: "Essay-18/10/2024",
+        points: "500 نقطة",
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "400 جنية مصري",  
+        subscriptionStatus: "نشط" 
+     },
+    { 
+        username: "احمدفهمي",
+        password: "19amaf66",
+        fullName: "أحمد محمد أحمد فهمى",          
+        email: "ahmadabofahmey@gmail.com",
+        phoneNumber: "01011630934",                 
+        subscriptionDate: "09/12/2024",
+        activationDate: "09/12/2024",
+        expiryDate: "09/01/2025",
+        code: "Ahmed-09/12/2024",
+        points: "300 نقطة",
+        subscriptionInfo: "شهرية", 
+        subscriptioncost: "150 جنية مصري",  
+        subscriptionStatus: "غير نشط"          
+     },
+    { 
+        username: "عبدالحليم كمال البرداني",
+        password: "01280970049",
+        fullName: "عبدالحليم كمال سعيد البرداني",          
+        email: "halemkamal3@gmail.com",
+        phoneNumber: "01280970049",                 
+        subscriptionDate: "12/12/2024",
+        activationDate: "12/12/2024",
+        expiryDate: "31/12/2030",
+        code: "AbdulHalim-12/12/2024",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1200 جنية مصري فقط بدلا من 1500 جنية",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "Ahmed khalil",
+        password: "101062",
+        fullName: "Ahmed Mahmoud khalil gomaa",          
+        email: "medokhelo96@gmail.com",
+        phoneNumber: "01273005406",                 
+        subscriptionDate: "26/12/2024",
+        activationDate: "26/12/2024",
+        expiryDate: "25/01/2025",
+        code: "Ahmed-26/12/2024",
+        points: "300 نقطة",
+        subscriptionInfo: "شهرية", 
+        subscriptioncost: "75 جنية مصري خصم 50% رأس السنة",  
+        subscriptionStatus: "غير نشط"        
+     },
+    { 
+        username: "Hussein.Alkhayatt",
+        password: "Accounting@2025",
+        fullName: "Hussein Alsaeed Hussein  Alkhayatt",          
+        email: "hussein.alkhayatt@gmail.com",
+        phoneNumber: "01271264817",                 
+        subscriptionDate: "02/01/2025",
+        activationDate: "02/01/2025",
+        expiryDate: "31/12/2030",
+        code: "Hussein-02/01/2025",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "Nahed Mahmoud",
+        password: "123456789",
+        fullName: "Nahed Mahmoud Taha Hussien",          
+        email: "nonycat75@gmail.com",
+        phoneNumber: "01143201924",                 
+        subscriptionDate: "02/01/2025",
+        activationDate: "02/01/2025",
+        expiryDate: "02/07/2025",
+        code: "Nahed-02/01/2025",
+        points: "400 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "250 جنية مصري خصم 50% رأس السنة",  
+        subscriptionStatus: "غير نشط" 
+     },
+    { 
+        username: "Triplrm",
+        password: "M112233m@",
+        fullName: "محمد محمد محمد عبدالصادق",          
+        email: "mmm.triplem3@gmail.com",
+        phoneNumber: "01062280985",                 
+        subscriptionDate: "10/01/2025",
+        activationDate: "10/01/2025",
+        expiryDate: "10/01/2026",
+        code: "Triplrm-10/01/2025",
+        points: "100 نقطة",
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "510 بدلا من 850 جنية مصري خصم 40% عجلة الهدايا",  
+        subscriptionStatus: "نشط" 
+     },
+    { 
+        username: "عبدالله عبدالخالق",
+        password: "123456@sA",
+        fullName: "عبدالله عبدالخالق عبدالقادر إبراهيم",          
+        email: "acc4abdo@gmail.com",
+        phoneNumber: "01002374096",                 
+        subscriptionDate: "24/01/2025",
+        activationDate: "24/01/2025",
+        expiryDate: "24/01/2026",
+        code: "abdo-24/01/2025",
+        points: "100 نقطة",
+        subscriptionInfo: "سنوية", 
+        subscriptioncost: "510 بدلا من 850 جنية مصري خصم 40% عجلة الهدايا",  
+        subscriptionStatus: "نشط"  
+     },
+    { 
+        username: "mohamedsab",
+        password: "Sabry@4259",
+        fullName: "محمد صبرى السيد موسى",          
+        email: "mhamedsabry4259@gmail.com",
+        phoneNumber: "01550701613",                 
+        subscriptionDate: "22/02/2025",
+        activationDate: "22/02/2025",
+        expiryDate: "31/12/2030",
+        code: "mohamedsab-22/02/2025",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط"       
+    },
+    { 
+        username: "Mohamed.Mousa",
+        password: "M1810",
+        fullName: "Mohamed  Sayed  mousa",          
+        email: "m.m.mousa.m@gmail.com",
+        phoneNumber: "01000081232",                 
+        subscriptionDate: "08/03/2025",
+        activationDate: "08/03/2025",
+        expiryDate: "08/06/2026",
+        code: "Mohamed-08/03/2025",
+        points: "300 نقطة",
+        subscriptionInfo: "سنوية (بخصم 35% + 3 أشهر مجاناً بمناسبة شهر الفرحة 🌙)", 
+        subscriptioncost: "975 جنية بدلا من 1500 جنية | وفرت 525 جنية",  
+        subscriptionStatus: "نشط" 
+     },
+    { 
+        username: "Fathi Serry",
+        password: "Fathi#1980",
+        fullName: "Fathi Gamal Fathi Serry",          
+        email: "fathi.acc@gmail.com",
+        phoneNumber: "01090007326",                 
+        subscriptionDate: "26/03/2025",
+        activationDate: "26/03/2025",
+        expiryDate: "25/05/2025",
+        code: "Fathi-26/03/2025",
+        points: "300 نقطة",
+        subscriptionInfo: "شهرية (بخصم 15% + شهر مجاناً بمناسبة شهر الفرحة 🌙)", 
+        subscriptioncost: "225 جنية بدلا من 300 جنية | وفرت 525 جنية",  
+        subscriptionStatus: "غير نشط"  
+     },
+    { 
+        username: "محمد حجازي",
+        password: "P@ssw0rd",
+        fullName: "محمد عبد الرازق مصطفي حجازي",          
+        email: "mhegazy130@gmail.com",
+        phoneNumber: "01097477340",                 
+        subscriptionDate: "06/05/2025",
+        activationDate: "06/05/2025",
+        expiryDate: "31/12/2030",
+        code: "Mohamed-06/05/2025",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1000 جنية مصري فقط",  
+        subscriptionStatus: "نشط" 
+    },
+    { 
+        username: "meta verse",
+        password: "samoha13833",
+        fullName: "سماح محمد ابراهيم النجار",          
+        email: "samoha13833@gmail.com",
+        phoneNumber: "01004822200",                 
+        subscriptionDate: "22/05/2025",
+        activationDate: "22/05/2025",
+        expiryDate: "22/06/2025",
+        code: "meta-22/05/2025",
+        points: "200 نقطة",
+        subscriptionInfo: "شهرية", 
+        subscriptioncost: "100 جنية مصري",  
+        subscriptionStatus: "غير نشط"    
+    },
+    { 
+        username: "essam20",
+        password: "3101970",
+        fullName: "عصام حسن سليمان بركات",          
+        email: "essamhasan7574@gmail.com",
+        phoneNumber: "01224667234",                 
+        subscriptionDate: "29/05/2025",
+        activationDate: "29/05/2025",
+        expiryDate: "29/11/2025",
+        code: "essam20-29/05/2025",
+        points: "200 نقطة",
+        subscriptionInfo: "نصف سنوية", 
+        subscriptioncost: "450 جنية مصري",  
+        subscriptionStatus: "نشط"    
+    },
+    { 
+        username: "Ahmedtaxofficer",
+        password: "Ahmed@361997",
+        fullName: "AHMED GAMAL HAMDY AHMED",          
+        email: "Ahmedgamalhamdy.sp@gmail.com",
+        phoneNumber: "01068959090",                 
+        subscriptionDate: "20/06/2025",
+        activationDate: "20/06/2025",
+        expiryDate: "20/07/2025",
+        code: "Ahmed-20/06/2025",
+        points: "200 نقطة",
+        subscriptionInfo: "شهرية", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "غير نشط"  
+    },
+    { 
+        username: "sameh",
+        password: "Nsameh@88",
+        fullName: "سامح شعبان اسماعيل محمد",          
+        email: "sameh.shaaban@yahoo.com",
+        phoneNumber: "01119377395",                 
+        subscriptionDate: "30/06/2025",
+        activationDate: "30/06/2025",
+        expiryDate: "30/07/2025",
+        code: "sameh-30/06/2025",
+        points: "200 نقطة",
+        subscriptionInfo: "شهرية", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "نشط" 
+    },
+    { 
+        username: "Karim",
+        password: "166Kimo",
+        fullName: "Karim Mahrous thabet hana",          
+        email: "Karim.mahrous93@gmail.com",
+        phoneNumber: "01275771695",                 
+        subscriptionDate: "05/07/2025",
+        activationDate: "05/07/2025",
+        expiryDate: "08/07/2025",
+        code: "Karim-05/07/2025",
+        points: "0 نقطة",
+        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "غير نشط"   
+    },
+    { 
+        username: "MostafaNassr",
+        password: "mostafa011",
+        fullName: "مصطفي نصر السيد عبد الراضي",          
+        email: "mostafanassr169@gmail.com",
+        phoneNumber: "01152690226",                 
+        subscriptionDate: "06/07/2025",
+        activationDate: "06/07/2025",
+        expiryDate: "09/07/2025",
+        code: "Mostafa-06/07/2025",
+        points: "0 نقطة",
+        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "غير نشط" 
+    },
+    { 
+        username: "ممدوح محمد عباس",
+        password: "e$EC2fUZ1e-xvZy",
+        fullName: "ممدوح محمد عباس احمد",          
+        email: "asddrgam1111@gmail.com",
+        phoneNumber: "01143830006",                 
+        subscriptionDate: "07/07/2025",
+        activationDate: "07/07/2025",
+        expiryDate: "10/07/2025",
+        code: "ممدوح-07/07/2025",
+        points: "0 نقطة",
+        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "غير نشط"  
+    },
+    { 
+        username: "عماد الطويل",
+        password: "Emad@12345",
+        fullName: "عماد عبدالنعيم احمد عبدالهادي",          
+        email: "e12566827@gmail.com",
+        phoneNumber: "01068000644",                 
+        subscriptionDate: "14/07/2025",
+        activationDate: "14/07/2025",
+        expiryDate: "31/12/2030",
+        code: "عماد-14/07/2025",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1500 جنية مصري فقط",  
+        subscriptionStatus: "نشط" 
+    },
+    { 
+        username: "Farid Hassanin",
+        password: "Fordegy@1965",
+        fullName: "فريد سيد حسنين حبلص",          
+        email: "faridhassanin@gmail.com",
+        phoneNumber: "01005000835",                 
+        subscriptionDate: "14/07/2025",
+        activationDate: "14/07/2025",
+        expiryDate: "17/07/2025",
+        code: "Farid-14/07/2025",
+        points: "0 نقطة",
+        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "غير نشط" 
+    },
+    { 
+        username: "Hassannegm25",
+        password: "12345@Ofc",
+        fullName: "Hassan Mohamed Negm Ali",          
+        email: "hnegm93@gmail.com",
+        phoneNumber: "01121523254",                 
+        subscriptionDate: "18/07/2025",
+        activationDate: "18/07/2025",
+        expiryDate: "31/12/2030",
+        code: "Hassan-18/07/2025",
+        points: "7000 نقطة",
+        subscriptionInfo: "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )", 
+        subscriptioncost: "1500 جنية مصري فقط",  
+        subscriptionStatus: "نشط"
+    },
+    { 
+        username: "mido hendy",
+        password: "Mido@7563m",
+        fullName: "محمد هندي حسب الله السيد",          
+        email: "midohendy7563@gmail.com",
+        phoneNumber: "01004038413",                 
+        subscriptionDate: "18/07/2025",
+        activationDate: "18/07/2025",
+        expiryDate: "21/07/2025",
+        code: "mido-18/07/2025",
+        points: "0 نقطة",
+        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "غير نشط" 
+    },
+    { 
+        username: "MohamedBadr",
+        password: "0101572499Mb$",
+        fullName: "محمد عبد المحسن بدر",          
+        email: "mohamed_badr2008@yahoo.com",
+        phoneNumber: "01009123457",                 
+        subscriptionDate: "19/07/2025",
+        activationDate: "19/07/2025",
+        expiryDate: "22/07/2025",
+        code: "Mohamed-19/07/2025",
+        points: "0 نقطة",
+        subscriptionInfo: "ثلاثة أيام مجانية | مكافأة الولاء", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "غير نشط"
+    },
+    { 
+        username: "احمد اسامه",
+        password: "ahmed2@8",
+        fullName: "احمد اسامه محمد محمد",          
+        email: "Ahmedosama031@gmail.com",
+        phoneNumber: "01006593874",                 
+        subscriptionDate: "30/07/2025",
+        activationDate: "30/07/2025",
+        expiryDate: "30/08/2025",
+        code: "Ahmed-30/07/2025",
+        points: "200 نقطة",
+        subscriptionInfo: "شهرية", 
+        subscriptioncost: "مجانية",  
+        subscriptionStatus: "نشط" 
+    }
+];
+  
+// حفظ البيانات في التخزين المحلي
+localStorage.setItem('users', JSON.stringify(users));
+  
+    
+function displayFullName() {
+    const usernameOrEmail = document.getElementById("username").value;
+    const user = users.find(u => u.username === usernameOrEmail || u.email === usernameOrEmail);
+    const errorMessage = document.getElementById("error-message");
+
+    if (user) {
+        errorMessage.style.display = 'none'; // اخفاء رسالة الخطأ
+        document.getElementById("full-name-display").innerHTML = `<i class="fa fa-user"></i> : ${user.fullName}`;
+    } else {
+        errorMessage.style.display = 'none'; // اخفاء رسالة الخطأ              
+        document.getElementById("full-name-display").innerText = '';
+    }
+}
+
+function login() {
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const errorMessage = document.getElementById("error-message");
+    var rememberMe = document.getElementById('remember-me').checked;
+
+    function hideErrorMessage() {
+        errorMessage.style.display = 'none';
+    }
+    usernameInput.addEventListener('input', hideErrorMessage);
+    passwordInput.addEventListener('input', hideErrorMessage);
+
+    const usernameOrEmail = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    errorMessage.style.display = 'none';
+    usernameInput.style.borderColor = '#420c0c';
+    passwordInput.style.borderColor = '#420c0c';
+
+    if (usernameOrEmail === '') {
+        errorMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يرجى إدخال إسم المستخدم';
+        errorMessage.style.display = 'block';
+        usernameInput.focus();
+        return;
+    }
+
+    if (password === '') {
+        errorMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يرجى إدخال كلمة المرور';
+        errorMessage.style.display = 'block';
+        passwordInput.focus();
+        return;
+    }
+
+    if (!/\d/.test(password) && !/[a-zA-Z]/.test(password)) {
+        errorMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> كلمة المرور يجب أن تحتوي على رقم وحرف';
+        errorMessage.style.display = 'block';
+        passwordInput.focus();
+        return;
+    }
+
+    const user = users.find(u => 
+        (u.username === usernameOrEmail || u.email === usernameOrEmail) && u.password === password
+    );
+
+    if (user) {
+        const currentDate = new Date();
+        const expiryDateParts = user.expiryDate.split('/');
+        const expiryDate = new Date(expiryDateParts[2], expiryDateParts[1] - 1, expiryDateParts[0]);
+
+        const activationDateParts = user.activationDate.split('/');
+        const activationDate = new Date(activationDateParts[2], activationDateParts[1] - 1, activationDateParts[0]);
+
+        if (currentDate < activationDate) {
+            errorMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> يتم تفعيل حسابك إعتباراً من ${user.activationDate}`;
+            errorMessage.style.display = 'block';
+            return;
+        }      
+      
+
+if (currentDate >= expiryDate) {
+    document.getElementById("user-info").classList.remove('hidden');
+    let message = `<p><i class="fa fa-exclamation-triangle"></i> عفوا، اشتراكك انتهى في ${user.expiryDate}</p>`;
+    errorMessage.innerHTML = message;
+    errorMessage.style.display = 'block';
+
+    // حذف بيانات المستخدم من localStorage
+    localStorage.removeItem('loggedInUser');
+
+    // إفراغ حقول تسجيل الدخول
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+
+    // إفراغ حقل عرض الاسم الكامل
+    document.getElementById("full-name-display").innerText = "";
+
+    // إخفاء رسالة الخطأ بعد ثانية واحدة
+    setTimeout(() => {
+        errorMessage.style.display = 'none';
+
+        // إزالة التحديد من خانة "تذكرني"
+        document.getElementById("remember-me").checked = false;
+
+    }, 1000);
+
+    return;
+}
+
+if (user.subscriptionStatus === "غير نشط") {
+    document.getElementById("user-info").classList.remove('hidden');
+    let message = `<p><i class="fa fa-exclamation-triangle"></i> عفوا، اشتراكك غير نشط، انتهى في ${user.expiryDate}</p>`;
+    errorMessage.innerHTML = message;
+    errorMessage.style.display = 'block';
+
+    // حذف بيانات المستخدم من localStorage
+    localStorage.removeItem('loggedInUser');
+
+    // إفراغ حقول تسجيل الدخول
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+
+    // إفراغ حقل عرض الاسم الكامل
+    document.getElementById("full-name-display").innerText = "";
+
+    // إخفاء رسالة الخطأ بعد ثانية واحدة
+    setTimeout(() => {
+        errorMessage.style.display = 'none';
+
+        // إزالة التحديد من خانة "تذكرني"
+        document.getElementById("remember-me").checked = false;
+
+    }, 1000);
+
+    return;
+}
+
+
+        const timeDiff = expiryDate - currentDate;
+        const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+// تحديد ما إذا كان المستخدم قد سجل دخوله من قبل
+const hasLoggedInBefore = localStorage.getItem('hasLoggedInBefore') === 'true';
+
+// رسالة الترحيب
+let welcomeMessage;
+
+if (user.subscriptionInfo === "مدي الحياة ( سارية حتي 2030 ويتم التجديد تلقائي بدون أي رسوم إضافية )") {
+    welcomeMessage = `📢 مرحبا بعودتك : ${user.fullName} | نتمني لك تجربة ممتعة فـ النسخة الذهبية من تطبيق Tax Law App > الباقة الحالية : مدي الحياة سارية حتي 2030 وتجدد تلقائي بدون أي رسوم إضافية > الفترة المتبقية علي إنتهاء إشتراكك : ${daysDiff} يوم`;
+} else if (!hasLoggedInBefore) {
+    welcomeMessage = `📢 أهلا بك : ${user.fullName} | في النسخة الذهبية من تطبيق Tax Law App سعدنا بإنضمامك لنا ونتمني لك تجربة ممتعة > الفترة المتبقية علي إنتهاء إشتراكك : ${daysDiff} يوم`;
+    localStorage.setItem('hasLoggedInBefore', 'true');
+} else {
+    welcomeMessage = `📢 مرحبا بعودتك : ${user.fullName} | نتمني لك تجربة ممتعة فـ النسخة الذهبية من تطبيق Tax Law App > الفترة المتبقية علي إنتهاء إشتراكك : ${daysDiff} يوم`;
+}
+     
+      
+// إنشاء نافذة منبثقة
+const modal = document.createElement('div');
+modal.id = 'modal';
+modal.style.display = 'flex';
+modal.style.position = 'fixed';
+modal.style.top = '0';
+modal.style.left = '0';
+modal.style.right = '0';
+modal.style.bottom = '0';
+modal.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+modal.style.justifyContent = 'center';
+modal.style.alignItems = 'center'; 
+modal.style.zIndex = '9999';     
+document.body.appendChild(modal);
+
+const modalContent = document.createElement('div');
+modalContent.style.background = 'linear-gradient(to right, white, #e1f5fe)'; // تعيين التدرج اللوني
+modalContent.style.padding = '20px';
+modalContent.style.borderRadius = '5px';
+modalContent.style.textAlign = 'center';
+modalContent.style.border = '3px solid #DDD';
+modalContent.style.width = '87.5%'; // تقليل عرض النافذة المنبثقة إلى 87.5%
+modal.appendChild(modalContent);
+
+// عنوان الرسالة
+const title = document.createElement('h1');
+title.innerHTML = '<i class="fa fa-info-circle" style="color: blue;"></i> Tax Law App Pro';
+title.style.fontSize = '35px'; // حجم الخط
+title.style.fontWeight = 'bold'; // جعل الخط غليظ
+title.style.color = '#1a237e'; // تغيير اللون
+title.style.marginTop = '5px'; // تقليل المسافة العلوية
+title.style.marginBottom = '5px'; // تقليل المسافة السفلية
+modalContent.appendChild(title);
+
+// خط تحت العنوان
+const hr = document.createElement('hr');
+hr.style.border = 'none'; // إزالة الحدود الافتراضية
+hr.style.height = '2px'; // تحديد سماكة الخط
+hr.style.backgroundColor = 'red'; // تغيير لون الخط إلى الأحمر
+hr.style.margin = '3px 3px'; // تحديد المسافة العلوية والسفلية
+modalContent.appendChild(hr);
+
+// عرض رسالة الترحيب
+const message = document.createElement('p');
+message.style.fontSize = '23px';
+message.style.fontWeight = 'bold';
+message.textContent = welcomeMessage;
+modalContent.appendChild(message);
+
+// زر الإغلاق
+const closeBtn = document.createElement('button');
+closeBtn.textContent = 'موافق';
+closeBtn.style.marginTop = '10px';
+closeBtn.style.padding = '10px 20px';
+closeBtn.style.fontSize = '22px';
+closeBtn.style.fontWeight = 'bold';
+closeBtn.style.backgroundColor = 'red'; // تغيير لون زر الإغلاق إلى الأحمر
+closeBtn.style.color = 'white'; // تغيير لون النص إلى الأبيض لزيادة وضوحه
+closeBtn.style.cursor = 'pointer';
+closeBtn.onclick = function() {
+    document.body.removeChild(modal); // إغلاق النافذة المنبثقة
+    window.location.href = "go:Accinfo"; // الانتقال إلى الرابط بعد الضغط على "موافق"
+};
+modalContent.appendChild(closeBtn);
+
+
+        localStorage.setItem('loggedInUser', JSON.stringify(user)); // تخزين بيانات المستخدم في localStorage
+
+        // تحقق من صحة اسم المستخدم وكلمة المرور
+        if (validateCredentials(usernameOrEmail, password)) {
+            // إذا كان خيار "ذكرني" مفعلاً، احفظ اسم المستخدم وكلمة المرور في localStorage
+            if (rememberMe) {
+                localStorage.setItem('rememberedUsername', usernameOrEmail);
+                localStorage.setItem('rememberedPassword', password);
+            } else {
+                // إذا لم يكن مفعلاً، قم بإزالة البيانات المخزنة
+                localStorage.removeItem('rememberedUsername');
+                localStorage.removeItem('rememberedPassword');
+            }
+        }
+
+        const subscriptionInfo = getSubscriptionInfo(user.activationDate, user.expiryDate);
+        var navbar = document.querySelector(".navbar");
+        navbar.style.display = "none";  // إخفاء النافبار
+
+        document.querySelector('.login-container').classList.add('hidden');
+        document.getElementById("user-info").classList.remove('hidden');
+        document.getElementById("user-info").innerHTML = `
+        <div class="container">
+        
+
+        `;
+      
+    } else {
+        document.getElementById("user-info").classList.remove('hidden');
+        errorMessage.innerHTML  = '<p><i class="fa fa-exclamation-triangle"></i> بيانات الدخول غير صحيحة</p>';
+        errorMessage.style.display = 'block';
+    }
+}
+
+// دالة للتحقق من صحة اسم المستخدم وكلمة المرور
+function validateCredentials(username, password) {
+    // أضف هنا منطق التحقق من صحة البيانات
+    return true; // هذا مجرد مثال
+}
+
+// استعادة اسم المستخدم وكلمة المرور المخزنين إذا كان موجوداً
+window.onload = function() {
+    var rememberedUsername = localStorage.getItem('rememberedUsername');
+    var rememberedPassword = localStorage.getItem('rememberedPassword');
+    if (rememberedUsername) {
+        document.getElementById('username').value = rememberedUsername;
+        document.getElementById('password').value = rememberedPassword;
+        document.getElementById('remember-me').checked = true;
+    }
+}
+
+function calculateRemainingPeriod(expiryDate) {
+    const today = new Date();
+    const expiry = new Date(expiryDate.split('/').reverse().join('-'));
+    const timeDiff = expiry - today;
+    return Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // تحويل الفرق الزمني إلى أيام
+}
+
+function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+function getSubscriptionInfo(activationDate, expiryDate) {
+    const activation = new Date(activationDate.split('/').reverse().join('-'));
+    const expiry = new Date(expiryDate.split('/').reverse().join('-'));
+    const timeDiff = expiry - activation;
+    const activationYear = activation.getFullYear();
+    const expiryYear = expiry.getFullYear();
+    
+    let daysInYear = 365;
+    if (isLeapYear(activationYear) || isLeapYear(expiryYear)) {
+        daysInYear = 366;
+    }
+
+    const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+    const monthsDiff = daysDiff / (daysInYear / 12);
+
+    if (monthsDiff <= 6) {
+        return { type: 'باقة نصف سنوية', cost: 250 };
+    } else {
+        return { type: 'باقة سنوية', cost: 400 };
+    }
+}
+
+  
+  
+function recoverPassword() {
+    const recoveryUsernameInput = document.getElementById("recovery-username");
+    const recoveryPhoneInput = document.getElementById("recovery-phone");
+    const recoveryMessage = document.getElementById("recovery-message");
+
+    function hideErrorMessage() {
+        recoveryMessage.style.display = 'none';
+    }
+
+    recoveryUsernameInput.addEventListener('input', hideErrorMessage);
+    recoveryPhoneInput.addEventListener('input', hideErrorMessage);
+
+    const recoveryUsername = recoveryUsernameInput.value.trim();
+    const recoveryPhone = recoveryPhoneInput.value.trim();
+
+    if (recoveryUsername === '') {
+        recoveryMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يرجى إدخال اسم المستخدم';
+        recoveryMessage.style.color = '#d9534f';
+        recoveryMessage.style.display = 'block'; // اظهار رسالة الخطأ
+        recoveryUsernameInput.focus();
+        return;
+    }
+
+    if (recoveryPhone === '') {
+        recoveryMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> يرجى إدخال رقم الهاتف';
+        recoveryMessage.style.color = '#d9534f';
+        recoveryMessage.style.display = 'block'; // اظهار رسالة الخطأ
+        recoveryPhoneInput.focus();
+        return;
+    }
+
+    const user = users.find(u => (u.username === recoveryUsername || u.email === recoveryUsername) && u.phoneNumber === recoveryPhone);
+
+    if (user) {
+        recoveryMessage.innerHTML = `<i class="fas fa-check-circle"></i> كلمة المرور الخاصة بك هي : ${user.password}`;
+        recoveryMessage.style.color = '#1a237e';
+    } else {
+        recoveryMessage.innerHTML = '<i class="fas fa-exclamation-triangle"></i> البيانات المدخلة غير صحيحة';
+        recoveryMessage.style.color = '#d9534f';
+    }
+    recoveryMessage.style.display = 'block'; // اظهار رسالة الخطأ
+}
+
+function togglePasswordRecoveryForm() {
+    const loginContainer = document.getElementById("login-container");
+    const passwordRecoveryForm = document.getElementById("password-recovery-form");
+    const recoverymessage = document.getElementById("recovery-message");
+    document.getElementById("recovery-message").innerHTML = "";
+    recoverymessage.style.display = 'none'; // اخفاء رسالة الخطأ 
+
+    if (passwordRecoveryForm.style.display === "none" || passwordRecoveryForm.style.display === "") {
+        loginContainer.style.display = "none";
+        passwordRecoveryForm.style.display = "block";
+        clearLoginForm(); // تفريغ بيانات فورم تسجيل الدخول
+    } else {
+        loginContainer.style.display = "block";
+        passwordRecoveryForm.style.display = "none";
+        clearPasswordRecoveryForm(); // تفريغ الحقول عند الإغلاق
+    }
+}
+
+function clearLoginForm() {
+    const errorMessage = document.getElementById("error-message");
+
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("error-message").innerHTML = "";
+    errorMessage.style.display = 'none'; // اخفاء رسالة الخطأ              
+    document.getElementById("full-name-display").innerText = '';
+}
+
+function clearPasswordRecoveryForm() {
+    const recoverymessage = document.getElementById("recovery-message");
+
+    document.getElementById("recovery-username").value = "";
+    document.getElementById("recovery-phone").value = "";
+    document.getElementById("recovery-message").innerHTML = "";
+    recoverymessage.style.display = 'none'; // اخفاء رسالة الخطأ  
+}
+
+
+  
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const signupDateField = document.getElementById('signup-date');
+            const today = new Date();
+            
+            // الحصول على اليوم، الشهر، والسنة
+            const day = String(today.getDate()).padStart(2, '0');
+            const month = String(today.getMonth() + 1).padStart(2, '0'); // الشهور تبدأ من 0
+            const year = today.getFullYear(); // السنة كاملة
+            
+            // تنسيق التاريخ إلى dd/mm/yyyy
+            const formattedDate = `${day}/${month}/${year}`;
+            signupDateField.value = formattedDate;
+        });
+  
+function toggleSignUpForm() {
+        const signUpForm = document.getElementById("sign-up-form");
+        signUpForm.style.display = (signUpForm.style.display === "none" || signUpForm.style.display === "") ? "block" : "none";
+        const loginContainer = document.getElementById("login-container");
+        loginContainer.style.display = (signUpForm.style.display === "none") ? "block" : "none";
+    }
+
+// تحديد العنصر الذي يحتوي على الرسالة
+let errorMessage = document.getElementById("errorMessage");
+
+// التحقق من وجود النص عند تحديث المحتوى
+if (errorMessage) {
+    let messageText = `عفوا، اشتراكك انتهى في`;
+    
+    if (errorMessage.innerHTML.includes(messageText)) {
+        localStorage.setItem("expiredMessage", "true"); // تخزين العلامة
+    }
+}  
+</script>
+<script>
+    // إضافة CSS باستخدام JavaScript
+    var style = document.createElement('style');
+    style.innerHTML = `
+        .notification-bell {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: blue;
+            color: white;
+            padding: 15px;
+            border-radius: 10px; /* جعل الأيقونة مربعة */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 1000;
+            animation: bounce 2s infinite; /* تطبيق تأثير الحركة */
+            margin-bottom: 0px; /* مسافة سفلية */
+            display: none; /* الجرس مخفي في البداية */
+        }
+        
+        .notification-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px;
+            font-size: 12px;
+        }
+
+        /* الخلفية الشبه شفافة */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* خلفية نصف شفافة */
+            z-index: 999; /* فوق كل محتويات الصفحة */
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* فوق الخلفية الشبه شفافة */
+            font-size: 25px;
+            font-weight: bold; /* جعل الخط غليظًا */
+        }
+
+        .popup-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .close-popup-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: red; /* خلفية الزر حمراء */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold; /* جعل الخط غليظًا */
+            border-radius: 5px;
+        }
+
+        .close-popup-btn:hover {
+            background-color: #ff6666;
+        }
+
+        .share-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: blue; /* خلفية الزر زرقاء */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold; /* جعل الخط غليظًا */
+            border-radius: 5px;
+            margin-left: 10px; /* مسافة بجانب زر الإغلاق */
+        }
+
+        .share-btn:hover {
+            background-color: #4a90e2; /* تغيير لون الخلفية عند التمرير */
+        }
+    `;
+    document.head.appendChild(style);
+
+    // إنشاء أيقونة الجرس والنقطة الحمراء
+    var bellContainer = document.createElement('div');
+    bellContainer.className = 'notification-bell';
+    
+    var bellIcon = document.createElement('i');
+    bellIcon.className = 'fa fa-bell';
+    bellContainer.appendChild(bellIcon);
+    
+    var notificationCount = document.createElement('span');
+    notificationCount.className = 'notification-count';
+    notificationCount.innerText = '+1';
+    bellContainer.appendChild(notificationCount);
+
+    document.body.appendChild(bellContainer);
+
+    // إنشاء الخلفية الشبه شفافة
+    var popupOverlay = document.createElement('div');
+    popupOverlay.className = 'popup-overlay';
+    document.body.appendChild(popupOverlay);
+
+    // إنشاء نافذة الإشعار المنبثقة
+    var popup = document.createElement('div');
+    popup.id = 'notificationPopup';
+    popup.className = 'popup';
+    
+    var popupContent = document.createElement('div');
+    popupContent.className = 'popup-content';
+    
+    var popupMessage = document.createElement('p');
+    popupMessage.innerText = 'عزيزي المشترك فـ النسخة الذهبية | يمكنك زيادة النقاط الخاصة بك عن طريق مشاركة كود إحالتك ودعوة الأصدقاء للإشتراك في النسخة الذهبية وبذلك تربح نقاط إضافية مجانية .. يتم الإستفادة بها في تجديد الإشتراك الخاص بك بعد إنتهائه أو منح النقاط كهدية ( إشتراك مجاني ) لصديقك العزيز.';
+    popupContent.appendChild(popupMessage);
+    
+    // زر مشاركة كود الإحالة مع أيقونة
+    var shareBtn = document.createElement('button');
+    shareBtn.className = 'share-btn';
+    shareBtn.innerHTML = '<i class="fa fa-share-alt"></i> شارك كودك'; // إضافة الأيقونة بجانب النص
+    shareBtn.onclick = function() {
+        window.location.href = 'go:proo'; // فتح الرابط go:proo
+    };
+    popupContent.appendChild(shareBtn);
+    
+    // زر الإغلاق مع أيقونة
+    var closePopupBtn = document.createElement('button');
+    closePopupBtn.className = 'close-popup-btn';
+    closePopupBtn.innerHTML = '<i class="fa fa-times"></i> إغلاق'; // إضافة أيقونة الإغلاق بجانب النص
+    closePopupBtn.onclick = function() {
+        document.getElementById('notificationPopup').style.display = 'none';
+        document.querySelector('.popup-overlay').style.display = 'none'; // إخفاء الخلفية الشبه شفافة
+    };
+    popupContent.appendChild(closePopupBtn);  
+  
+    popup.appendChild(popupContent);
+    document.body.appendChild(popup);
+
+    // إضافة حدث الضغط على الجرس
+    bellContainer.addEventListener('click', function() {
+        document.getElementById('notificationPopup').style.display = 'block';
+        document.querySelector('.popup-overlay').style.display = 'block'; // إظهار الخلفية الشبه شفافة
+    });
+
+    // مراقبة ظهور الفقرة <p> لعرض الجرس
+    document.addEventListener('DOMContentLoaded', function() {
+        var observer = new MutationObserver(function(mutationsList, observer) {
+            var targetElement = document.querySelector('.name');
+            if (targetElement && window.getComputedStyle(targetElement).display !== 'none') {
+                document.querySelector('.notification-bell').style.display = 'block';
+                observer.disconnect(); // إيقاف المراقبة بعد ظهور العنصر
+            }
+        });
+
+        // مراقبة تغييرات DOM للتأكد من ظهور العنصر المستهدف
+        observer.observe(document.body, { childList: true, subtree: true });
+    });
+ 
+</script>
+
+
+<script>
+function clickIE4() {
+    if (2 == event.button) {
+        return false;
+    }
+}
+
+function clickNS4(e) {
+    if ((document.layers || (document.getElementById && !document.all)) && (2 == e.which || 3 == e.which)) {
+        return false;
+    }
+}
+
+document.oncontextmenu = function () {
+    return false;
+};
+
+document.onkeydown = function (e) {
+    if (
+        123 == e.keyCode ||
+        (e.ctrlKey && 73 == e.keyCode) ||
+        (e.ctrlKey && 67 == e.keyCode) ||
+        (e.ctrlKey && 74 == e.keyCode) ||
+        (e.ctrlKey && 80 == e.keyCode) ||
+        (e.ctrlKey && 85 == e.keyCode) ||
+        (e.ctrlKey && 83 == e.keyCode)
+    ) {
+        return false;
+    }
+};
+</script> 
+</body>
+</html>
